@@ -860,7 +860,7 @@ section.website-content2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: black;
+  /* background-color: black; */
   font-family: "Bandeins-Strange";
   color: white;
   -webkit-font-smoothing: antialiased;
