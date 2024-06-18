@@ -836,14 +836,6 @@ nav {
 }
 /* section3 */
 
-section.website-content2 {
-  top: -40vh;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 8rem 2rem 23rem;
-  height: auto;
-  position: relative;
-}
 
 .relative {
   width: 50%;
@@ -859,9 +851,17 @@ section.website-content2 {
   width: 100%;
   height: 100%;
 }
+section.website-content2 {
+  
+}
 
 .website-content2 {
-  
+  top: -40vh;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 8rem 2rem 23rem;
+  height: auto;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
