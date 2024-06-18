@@ -832,10 +832,12 @@ nav {
   transform: translateX(-50%);
 }
 #Vector2{
-  background-image: linear-gradient(to right, var(--mid-grey) 1px, transparent 1px), linear-gradient(to bottom, var(--mid-grey) 1px, transparent 1px);
+  z-index: -100;
 }
 /* section3 */
+
 section.website-content2 {
+  top: -40vh;
   display: flex;
   flex-wrap: wrap;
   padding: 8rem 2rem 23rem;
@@ -872,7 +874,6 @@ section.website-content2 {
   background-size: 50px 50px;
   background-position: center;
   background-color: transparent;
-  z-index: ;
   background-image: linear-gradient(to right, var(--mid-grey) 1px, transparent 1px), linear-gradient(to bottom, var(--mid-grey) 1px, transparent 1px);
 }
 
