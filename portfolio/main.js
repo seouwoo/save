@@ -197,12 +197,12 @@ backColor.forEach(function(item,index){
         end:"bottom 5%",
         duration:1,
         onEnter:function(){
-            gsap.to("#contents",{
+            gsap.to("body",{
                 backgroundColor:item.dataset.bgcolor
             })
         },
         onLeaveBack:function(){
-            gsap.to("#contents",{
+            gsap.to("body",{
                 backgroundColor:prevBg
             })
         }
