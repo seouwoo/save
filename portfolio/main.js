@@ -194,7 +194,7 @@ backColor.forEach(function(item,index){
     ScrollTrigger.create({
         trigger:".wave1",
         start:"top 50%",
-        end:"top 60%",
+        end:"center 5%",
         duration:1,
         markers: true,
         onEnter:function(){
