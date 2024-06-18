@@ -25,8 +25,8 @@
 }
 /* preload */
 :root {
-  --grey: #5E5D5E;
-  --mid-grey: #3f3f3f;
+  --grey: #3f3f3f;
+  --mid-grey: #5E5D5E ;
   font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1280 - 320));
 }
 
