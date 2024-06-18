@@ -192,10 +192,11 @@ let backColor=document.querySelectorAll("[data-bgcolor]")
 backColor.forEach(function(item,index){
     let prevBg=index == 0 ?"":backColor[index - 1].dataset.bgcolor
     ScrollTrigger.create({
-        trigger:item,
+        trigger:".wave1",
         start:"top 50%",
-        end:"bottom 5%",
+        end:"top 60%",
         duration:1,
+        markers: true,
         onEnter:function(){
             gsap.to("body",{
                 backgroundColor:item.dataset.bgcolor
