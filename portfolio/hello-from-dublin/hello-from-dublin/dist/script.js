@@ -3,7 +3,7 @@ console.clear();
 select = (e) => document.querySelector(e);
 selectAll = (e) => document.querySelectorAll(e);
 
-const container = select(".container");
+const containers = select(".containers");
 const cuboid = selectAll(".hi__cuboid");
 const hiWords = selectAll(".hi__word");
 const base = select(".hi__base-plate");
@@ -17,7 +17,7 @@ let pointer = {
 function init() {
     setWinDimensions();
 
-    gsap.set(container, { autoAlpha: 1 });
+    gsap.set(containers, { autoAlpha: 1 });
 
     gsap.timeline({ delay: 0.5 })
         .from(".hi__location--lat", {
