@@ -857,6 +857,7 @@ section.website-content2 {
 }
 
 .website-content2 {
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -872,7 +873,7 @@ section.website-content2 {
 }
 
 .website-content2 .container {
-  position: relative;
+  position: sticky;
   width: 100%;
   height: 100%;
   display: flex;

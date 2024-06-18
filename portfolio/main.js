@@ -64,7 +64,7 @@ gsap.to(".badge", {
   scrub: 1,
 });
 //[1]첫번째 영역!
-let stickys = document.querySelectorAll(".sticky");
+let stickys = document.querySelectorAll(".container .sticky");
 
 stickys.forEach(function (sticky) {
   gsap.to(sticky, {
