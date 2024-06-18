@@ -74,7 +74,7 @@ stickys.forEach(function (sticky) {
       start: "top top",
       end: "+=100%",
       scrub: 1,
-      // markers: true,
+      opacity: 1,
     },
     ease: "power3.out",
     duration: 2,
@@ -104,16 +104,14 @@ gsap
       end: "bottom top",
       pin: true,
       scrub: true,
-      // scale: 1.5,
-      markers: true,
     },
   })
   .fromTo(
     inset,
     {
-      x: 5,
-      y: 5,
-      r: 30,
+      x: -5,
+      y: -5,
+      r: 20,
     },
     {
       duration: 1,
@@ -154,23 +152,7 @@ splitTypes1.forEach(function (char, i) {
 
 
 
-//텍스트의 사라지는 방향 애니
 
-gsap.to("[data-direct]", {
-  //속성중에 data-direct이 있는 것들을 모두 불러줌(호출)
-  x: (i, el) => -el.getAttribute("data-direct") * 400,
-  //el 은 data-direct 속성을 가지고 있는 요소들을 하나씩 받아옴 i는 인덱스 번호
-  ease: 'none',
-  scrollTrigger: {
-    trigger: '.text_wrap',
-    start: 'top top',
-    end: 'top top',
-    duration: 2,
-    // duration: 1,
-    scrub: 2,
-    // markers: true,
-  },
-});
 
 let initialPath =
   "M998.5 703H6.10352e-05V106C6.10352e-05 106 81 0 464 0C847 0 998.5 106 998.5 106V703Z";
@@ -197,60 +179,28 @@ svgWraps.forEach((svgWrap) => {
   });
 });
 
-//[2]두번째 영역!
-let conScales = document.querySelectorAll(".con-scale");
-conScales.forEach(function (conScale) {
-  gsap.fromTo(
-    conScale,
-    {
-      y: 100,
-      scale: 1,
-    },
-    {
-      scrollTrigger: {
-        trigger: conScale,
-        stert: "top 80%",
-        end: "top 20%",
-        scrub: 2,
-      },
-      y: 0,
-      duration: 1,
-      rotation: 0,
-      ease: "power3.out",
-    }
-  );
+
+//텍스트의 사라지는 방향 애니
+
+gsap.to("[data-direct]", {
+  //속성중에 data-direct이 있는 것들을 모두 불러줌(호출)
+  x: (i, el) => -el.getAttribute("data-direct") * 400,
+  //el 은 data-direct 속성을 가지고 있는 요소들을 하나씩 받아옴 i는 인덱스 번호
+  ease: 'none',
+  scrollTrigger: {
+    trigger: '.text_wrap',
+    start: 'top top',
+    end: 'top top',
+    duration: 2,
+    // duration: 1,
+    scrub: 2,
+    // markers: true,
+  },
 });
 
-//두번째 영역의 각각 이미지 애니
-let secImgs = document.querySelectorAll(".section-images");
 
-secImgs.forEach(function (secImg) {
-  let imgs = secImg.querySelectorAll("img");
-  let secImgParent = secImg.parentNode;
+//취미영역
 
-  imgs.forEach(function (img, index) {
-    let imgDey = index * 0.8;
-    gsap.set(img, {
-      y: 400,
-    });
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: secImgParent,
-          stert: "top 60%",
-          end: "top top",
-          scrub: 2,
-          // markers: true,
-        },
-      })
-      .to(img, {
-        y: 0,
-        duration: 2,
-        delay: imgDey,
-        ease: "power4.out",
-      });
-  });
-});
 /*--------------------
 Vars
 --------------------*/
@@ -334,29 +284,66 @@ const animate = () => {
 };
 animate();
 
-//세번째페이지
-//글자 자르기
 
-//const text = new SplitType('#target', { types: 'words, chars' })
-let splitTypes2 = document.querySelectorAll(".heading-large");
-splitTypes2.forEach(function (char, i) {
-  let parent = char.parentNode;
-  const text = new SplitType(char, {
-    types: "chars",
-  });
-  //console.log(text)
-
-  gsap.from(text.chars, {
-    opacity: 0,
-    yPercent: 100,
-    duration: 0.4,
-    stagger: 0.04,
-    scrollTrigger: {
-      trigger: parent,
-      start: "top 60%",
-      end: "top 28%",
-      ease: "power3.out",
-      //scrub:1,
+let conScales = document.querySelectorAll(".con-scale");
+conScales.forEach(function (conScale) {
+  gsap.fromTo(
+    conScale,
+    {
+      y: 100,
+      scale: 1,
     },
+    {
+      scrollTrigger: {
+        trigger: conScale,
+        stert: "top 80%",
+        end: "top 20%",
+        scrub: 2,
+      },
+      y: 0,
+      duration: 1,
+      rotation: 0,
+      ease: "power3.out",
+    }
+  );
+});
+
+//두번째 영역의 각각 이미지 애니
+let secImgs = document.querySelectorAll(".section-images");
+
+secImgs.forEach(function (secImg) {
+  let imgs = secImg.querySelectorAll("img");
+  let secImgParent = secImg.parentNode;
+
+  imgs.forEach(function (img, index) {
+    let imgDey = index * 0.8;
+    gsap.set(img, {
+      y: 300,
+    });
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: secImgParent,
+          stert: "top 60%",
+          end: "top top",
+          scrub: 2,
+          // markers: true,
+        },
+      })
+      .to(img, {
+        y: 0,
+        duration: 2,
+        delay: imgDey,
+        ease: "power4.out",
+      });
   });
 });
+
+
+
+
+
+
+
+
+

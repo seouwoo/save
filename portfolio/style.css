@@ -10,7 +10,12 @@
   font-weight: 700;
   font-style: normal;
 }
-
+@font-face {
+  font-family: 'Freesentation';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
 /* preload */
 :root {
   font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1280 - 320));
@@ -223,23 +228,21 @@ img {
 }
 .video-parent {
   position: relative;
-  padding-top: 56.25%;
+  padding-top: 50%;
   transform: translate(0px, -50%);
   top: 50%;
 }
 
 .video-parent video {
-  filter: grayscale(1);
-  border-radius: 20px;
-  width: 100%;
+  filter: grayscale(0.5);
+  border-radius: 10px;
+  width: 100vw;
   height: 100%;
-  transform: scale(0.8);
+  transform: scale(1);
   opacity: 1;
   position: absolute;
   top: 0;
   left: 0;
-  /* width: 100%; */
-  /* height: 100vh; */
   object-fit: cover;
 }
 
@@ -281,7 +284,7 @@ nav {
   display: inline;
   line-height: 1em;
   
-  font-family: 'Ownglyph_noocar-Rg', sans-serif;
+  font-family: 'Freesentation', sans-serif;
   text-decoration: none;
   text-transform: uppercase;
   font-size: 30px;
@@ -313,14 +316,14 @@ nav {
 
 .header h1 {
   text-transform: uppercase;
-  font-family: "InkLipquid";
-  font-size: 10vw;
+  font-family: Freesentation,sans-serif;
+  font-size: 8vw;
   font-weight: 400;
   color: #fff;
   line-height: 100%;
 }
 .wave1 .header h1 {
-  font-size: 8vw;
+  font-family: InkLipquid;
 }
 .tracker {
   position: absolute;
@@ -340,13 +343,14 @@ nav {
 
 
   position: absolute;
-    top: 80%;
+    top: 90%;
     left: 50%;
     transform: translate(-50%, -50%);
 
 }
 .mouse_s {
-  font-family: InkLipquid, sans-serif;
+  font-family: Freesentation, sans-serif;
+  font-size: 1vw;
   margin-top: 30px;
   letter-spacing: 12px;
   text-indent: 12px;
@@ -737,16 +741,16 @@ nav {
 
 .badge-parent {
   z-index: 3;
-  width: 3rem;
+  width: 5rem;
   color: black;
   justify-content: center;
   align-items: center;
   display: flex;
   position: absolute;
   top: auto;
-  bottom: -10%;
-  left: 100%;
-  right: 90%;
+  bottom: -40%;
+  left: 90%;
+  right: auto;
 }
 
 .row {
@@ -805,7 +809,8 @@ nav {
 .menu--word a{
   text-decoration: none;
   text-transform: uppercase;
-  font-family: "InkLipquid", sans-serif;
+  font-family: "Freesentation", sans-serif;
+  font-weight: 100;
   color: #000;
   
 }
@@ -921,7 +926,14 @@ section.website-content2 {
 }
 
 .div-hide.three {
-  margin-left: 4rem;
+  margin-left: 2rem;
+}
+
+.div-hide.four {
+  margin-left: -2rem;
+}
+.div-hide.five {
+  margin-left: 8rem;
 }
 
 /* //빈공간들 */
