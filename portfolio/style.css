@@ -852,16 +852,16 @@ nav {
   height: 100%;
 }
 section.website-content2 {
-  
-}
-
-.website-content2 {
   top: -40vh;
   display: flex;
   flex-wrap: wrap;
   padding: 8rem 2rem 23rem;
   height: auto;
   position: relative;
+}
+
+.website-content3 {
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -877,7 +877,7 @@ section.website-content2 {
   background-image: linear-gradient(to right, var(--mid-grey) 1px, transparent 1px), linear-gradient(to bottom, var(--mid-grey) 1px, transparent 1px);
 }
 
-.website-content2 .container {
+.website-content3 .container {
   position: sticky;
   width: 100%;
   height: 100%;
@@ -888,7 +888,7 @@ section.website-content2 {
   visibility: hidden;
 }
 
-.website-content2 .container .hi {
+.website-content3 .container .hi {
   position: relative;
   z-index: 1;
   font-size: 100px;
