@@ -1,0 +1,25 @@
+*{margin: 0; padding: 0;}
+
+
+.전체영역{background-color: grey; width: 1000px;
+    margin: 0 auto; box-sizing: border-box;
+}
+.전체영역 .일동자식{height: 200px; padding: 20px;
+position: relative;
+
+}
+.전체영역 .일동자식 .일일{}
+.전체영역 .일동자식 .일일{background-color: darkgreen;
+    float: left; height: 200px; width: 30%; margin-right: 5%;
+/*     text-align: center; 
+    
+    transform: translate(-50%,-50%); */
+}
+.전체영역 .일동자식 .일이{background-color: darkgreen;
+    float: left; height: 200px;width: 30%; margin-right: 5%;
+    text-align: center;
+}
+.전체영역 .일동자식 .일삼{background-color: darkgreen;
+    float: left; height: 200px; width: 30%;
+    text-align: center;
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .imgs{position: relative;
+            width: 900px;height: 1169px; margin: 5vh auto 0;
+        }
+        .imgs>img{position: absolute;
+            left: 0;right: 0;top: 0;bottom: 0;
+            }
+
+        .btn_wrap{position: absolute;
+            left: 50%; transform: translateX(-50%);
+            bottom: 5vh;
+            display: flex; gap: 10px;
+        }
+        .btn_wrap>a{display: block;
+        padding: 5px 10px;background-color: #222;
+        border-radius: 10px;
+        color: #fff; text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="imgs">
+        <img src="./img/머리.png" alt="머리" class="머리">
+        <img src="./img/몸통.png" alt="몸통" class="몸통">
+        <img src="./img/오른다리.png" alt="오른다리" class="오른다리">
+        <img src="./img/오른팔.png" alt="오른팔" class="오른팔">
+        <img src="./img/왼다리.png" alt="왼다리" class="왼다리">
+        <img src="./img/왼팔.png" alt="왼팔" class="왼팔">
+    </div>
+    <div class="btn_wrap">
+        <a href="#" class="play">play</a>
+        <a href="#" class="pause">pause</a>
+        <a href="#" class="reverse">reverse</a>
+        <a href="#" class="restart">restart</a>
+        <a href="#" class="tast">tast</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        let tl=gsap.timeline({paused:true});//paused:true 애니효과 멈춤
+        tl.from('.몸통',{
+            duration:1.5,
+            opacity:0,
+            x:100,y:100,
+            ease: "power3.inOut",
+        })
+        tl.from('.머리',{
+            duration:1.0,
+            opacity:0,
+            y:-100,
+            ease: "power4.out",
+        })
+        tl.from('.왼팔',{
+            duration:0.8,
+            opacity:0,
+            x:-100,
+            ease: "power4.out",
+        })
+        tl.from('.오른팔',{
+            duration:0.8,
+            opacity:0,
+            x:100,
+            ease: "power4.out",
+        })
+        tl.from('.왼다리',{
+            duration:0.8,
+            opacity:0,
+            x:-100,
+            y:100,
+            ease: "power3.in",
+        })
+        
+        tl.add('tast')
+        tl.from('.오른다리',{
+            duration:0.8,
+            opacity:0,
+            x:100,
+            y:100,
+            ease: "power3.in",
+        })
+
+        document.addEventListener('click',function(e){
+            let check=e.target.classList//가장 끝에 있는 노드,객체
+            //console.log(check)
+
+
+            //true//false 둘 중 하나 뜸
+            if(check.contains('play')){tl.play();}
+            if(check.contains('pause')){tl.pause();}//멈춤
+            if(check.contains('reverse')){tl.reverse();}//거꾸로
+            if(check.contains('restart')){tl.restart();}//다시시작
+            if(check.contains('tast')){tl.tast();}//tl.add('tast')이후부터 실행
+        })
+    </script>
+</body>
+
+</html>

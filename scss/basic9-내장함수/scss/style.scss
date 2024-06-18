@@ -1,0 +1,32 @@
+@use 'sass:color';
+
+
+%box-style{
+    width: 100px;
+    height: 100px;
+    font-size: 40px;
+}
+
+@function get-bg-color($text-color){
+    $lig:color.lightness($text-color);
+    @debug $lig;//debug는 변수에 담긴 값을 출력함
+    @return $text-color;
+}
+
+// @debug terminal에서 node.js로 실행해야한다.
+//npx  sass  변환할 폴더/파일 : 폴더/파일 -w
+//w- 옵션을 통해 파일 변경 감지 기능을 활성화
+
+.box1{
+    @extend %box-style;
+    border: 5px solid #000;
+    color: blue;
+    background-color: #ccc;
+    color: get-bg-color($col)
+}
+.box2{
+    @extend %box-style;
+    border: 5px solid #000;
+    color: red;
+    background-color: #333;
+}

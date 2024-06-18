@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>CodePen - SVG text on path JS animation</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="svg">
+        <svg viewBox="0 0 1800 600" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <path id="Vector_1"
+                    d="M-75.5 116.5C6 189.5 104.2 234.5 255 234.5C443.5 234.5 488 125 662.5 133C837 141 948.5 266.5 1238.5 256.5C1528.5 246.5 1504.5 -15.5 1847 116.5"
+                    stroke="black" />
+                <path id="Vector_2"
+                    d="M2047.5 443C1948 457.5 1865 524 1492 455C1119 386 956.937 475.5 847.5 475.5C648.5 475.5 433.5 463 247 443C60.5 423 71 556.5 -93.5 548.5"
+                    stroke="red" />
+            </defs>
+
+            <text>
+                <textPath href="#Vector_1" id="textOnPath1" class="text-on-path">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, dolorum?</textPath>
+                <textPath href="#Vector_2" id="textOnPath2" class="text-on-path">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci aliquid nulla dolore consequuntur nihil quasi.</textPath>
+            </text>
+
+
+
+        </svg>
+
+    </div>
+
+    <!-- partial -->
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>

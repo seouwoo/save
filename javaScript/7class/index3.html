@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<script src="main3.js"></script>
+</body>
+    <script>
+        //get, set
+
+        class person{
+            constructor(성, 이름){
+                this.성=성;
+                this.이름=이름;
+            }
+            sayName(){
+                return `나는 ${this.이름} 붕어빵이다`
+            }
+        }
+
+        const hong =new person("반죽","슈크림");
+        const park =new person("반죽","팥");
+
+        console.log(hong.sayName())
+        console.log(park.sayName())
+
+
+        class man{
+            constructor(name,year){
+                this.name=name;
+                this.year=year;
+            }
+            // 1)데이터를 가공해서 새로운 데이터를 반환할때
+            // 2)private한 값을 반환할때
+            // 함수처럼 만들고 무조건return이 있어야한다.
+            get nameAndYear(){
+                return `${this.name},${this.year}`;
+            }
+            
+            //set는 무조건 파라미터를 하나만 받아야한다.
+            
+            // set name(name){
+            //     this.name=name;
+            // }
+        }
+
+        const child=new man ("강감찬",2001)
+        console.log(child.nameAndYear)
+
+        child.name="이순신";
+        console.log(child)
+
+        class woman {
+            #name;//private값 class외부에서는 접근할 수 없다.
+            year;
+            constructor (name,year ){
+                this.#name=name;
+                this.year=year;
+            }
+
+
+            get name (){
+                return this.#name
+            }
+
+            set name (name){
+                this.#name=name;
+            }
+        }
+
+
+        const children=new woman ("세종대왕",2006);
+        console.log(children.name);//get
+
+        children.name="임꺾정";//set
+        console.log(children.name);//get
+    </script>
+</html>

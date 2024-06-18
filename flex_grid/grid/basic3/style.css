@@ -1,0 +1,18 @@
+*{margin: 0;padding: 0; box-sizing: border-box;}
+
+.container{
+    background-color: gold;
+    border: 2px solid black;
+}
+.container .item{    
+    background-color: skyblue;
+    border: 2px solid black;}
+
+.container{display: grid;
+    height: 80vh;
+    grid-template-columns: repeat(3,1fr);
+    /* 최소 100px 보다 줄어들지는 않고 자식이 넘치면 알아서 늘어나 자식의 높이 값을 갖음 (자주사용) */
+    grid-template-rows: repeat(3, minmax(100px,auto));
+
+}
+.container .item{font-size: 30px;}

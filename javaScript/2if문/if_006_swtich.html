@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let day = new Date()
+        console.log(day)
+        console.log(day.getFullYear()) //년도
+        console.log(day.getMonth() + 1) //월은 0부터 시작해서 +1
+        console.log(day.getDate()) //날짜
+        console.log(day.getDay()) //0~6 (0=일 1=월 6=토)
+
+        let result = '';
+        let 요일 = day.getDay()
+        
+        if (!요일) { // 값이 없다(!false)면 true
+        } else {
+            switch (요일) {
+                case 0:
+                    result = '일요일'
+                    break;
+                case 1:
+                    result = '월요일'
+                    break;
+                case 2:
+                    result = '화요일'
+                    break;
+                case 3:
+                    result = '수요일'
+                    break;
+                case 4:
+                    result = '목요일'
+                    break;
+                case 5:
+                    result = '금요일'
+                    break;
+                case 6:
+                    result = '토요일'
+                    break;
+                default:
+                    result = '기타'
+                    break;
+            }
+            //return result; //아무것도 안나오면 return //result값을 던져라!
+            console.log(요일)
+        }
+
+        
+    </script>
+</body>
+
+</html>

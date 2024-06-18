@@ -1,0 +1,87 @@
+@charset "UTF-8";
+*{margin: 0; padding: 0;}
+.wrap{width: 900px; margin: 0 auto;
+padding: 10% 0;
+}
+.wrap>div{
+    margin-top: 50px;
+    border-top: 1px solid #ccc ;
+}
+h1{text-align: center;}
+.wrap>div h2{text-align: center; margin: 10px 0;}
+ table{width: 100%; text-align: center;
+border-collapse: collapse;}
+ table tr{}
+ table tr th{border: 1px solid #ccc;}
+ table tr td{border: 1px solid #ccc;}
+
+ .table3{}
+ .table3 table{
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+.table3 table tr:nth-child(1){border-bottom: 3px double #ccc;}
+.table3 table tr th{border:1px solid #ccc}
+.table3 table tr th:nth-child(1){border-left:none}
+.table3 table tr th:nth-child(3){border-right: none;}
+
+.table3 table tr th:nth-child(1){width: 30%;}
+.table3 table tr th:nth-child(2){width: 50%;}
+.table3 table tr th:nth-child(3){width: 20%;}
+.table3 table tr:nth-child(2){height: 100px;}
+
+  
+.table3 table tr td{border:1px solid #ccc}
+.table3 table tr td:nth-child(1){border-left:none}
+.table3 table tr td:nth-child(3){border-right: none;}
+
+
+.table7{}
+.table7 table{}
+.table7 table tr:nth-child(even){
+    background-color: #f172724b;
+}
+.table7 table tr:nth-child(odd){
+    background-color: #31f7dd4b;
+}
+.table7 table tr th:nth-child(even),
+.table7 table tr td:nth-child(even){
+    background-color: #f1e7204b;
+}
+.table7 table tr td{}
+
+/* 
+짝수를 호출하는 방법
+.table7 table tr:nth-child(2n){}
+.table7 table tr:nth-child(even){}
+
+홀수를 호출하는 방법
+.table7 table tr:nth-child(2n + 1){}
+.table7 table tr:nth-child(odd){} */
+
+
+.table8{}
+.table8 table{}
+.table8 table tr{border-bottom: 1px solid #ccc;}
+.table8 table tr:hover{background-color: rgba(0, 255, 255, 0.354);}
+.table8 table tr td:hover{background-color: rgba(0, 255, 255, 0.354);}
+.table8 table tr th:hover{background-color: rgba(255, 75, 3, 0.354);}
+.table8 table tr th{border: none;}
+.table8 table tr td{border: none;}
+
+.table8 table tr th,
+.table8 table tr td{padding: 15px;}
+
+
+.table9{}
+.table9 table{}
+.table9 table colgroup{}
+.table9 table colgroup col:nth-child(1){
+    background-color: rgba(128, 255, 0, 0.398);
+}
+.table9 table colgroup col:nth-child(2){
+    background-color: rgba(0, 145, 255, 0.398);
+}
+.table9 table colgroup col:nth-child(3){
+    background-color: rgba(255, 140, 0, 0.398);
+}

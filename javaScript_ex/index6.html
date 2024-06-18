@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{display: flex;justify-content: center;align-items: center;
+        height: 100vh;}
+        .stage{width: 500px;height: 500px;background-color: beige;
+        visibility: hidden;}
+        .stage .itam{
+            width: 80px;height: 90px;
+            background: url(https://i.namu.wiki/i/ZES3_P36l7xIF8oNBPhxhgvTfHhpLWj77tLmNTsWI5SiQRZ3W8V25HOerMP9qRC1ni-HJUqL8fcdq_3papPydg.webp);
+            background-size: cover;
+            position: absolute;
+            top: 50%;
+            transform: translateX(-100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="stage">
+        <div class="itam"></div>
+        <div class="itam"></div>
+        <div class="itam"></div>
+        <div class="itam"></div>
+        <div class="itam"></div>
+        <div class="itam"></div>
+        <div class="itam"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script>
+        let tl=gsap.timeline();
+        //autoAlpha = opacity,visibility를 안보이게도 보이게도 한다.(컨트롤함)
+        tl
+            .to('.stage',{autoAlpha:1,duration:1.5})
+            .to('.itam',{
+                // keyframes:{
+                //     '0%':{x:0,y:0,},
+                //     '25%':{x:20, y:0, ease: "sine.out",},
+                //     '50%':{x:250, y:-100, ease: "sine.in",},
+                //     '75%':{x:400, y:0,ease: "sine.out",},
+                //     '100%':{x:500, y:0,},
+                // },
+                keyframes:{
+                    x:[0,20,250,400,500],
+                    y:[0,0,-100,0,0],
+                    ease: "sine.in",
+                },
+                duration:2,
+                stagger:0.2,
+            })
+
+    </script>
+</body>
+</html>

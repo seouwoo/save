@@ -1,0 +1,28 @@
+*{margin: 0;padding: 0; box-sizing: border-box;}
+
+.container{
+    background-color: gold;
+    border: 2px solid black;
+}
+.container .item{    
+    background-color: skyblue;
+    border: 2px solid black;}
+
+/* grid-auto-columns:  grid-auto-rows: ;
+
+grid-auto-rows: 
+grid를 자동으로 정의
+grid-template의 통제를 벗어난 아이템들을 어떻게 배치할것인가를 결정함.
+
+*/
+.container{display: grid;
+    height: 80vh;
+    grid-template-columns: repeat(3,1fr);
+
+    grid-template-rows:repeat(2,minmax(200px,auto)) ;
+    grid-auto-rows: minmax(100px,auto);
+    gap: 1rem;
+    
+
+}
+.container .item{}

@@ -1,0 +1,26 @@
+*{margin: 0;padding: 0;
+    box-sizing: border-box;}
+
+
+.container{background: yellow;
+    border: 2px solid #000;}
+.container .item{
+    background: green;
+    border: 2px solid #000;}
+
+
+.container{
+    display: flex;
+/*  flex-direction: row;
+    flex-wrap: wrap; 아래로 단축가능*/
+    flex-flow: row wrap;
+
+/*  메인축 위에서 오딩(아이템)들의 정렬법, 메인축 방향으로 이동함 */
+    justify-content: flex-start;/* 처음부터 */
+    /* justify-content: flex-end; 끝부터 */
+    /* justify-content: center; 센터 */
+	/* justify-content: space-between; */
+	/* justify-content: space-around; */
+	/* justify-content: space-evenly; */
+}
+.item{}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{background-color: bisque;}
+    </style>
+</head>
+<body>
+    <canvas class="canvas" width="600" height="400"></canvas>
+    <div class="imgWrap"></div>
+    <script>
+        let canvas =document.querySelector('.canvas');
+        let context =canvas.getContext('2d');
+
+        let imgWrap =document.querySelector('.imgWrap');
+
+        //태그 만들기
+        //p태그 만들기
+        // 1 let pEle=document.createElement('p');
+
+        //img태그 만들기
+        //1 let imgEle=document.createElement('img')
+        //<img src="이미지주소" alt="설명글">
+        let imgEle=new Image();
+        imgEle.src='https://kr.gundam.info/about-gundam/series-pages/seedfreedom/gseedfreedom/en/product/2023/10/hg_rising_freedom_gundam_11_en.jpg';
+        imgEle.alt='배경';
+
+        // context.drawImage(imgEle,50,50)
+        // context.drawImage(imgEle,50,50,70,120)
+        context.drawImage(imgEle,200,200,1000,1000,105,10,390,380)
+        //이미지내의 (0,0)지점부터 공간 200,200까지가
+        //canvas의 위치 0,0 지점 부터 공간 100,100 위치까지의 공간 사이에 그려진다.
+
+        //뒤의 값은 canvas
+        //앞 값은 이미지
+        //context.drawImage(imgEle,
+        // 이미지내에서의 x값
+        // 이미지내에서의 y값
+        // 이미지내에서의 x값 로 부터의 w값
+        // 이미지내에서의 y값로 부터의 h값
+        // 캔버스에서의 x값
+        // 캔버스에서의 y값
+        // 캔버스에서의 x값 로 부터의 w값
+        // 캔버스에서의 y값로 부터의 h값
+        // )
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+@use  "./partials/mixins";
+
+
+.cls{
+    @include mixins.flex(false,"between","around",20px)
+
+}
+

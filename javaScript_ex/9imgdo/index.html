@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //개발자 모드에서 network -> img버튼 클릭
+        // 사이트 새로고침하여 이미지를 전송받는다.
+        // 이미지 이름이 있는 부분에서 우클릭 -> copy -> 모두 HAR로 복사하여
+        // 변수 har에 할당한다.
+        let har=
+var imageUrls = [];
+har.log.entries.forEach(function (entry) {
+  if (entry.response.content.mimeType.indexOf("image/") !== 0) return;
+  imageUrls.push(entry.request.url);
+});
+console.log(imageUrls.join('\n'));
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //삼항연산자(조건부연산자) --> 피연산자 3개이기 때문에 3항 연산자.
+    
+        let yourHeight=110;
+        if(yourHeight>=120){
+            console.log(`당신의 키는 ${yourHeight} 입니다. 청룡열차를 타십시오.`)
+        }else{
+            console.log(`당신의 키는 ${yourHeight} 입니다. 청룡열차를 탈 수 없습니다.`)
+        }
+
+        //삼항연산자
+        //조건?():();
+        //조건?(참일때실행):(참이아닐때);
+        yourHeight>=100?
+        console.log(`100 당신의 키는 ${yourHeight} 입니다. 청룡열차를 타십시오.`)
+        :
+        console.log(`당신의 키는 ${yourHeight} 입니다. 청룡열차를 탈 수 없습니다.`);
+
+
+        yourHeight>=120?
+        console.log(`예스`)        :        console.log(`노`);
+
+        
+        let score = 70;
+        
+        // score>=80?
+        // console.log('우수학생'):console.log('일반학생');
+        
+        // let result = score>=80?('우수학생'):('일반학생');
+        // console.log(result)
+        
+
+        
+
+
+
+
+        let num = 5;
+        num%2 == 0 ?
+        console.log(`${num}살 당신은 건강검진 대상입니다.`) : console.log(`${num} 당신은 건강검진 대상이 아닙니다.`);
+
+
+    </script>
+</body>
+</html>

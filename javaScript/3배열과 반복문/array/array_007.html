@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //배열 최신문법
+        let 시민들=[
+            {name:'박일동',age:16,gender:"남"},
+            {name:'박이동',age:17,gender:"여"},
+            {name:'박삼동',age:18,gender:"남"},
+            {name:'박사동',age:19,gender:"여"},
+            {name:'박이동',age:20,gender:"남"},
+        ]
+
+        // let itam=시민들[0]
+        // console.log(itam.name)
+        //name만 배열로 출력하고 싶다면
+
+        // let namePrint=시민들.map(function(itam){
+        //     return itam.name
+        // })
+
+        let namePrint=시민들.map(itam=> itam.name)//화살표 함수로 줄이는 법
+
+        console.log(namePrint)//['박일동', '박이동', '박삼동', '박사동', '박이동']
+
+        let agePrint=시민들.map(itam=> itam.age)//화살표 함수로 줄이는 법
+        
+        console.log(agePrint)//[16, 17, 18, 19, 20]
+
+        let arrayPrint=시민들.map(itam=> itam)
+        console.log(arrayPrint)
+
+        if (시민들 === arrayPrint){
+            console.log('같음')
+        }else{
+            console.log('다름')
+        }
+
+        let 시민들2 = 시민들;
+        if (시민들2 === 시민들){
+            console.log('같음')
+        }else{
+            console.log('다름')
+        }
+
+
+        let 아들 = 20;
+        let 딸 = 20;
+        if (아들 === 딸){
+            console.log('같음')
+        }else{
+            console.log('다름')
+        }
+        
+
+
+        function 함수(){
+            let green = 3;
+        }
+
+        함수();
+
+        //객체 --> 참조형
+        //변수 --> 기본형
+        //가능한 지역변수 쓸 것.
+
+        // let result=시민들.filter(function(){
+        //     return
+        // }) //세트
+        let result=시민들.filter(function(itam){
+            //return itam.name !=='박삼동'//박삼동이 아닌거
+            //return itam.name === '박삼동'//박삼동인것
+            return itam.age >=17 //17세 이상
+        })
+        console.log(result)
+
+        let result2=시민들.filter(function(itam){
+            return itam.age >= 17 && itam.name !=='박삼동' //
+        })
+        console.log(result)
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+*{margin: 0;padding: 0;
+    box-sizing: border-box;}
+
+
+.container{background: yellow;
+    border: 2px solid #000;}
+.container .item{
+    background: green;
+    border: 2px solid #000;}
+
+
+.container{
+    display: flex;
+
+}
+/*  순서 .item:nth-child(1){order: 3;}1번째 애가 3번째에 나오기 */
+.item:nth-child(1){order: 3;} 
+.item:nth-child(2){order: 1;
+z-index: 20;}/*flex,grid에서는 position 없이도 z-index가 실행된다. */
+.item:nth-child(3){order: 2;transform: scale(1.5);}

@@ -1,0 +1,36 @@
+*{margin: 0;padding: 0; box-sizing: border-box;}
+
+.container{
+    background-color: gold;
+    border: 2px solid black;
+}
+.container .item{    
+    background-color: skyblue;
+    border: 2px solid black;}
+
+.container{display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 300px 200px 100px;
+    grid-template-columns: 300px 1fr 100px;
+    grid-template-columns: 1fr 300px 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(5,1fr); /* =1f를 5번 반복하라는 */
+    grid-template-columns: repeat(3,1fr 2fr 1fr); /* 1:2:1 비율 3번 반복*/
+    grid-template-columns: repeat(2,1fr); 
+
+
+    grid-template-rows: 200px 200px ; /* 1줄 2줄은 200px이 되고 나머지는 auto */
+    grid-template-rows: 200px 200px auto ;
+    grid-template-rows: repeat(3,1fr);
+    grid-template-rows: repeat(2,1fr) 300px;
+
+    height: 80vh;
+
+    /* gap:그리드 사이의 공간 */
+    /* gap:= grid-gap: 익스플로러는 못씀 */
+    gap: 20px;
+    column-gap: 20px;
+    row-gap: 20px;
+    
+}
+.container .item{}

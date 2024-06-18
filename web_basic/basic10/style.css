@@ -1,0 +1,16 @@
+#이조상>div{padding-left: 50px;}
+#이조상>div.이지만{background-color: goldenrod;}
+#이조상>div.이지만 .막내{background-color: skyblue;}
+#이조상>div.이지만>div{padding-left: 50px;}
+#이조상>div.이서윤>div{padding-left: 50px;}
+
+#이조상 .이지만{border: 2px solid red;}
+#이조상 .이소아{border: 2px solid green;}
+#이조상>div.이지만 .이소아{border: 2px solid salmon;}
+
+#이조상>div .이지만{color: red;}
+
+/* > = 내 바로 밑의 부하만 소집
+띄어쓰기 = 내 부하들 전부 소집 */
+
+#이조상 .이서윤 .이소아{background-color: aqua;}

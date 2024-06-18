@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let person={
+            name:'홍길동',
+            age:23,
+            성적:{
+                영어:90,
+                수학:50,
+                철학:100
+            }
+        }
+
+        console.log(person.age)//23
+        console.log(person.성적)
+        console.log(person.성적.수학)//50
+        console.log(`나의 이름은 ${person.name}이고 나의 철학점수는 ${person.성적.철학}점이다`)
+        
+
+
+        //객체내에 포함된 함수 --> 메서드
+        //메서드 --> 객체의 어떤 동작이나 처리를 구현담당.
+        //속성 --> 객체의 주요 특성 (특징)을 정의(name,age)
+        // document.querySelector('.클래스명').offsetTop -->속성
+        // document.querySelector('.클래스명').addEventListener('click',함수)--> addEventListener는 매서드
+
+        let personMan={
+            name:'홍길동',
+            age:20,
+            showMessge:function(){
+                console.log(`나의 이름은 ${this.name}이고 나이는 ${this.age}입니다.`)
+            }
+        }
+        console.log(person.name)
+        console.log(person.nashowMessgeme())
+
+    </script>
+</body>
+</html>

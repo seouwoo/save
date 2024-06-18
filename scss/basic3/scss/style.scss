@@ -1,0 +1,58 @@
+//_var.scss파일과 _var2.scss 에 동일 이름의 변수가 있을때
+
+//@import './partials/ver';
+//@import './partials/ver2';
+
+//ver2가 아래에 있으므로 var2의 변수가 사용 된다.
+//이러한 에러발생해주지 않는 문제를 해결하기 위해 
+//@use @forward 방식이 생겨났다.
+//@use가 가장 많이 사용하는 방식이며
+//@forward를 규모가 있는 프로젝트에서 사용한다.
+
+
+
+//@use 사용하기
+//@use 사용하면 같은 변수가 있을 때는 에러가 발생된다.
+// @use './partials/ver';
+// @use './partials/ver2';
+
+
+
+//@use 사용하기
+// @use './partials/var';
+// @use './partials/var2';
+
+// h1{color:var.$color-primary}//앞에 파일명을 붙여주면 그 파일에 있는 변수를 사용함
+// h1{color:var2.$color-primary}
+
+//별명달기
+// @use './partials/var' as v1;
+// @use './partials/var2' as v2;
+// h1{color:v1.$color-primary}
+// h1{color:v2.$color-primary}
+
+
+
+
+// @forward 사용법
+//여러파일을 받아서 다시 전달해 주는 역할
+//같은 변수가 있을 때는 에러가 발생함
+@use './partials/index';
+
+// h1{color:index.$color-primary}
+// h1{color:index.$color-main}
+
+
+//마지막의 파일의 이름을 생략했을때
+//자동으로 변수를 검색하여 찾아준다.
+
+// @use './partials/' as king;
+// @use './partials/' as queen;
+
+// h1{color:king.$color-primary}
+// h1{color:queen.$color-main}
+
+@use './partials/' as *;
+
+h1{color:$color-main }
+h1{color:$color-primary }

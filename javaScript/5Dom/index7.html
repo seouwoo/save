@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="memberList">
+        <li id="one" class="itam">홍길동</li>
+        <li id="two" class="itam">이순신</li>
+        <li id="three" class="itam">강감찬</li>
+        <li id="four" class="itam">을지문덕</li>
+    </ul>
+    <button id="btn">버튼</button>
+
+
+
+    <script>
+        // onclick VS addEventListener 두 메서드의 차이
+
+        //on~click-->하나의 리스너만 지정해서 등록(호환성좋음)
+        //addEventListener --> 여러개의 이벤트 리스너를 등록하여 처리할수있음(권장)
+
+
+        //[1]onclick
+        // let btn=document.querySelector('#btn')
+        // btn.onclick=function(){
+        //     console.log('클릭1번')
+        // }
+        // btn.onclick=function(){
+        //     console.log('클릭2번')
+        // }
+
+
+        //[2]addEventListener-->각각의 요소가 실행, 덮어쓰기가 안됨
+        let btn=document.querySelector('#btn')
+        btn.addEventListener('click',function(){
+            console.log('클릭1번')
+        })
+        btn.addEventListener('click',function(){
+            console.log('클릭2번')
+        })
+    </script>
+</body>
+</html>

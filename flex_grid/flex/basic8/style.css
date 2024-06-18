@@ -1,0 +1,31 @@
+*{margin: 0;padding: 0;
+    box-sizing: border-box;}
+
+
+.container{background: yellow;
+    border: 2px solid #000;}
+.container .item{
+    background: green;
+    border: 2px solid #000;}
+
+
+.container{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.item:nth-child(2){
+   /*align-items:과 행동이 같음
+   align-items:보다 우선권이 있음
+   */
+    align-self: auto;
+    align-self: stretch;
+    align-self: flex-start;
+    align-self: flex-end;
+    align-self: center;
+    align-self: baseline;
+    
+}

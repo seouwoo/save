@@ -1,0 +1,29 @@
+//nesting품다
+
+.box{padding: 20px;
+border: 5px solid #000;
+    border-radius: 20px;
+
+}
+
+.box{
+    >.box{
+        background-color: red;
+        &:hover{background-color: #111;transition: 0.3s;}
+        .box{
+            border: 1px solid #333;
+            &:hover{transition: 0.3s;background-color: #111}
+        }
+    }
+}
+
+.box{
+    background-color: #444;
+    &:hover{
+        background-color: #fff;}
+        &>span{font-size: 20px;
+        @media (max-width:767) {font-size: 14px;
+            
+        }}
+}
+

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //for문 ⭐⭐⭐⭐⭐
+        //가장 대표적인 반복문 --> 연속된 동일한 반복 작업을 처리
+
+
+        //1~10까지 출력함.
+     /* document.write(1)
+        document.write(2)
+        document.write(3)
+        document.write(4)
+        document.write(5)
+        document.write(6)
+        document.write(7)
+        document.write(8)
+        document.write(9)
+        document.write(10) */
+
+
+        //[1] 기본 사용법
+//      for(초기값 ①;조건문②;증가나 감식=증가감식④){
+//            ③반복처리 해야할 코드
+//        }
+       
+        for(let i =1;i<=10 ;i++){//1~10
+            document.write(i + ",")
+            document.write("<br>")  
+        }
+
+        
+        document.write("<br>")
+
+        for(let i=10; i>=1; i--){//10~1
+            document.write(i + ",")
+        }
+
+        document.write("<br>")
+        document.write("<br>")
+
+        for (let i = 0; i <= 5; i++){
+            
+            document.write("안녕하세요")
+            document.write("<br>") 
+        }
+
+        document.write("<br>")
+
+        //1~100까지 더하기
+
+
+
+            let result=0;
+            for(let i=1; i<=100; i=i+1){
+                result = result + i;//동일 result += i;
+            }
+
+            document.write(result)
+            document.write("<br>")
+
+            
+            //1~100까지 짝수
+            let result2=0;
+            for(let i=1; i<=100; i=i+1){
+                if(i%2 === 0){
+                    result2 = result2 + i;
+                }
+            }
+
+            document.write(result2)
+            document.write("<br>")
+
+            let result3 = 0;
+            for(let i=1; i<=5; i++){//하나씩 더함 5까지 반복!
+                for(let j=3; j>=1; j--){ //j=3이고 j가 1보다>=이면 다음 -1를 한다 j=1될때까지 반복
+                    document.write(`${i} + ${j} = ${i+j}`)
+                    document.write("<br>")
+                    
+                }
+                document.write("<br>")
+            }
+
+
+            
+            //2~9계단 2x1=2 ~ 9x9=81
+
+            let result4 = 0;
+            for(let i=1; i<=9; i++){//하나씩 더함 9될때까지 반복!
+                for(let j=1; j<=9; j++){ //j=1이고 j가 1보다<=이면 다음 +1를 한다 j=1될때까지 반복
+                    document.write(`${i} x ${j} = ${i*j} | `)
+                    
+                }
+                document.write("<br>")
+            }
+
+
+            document.write("<br>")
+
+            let result5 = 0;
+            for(let i=1; i<=9; i++){//하나씩 더함 9될때까지 반복!
+                for(let j=2; j<=9; j++){//j=1이고 j가 1보다<=이면 다음 +1를 한다 j=1될때까지 반복
+                    document.write(`${j} x ${i} = ${i*j} | `) 
+                }
+                 document.write("<br>")
+
+            }       
+
+            document.write("<br>")
+            
+            let result6 = 0;
+            for(let i=1; i<=9; i++){//하나씩 더함 9될때까지 반복!
+                for(let j=2; j<=9; j++){//j=1이고 j가 1보다<=이면 다음 +1를 한다 j=1될때까지 반복
+                    result5=`${i*j}`//변수값
+                    if(result5<10){//result5이 10보다 작으면
+                        result5= `0${i*j}`//앞에 0을 붙이고 뒤에i*j값이 나온다.
+                    }
+                    document.write(`${j} x ${i} = ${result5} | `) 
+                }
+                 document.write("<br>")
+
+            }        
+
+
+    </script>
+</body>
+</html>

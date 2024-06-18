@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //0 vs (0을 제외한 숫자.)
+        //0은 false
+        //0을 제외한 숫자는 true로 인식
+
+        if(true){console.log("바이킹 입장")}
+        if(0){console.log("바이킹 입장-0")}
+        if(1){console.log("바이킹 입장-0을 제외")}
+
+        //자바스크립트에서 논리연산값이 false값을 가지는 경우
+        // --> "",null,undefined,0,NaN,
+        if(""){console.log('바이킹 입장-0을 제외""')}
+        if(null){console.log('바이킹 입장-0을 제외 null')}
+        if(undefined){console.log('바이킹 입장-0을 제외 undefined')}
+        if(0){console.log('바이킹 입장-0을 제외0')}
+        if(NaN){console.log('바이킹 입장-0을 제외NaN')}
+
+        //NaN (Not a Number)
+        let hobby="축구";
+        let num = 10;
+        console.log(hobby*num)//Nan (숫자가 될 수 없다.)
+
+        // Number()--> 숫자로 변환
+        //parseInt()--> 정수로 변환
+        //parseFloat()--> 정수로 변환
+
+        //Math.round(과목평균)-->반올림
+        //Math.ceil(과목평균)-->올림
+        //Math.floor(과목평균)-->내림
+
+        //Math.toFixed(2) 2는 소수점 이하 자리 (마지막 반올림)
+
+
+        let 과목평균=69.66666;
+        console.log(Math.round(과목평균))//70
+        console.log(Math.ceil(과목평균))//70
+        console.log(Math.floor(과목평균))//69
+        console.log(과목평균.toFixed(2))//69.67
+
+        
+
+        let 영어점수= Number(prompt("영어점수입력"))
+        let 국어점수= Number(prompt("국어점수입력"))
+        let 수학점수= Number(prompt("수학점수입력"))
+
+        let 총점 = 영어점수 + 국어점수 +수학점수;
+    
+        
+
+        
+        console.log(typeof 영어점수)//String
+        console.log(총점)
+
+        let 평균 = 총점/3
+        console.log(평균)
+
+
+        let 합격여부;
+
+        if(평균>60){
+            if(국어점수<40){
+                합격여부 = '국어점수 40점 미만 불합격입니다.';
+            }
+            if(영어점수<40){
+                합격여부 = '영어점수 40점 미만 불합격입니다.';
+            }
+            if(수학점수<40){
+                합격여부 = '수학점수 40점 미만 불합격입니다.';
+            }
+            else{
+                합격여부 = `축하합니다. ${평균} 점 합격입니다.`;//????????????????????
+            }
+
+
+        }else{
+            합격여부 = `${평균}점 불합격입니다.`;
+
+        }
+
+        console.log(합격여부)
+
+    </script>
+</body>
+</html>

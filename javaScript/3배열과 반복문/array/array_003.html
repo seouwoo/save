@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 배열(array) 추가,삭제 unshift,shift
+
+        let arr = ['일동','이동', '삼동','사동','오동'];
+
+        //배열의 맨 앞의 요소를 제거하고 싶을때!
+        arr.shift();
+        console.log(arr)//['이동', '삼동', '사동', '오동']
+
+        //배열의 맨 앞의 요소를 추가 하고 싶을때
+        arr.unshift('제비');
+        console.log(arr)//['제비', '이동', '삼동', '사동', '오동']
+
+        //여러개 추가
+        arr.unshift('도깨비','흥부','놀부')
+        console.log(arr)//['도깨비', '흥부', '놀부', '제비', '이동', '삼동', '사동', '오동']
+
+    </script>
+</body>
+</html>

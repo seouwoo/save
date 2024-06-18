@@ -1,0 +1,76 @@
+*{margin: 0; padding: 0;}
+
+/* padding- 상하좌우 순서
+padding- 상하좌우 1
+padding- 위 아래 좌우2 
+padding- 위 좌우 아래  3
+padding- 위 오른쪽 아래 왼쪽 4
+(padding-top:10px,padding-right:10px,padding-left:10px,padding-bottom:10px) */
+
+/* id를 호출 하는 방법
+앞에 #이름
+id는 전체 사이트에서 이름이 유일해야한다(반복금지, 같은 이름이 있으면 안됨) 클래스는.으로 호출
+id가 두개 이상 되면 안됨
+ex) id="조상 일번" x 
+<div id="조상" class="조상">조상</div> 클래스는 가능 */
+
+/* 태그(요소)에는 세가지 요소가 존재함
+1. block = 부모의 넓이를 모두 차지, 공간의 개념
+2. inline = block요소 안에 글자와 같은 성질을 가지는 요소(공간의 개념 없음)
+3. inline-block = block 요소 안에 글자와 같은 성질, 공간의 개념  */
+
+
+.약::after{content: ""; clear: both; display: block;}
+#조상{}
+#조상 .첫째{background-color: #FAF8F1;}
+
+#조상 .둘째{background-color: blanchedalmond;}
+/* ::before ::after 는 css에서 만드는 가상의 공간이며 
+inline성질을 가진다 ::content와 반드시 같이 공존한다. */
+#조상 .둘째::before{content: "🎁";background-color: black;}
+#조상 .둘째::after{content: "✨";background-color: black;}
+#조상 .둘째 em{background-color: cyan; width: 200px;}
+
+#조상 .셋째{background-color: #F6FDC3;
+margin-top: 50px; width: 1000px; margin-right: auto; margin-left: auto;
+}
+/* margin-right: auto; margin-left: auto; 하면 정 중앙 많이씀 */
+#조상 .셋째 .세일{background-color: #B5C0D0;
+    width: 300px; float: left;}
+#조상 .셋째 .세이{background-color: #CCD3CA;
+    width: 300px; float: left;}
+#조상 .셋째 .세삼{background-color: #F9E8C9;
+    width: 300px; float: left;}
+
+
+#조상 .넷째{background-color: aquamarine; 
+    width: 1245px;
+     /* margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+
+   margin: 위 좌우 아래; */
+    margin: 50px auto 0;}
+    
+#조상 .넷째 .child {width: 300px; 
+    height: 200px; float: left; 
+    margin-right: 15px;
+    text-align: center; /* 글자의 정렬 */
+    line-height: 200px; /* 행간 */
+    font-size: 25px; /* 글자의 크기 기본값 16px*/
+    font-weight: bold; /* 글자의 두께 */
+}
+#조상 .넷째 .네일{background-color: beige;
+    background-image: url(../img/1.png)}
+#조상 .넷째 .네이{background-color: burlywood;
+    background-image: url(../img/2.png);}
+#조상 .넷째 .네삼{background-color: blanchedalmond;
+    background-image: url(../img/3.png);
+    transition: 0.3s;
+}
+#조상 .넷째 .네삼:hover{
+    background-image: url(../img/4.png);
+}
+#조상 .넷째 .네사{background-color: coral; 
+    margin-right: 0;
+    background-image: url(../img/4.png);}

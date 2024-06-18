@@ -1,0 +1,25 @@
+*{margin: 0;padding: 0;
+    box-sizing: border-box;}
+
+
+.container{background: yellow;
+    border: 2px solid #000;}
+.container .item{
+    background: green;
+    border: 2px solid #000;}
+
+
+.container{
+    display: flex;
+    /* justify-content와 수직 방향의 정렬 */
+    align-items: stretch;
+    /* align-items: flex-start; */
+    /* align-items: flex-end; */
+    /* align-items: stretch; */
+	/* align-items: center; */
+	/* align-items: baseline; */
+
+
+    height: 50vw;
+}
+.item{}

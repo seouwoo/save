@@ -1,0 +1,20 @@
+//BEM 구조
+
+//B:Block-특정 독립적인 요소//text-box
+//E:Element- 하위 요소들(__)//text-box__title ,text-box__content
+//M:Modifier -수정자(--)//text-box__title--red
+//-,_ = 띄어쓴다는 의미
+
+
+
+.text-box{
+    width: 300px;
+    border: 1px solid #333;
+    position: relative;
+    &>&__title{
+        color: #000;
+        &--red{
+            color: red;
+        }
+    }
+}

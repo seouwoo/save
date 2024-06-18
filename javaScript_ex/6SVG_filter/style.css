@@ -1,0 +1,29 @@
+*{margin: 0;padding: 0;box-sizing: border-box;}
+
+body{
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: #222;
+}
+svg{display: none;}
+
+h1{background-image: linear-gradient(#000,#888);
+    color: transparent;
+    background-clip: text; /* 텍스트 클리핑마스크 */
+    -webkit-text-stroke: 1px rgb(200, 200, 200);
+    animation: scriblle infinite 0.2s;
+}
+
+
+h1:hover{
+    animation-play-state: paused;/* 스톱효과 */
+}
+
+@keyframes scriblle {
+    0%{filter: url('#scriblle--0');}
+    25%{filter: url('#scriblle--1');}
+    50%{filter: url('#scriblle--2');}
+    75%{filter: url('#scriblle--3');}
+    100%{filter: url('#scriblle--4');}
+}

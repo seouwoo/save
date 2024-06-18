@@ -1,0 +1,33 @@
+*{margin: 0;padding: 0;}
+/* 
+font-family: "Allerta Stencil", sans-serif;
+font-family: "Wallpoet", sans-serif; 
+font-family: "Rampart One", sans-serif;
+*/
+
+body{
+    font-family: "Allerta Stencil", sans-serif;}
+
+
+.wrap{}
+
+.clock{position: absolute;
+    width: 300px;
+    padding: 20px 0;
+    left: 100px;top: 100px;
+    text-align: center;}
+.clock .time_box{}
+.clock .time_box .txt_lg{font-size: 50px;width: 62px;display: inline-block;}
+.clock .time_box .txt_sm{font-size: 30px;width: 35px;display: inline-block;}
+
+/* .clock .time_box .mark,
+.clock .time_box .mark02{font-size: 30px;
+    font-family: "Rampart One", sans-serif;
+} */
+
+
+.clock .date_box{font-size: 15px;}
+.clock .date_box span{}
+.clock .date_box .day{display: block;}
+/* .clock .date_box .point{font-family: "Rampart One", sans-serif;}
+ */

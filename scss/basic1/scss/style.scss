@@ -1,0 +1,27 @@
+//주석 -->css에 컴파일 되지 않음
+
+/* 주석문 
+만들기 */
+
+//변수 만들기
+//$로 시작한다. (영문,숫자,-,_)만 사용할 수 있다.
+//숫자로 시작 금지
+
+$bg-color:#00f;
+$var2:red;
+$width:10;
+$widthpx:10px;
+$my-box:'.box';
+#{$bg-var: background;}
+
+h1{background-color: $bg-color;}
+
+//선택자를 변수로 만들때는 보간법을 사용해야 한다.
+//보간법:
+//#{}-->인터폴레이션,끼워넣기
+#{$my-box}{
+    z-index: $width;
+    font-size: $widthpx;
+    width: #{$width}px;
+    background: $var2;
+}

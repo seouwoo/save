@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button">버튼</button>
+    <script>
+        //객체는 관련된 정보를 묶어서 하나의 데이터로 저장함
+        let 환자 ={
+            //key : keyValue
+            name:'홍길동',
+            age:18,
+            disease: '감기',
+        }
+
+        console.log(환자)
+        console.log(환자.name)//홍길동
+        console.log(환자['name'])//홍길동
+        환자.name='김말똥'
+        console.log(환자)//{name: '김말똥', age: 18, disease: '감기'}
+        환자.age=25;
+        console.log(환자)//{name: '김말똥', age: 25, disease: '감기'}
+
+
+        let 환자리스트=[
+            {name:'김놀부',age:18,},
+            {name:'김흥부',age:13,},
+            {name:'박제비',age:30,},
+        ];
+
+        console.log(환자리스트[0].name)//김놀부
+        console.log(환자리스트[2]['name'])//박제비
+        console.log(환자리스트[2].age)//30
+        console.log(환자리스트[2]['age'])//30
+
+        //⭐⭐⭐겁나중요⭐⭐⭐
+
+        // let name='홍길동';
+        // let age=18;
+        // let 사람= {name:name,age:age}
+        // console.log(사람)
+
+        
+        //객체를 분해하는 과정--> 구조분해문법,구조분해할당
+        
+        let 우리반여학생={
+            name:'김미인',
+            age:24,
+
+        }//객체를 변수로 분리함
+        // let name= 우리반여학생.name;
+        // let age= 우리반여학생.age; 이것을
+
+
+
+        let {name,age}=우리반여학생//이렇게 줄일수있다
+        console.log(`이름:${name},나이:${age}`)
+
+        //배열을 변수에 담기 --> 구조분해문법,구조분해할당
+
+        let array=[1,2,3]
+        // let one=array[0]
+        // let two=array[1]
+        // let three=array[2] 이것을
+
+        let [one,two,three]=array;//이렇게 줄일수있다
+        console.log(one,two,three)//1 2 3
+
+        //...(전개 연산자):배열이나 객체를 다른 배열이나 객체에 추가할때 사용하는 연산자.
+
+        let [a,b,...rest_a]=[1,2,3,4,5,6,7,8,9,]
+        console.log(a)//1
+        console.log(b)//2
+        console.log(rest_a)//[3,4,5,6,7,8,9,]
+
+        let arr=[1,2,3]
+        let [...copy1]=arr;
+        console.log(copy1)// [1, 2, 3]
+
+        let obj1={
+            name:'홍길동',
+            address:'부산 서면',
+            job:'학생',
+        }
+
+        let obj2={
+            ...obj1,
+            job:'프론트엔드',
+
+        }
+        let obj3={
+            name:'강감찬',
+            ...obj1,//위아래 바꾸면 강감찬이 나옴
+        }
+        console.log(obj2.name)//홍길동
+        console.log(obj2.job)//프론트엔드
+        console.log(obj3.name)//홍길동
+
+        let 사람={
+            Myname:'이순신',
+            Myage:18,
+            run:true,
+        }
+        
+        //let Myname = 사람.Myname
+        // let {Myname} = 사람
+        let {Myname,...Myrest}=사람;
+        console.log(Myname)//이름은 변수에 할당 //이순신
+        console.log(Myrest)//나머지는 객체,Myrest에 할당이 됨 //{Myage: 18, run: true}
+
+        let aa=[1,2];
+        let bb=[3,4];
+        let cc=[5,6];
+
+        let result=aa.concat(bb,cc)//aa에 연결하여라bb,cc를
+        console.log(result)//[1, 2, 3, 4, 5, 6]
+
+        let result2=[...aa,...bb,...cc]//[1, 2, 3, 4, 5, 6]
+        console.log(result2)
+
+        //배열 메서드
+
+        let 사람들=[
+            '김다빈',
+            '황수민',
+            '석연재',
+            '심지현',
+            '강석현',
+            '김정환',
+        ]
+        console.log(사람들.length)//6
+
+        for(let i=0;i<사람들.length;i++){
+        console.log(사람들[i])
+        }
+
+        사람들.forEach(function(a,b,c){
+            //a->배열의 아이템
+            //b->a의 index번호
+            //c->원배열 (사람들)자체
+            console.log(`아이템:${a}, 아이템의 index: ${b}, 원배열:${c}`)
+
+        })
+
+
+        let 함수=function(a,b,c){
+            console.log(`아이템:${a}, 아이템의 index: ${b}, 원배열:${c}`)
+        }
+        사람들.forEach(함수)
+
+/////////////////////////////////////
+        let button=document.querySelector('#button')
+        function 이름 () {console.log("이름")}
+
+        // button.addEventListener('click',function(){
+        //     이름()
+        // })
+        function 이름 () {console.log("이름")}
+        //위의 함수와 아래 이름 없는 함수는 같다.
+        let 이름 = function 이름 () {console.log("이름")}
+        button.addEventListener('click',이름)//줄임가능
+        button.addEventListener('click',function 이름 () {console.log("이름")})
+    </script>
+</body>
+</html>

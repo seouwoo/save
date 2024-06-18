@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+        *{margin: 0;padding: 0;}
+        
+        .main{height: 100vh;position: relative;}
+        .imgs{position: relative;
+            width: 900px;height: 1169px; margin: 5vh auto 0;
+        }
+        .imgs>img{position: absolute;
+            left: 0;right: 0;top: 0;bottom: 0;
+            }
+    </style>
+</head>
+
+<body>
+
+    <div class="top" style="height: 100vh; background-color: gray;"></div>
+    <div class="main">
+        <div class="imgs">
+            <img src="./img/머리.png" alt="머리" class="머리">
+            <img src="./img/몸통.png" alt="몸통" class="몸통">
+            <img src="./img/오른다리.png" alt="오른다리" class="오른다리">
+            <img src="./img/오른팔.png" alt="오른팔" class="오른팔">
+            <img src="./img/왼다리.png" alt="왼다리" class="왼다리">
+            <img src="./img/왼팔.png" alt="왼팔" class="왼팔">
+        </div>
+    </div>
+    <div class="bottom" style="height: 200vh; background-color: gray;"></div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        let tl=gsap.timeline({
+            scrollTrigger:{
+                trigger:'.main',
+                start:'center 100%',//화면에 바닥에 부딪히는 순간
+                end:'top top',//trigger 종료
+                markers:true,
+                scrub:true,
+                // toggleActions:'진입시 떠났을때 백으로진입 백으로진입시떠났을때'
+                // toggleActions:'onEnter onLeave onEnterback onLeaveEnter'
+                //toggleActions: "play none none none"
+                //toggleActions: "play none restart none"//백으로 진입 다시 실행
+                // toggleActions: "play reverse restart none"
+                toggleActions: "play pause resume none"//resume멈춘 상태에서 다시 시작
+            }
+        }
+
+        );
+        tl.from('.몸통',{
+            duration:1.5,
+            opacity:0,
+            x:100,y:100,
+            ease: "power3.inOut",
+        })
+        tl.from('.머리',{
+            duration:1.0,
+            opacity:0,
+            y:-100,
+            ease: "power4.out",
+        })
+        tl.from('.왼팔',{
+            duration:0.8,
+            opacity:0,
+            x:-100,
+            ease: "power4.out",
+        })
+        tl.from('.오른팔',{
+            duration:0.8,
+            opacity:0,
+            x:100,
+            ease: "power4.out",
+        })
+        tl.from('.왼다리',{
+            duration:0.8,
+            opacity:0,
+            x:-100,
+            y:100,
+            ease: "power3.in",
+        })
+        
+        tl.add('tast')
+        tl.from('.오른다리',{
+            duration:0.8,
+            opacity:0,
+            x:100,
+            y:100,
+            ease: "power3.in",
+        })
+    </script>
+</body>
+
+</html>

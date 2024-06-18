@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #btn1 {
+            border: 2px solid purple;
+            padding: 10px;
+        }
+
+        #btn2 {
+            border: 2px solid rgb(35, 235, 5);
+            padding: 10px;
+        }
+
+        #child_btn {
+            border: 2px solid green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="btn2">
+        btn2
+        <div id="btn1">
+            btn1
+            <div id="child_btn">child_btn</div>
+        </div>
+    </div>
+    <script>
+        //event.target--> 이벤트 버블링의 가장 끝단에 위치한 마지막 요소를 반환 (클릭한것의 가장 하위요소)
+        //event.currentTarget  --> 이벤트 버블링의 가장 마지막 부모요소를 반환 
+        let childBtn = document.querySelector("#child_btn");
+        let btn1 = document.querySelector("#btn1");
+        let btn2 = document.querySelector("#btn2");
+
+        childBtn.addEventListener("click", function (event) {
+            //console.log(event.currentTarget.id)
+            //console.log(event.target.id)
+        }, false)
+
+        btn1.addEventListener("click", function (event) {
+            //console.log(event.currentTarget.id)
+            //console.log(event.target.id)
+        }, false)
+
+        btn2.addEventListener("click", function (event) {
+            console.log(event.currentTarget.id)
+            //console.log(event.target.id)
+        }, false)
+    </script>
+</body>
+
+</html>

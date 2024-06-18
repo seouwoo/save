@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let strHtml='';
+        // strHtml +='<h1>제목:제목글입니다.</h1>'
+        // strHtml +='<img src="https://img.japankuru.com/prg_img/img/img2023062913260245430600.jpg" alt="요코하마" width="400" height="590">';
+        strHtml +=' <h1>제목:제목글입니다.</h1>'
+        strHtml +=' <img src="https://img.japankuru.com/prg_img/img/img2023062913260245430600.jpg"';
+        strHtml +=' alt="요코하마"';
+        strHtml +=' width="400" height="590">';
+            console.log(strHtml)
+
+            //`백틱사용
+            //strHtml=
+            // `<h1>제목:제목글입니다.</h1>
+            // <img src="https://img.japankuru.com/prg_img/img/img2023062913260245430600.jpg" alt="요코하마" width="400" height="590">`
+        
+        document.body.innerHTML=strHtml;
+
+        //innerHTML=>태그 포함
+        //innerText, textContnent => 텍스트만
+
+        window.addEventListener('load',function(){
+            let textNode=document.createElement('div')
+            let textNode2=document.createTextNode('Hello')
+            textNode.appendChild(textNode2)
+            document.body.appendChild(textNode)
+            console.log(textNode)
+            
+            
+        })
+    </script>
+</body>
+</html>

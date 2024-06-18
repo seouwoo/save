@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="memberList">
+        <li id="one" class="itam">홍길동</li>
+        <li id="two" class="itam">이순신</li>
+        <li id="three" class="itam">강감찬</li>
+        <li id="four" class="itam">을지문덕</li>
+    </ul>
+    <button id="btn">사용자 삭제하기</button>
+    <script>
+        //브라우저 API(애플리케이션 프로그램 인터페이스)
+        //console.log(document.querySelector('.itam'))//홍길동만 나옴
+        //console.log(document.querySelectorAll('.itam'))//모두배열
+
+
+        //자바스크립트 API
+        //console.log(document.getElementsByClassName('itam'))//모두배열
+        //console.log(document.getElementById('memberList'))//객체 자체로 불러짐
+        function removeEBTt(text){
+            let li=document.querySelectorAll('#memberList li')
+            console.log(li)
+
+
+
+            //li는 유사배열 --> 배열
+            let li2=[...document.querySelectorAll('#memberList li')]
+            console.log(li2)
+
+            li.forEach((item)=>{
+                //console.log(item.innerHTML)
+                if(item.innerHTML === text){
+                    item.parentNode.removeChild(item)
+                }
+            })
+        }
+        document.querySelector('#btn').addEventListener('click',function(){
+        removeEBTt('을지문덕')    
+        })
+    </script>
+</body>
+</html>

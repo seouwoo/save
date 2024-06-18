@@ -1,0 +1,45 @@
+// @extend는 공통적인것을 묶는다
+// @mixin는 매개변수를 통해 다른값을 할당할수있다.
+// @mixin는 활용도가 다양하다
+// @content를 사용하면 공통적인 부분과 추가해야하는 부분이 있을때 사용할수있다.
+
+// @mixin mx10(){}//매개변수가 없을땐 () 생략가능
+@mixin mx10{}
+
+// @include mx10{}//호출법
+// @include mx10()//호출법
+// @mixin 여러가지 속성과 값의 조합
+
+@mixin mx1($bg,$fs){
+    background-color: $bg;
+    font-size: $fs;
+    @content;
+}
+
+.cls{
+    @include mx1(#000, 40px){
+        border: 3px solid #000;
+    }
+}
+.cls2{
+    @include mx1(#000, 40px){
+        margin-bottom: 30px;
+    }
+}
+
+
+@mixin mx2($bg){
+    .cls3{//클래스까지 같이 던져줄 경우
+        background-color: $bg;
+    }
+}
+
+@include mx2(blue);
+
+
+@mixin mx3($cls-name,$bg){
+    .#{$cls-name}{
+        background-color: $bg;}
+}
+
+@include mx3("green",blue)

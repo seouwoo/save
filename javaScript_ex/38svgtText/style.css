@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  margin: 0 auto;
+  background:#e2b544;
+  /* height: 500vh; */
+}
+.svg {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+.text-on-path {
+  font-size: 50px;
+  fill: white;
+}
+svg {
+  width: 100%;
+}

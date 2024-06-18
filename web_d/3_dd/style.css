@@ -1,0 +1,220 @@
+@charset "UTF-8";
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+a {
+    text-decoration: none;
+    color: #333;
+}
+li {
+    list-style: none;
+}
+img {
+    width: 100%;
+    vertical-align: top;
+}
+
+/* wrap */
+#wrap {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* aside */
+#aside {
+    width: 200px;
+    height: 650px;
+    background-color: #efefef;
+}
+
+/* main */
+#main {
+    width: calc(100% - 200px);
+    height: 650px;
+    background-color: #e3e3e3;
+}
+
+/* footer */
+#footer {
+    width: 100%;
+    height: 100px;
+    background-color: #c7c7c7;
+}
+
+/* wrap */
+#wrap {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* aside */
+#aside {
+    width: 200px;
+}
+#aside .logo {
+    width: 100%;
+    height: 100px;
+    background-color: #efefef;
+}
+#aside .nav {
+    height: 550px;
+    background-color: #e3e3e3;
+}
+
+/* main */
+#main {
+    width: calc(100% - 200px);
+}
+
+/* slider */
+#slider {
+    width: 100%;
+    display: flex;
+}
+#slider .image {
+    width: calc(100% - 230px);
+    height: 400px;
+    background-color: #d9d9d9;
+}
+#slider .banner {
+    width: 230px;
+    height: 400px;
+    background-color: #d1d1d1;
+}
+
+/* contents */
+#contents {
+    width: 100%;
+    display: flex;
+}
+#contents .notice {
+    width: 50%;
+    height: 250px;
+    background-color: #c7c7c7;
+}
+#contents .gallery {
+    width: 50%;
+    height: 250px;
+    background-color: #bcbcbc;
+}
+
+/* footer */
+#footer {
+    width: 100%;
+    display: flex;
+}
+#footer .footer1 {
+    width: 20%;
+    height: 100px;
+    background-color: #b1b1b1;
+}
+#footer .footer2 {
+    width: 60%;
+    height: 100px;
+    background-color: #a3a3a3;
+}
+#footer .footer3 {
+    width: 20%;
+    height: 100px;
+    background-color: #9d9d9d;
+}
+
+/* aside */
+#aside {
+    width: 200px;
+    height: 650px;
+}
+#aside .logo {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#aside .logo a {
+    display: block;
+    font-size: 26px;
+    margin-top: 5px;
+}
+#aside .nav {
+    height: 550px;
+}
+#aside .nav > ul {
+    margin: 5px;
+}
+#aside .nav > ul > li {
+    margin-bottom: 5px;
+}
+#aside .nav > ul > li > a {background-color: #ffd139;padding: 10px;
+ 
+    
+    
+    
+    text-align: center;
+    box-sizing: border-box;
+     border: 2px solid #dead0c;width: 100%;display: inline-block;
+}
+#aside .nav > ul > li > a:hover {
+    text-decoration: underline;
+}
+#aside .nav > ul > li > ul {
+    display: none;
+}
+#aside .nav > ul > li > ul > li a {display: block;background-color: #ffebab;padding: 10px;text-align: center;
+  
+    
+    
+    
+     border-bottom: 2px solid #dead0c;
+}
+#aside .nav > ul > li > ul > li a:hover {
+    background-color: #ffe281;;
+}
+
+/* slider : image */
+#slider {
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+}
+#slider .imageWrap {
+    width: calc(100% - 230px);
+    height: 400px;
+}
+#slider .imageWrap .image {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: end;
+}
+#slider .imageWrap .image.i1 {
+    background-image: url(https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=9046601&filePath=L2Rpc2sxL25ld2RhdGEvMjAxNC8yMS9DTFM2L2FzYWRhbFBob3RvXzI0MTRfMjAxNDA0MTY=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10004);
+}
+#slider .imageWrap .image.i2 {
+    background-image: url(https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=9046601&filePath=L2Rpc2sxL25ld2RhdGEvMjAxNC8yMS9DTFM2L2FzYWRhbFBob3RvXzI0MTRfMjAxNDA0MTY=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10004);
+}
+#slider .imageWrap .image.i3 {
+    background-image: url(https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=9046601&filePath=L2Rpc2sxL25ld2RhdGEvMjAxNC8yMS9DTFM2L2FzYWRhbFBob3RvXzI0MTRfMjAxNDA0MTY=&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10004);
+}
+#slider .imageWrap .image .text {
+    background-color: #dead0c8f;
+    width: 100%;
+    padding: 20px;
+}
+#slider .imageWrap .image .text h2 {
+    color: #fff;
+    margin-bottom: 5px;
+    font-size: 30px;
+}
+#slider .imageWrap .image .text p {
+    color: #fff;
+    font-size: 16px;
+}
+출처: https://webstoryboy.co.kr/1907 [WEBSTORYBOY:티스토리]

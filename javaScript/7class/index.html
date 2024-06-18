@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //class만들기
+        //class: 어떤 데이터 (변수,메서드)가 있어야 하는지 정의하는 틀
+        //클래스가 붕어빵틀이면 객체(인스턴스)는 붕어빵이다.
+        //클래스의 이름은 대문자로 시작해야함(공식은 아니지만 암묵적룰)
+        //constructor --> (생성자) 클래스가 실행될때 바로 실행되고 한번만 실행됨
+        class Person{
+            name='홍길동';
+            year=2002;
+        }
+
+        let man=new Person();
+        console.log(man)
+        let man2=new Person();
+        console.log(man2)
+
+        class Person2{
+            name;//🟡
+            year;//
+            constructor(name,year){
+                this.name=name;//this.name은🟡을 말한다
+                this.year=year;
+            }
+            //메서드 만들기 함수이름(){} function 안 적음
+            sayName() {
+                return `안녕 나의 이름은 ${this.name}이라고해`
+            }
+        }
+
+        let man3=new Person2('강감찬',2004);
+        console.log(man3)//Person2 {name: '강감찬', year: 2004}
+
+        let man4=new Person2('이순신',2008)
+        console.log(man4)//Person2 {name: '이순신', year: 2008}
+        
+        let man5=new Person2('세종대왕',2010)
+        console.log(man5)
+        console.log(man5.sayName())
+
+        console.log(man3.name)//강감찬
+        console.log(man5.year)//2010
+        
+
+        console.log(Person2.prototype)
+
+
+        console.log(typeof Person2)//function//클래스는 함수다
+        //클래스의 타입체크를 했을때 function으로 찍히는 이유는?
+        //클래스 선언문은 아래와 같은 내부동작을 수행한다.
+        //[1] Person2이름의 함수를 생성
+        //[2] 이 함수의 본문의 class의 constructor를 그대로 가져온다. 만약constructor가 없으면 빈 함수를 생성
+        //[3] 메서드가 같은 이름의 Person2.prototype(프로토타입 객체,원형)에 추가
+        //[4] 결국 "프로토 타입 객체" 쪽에 클래스 내에 정의한 메서드들을 추가해 놓는 것이기 때문에, 해당클래스의 인스턴스(객체)가 생성 되면 추가된 메서드를 자유롭게 이용 할 수 있는 것이다.
+
+
+    </script>
+</body>
+</html>

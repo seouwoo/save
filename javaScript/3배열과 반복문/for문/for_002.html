@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //반복문 - while
+        
+        //조건식이 참이 아닐때는 반복문 자체에 진입하지 않는다.
+        //조건문이 계속 참일때 무한 반복에 빠지기 때문에 증가감식을 이용하여 조건이 거짓이 되게 만들어야한다.
+        // while(조건식){
+        // }
+
+        let i=1;
+        while(i<=10){
+            document.write(i + '<br>')
+            i++;
+        }
+
+        //do..while
+        //do 가 앞에 있다는 것은 아묻따 do문이 실행됨
+        //조건은 최초 한번은 반복을 하고나서 따진다.
+        // do {
+
+        // }while(조건식);
+        let j=1;
+        do {
+            document.write(j + '<br>')
+            j++;
+        } while (j<=10);
+
+        // let f = 100;
+        // do {
+        //     document.write(f + '<br>')
+        //     f -= 10;
+        // } while (f>=10);
+
+        let f = 100;
+        let n = 10;
+        do {
+            document.write(f + '<br>')
+            f = f - n;
+        } while (f>=10);
+
+        //break; continue
+        //break; break문을 만나면 반복문을 멈추고 -> 완전 빠져나옴
+        //continue; continue문 만나면 반복문을 멈추고 -> 다음 반복을 계속해서 이어감
+
+
+        let m=0;
+        while(m<50){
+            document.write(m + ' ')
+            m++;
+            if(m==10){//m이 10이면 break;문을 만나라
+                break;
+            }
+        }
+
+
+        for(let i=0; i<30; i++){
+            if(i % 2 != 0){//홀수때는 실행을 뛰어 넘음
+                continue;
+            }
+            document.write(i + ' ')
+        }
+
+    </script>
+</body>
+</html>

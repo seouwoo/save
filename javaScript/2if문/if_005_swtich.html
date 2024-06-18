@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="num"> 연령대를 입력해주세요 10~30</label>
+    <input type="number" id="num" onchange="ageCondition();">
+    <div id="result"></div>
+    <script>
+        let text = document.getElementById('result')
+
+        function ageCondition() {
+
+            let value = document.getElementById('num').value;
+            let age = Number(value);
+            let result = '';
+            
+
+            if (!age) { // 값이 없다(!false)면 true
+                return '정확한 연령대를 숫자로 입력해 주세요'
+            } else {
+                switch (age) {
+                    case 10:
+                        result = '10대를 위한 미팅은 A코스입니다.'
+                        break;
+                    case 20:
+                        result = '20대를 위한 미팅은 B코스입니다.'
+                        break;
+                    case 30:
+                        result = '30대를 위한 미팅은 C코스입니다.'
+                        break;
+                    default:
+                        result = '기타 연령대를 위한 미팅은 D코스입니다.'
+                        break;
+                }
+                //return result; //아무것도 안나오면 return //result값을 던져라!
+                console.log(text)
+                text.innerHTML=result;
+            }
+            
+        }
+
+
+        //console.log(result)
+        
+    </script>
+
+</body>
+
+</html>

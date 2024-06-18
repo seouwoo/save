@@ -1,0 +1,16 @@
+*{margin: 0;padding: 0;}
+
+/* 그리드는 플렉스보다 나중에 나옴
+플렉스는 한방향 배치 구현
+그리드는 두방향 배치 구현 */
+
+/* 전체 구현은 그리드 하고 부분적인 구현은 플렉스로 경우가 많음 */
+
+/* flex와 grid의 자식요소가 inline요소일지라도 (block요소처럼)의 성질을 가진다. */
+
+
+.container{display: grid;
+/*  자식이 block요소일때 부모에게 display: grid;를 적용하면 자식요소는 아무런 변화가 없다
+    자식이 inline요소일때 부모에게 display: grid;를 적용하면 자식요소는 block요소처럼 전체의 넓이를 잡는다,(block요소화 된다.) */
+}
+.container .itam{}

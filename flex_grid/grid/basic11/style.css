@@ -1,0 +1,23 @@
+*{margin: 0;padding: 0; box-sizing: border-box;}
+
+.container{
+    background-color: gold;
+    border: 2px solid black;
+}
+.container .item{    
+    background-color: skyblue;
+    border: 2px solid black;}
+
+
+/* justify-items:
+    세로방향 정령
+    각 셀안에서 움직임
+ */
+
+.container{display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-items: stretch;
+    height: 80vh;
+    
+}
+.container .item{}

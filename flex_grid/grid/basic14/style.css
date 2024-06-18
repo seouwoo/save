@@ -1,0 +1,22 @@
+*{margin: 0;padding: 0; box-sizing: border-box;}
+
+.container{
+    background-color: gold;
+    border: 2px solid black;
+}
+.container .item{    
+    background-color: skyblue;
+    border: 2px solid black;}
+
+
+/* justify-content:
+    grid-아이템들의 넓이를 모두합한 값이 부모 요소인container보다 작을때grid-아이템들을 통째로 묶어서 정렬하는 방식
+     */
+
+.container{display: grid;
+    height: 100vh;
+    justify-content: stretch;/* 기본값 */
+    
+    
+}
+.container .item{}

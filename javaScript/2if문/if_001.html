@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //if문⭐⭐⭐⭐⭐
+        //[1] 기본 사용법
+        //if(조건문){조건문이 만족 했을때 실행문}
+
+        let 키=165;
+        if(키>=160){
+            console.log("바이킹입장")
+        }
+
+
+/*      if(조건문1){
+            조건문1을 만족할때 실행문
+        }else if(조건문2){
+            조건문1를 만족하지 않으며 
+            조건문2는 만족할때 실행문
+        }else{
+            위에 있는 모든 조건문을 만족하지 않을때 실행문
+        } */
+
+
+        let 체육점수 =80;
+
+        if(체육점수>90){
+            console.log("사이다 먹으세요.")
+        }else if(체육점수>80){
+            console.log("사탕 먹으세오.")
+        }else if(체육점수>70){
+            console.log("따봉")
+        }else{
+            console.log("화장실청소")
+        }
+
+        //축소= 한줄일때
+        let 점수=60;
+        if(점수>70){console.log("잘하셨어요")}
+        if(점수>70)
+            console.log("잘하셨어요")
+            console.log("잘하셨어요")
+
+        if(점수>70)// 두줄 이상일때는 중괄호 생략 불가함.
+            console.log("잘하셨어요")
+            console.log("조건문에 해당하지 않습니다.(조건에 따라 실행하는것이 아닙니다)")
+        
+
+        //산술연산자
+        let one=5;
+        let two=2;
+        console.log(one+two)//더하기
+        console.log(one-two)//뺴기
+        console.log(one*two)//곱하기
+        console.log(one/two)//나누기의 몫 5/2==> 2.5
+        console.log(one%two)//나누기 나머지 5/2==> 1
+        
+
+        let num=1;
+        console.log(num++)//2
+        //console.log(++num)
+        //console.log(num)
+
+
+        let num2=3;//--를 앞에 적느냐 뒤에 적느냐에 따라 적용값이 달라짐.
+        console.log(--num2)
+        console.log(num2--)//3
+
+        // 대립연산자
+        // = (우항의 내용을 좌항의 변수에 입력 담당,할당,셋팅한다,)
+        let pink=30;
+
+
+        // 복합 대립연산자
+        // +=
+        let x =3;
+
+        // x + 2 ==> 2, x= x+2
+        // x - 2 ==> 2, x= x-2
+
+        // x *= 2 ==> 2, x= x*2
+        // x /= 2 ==> 2, x= x/2
+        // x %= 2 ==> 2, x= x%2
+
+        console.log(x += 2)
+
+
+        //비교연산자
+        // ==    ==>x ==>y : x와y의 값이 같으면 true를 반환한다.
+        // ===   ==>x ==>y : x와y의 값이 type(숫자형,문자형,Boolean,undefined)까지 같으면 true를 반환한다.
+        // !=    ==> x != y  :x와y의 값이 다르면 true를 반환한다.
+        // !=    ==> x !== y  :x와y의 값이 type까지 다르면 true를 반환한다.
+        // >     ==> x > y   :x가y보다 크면 true를 반환한다.
+        // <     ==> x < y   :x가y보다 작으면 true를 반환한다.
+        // <=    ==> x <= y  :x가y보다 크거나 같으면 true를 반환한다. (=<는 존재하지 않음)
+        // >=    ==> x >= y  :x가y보다 작거나 같으면 true를 반환한다. 
+
+        let xx=3;
+        let yy="3";
+        console.log(xx == yy)//true == 두개는 type를 비교하지 않음
+        console.log(xx === yy)//false
+
+
+        console.log(xx != yy)//false
+        console.log(xx !=+ yy)//false
+
+
+
+        let height = 177;
+        if(height === 170){
+            console.log("조건이참입니다.")
+        }
+
+
+
+        //논리연산자
+        // && ==> x && y ==> x가 참이고 y가 참이면 참
+        //                   x와 y중 하나라도 거짓이면 거짓
+        //                   AND 연산자
+
+        // || ==> x || y ==> x가 참이고 y가 참이든 거짓이든 (둘 중 하나라도 참이면 참으로 나옴)
+        //                   x와 y중 하나라도 참이면 참이다.
+        //                   or 연산자
+        
+
+        // ! ==> !x ==> x가 참이면 거짓, x가 거짓이면 참이다.(반대)
+    </script>
+</body>
+</html>

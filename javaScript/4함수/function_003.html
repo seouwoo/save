@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function testFunc(id){//[1] 15줄이 실행
+            let user_id = id || 'Guest';// or 연산자-> 피연산자 둘중 하나가 참이면 참 id가 참임
+            console.log(user_id)
+        }
+
+        testFunc('hong')//hong여기서 hong이라 입력했으니까 
+        testFunc()// or 연산자의 특징: id가 참이여야 뒤에 Guest가 나온다.!
+
+
+        function testFunc2(id='Guest2'){//id='Guest2'니까 
+            let user_id = id
+            console.log(user_id)
+        }
+        testFunc2('hong')//hong // 값이 재할당
+        testFunc2()// Guest2 출력
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // static Keyword
+        //static룰 사용하면 class에 귀속시키는 방식이다.
+
+        class Person{
+            name;
+            year;
+            static group = "green";
+            constructor(name,year){
+                this.name=name;
+                this.year=year;
+            }
+        }
+
+
+        const hong=new Person("홍길동",2001)
+        console.log(hong)
+        console.log(Person.group)//class에 귀속된group변수 사용 방법
+    </script>
+</body>
+</html>

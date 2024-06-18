@@ -1,0 +1,17 @@
+@function colorMake(){
+    @return #ff0000;
+}
+
+@function fn1($p1,$p2){
+    $var:10ox;
+    @return $var + $p1 + $p2;
+}
+
+
+.box{
+    width: 100px;
+    height: 100px;
+    border: fn1(10px,2px) solid #000;
+    background-color: colorMake();//함수의 실행은 결국은 값이다.
+    color: ;
+}

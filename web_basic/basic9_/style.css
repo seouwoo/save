@@ -1,0 +1,47 @@
+*{margin: 0; padding: 0;}
+
+#전체{width: 1000px;background-color: gainsboro;
+    margin: 0 auto; padding: 20px; box-sizing: border-box;}
+.약::after{content: "";clear: both;display: block;}
+#전체 #첫째{
+    
+    }
+#전체 #첫째 .첫째자식1{background-color: green; height: 200px; float: left;width: 21.25%;margin-right: 5%;}
+#전체 #첫째 .첫째자식2{background-color: green; height: 200px; float: left;width: 21.25%;margin-right: 5%;}
+#전체 #첫째 .첫째자식3{background-color: green; height: 200px; float: left;width: 21.25%;margin-right: 5%;}
+#전체 #첫째 .첫째자식4{background-color: green; height: 200px; float: left;width: 21.25%;}
+
+#전체 #둘째{
+    width: 900px; 
+    background-color: yellow;
+    margin:auto;
+    margin-top: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+    
+}
+
+
+#전체 #둘째 .둘째자식{}
+#전체 #둘째 .둘째자식 .둘째손자1{
+    background-color: green;
+    height: 200px;float: left; width: 21.25%;margin-right: 5%;
+}
+#전체 #둘째 .둘째자식 .둘째손자2{
+    background-color: green;
+    height: 200px;float: left; width: 21.25%;margin-right: 5%;
+}
+#전체 #둘째 .둘째자식 .둘째손자3{
+    background-color: green;
+    height: 200px;float: left; width: 21.25%;margin-right: 5%;
+}
+#전체 #둘째 .둘째자식 .둘째손자4{
+    background-color: green;
+    height: 200px;float: left; width: 21.25%;
+}
+#전체 #둘째 #그린컴퓨터학원{text-align:center; padding: 30px;background-color: chartreuse;
+margin-top: 10px;}
+
+#전체 #셋째{margin-top: 50px; }
+#전체 #셋째 #칠십오{background-color: green;height: 200px;width: 75%; float: left; margin-right: 5%;}
+#전체 #셋째 #이십{background-color: green;height: 200px;width: 20%; float: left;}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body><h1 id="head"><p><a href="#">텍스트</a></p></h1><ul><li><a href="#">li1</a></li><li><a href="#">li2</a></li><li><a href="#">li3</a></li><li><a href="#">li4</a></li></ul>
+    <script>
+        //Dom
+        //Document Object Model의 약자 -> 웹의 문서와 웹의 태그와 관련된 객체를 의미
+
+        let head1=document.getElementById('head')
+        console.log(head1)
+
+        // window.onload=function(){}//구형
+        // window.addEventListener('load',function(){})
+
+        // head1.onclick=function(){}//구형
+        // head1.addEventListener('click',function(){})
+
+        window.onload=function(){
+            //p 엘리먼트 생성 createElement()-> 태그 생성
+            let eleNode=document.createElement('p')
+            //텍스트 노드 생성 createTextNode('Hello')-> 텍스트 생성
+            let txtNode=document.createTextNode('Hello')
+
+            //붙이기
+            eleNode.appendChild(txtNode)
+            console.log(eleNode)
+            document.body.appendChild(eleNode)
+        }
+    </script>
+</body>
+
+</html>

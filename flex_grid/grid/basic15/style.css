@@ -1,0 +1,23 @@
+*{margin: 0;padding: 0; box-sizing: border-box;}
+
+.container{
+    background-color: gold;
+    border: 2px solid black;
+}
+.container .item{    
+    background-color: skyblue;
+    border: 2px solid black;}
+
+
+/* place-content:
+    align-content,justify-content 단축 속성
+    align-content,justify-content 의 순서로 작성, 하나의 값이면 두 속성 모두에 적용함
+ */
+
+.container{display: grid;
+    height: 80vh;
+    place-content: start center ;
+
+    
+}
+.container .item{}

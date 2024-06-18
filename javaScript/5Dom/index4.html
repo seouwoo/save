@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#">
+        <label for="user_name">이름</label>
+        <input type="text" id="user_name">
+        <br>
+        <label for="use_-home">수강생 홈</label>
+        <input type="text" id="user_home">
+        <br>
+        <input type="button" value="사용자 추가" id="btn">
+        <br>
+        <div class="memberList">
+            
+            
+        </div>
+    </form>
+
+    <script>
+        //버튼을 클릭하면 함수 실행
+        document.querySelector('#btn').addEventListener('click',function(){
+            let user_name=document.querySelector('#user_name')
+            let user_home=document.querySelector('#user_home')
+            
+            
+            //a태그 노드 생성 <a href="https://www.naver.com/" target='_blank'></a>
+            let aTagNode=document.createElement('a')
+            aTagNode.href=user_home.value;
+            aTagNode.target='_blank'
+            console.log(aTagNode)
+            
+            
+            //택스트 노드생성
+            let texNode=document.createTextNode(user_home.value)
+            aTagNode.appendChild(texNode)
+            console.log(aTagNode)
+            
+            //memberList에 첨부하기
+            
+            
+            let br=document.createElement('br')
+            document.querySelector('.memberList').appendChild(aTagNode)
+            document.querySelector('.memberList').appendChild(br)
+            
+
+            user_name.value='';
+            user_home.value='';
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">Click</button>
+    <div id="memberList">
+        <p id="p1">홍길동</p>
+        <p id="p2">놀부</p>
+        <p id="p3">흥부</p>
+    </div>
+    <script>
+        //DOM 삭제
+        //[1]
+        // document.querySelector('#btn').addEventListener('click',function(){
+        //     let memberList=document.querySelector('#memberList')
+        //     let p1=document.querySelector('#p1')
+        //     memberList.removeChild(p1)
+        // })
+        //[2]
+        document.querySelector('#btn').addEventListener('click',function(){
+            let p1=document.querySelector('#p1')
+            p1.parentNode.removeChild(p1)//부모노드를 불러서 . 자식을 지워라
+        })
+    </script>
+</body>
+</html>

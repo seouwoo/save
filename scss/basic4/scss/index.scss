@@ -1,0 +1,50 @@
+@use './partials/vars' ;
+//@use './partials/vars' as v1;
+
+$var1:#f00;
+
+
+//h2{color:v1.$color-primary;}
+
+.box{
+    background-color: $var1;
+    // $spacer20px:vars.$spacer*4; //지역변수 {}안에서만 생존,밖에서는 사용 할 수 없다.
+    // margin-top: $spacer20px;
+}
+
+.box2{
+    // margin-top: $spacer20px;
+}
+
+//복습
+
+$width:10;
+$widthPx:10px;
+$class-name:cls;
+$class-name2:'.cls';
+
+
+.box3{
+    width: #{$width}px;
+    width: #{$width*$width}px;
+    // height:$widthPx * 10px ;//xx
+    // height:$widthPx * 10 ;//oo
+    height:$widthPx + 10px ;
+}
+
+
+#{$class-name2}{
+    width: 100px;
+}
+
+.#{$class-name}{
+    width: 100px;
+}
+
+#{$class-name2}_btn{
+    width: 100px;
+}
+
+.#{$class-name}_btn{
+    width: 100px;
+}

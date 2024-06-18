@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 onclick="myfunc()">제목입니다.</h1>
+    <script>
+        //함수 - 함수 선언문 vs 함수 표현식
+
+        // 함수 선언문 --> 배웠던 방식!
+
+        // 함수 표현식 --> 함수를 하나의 "값"으로 취급
+        // 값으로 취급 할 수 있기 때문에 변수에 대입(할당)도 할 수 있음.
+        
+
+        let 함수 = function(){
+            console.log("함수 표현식")
+        }//함수는 호출을 해야 실행됨.
+        함수();//실행문
+
+        console.log(함수);//함수 자체가 출력이 됨
+
+
+        myfunc()
+
+        function myfunc(){
+            console.log("함수선언문")
+        }
+        
+
+        // 함수 선언문과 함수 표현식의 차이
+        //[1] 함수 만드는 방법 자체가 다름
+        //[2] 함수를 호출하는 위치가 다름
+        
+        
+        //⭐ 함수 선언문은 호이스팅이라는 것이 됨.
+        //(호이스팅= 어디서나 참조 할 수 있도록 높은 위치의 메모리 공간에 위치함)
+        //함수 선언문은 위에서 호출해도 아래에서 호출해도 상관이 없음
+        //함수 표현식은 변수에 할당해야 하므로 호이스팅이 되지 않음
+        
+        
+        let 함수2 =function(){
+            console.log("ㅎ")
+        }
+        함수2();//ㅎ
+        myfunc2();//빠이
+        function myfunc2(){
+            console.log("빠이")
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //ver,let,const 변수를 선언할때 사용하는 키워드
+        
+        //var는 옛날방식이나 요즘에 사용하지 않음.
+        //var는 관리자가 와서 로얄층에 데려감. 로얄층은 프로그램 어디서나 보인다.
+        console.log(name)//홍길동
+        var name="홍길동";
+        console.log(age)//undefined
+
+        var name="이순신"; //var로 선언하면 동일한 이름의 변수가 생생되어 혼란을 야기할수있다.
+
+        var age = 20;
+
+        //console.log(name2) Err => 선언되기 전
+        let name2="강감찬";
+        console.log(name2)//강감찬
+        //let name2="강감찬"; 같은 이름의 변수가 선언될 수 없다.
+        name2="을지문덕";
+        console.log(name2)//을지문덕
+        //--------------------------------
+        
+        //const => 상수 (변하지 않는 값) 보통 대문자로 씀
+        const PI=3.14;
+        
+        //const FIRST;//선언만 하면 오류 발생,= 선언과 동시에 반드시 할당(셋팅)해야함.
+
+        //PI=333;//Err(console에서 확인)
+        console.log(PI)
+
+    
+
+    </script>
+</body>
+</html>

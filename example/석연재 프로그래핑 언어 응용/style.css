@@ -1,0 +1,248 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: "Noto Sans", sans-serif;
+}
+
+/* font-family: "Noto Sans", sans-serif;*/
+.warp {
+    position: relative;
+}
+
+.warp>img {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: -100;
+}
+
+ul,
+li,
+a {
+    list-style: none;
+    text-decoration: none;
+    color: #fff;
+}
+
+
+.header {
+    display: flex;
+    height: 100px;
+    padding: 0 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.header .logo {
+    width: 15%;
+    height: 100%;
+    display: inline-block;
+
+}
+
+.header .logo img {}
+
+.nav {
+    width: 100vw;
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.submanu {
+    display: inline;
+    width: 33.33%;
+}
+
+.submanu a {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    line-height: 100px;
+}
+
+.submanu li {
+    display: none;
+    text-align: center;
+}
+
+.submanu li a {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    transition: 0.5s;
+    border-bottom: none;
+    box-sizing: border-box;
+}
+
+.submanu li a:hover {
+    border-bottom: 1px solid rgba(255, 2552, 255, 0.5);
+}
+
+
+.search {}
+
+.search i {}
+
+
+
+
+
+
+
+
+
+
+
+/* .main-slick */
+.main-slick {}
+
+.main-slick .slick-slide {
+    overflow: hidden;
+    position: relative;
+}
+
+.main-slick .slick-slide img {
+    position: absolute;
+    
+    opacity: 0;
+    transition: 0.5s;
+    transition-delay:0.3s;
+    width: 900px;
+    z-index: 1;
+    padding: 0 30px;
+    top: 60px;
+    left: -20%;
+}
+
+.main-slick .slick-slide.slick-active img {
+    
+    left: 100px;
+    right: 0;
+    opacity: 1;
+
+
+}
+
+.main-slick .slick-slide .text .big {
+    opacity: 0;
+    transition: 0.5s;
+    transition-delay: 0.5s;
+    left: -100%;
+}
+
+
+
+
+
+
+.main-slick .slick-slide.slick-active .text h2 {
+    opacity: 1;
+    bottom: 300px;
+    left: 50%;
+}
+
+.main-slick .slick-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+}
+
+.main-slick .slick-prev {
+    left: 0;
+    visibility: hidden;
+    /* 부모는 숨김처리 */
+}
+
+.main-slick .slick-prev::after {
+    position: absolute;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 30px;
+    content: "\f053";
+    left: 0;
+    top: 50%;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    visibility: visible;
+    /* 자식은 보임처리 */
+}
+
+.main-slick .slick-next {
+    display: contents;
+
+    visibility: hidden;
+}
+
+.main-slick .slick-next::after {
+    position: absolute;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 30px;
+    content: "\f054";
+    right: 0;
+    top: 50%;
+    color: #fff;
+    padding: 10px;
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.slick-list {
+    display: inline;
+}
+
+.main-slick .slick-wrap {
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.main-slick .slick_manu .text {
+    color: #fff;
+    width: 50%;
+    height: 100vh;
+}
+
+
+.main-slick .slick_manu .text .big {
+    font-size: 100px;
+}
+
+.main-slick .slick_manu .sub_text {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    left: 0;
+}
+
+.main-slick .slick_manu .sub_text>h2 {
+    color: #fff;
+}
+
+.main-slick .slick_manu .sub_text ul {}
+
+.main-slick .slick_manu .sub_text ul li {}
+
+.main-slick .slick_manu .sub_text ul>li i {
+    color: yellow;
+}
+
+.main-slick .slick_manu .sub_text ul>li i::before {
+    padding-left: 3px;
+}
+
+.main-slick .slick_manu .sub_text ul>li i:last-child {
+    color: #fff;
+}
+
+.lorem {}
+
+.lorem li:first-child {
+    padding-bottom: 5px;
+}

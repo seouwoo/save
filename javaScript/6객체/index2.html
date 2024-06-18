@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //객체(object) - 객체 만들기
+
+        //[1]사람객체 만들기
+            //1-1원시 타입으로 person을 만든다면
+        let person_name='홍길동';
+        let person_age=25;
+        let person_power=900;
+        let person_nationality='한국';
+
+        //[2]객체 타입으로 person을 만든다면
+        // let 객체이름={
+        //     key(멤버)1:value1,
+        //     key(멤버)2:value2,
+        //     key(멤버)3:value3,
+        // }
+        let person={
+            name:'홍길동',
+            age:25,
+            power:900,
+            nationality:'한국',
+        }
+        console.log(person.name)
+        console.log(`나의 이름은 ${person.name}입니다.`)
+
+        //:을 =로 쓰는것, ,를 ;로 쓰는 실수를 많이함
+        // 객체를 구성하는 표현은 --> 키와 값의 쌍으로 구성하여 적당한 초깃값을 부여한다.
+        // 객체를 구성하는 멤버는 --> 자료형이 달라도 상관없다.
+        // 원시 타입으로 만든 것과 비교해본다면 --> 별도의 변수로 하나씩 만들어 사용할 필요없이 person 하나의 객체로 다 관리한다.
+        // 얼마든지 person 객체에 추가적인 멤버(key)를 붙일 수 있다. --> 사람 국적, 혈액형, 성격, 이메일  등등..
+        // 아무튼, 이와 같은 방식으로 실생활의 모든 사물을 객체로 정의하고 표현할 수 있다.
+        // 따라서, 객체를 잘 표현할 수 있도록 신경써서 객체의 멤버를 구성하고 필요에 따라 적절한 멤버를 추가해 사용해야 하겠다.
+        // 이러한 객체를 만들어서 레고 조립하듯이 프로그램을 만들어가는 방식을 어려운 말로 --> 객체 지향식 프로그래밍(OOP) 이라고 한다.
+        </script>
+</body>
+</html>

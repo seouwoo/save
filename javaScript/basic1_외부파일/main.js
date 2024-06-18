@@ -1,0 +1,1 @@
+console.log("외부파일")

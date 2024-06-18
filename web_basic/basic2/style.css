@@ -1,0 +1,27 @@
+*{margin: 0;padding: 0;}
+
+.position{
+    width: 500px; 
+    /* height: 500px; */
+    background-image: url(https://img.freepik.com/free-photo/aesthetic-minimal-white-grid-pattern-wallpaper_53876-96916.jpg);
+    margin-left: 10%; margin-top: 10%;
+    position: relative;
+    margin-bottom: 2000px;
+}
+.position .red{width: 100px;height: 100px;
+    background-color: red;
+    left: 200px;
+    top: 100px;
+    position: relative; /* position: static; 기본값30*/
+}
+.position .blue{width: 100px;height: 100px;
+    background-color: blue;
+    position: absolute;
+    left: 50px; top: 50px;
+}
+.position .green{
+    position: fixed; /* 화면에 붙음(스크롤에 같이 따라오는 것) */
+    right: 0; top: 100px;
+    width: 100px; height: 100px;
+    background-color: green;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //var는 함수 스코프, let은 블록({ }) 스코프
+        var z= 3;
+        function b (){
+            var a = 1;
+            console.log(z)
+            let q=10;
+        }
+        b();
+        // console.log(a);
+        // console.log(q);
+
+        if (true){
+            var t = 12;
+            let v= 7;
+        }
+        console.log(t)
+        console.log(v)
+    </script>
+</body>
+</html>

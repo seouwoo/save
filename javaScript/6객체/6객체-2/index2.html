@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //자바스크립트 함수의 내부와 객체간의 관계 - js에서 생성자란? 
+
+        //Animal 함수(생성자함수)이면 자신과 자신의 같은 이름의 'Animal 프로토 타입 객체'가 생성
+        //Animal 함수는 멤버로 (속성)-->Prototype속성이 자동생성--> 다른곳에 생성된 같은 이름의  'Animal 프로토 타입 객체'를 가리킴
+
+
+        //생성자 함수
+        function Animal(){}
+        // Animal()2️⃣                               1️⃣Animal프로토 타입 객체   
+        // Prototype(1️⃣를가르킴)                    (2️⃣를 가리킴)constructor   
+
+
+        // console.log(Animal)
+        //생성자 함수를 통해 객체 만들기
+
+        //Animal이라는 생성자 함수가 자식을 낳았고(new) 그 자식의 이름은tiger
+        let tiger=new Animal();
+        // document.write(tiger.constructor)
+        // console.log(tiger.constructor)
+        let lion=new Animal()
+        //new 연산자와 생성자 함수를 이용하여 객체 생성시 각 객체에는 
+        //_proto_ 속성이 자동으로 생성-->이 객체가 만들어질 수 있도록 해준 원형을 가르킴-->'Animal프로토 타입 객체'를 숨은 링크로 가르킴 
+
+        Animal.prototype.aniRun=function(){//메모리 한번만 할당됨
+            return'동물이 뛴다';
+        }
+        console.log(tiger)
+        console.log(tiger.aniRun())
+        console.log(lion.aniRun())
+
+        tiger.aniRun=function(){//메모리 덮어씌어져 할당됨(tiger내부의 aniRun함수가 우선 적용됨)
+            return'타이거가 뛴다';
+        }
+        console.log(tiger.aniRun())//타이거가 뛴다
+        console.log(lion.aniRun())//동물이 뛴다
+
+
+
+        console.log(Animal)
+        console.log(tiger)
+        console.log(lion)
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+//extend
+
+%box-style{
+    width: 100px;
+    height: 100px;
+    font-size: 40px;
+}
+
+
+.box1{
+    @extend %box-style;
+    border: 5px solid #000;
+    color: blue;
+    background-color: #ccc;
+}
+.box2{
+    @extend %box-style;
+    border: 5px solid #000;
+    color: red;
+    background-color: #333;
+}
