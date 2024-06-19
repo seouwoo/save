@@ -763,17 +763,6 @@ nav {
   right: auto;
 }
 
-.row {
-  display: flex;
-  /* gap: 2em; */
-  margin: 2em 0;
-}
-
-.row img {
-  width: 25%;
-  height: 600px;
-  display: block;
-}
 
 .absolute {
   position: absolute;
@@ -788,8 +777,6 @@ nav {
   font-weight: 700;
   line-height: 0.9;
 }
-
-/* section2 */
 .website-content {
   overflow: hidden;
   position: relative;
@@ -799,39 +786,11 @@ nav {
   background-color: #fff;
   
 }
-.menu {
-}
-.menu--item {
-  overflow: hidden;
+/* section2 */
+.website-content2{
 
-  white-space: nowrap;
-  display: flex;
-  flex-wrap: nowrap;
-  cursor: pointer;
-  text-shadow: 5px 5px white, 5px 5px rgba(0, 0, 0, 0.1),
-    10px 10px rgba(0, 0, 0, 0.1);
-
-  font-family: "Titillium Web", sans-serif;
-  font-size: 100px;
-  justify-content: center;
-  align-items: center;
-}
-.menu--word a{
-  text-decoration: none;
-  text-transform: uppercase;
-  font-family: "Freesentation", sans-serif;
-  font-weight: 100;
-  color: #000;
-  
 }
 
-.section-images {
-  position: absolute;
-  width: 100%;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-}
 #Vector2{
   z-index: -100;
 }
@@ -1060,7 +1019,55 @@ html,body {width: 100%;height: 100%;}
 .flow-lg {
   margin-top: 6.5rem;
 }
+/* section4 */
 
+
+.menu {
+}
+.menu--item {
+  overflow: hidden;
+
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+  cursor: pointer;
+  text-shadow: 5px 5px white, 5px 5px rgba(0, 0, 0, 0.1),
+    10px 10px rgba(0, 0, 0, 0.1);
+
+  font-family: "Titillium Web", sans-serif;
+  font-size: 100px;
+  justify-content: center;
+  align-items: center;
+}
+.menu--word a{
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: "Freesentation", sans-serif;
+  font-weight: 100;
+  color: #000;
+  
+}
+
+.section-images {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+
+.row {
+  display: flex;
+  /* gap: 2em; */
+  margin: 2em 0;
+}
+
+.row img {
+  width: 25%;
+  height: 600px;
+  display: block;
+}
 /* 텍스트 */
 .text-black {
   width: 100%;
@@ -1200,18 +1207,4 @@ html,body {width: 100%;height: 100%;}
   left: 0;
   width: 100vw;
   height: 100vh;
-}
-
-section.website-content3-1 {
-  /* position: absolute;
-    top: 100vh; */
-  width: 100%;
-  background: #252525;
-  padding: 6em 2em;
-  top: 0;
-  height: 100vh;
-  margin: 0 auto;
-  padding-bottom: 20vh;
-  z-index: 2;
-  position: relative;
 }
