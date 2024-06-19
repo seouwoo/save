@@ -193,7 +193,7 @@ let backColor=document.querySelectorAll("[data-bgcolor]")
 backColor.forEach(function(item,index){
     let prevBg=index == 0 ?"":backColor[index - 1].dataset.bgcolor
     ScrollTrigger.create({
-        trigger:".wave1",
+        trigger:".wave2",
         start:"top 50%",
         end:"center 5%",
         duration:1,
