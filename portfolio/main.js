@@ -434,7 +434,7 @@ conScales.forEach(function (conScale) {
   );
 });
 
-//두번째 영역의 각각 이미지 애니
+//영역의 각각 이미지 애니
 let secImgs = document.querySelectorAll(".section-images");
 
 secImgs.forEach(function (secImg) {
