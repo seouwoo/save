@@ -851,20 +851,8 @@ nav {
 }
 
 
-.bg_w{top: -30vh;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background-size: 50px 50px;
-  background-position: center;
-  background-image: linear-gradient(to right, var(--mid-grey) 1px, transparent 1px), linear-gradient(to bottom, var(--mid-grey) 1px, transparent 1px);
-}
-.website-content2::before, .website-content2::after {
-  box-sizing: inherit;
-}
 
-
-.website-content3 {
+.website-content2 {
   width: 100%;
   height: 100%;
   
@@ -878,7 +866,16 @@ nav {
   
 }
 
-.website-content2 .container {
+
+.website-content3 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: 50px 50px;
+  background-position: center;
+  background-image: linear-gradient(to right, var(--mid-grey) 1px, transparent 1px), linear-gradient(to bottom, var(--mid-grey) 1px, transparent 1px);
+}
+.website-content3 .container {
   position: sticky;
   width: 100%;
   height: 100%;
@@ -889,7 +886,7 @@ nav {
   visibility: hidden;
 }
 
-.website-content2 .container .hi {
+.website-content3 .container .hi {
   position: relative;
   z-index: 1;
   font-size: 100px;
