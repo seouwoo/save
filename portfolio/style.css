@@ -1041,7 +1041,7 @@ background-color: #000;
   text-shadow: 5px 5px white, 5px 5px rgba(0, 0, 0, 0.1),
     10px 10px rgba(0, 0, 0, 0.1);
 
-  font-family: "Titillium Web", sans-serif;
+  font-family: "Freesentation", sans-serif;
   font-size: 100px;
   justify-content: center;
   align-items: center;
@@ -1050,7 +1050,7 @@ background-color: #000;
   text-decoration: none;
   text-transform: uppercase;
   font-family: "Freesentation", sans-serif;
-  font-weight: 100;
+  font-weight: 50;
   color: #000;
   
 }
