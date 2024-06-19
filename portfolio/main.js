@@ -353,7 +353,7 @@ window.onload = () => {
 };
 
 window.onresize = setWinDimensions;
-//취미영역
+//슬라이드바
 
 /*--------------------
 Vars
