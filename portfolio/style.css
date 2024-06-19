@@ -777,7 +777,7 @@ nav {
   font-weight: 700;
   line-height: 0.9;
 }
-.website-content {
+.website-content2 {
   overflow: hidden;
   position: relative;
   padding: 20px;
@@ -788,6 +788,7 @@ nav {
 }
 /* section2 */
 .website-content2{
+  
 background-color: #000;
 }
 .website-content2 .text_wrap{
@@ -826,7 +827,6 @@ background-color: #000;
   align-items: center;
   justify-content: center;
   perspective: 900px;
-  visibility: hidden;
 }
 
 .hi {
@@ -1026,6 +1026,7 @@ background-color: #000;
 
 
 .menu {
+  overflow: hidden;
 }
 .menu--item {
   overflow: hidden;
