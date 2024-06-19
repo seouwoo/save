@@ -434,38 +434,6 @@ conScales.forEach(function (conScale) {
   );
 });
 
-// //영역의 각각 이미지 애니
-// let secImgs = document.querySelectorAll(".section-images");
-
-// secImgs.forEach(function (secImg) {
-//   let imgs = secImg.querySelectorAll("img");
-//   let secImgParent = secImg.parentNode;
-
-//   imgs.forEach(function (img, index) {
-//     let imgDey = index * 0.8;
-//     gsap.set(img, {
-//       y: 300,
-//     });
-//     gsap
-//       .timeline({
-//         scrollTrigger: {
-//           trigger: secImgParent,
-//           stert: "top 70%",
-//           end: "top top",
-//           scrub: 2,
-//           markers: true,
-//         },
-//       })
-//       .to(img, {
-//         y: 0,
-//         duration: 2,
-//         delay: imgDey,
-//         ease: "power4.out",
-//       });
-//   });
-// });
-
-
 
 
 
