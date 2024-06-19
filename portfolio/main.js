@@ -76,6 +76,7 @@ stickys.forEach(function (sticky) {
       scrub: 1,
       opacity: 1,
     },
+    // filter:" grayscale(1)",
     ease: "power3.out",
     duration: 2,
     opacity: 0,
