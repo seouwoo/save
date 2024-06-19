@@ -1063,10 +1063,15 @@ background-color: #000;
   transform: translateX(-50%);
 }
 
-
+.row_1{
+  position: none;
+  top: 0;
+}
 .row {
+  position: sticky;
+  top: 200px;
   display: flex;
-  /* gap: 2em; */
+  gap: 2em;
   margin: 2em 0;
 }
 
