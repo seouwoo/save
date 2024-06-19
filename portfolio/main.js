@@ -155,9 +155,9 @@ splitTypes1.forEach(function (char, i) {
 
 
 
-let targetPath=
+let initialPath=
   "M998.5 703H6.10352e-05V106C6.10352e-05 106 81 0 464 0C847 0 998.5 106 998.5 106V703Z";
-let initialPath =
+let   targetPath=
   "M998.5 597H6.10352e-05V3.05176e-05C6.10352e-05 3.05176e-05 81 62 464 62C847 62 998.5 3.05176e-05 998.5 3.05176e-05V597Z";
 
 let svgWraps = document.querySelectorAll(".svg-container");
