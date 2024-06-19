@@ -450,10 +450,10 @@ secImgs.forEach(function (secImg) {
       .timeline({
         scrollTrigger: {
           trigger: secImgParent,
-          stert: "top 60%",
+          stert: "top 70%",
           end: "top top",
           scrub: 2,
-          // markers: true,
+          markers: true,
         },
       })
       .to(img, {
