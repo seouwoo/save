@@ -323,6 +323,8 @@ window.onload = () => {
 };
 
 window.onresize = setWinDimensions;
+//////
+
 //슬라이드바
 
 /*--------------------
