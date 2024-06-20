@@ -173,8 +173,8 @@ svgWraps.forEach((svgWrap) => {
       d: targetPath
     },
     scrollTrigger: {
-      trigger: "#Vector",
-      start: "top top ",
+      trigger: itemSvg,
+      start: "70% top ",
       end: "+=10%",
       ease: "linear",
       scrub: 1,
