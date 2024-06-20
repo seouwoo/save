@@ -80,7 +80,7 @@ stickys.forEach(function (sticky) {
     ease: "power3.out",
     duration: 2,
     opacity: 0,
-    
+
   });
 });
 let video = document.querySelector(".sticky video"),
@@ -94,7 +94,11 @@ function setVideo() {
 setVideo();
 window.addEventListener("resize", setVideo);
 
-let inset = { x: 3, y: 0, r: 10 };
+let inset = {
+  x: 3,
+  y: 0,
+  r: 10
+};
 let snap = gsap.utils.snap(10);
 
 gsap
@@ -108,13 +112,11 @@ gsap
     },
   })
   .fromTo(
-    inset,
-    {
+    inset, {
       x: -5,
       y: -5,
       r: 20,
-    },
-    {
+    }, {
       duration: 1,
       x: 20,
       y: 20,
@@ -155,9 +157,9 @@ splitTypes1.forEach(function (char, i) {
 
 
 
-let  initialPath=
+let initialPath =
   "M998.5 703H6.10352e-05V106C6.10352e-05 106 81 0 464 0C847 0 998.5 106 998.5 106V703Z";
-let   targetPath=
+let targetPath =
   "M998.5 597H6.10352e-05V3.05176e-05C6.10352e-05 3.05176e-05 81 62 464 62C847 62 998.5 3.05176e-05 998.5 3.05176e-05V597Z";
 
 let svgWraps = document.querySelectorAll(".svg-container");
@@ -167,7 +169,9 @@ svgWraps.forEach((svgWrap) => {
   itemSvg.setAttribute("d", initialPath);
 
   gsap.to(itemSvg, {
-    attr: { d: targetPath },
+    attr: {
+      d: targetPath
+    },
     scrollTrigger: {
       trigger: svgWrap,
       start: "top 70%",
@@ -176,7 +180,7 @@ svgWraps.forEach((svgWrap) => {
       scrub: 1,
       // markers: true,
     },
-    y:100,
+    y: 100,
   });
 });
 
@@ -213,116 +217,118 @@ const base = select(".hi__base-plate");
 let winW = 0;
 let winH = 0;
 let pointer = {
-    x: window.innerWidth / 2,
-    y: window.innerHeight / 2
+  x: window.innerWidth / 2,
+  y: window.innerHeight / 2
 };
 
 function init() {
-    setWinDimensions();
+  setWinDimensions();
 
-    gsap.set(containers, { autoAlpha: 1 });
-    gsap.timeline({ delay: 0.5,
+  gsap.set(containers, {
+    autoAlpha: 1
+  })
+  gsap.timeline({
+      delay: 0.5,
       scrollTrigger: {
         trigger: ".website-content3",
-        stert: '50% center',
-        end: 'bottom top',
+        start: 'top center',
+        end: '30% top',
+
         scrub: 1,
         markers: true,
       },
-     })
-        .from(".hi__location--lat", {
-            x: 100,
-            autoAlpha: 0,
-            ease: "power4",
-            duration: 1
-        })
-        .from(
-            ".hi__location--long",
-            {
-                x: -100,
-                autoAlpha: 0,
-                ease: "power4",
-                duration: 1
-            },
-            0
-        )
-        .from(
-            cuboid,
-            {
-                y: winH,
-                duration: 3,
-                stagger: 0.14,
-                ease: "elastic(0.4,0.3)"
-            },
-            0
-        );
-
-    gsap.to(cuboid, {
-        rotateX: -360,
-        duration: 8,
-        repeat: -1,
-        ease: "none"
-    });
-
-    gsap.fromTo(
-        cuboid,
-        {
-            rotateY: 8,
-            rotate: -10
-        },
-        {
-            rotateY: -8,
-            rotate: 10,
-            duration: 2.2,
-            yoyo: true,
-            repeat: -1,
-            ease: "sine.inOut"
-        }
+      delay: 2,
+    })
+    .from(".hi__location--lat", {
+      x: 100,
+      autoAlpha: 0,
+      ease: "power4",
+      duration: 1
+    })
+    .from(
+      ".hi__location--long", {
+        x: -100,
+        autoAlpha: 0,
+        ease: "power4",
+        duration: 1
+      },
+      0
+    )
+    .from(
+      cuboid, {
+        y: winH,
+        duration: 3,
+        stagger: 0.14,
+        ease: "elastic(0.4,0.3)"
+      },
+      0
     );
-}init();
+
+  gsap.to(cuboid, {
+    rotateX: -360,
+    duration: 8,
+    repeat: -1,
+    ease: "none"
+  });
+
+  gsap.fromTo(
+    cuboid, {
+      rotateY: 8,
+      rotate: -10
+    }, {
+      rotateY: -8,
+      rotate: 10,
+      duration: 2.2,
+      yoyo: true,
+      repeat: -1,
+      ease: "sine.inOut"
+    }
+  );
+}
+init();
 
 function setWinDimensions() {
-    winW = window.innerWidth;
-    winH = window.innerHeight;
+  winW = window.innerWidth;
+  winH = window.innerHeight;
 }
 
 function calcOffset(xPos, yPos) {
-    let dX = (2 * (xPos - winW / 2)) / winW;
-    let dY = (-2 * (yPos - winH / 2)) / winH;
-    return [dX, dY];
+  let dX = (2 * (xPos - winW / 2)) / winW;
+  let dY = (-2 * (yPos - winH / 2)) / winH;
+  return [dX, dY];
 }
 
 function followPointer(pX, pY) {
-    let nPos = calcOffset(pX, pY); // get cursor position from center
-    let nX = nPos[0];
-    let nY = nPos[1];
-    let positiveX = Math.sqrt(nX * nX);
-    let positiveY = Math.sqrt(nY * nY);
-    let deltaS = 450 * positiveX;
-    let deltaW = 600 * positiveY;
-    gsap.to(hiWords, {
-        fontStretch: `${550 - deltaS}%`,
-        fontWeight: 800 - deltaW,
-        duration: 2
-    });
+  let nPos = calcOffset(pX, pY); // get cursor position from center
+  let nX = nPos[0];
+  let nY = nPos[1];
+  let positiveX = Math.sqrt(nX * nX);
+  let positiveY = Math.sqrt(nY * nY);
+  let deltaS = 450 * positiveX;
+  let deltaW = 600 * positiveY;
+  gsap.to(hiWords, {
+    fontStretch: `${550 - deltaS}%`,
+    fontWeight: 800 - deltaW,
+    duration: 2
+  });
 }
 
 window.addEventListener("mousemove", function (event) {
-    pointer.x = event.clientX;
-    pointer.y = event.clientY;
-    followPointer(pointer.x, pointer.y);
+  pointer.x = event.clientX;
+  pointer.y = event.clientY;
+  followPointer(pointer.x, pointer.y);
 });
 
 window.addEventListener("touchmove", function (event) {
-    pointer.x = event.touches[0].clientX;
-    pointer.y = event.touches[0].clientY;
-    followPointer(pointer.x, pointer.y);
+  pointer.x = event.touches[0].clientX;
+  pointer.y = event.touches[0].clientY;
+  followPointer(pointer.x, pointer.y);
 });
 
 window.addEventListener("touchstart", function (event) {
-    pointer.x = event.touches[0].clientX;
-    pointer.y = event.touches[0].clientY;
-    followPointer(pointer.x, pointer.y);
+  pointer.x = event.touches[0].clientX;
+  pointer.y = event.touches[0].clientY;
+  followPointer(pointer.x, pointer.y);
 });
 
 
@@ -420,12 +426,10 @@ animate();
 let conScales = document.querySelectorAll(".con-scale");
 conScales.forEach(function (conScale) {
   gsap.fromTo(
-    conScale,
-    {
+    conScale, {
       y: 100,
       scale: 1,
-    },
-    {
+    }, {
       scrollTrigger: {
         trigger: conScale,
         stert: "top 80%",
@@ -439,11 +443,3 @@ conScales.forEach(function (conScale) {
     }
   );
 });
-
-
-
-
-
-
-
-
