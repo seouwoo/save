@@ -189,7 +189,7 @@ LottieScrollTrigger({
   target: "#animationWindow",
   path:"./camera.json" ,
   speed: "medium",
-  scrub: 2,
+  scrub: 1,
 });
 
 

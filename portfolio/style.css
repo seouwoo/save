@@ -789,6 +789,7 @@ nav {
 }
 /* section2 */
 .website-content2{
+  position: relative;
   
 background-color: #000;
 }
@@ -796,8 +797,12 @@ background-color: #000;
   color: #fff;
 }
 
-#animationWindow {  
-  height: 90vh;
+#animationWindow { 
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
   margin: 0 auto;
 }
 /* section3 */
