@@ -162,9 +162,29 @@ let   initialPath=
 let targetPath =
   "M8.39969e-06 0.000926656L1000 0.000930786L1000 203.001C1000 203.001 881.309 253 498.5 253C115.691 253 2.61465e-05 203.001 2.61465e-05 203.001L8.39969e-06 0.000926656Z";
 
-let svgWraps = document.querySelectorAll(".svg-container2");
+let svgWraps1 = document.querySelectorAll(".svg-container1");
+let svgWraps2 = document.querySelectorAll(".svg-container2");
 
-svgWraps.forEach((svgWrap) => {
+svgWraps1.forEach((svgWrap) => {
+  let itemSvg = svgWrap.querySelector("svg path");
+  itemSvg.setAttribute("d", initialPath);
+
+  gsap.to(itemSvg, {
+    attr: {
+      d: targetPath
+    },
+    scrollTrigger: {
+      trigger: itemSvg,
+      start: "0% top ",
+      end: "+=10%",
+      ease: "linear",
+      scrub: 1,
+      markers: true,
+    },
+    y: 50,
+  });
+});
+svgWraps2.forEach((svgWrap) => {
   let itemSvg = svgWrap.querySelector("svg path");
   itemSvg.setAttribute("d", initialPath);
 
