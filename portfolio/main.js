@@ -178,7 +178,7 @@ svgWraps.forEach((svgWrap) => {
       end: "+=10%",
       ease: "linear",
       scrub: 1,
-      markers: true,
+      // markers: true,
     },
     y: 50,
   });
@@ -189,7 +189,10 @@ LottieScrollTrigger({
   target: "#animationWindow",
   path:"./camera.json" ,
   speed: "medium",
+  start: "top top",
+  end: "100%",
   scrub: 1,
+  markers: true,
 });
 
 
