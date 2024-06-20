@@ -17,8 +17,8 @@ svgWraps.forEach((svgWrap)=>{
         attr:{d:targetPath},
         scrollTrigger: {
             trigger: svgWrap,
-            start: "top 70%",
-            end: "+=20%",
+            start: "70% center ",
+            end: "+=50%",
             ease: "linear",
             scrub: 1,
             markers: true,
