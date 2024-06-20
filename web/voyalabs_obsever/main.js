@@ -4,3 +4,6 @@ let observer=new IntersectionObserver(function(entry){
         console.log("타이틀이보인다")
     }    
 },options)
+
+let title=document.querySelector(".title")
+title.observer.observe;
