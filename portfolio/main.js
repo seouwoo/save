@@ -157,9 +157,9 @@ splitTypes1.forEach(function (char, i) {
 
 
 
-let  targetPath=
+let   initialPath=
   "M8.36287e-06 0.000148502L998.5 6.121e-05L1000.5 602.501C1000.5 602.501 860.5 472 477.5 472C94.5 472 6.09914e-05 602.001 6.09914e-05 602.001L8.36287e-06 0.000148502Z";
-let initialPath =
+let targetPath =
   "M-2.08408e-06 0.000117984L998.5 3.06924e-05L1000.5 602.501C1000.5 602.501 860.5 722 477.5 722C94.5001 722 5.05445e-05 602.001 5.05445e-05 602.001L-2.08408e-06 0.000117984Z";
 
 let svgWraps = document.querySelectorAll(".svg-container");
@@ -173,8 +173,8 @@ svgWraps.forEach((svgWrap) => {
       d: targetPath
     },
     scrollTrigger: {
-      trigger: svgWrap,
-      start: "70% center ",
+      trigger: ".wave1",
+      start: "0% center ",
       end: "+=10%",
       ease: "linear",
       scrub: 1,

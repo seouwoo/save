@@ -1199,6 +1199,7 @@ padding: 1%; padding-top: 2%;
   position: relative;
 }
 .wave1 {
+  z-index: 1;
   height: 100vh;
   position: relative;
   background-color: #000;
