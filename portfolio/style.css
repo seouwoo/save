@@ -1194,7 +1194,14 @@ padding: 1%; padding-top: 2%;
   position: relative;
 }
 
-.svg-container {
+.svg-container1 {
+  z-index: 1;
+  position: absolute;
+  top: -15vh;
+  right: 0;
+  left: 0;
+}
+.svg-container2 {
   z-index: 1;
   position: absolute;
   top: -35vh;
