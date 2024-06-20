@@ -2,7 +2,7 @@
 .section{height: 100vh;}
 .flex{display: flex;flex-direction: column;}
 .jcS{justify-content: flex-start}
-.jcE{justify-content: flex-end}
+.jcE{justify-content: flex-end;align-items: flex-end;}
 
 
 p{width: 200px;height: 100px;background-color: beige;
