@@ -219,19 +219,18 @@ let pointer = {
 
 function init() {
     setWinDimensions();
-    
-    gsap.set(containers, { autoAlpha: 1 });
 
+    gsap.set(containers, { autoAlpha: 1 });
+    gsap.timeline({
+        scrollTrigger: {init,
+          trigger: ".website-content3",
+          stert: 'top 60%',
+          end: 'top top',
+          scrub: 2,
+          markers: true,
+        },
+      })
     gsap.timeline({ delay: 0.5 })
-        .timeline({
-          scrollTrigger: {
-            trigger:init,
-            start: "center center ",
-            end: "bottom top",
-            pin: true,
-            scrub: true,
-          },
-        })
         .from(".hi__location--lat", {
             x: 100,
             autoAlpha: 0,
@@ -327,7 +326,7 @@ window.addEventListener("touchstart", function (event) {
     followPointer(pointer.x, pointer.y);
 });
 
-init();
+
 
 
 window.onresize = setWinDimensions;
