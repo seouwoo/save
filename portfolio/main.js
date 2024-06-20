@@ -180,7 +180,7 @@ svgWraps.forEach((svgWrap) => {
       scrub: 1,
       markers: true,
     },
-    y: 100,
+    y: 50,
   });
 });
 
