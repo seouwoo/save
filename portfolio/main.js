@@ -233,9 +233,7 @@ function init() {
         trigger: ".website-content3",
         start: 'top center',
         end: '30% top',
-
         scrub: 1,
-        markers: true,
       },
       delay: 2,
     })
@@ -356,7 +354,7 @@ const word = item.querySelector(".menu--word");
 Calculate
 --------------------*/
 const calculate = () => {
-  console.log("cloned", cloned);
+  // console.log("cloned", cloned);
   cloned.forEach((i) => {
     i.parentNode.removeChild(i);
   });
