@@ -98,6 +98,7 @@
     transparent 45%,
     currentColor 45% 55%,
     transparent 55%
+    
   );
   content: "";
 }
