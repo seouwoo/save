@@ -13,5 +13,15 @@ let observer = new IntersectionObserver(function (entrys) {
 })
 
 let title = document.querySelector(".title");
-//관찰대상 등록
-observer.observe(title);
+
+
+let pEle = document.querySelectorAll("p");
+let h4Ele = document.querySelectorAll("h4");
+let aEle = document.querySelectorAll("a");
+//관찰대상 등록//하나일때
+// observer.observe(title);
+
+//관찰대상 등록 (다수)
+pEle.forEach((item)=>observer.observe(item))
+h4Ele.forEach((item)=>observer.observe(item))
+aEle.forEach((item)=>observer.observe(item))
