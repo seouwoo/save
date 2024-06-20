@@ -187,17 +187,11 @@ svgWraps.forEach((svgWrap) => {
 
 LottieScrollTrigger({
   target: "#animationWindow",
-  path:"./Panasonic2.lottie.json" ,
+  path:"./camera.json" ,
   speed: "medium",
   scrub: 2,
 });
 
-LottieScrollTrigger({
-  target: "#animationWindow2",
-  path:"./Animation.json" ,
-  speed: "medium",
-  scrub: 2,
-});
 
 function LottieScrollTrigger(vars) {
   let playhead = {
