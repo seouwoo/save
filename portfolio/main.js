@@ -174,7 +174,7 @@ svgWraps.forEach((svgWrap) => {
     },
     scrollTrigger: {
       trigger: itemSvg,
-      start: "70% top ",
+      start: "0% top ",
       end: "+=10%",
       ease: "linear",
       scrub: 1,
