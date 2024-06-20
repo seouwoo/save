@@ -221,16 +221,15 @@ function init() {
     setWinDimensions();
 
     gsap.set(containers, { autoAlpha: 1 });
-    gsap.timeline({
-        scrollTrigger: {init,
-          trigger: ".website-content3",
-          stert: 'top 60%',
-          end: 'top top',
-          scrub: 2,
-          markers: true,
-        },
-      })
-    gsap.timeline({ delay: 0.5 })
+    gsap.timeline({ delay: 0.5,
+      scrollTrigger: {
+        trigger: ".website-content3",
+        stert: '50% center',
+        end: 'bottom top',
+        scrub: 1,
+        markers: true,
+      },
+     })
         .from(".hi__location--lat", {
             x: 100,
             autoAlpha: 0,
@@ -280,7 +279,7 @@ function init() {
             ease: "sine.inOut"
         }
     );
-}
+}init();
 
 function setWinDimensions() {
     winW = window.innerWidth;
