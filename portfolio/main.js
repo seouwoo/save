@@ -78,7 +78,7 @@ document.addEventListener("mousemove", logKey);
  let ySet=gsap.quickSetter(ball,"y","px");
 
  window.addEventListener("mousemove",function(e){
-    // console.log(e)
+    console.log(e)
     mouse.x=e.x;
     mouse.y=e.y;
 
@@ -605,20 +605,20 @@ const animate = () => {
 animate();
 
 ////////
-let content5 = document.querySelector(".website-content5");
-content5.forEach(function (content) {
+let conScales = document.querySelectorAll(".website-content5");
+conScales.forEach(function (conScale) {
   gsap.fromTo(
-    content, {
-      y: 100,
+    conScale, {
+      x: 0,
       scale: 1,
     }, {
       scrollTrigger: {
-        trigger: content,
+        trigger: conScale,
         stert: "top 80%",
         end: "top 20%",
         scrub: 2,
       },
-      y: 0,
+      x: -1000,
       duration: 1,
       rotation: 0,
       ease: "power3.out",
