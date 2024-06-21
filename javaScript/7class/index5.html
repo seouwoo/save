@@ -7,7 +7,21 @@
 </head>
 <body>
     <script>
-   
+        class IdolModel{
+            constructor(name,year){
+                this.name=name;
+                this.year=year;
+            }
+
+            returnGroupName(){
+                return "아이유";
+            }
+        }
+
+        const YuJin=new IdolModel("안유진",2003);
+        console.log(YuJin)
+        // console.log(YuJin.returnGroupName())//아이유
+        console.log(IdolModel.returnGroupName())
     </script>
 </body>
 </html>
