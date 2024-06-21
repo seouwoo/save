@@ -789,8 +789,8 @@ nav {
 /* section2 */
 .website-content2{
   position: relative;
-  
-background-color: #000;
+  height: 100vh;
+  /* background-color: #000; */
 }
 .website-content2 .text_wrap{
   bottom: -1vh;
@@ -1203,7 +1203,7 @@ padding: 1%; padding-top: 2%;
 .svg-container2 {
   z-index: 1;
   position: absolute;
-  top: -10vh;
+  /* top: -10vh; */
   right: 0;
   left: 0;
 }
@@ -1214,12 +1214,15 @@ padding: 1%; padding-top: 2%;
   position: relative;
 }
 .wave1 {
-  height: 110vh;
+  height: 100vh;
   position: relative;
   background-color: #000;
 }
 #Vector{
   z-index: 2;
+}
+#Vector2{
+  z-index: 0;
 }
 .wave2{
   height: 18vh;
