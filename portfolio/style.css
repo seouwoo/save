@@ -783,7 +783,6 @@ nav {
   position: relative;
   box-sizing: border-box;
   height: 100vh;
-  background-color: #fff;
   
 }
 /* section2 */
@@ -799,8 +798,9 @@ nav {
 }
 
 #animationWindow { 
+  z-index: 1;
   position: absolute;
-  /* height: 100vh; */
+  height: 100vh;
   width: 100vw;
   left: 0;
   top: 0;

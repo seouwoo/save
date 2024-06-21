@@ -68,7 +68,8 @@ let stickys = document.querySelectorAll(".container .sticky");
 
 stickys.forEach(function (sticky) {
   gsap.to(sticky, {
-    
+    ease: "power3.out",
+    duration: 5,
     
     scrollTrigger: {
       trigger: sticky,
@@ -79,8 +80,7 @@ stickys.forEach(function (sticky) {
       scrub: 1,
       opacity: 1,
       markers: true,
-    },ease: "power3.out",
-    duration: 2,
+    },
     // filter:" grayscale(1)",
     opacity: 0,
 
