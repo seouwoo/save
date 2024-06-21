@@ -18,7 +18,7 @@ gsap.ticker.lagSmoothing(0);
 let container = document.querySelector("#progress");
 
 let imgLoaded = 0;
-let imgTotal = 10;
+let imgTotal = 1;
 let current = 0;
 let progressTimer;
 let topValue;
