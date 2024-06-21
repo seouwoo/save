@@ -209,7 +209,7 @@ LottieScrollTrigger({
   path:"./camera.json" ,
   speed: "medium",
   start: "top top",
-  end: "100%",
+  end: "50%",
   scrub: 1,
   markers: true,
 });
@@ -264,6 +264,10 @@ function LottieScrollTrigger(vars) {
   });
   return animation;
 }
+
+
+
+
 //텍스트의 사라지는 방향 애니
 
 gsap.to("[data-direct]", {
