@@ -42,9 +42,15 @@
         }
     }
     class FemalePerson extends Person{
-        constructor (){
-            
+        constructor (name,year,part){
+            super(name,year);//그대로 받겠다
+            this.part=part;
+        }
+        sayName(){
+            return `${super.sayName()}-${this.part} 담당`
         }
     }
+
+    const hong=new FemalePerson("신사임당",2003)
     </script>
 </body>
