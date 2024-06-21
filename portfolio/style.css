@@ -207,7 +207,17 @@
     transform: rotateY(1turn);
   }
 }
-
+.ball {
+  width: 70px;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  backdrop-filter: invert(1) grayscale(1);
+  z-index: 99999;
+}
 html {
   font-size: calc(0.8126951092611863rem + 0.20811654526534862vw);
 }
@@ -1037,7 +1047,6 @@ nav {
 .clock{position: absolute;
   width: 300px;
   padding: 20px 0;
-  left: 50%;
   top: 80vh;
   text-align: center;}
 .clock .time_box{}
