@@ -230,7 +230,7 @@
   position: absolute;
 }
 .it-cursor-move {
-  opacity: .2;
+  /* opacity: .2; */
   color: #fff;
   mix-blend-mode: difference;
   height: 16px;
@@ -242,7 +242,7 @@
   display: inline-block;
 }
 .it-cursor-move {
-  opacity: .2;
+  /* opacity: .2; */
   color: #fff;
   mix-blend-mode: difference;
   height: 16px;
@@ -254,8 +254,8 @@
   display: inline-block;
 }
 .ball {
-  width: 10px;
-  height: 10px;
+  width: 30px;
+  height: 30px;
   position: fixed;
   top: 0;
   left: 0;
