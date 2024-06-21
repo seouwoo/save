@@ -49,7 +49,7 @@ modal.addEventListener('click',()=>{
 
 
 toggle.addEventListener("click",()=>{
-    toggle.classList.toggle('gird-view-on');
+    toggle.classList.toggle('grid-view-on');
     let state=Flip.getState(".grid-wrapper, .item-wrapper")//F
     wrapper.classList.toggle("stack")//L
 
