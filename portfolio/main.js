@@ -193,11 +193,10 @@ svgWraps2.forEach((svgWrap) => {
     },
     scrollTrigger: {
       trigger: itemSvg,
-      start: "0% top ",
-      end: "+=10%",
+      start: "-=10%",
+      end: "0% top ",
       ease: "linear",
       scrub: 1,
-      markers: true,
     },
     // y: -50,
   });
@@ -217,8 +216,7 @@ backColor.forEach(function(item,index){
     ScrollTrigger.create({
         trigger:item,
         start:"top 0%",
-        end:"bottom 5%",
-        duration:1,
+        end:"top 0%",
         markers: true,
         onEnter:function(){
             gsap.to(".sec",{
