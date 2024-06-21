@@ -47,10 +47,14 @@
             this.part=part;
         }
         sayName(){
-            return `${super.sayName()}-${this.part} 담당`
+            return `${super.sayName()}- ${this.part} 담당`
         }
     }
 
-    const hong=new FemalePerson("신사임당",2003)
+    const sin=new FemalePerson("신사임당",2003,"그림")
+
+    console.log(sin.sayName())
+    const sim=new Person("심청이",2003)
+    console.log(sim.sayName())
     </script>
 </body>
