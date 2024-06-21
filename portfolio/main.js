@@ -401,11 +401,8 @@ function init() {
 }
 init();
 
-//setInterval(함수,시간-3초)//3초마다 함수가 실행
-setInterval(()=>{},1000)//1초마다 할 일
 
-
-setInterval(()=>{//날짜 뽑아오기
+setInterval(()=>{//날짜
     let today=new Date();
     let dayList=['sunday','monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 

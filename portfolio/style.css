@@ -1029,7 +1029,7 @@ nav {
 .clock{position: absolute;
   width: 300px;
   padding: 20px 0;
-  left: 50vh;
+  left: 50%;
   top: 80vh;
   text-align: center;}
 .clock .time_box{}
