@@ -330,11 +330,12 @@ nav {
   font-family: Freesentation,sans-serif;
   font-size: 8vw;
   font-weight: 400;
-  color: #ccc;
+  color: #fff;
   line-height: 100%;
 }
 .wave1 .header h1 {
   font-family: InkLipquid;
+  color: #000;
 }
 .tracker {
   position: absolute;
@@ -792,12 +793,13 @@ nav {
   /* background-color: #000; */
 }
 .website-content2 .text_wrap{
-  margin-top: 20vh;
+  margin-top: 70vh;
   z-index: 1;
   color: #fff;
 }
 
 #animationWindow { 
+  top: 0;
   z-index: 1;
   position: absolute;
   height: 100vh;
@@ -1134,6 +1136,7 @@ padding: 1%; padding-top: 2%;
 
 /* 텍스트 */
 .text-black {
+  height: 0px;
   position: relative;
   display: flex;
   flex-direction: column;
