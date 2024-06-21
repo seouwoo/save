@@ -71,8 +71,9 @@ stickys.forEach(function (sticky) {
     scrollTrigger: {
       trigger: sticky,
       pin: true,
+      duration: 2,
       start: "top top",
-      end: "+=100%",
+      end: "+=30%",
       scrub: 1,
       opacity: 1,
     },
