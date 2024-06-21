@@ -789,7 +789,7 @@ nav {
 /* section2 */
 .website-content2{
   position: relative;
-  height: 100vh;
+  height: 150vh;
   /* background-color: #000; */
 }
 .website-content2 .text_wrap{
@@ -1147,11 +1147,11 @@ padding: 1%; padding-top: 2%;
 
 .heading-large {
   text-transform: uppercase;
-  padding-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  /* padding-top: 1.5rem; */
+  /* margin-bottom: 1.5rem; */
   font-family: InkLipquid, sans-serif;
   font-size: 3rem;
-  font-weight: 700;
+  /* font-weight: 700; */
   /* line-height: 0.8; */
   overflow: hidden;
   text-align: center;
@@ -1160,6 +1160,7 @@ padding: 1%; padding-top: 2%;
 .div-hide {
   position: relative;
   overflow: hidden;
+  top:20vh;
 }
 
 .div-hide.two {
