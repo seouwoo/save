@@ -250,6 +250,7 @@
   width: 100vw;
   height: 1px;
   position: absolute;
+  transform: translateX(-50%);
 }
 .it-cursor-move {
   /* opacity: .2; */
