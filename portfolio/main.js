@@ -53,6 +53,16 @@ function updateProgress() {
   progressTimer = requestAnimationFrame(updateProgress);
 }
 updateProgress();
+
+let screenLog = document.querySelector("#screen-log");
+document.addEventListener("mousemove", logKey);
+
+function logKey(e) {
+  screenLog.innerText = `
+    (${e.clientX}, ${e.clientY})
+	`;
+}
+
 //////
  //Mouse cursor
  gsap.set(".ball",{xPercent:-50, yPercent:-50})
