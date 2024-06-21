@@ -72,19 +72,19 @@ button .grid .dot-icon {
   margin: calc(50% - 2.5px) -0.5px 0;
 }
 button .grid {
-  transform: translatex(90%);
+  transform: translateX(90%);
 }
 button .grid .dot-icon:first-child {
-  transform: translatey(-60%) translatex(60%);
+  transform: translateY(-60%) translateX(60%);
 }
 button .grid .dot-icon:nth-child(2) {
-  transform: translatey(60%) translatex(-20%);
+  transform: translateY(60%) translateX(-20%);
 }
 button .grid .dot-icon:nth-child(3) {
-  transform: translatey(60%) translatex(20%);
+  transform: translateY(60%) translateX(20%);
 }
 button .grid .dot-icon:last-child {
-  transform: translatey(-60%) translatex(-60%);
+  transform: translateY(-60%) translateX(-60%);
 }
 button .button-icons {
   width: 100%;
@@ -95,19 +95,19 @@ button .button-icons {
   z-index: 1;
 }
 button.grid-view-on .radio {
-  transform: translatex(90%);
+  transform: translateX(90%);
 }
 button.grid-view-on .radio .dot:first-child {
-  transform: translatey(-60%) translatex(60%);
+  transform: translateY(-60%) translateX(60%);
 }
 button.grid-view-on .radio .dot:nth-child(2) {
-  transform: translatey(-60%) translatex(100%);
+  transform: translateY(-60%) translateX(100%);
 }
 button.grid-view-on .radio .dot:nth-child(3) {
-  transform: translatey(60%) translatex(-100%);
+  transform: translateY(60%) translateX(-100%);
 }
 button.grid-view-on .radio .dot:last-child {
-  transform: translatey(60%) translatex(-60%);
+  transform: translateY(60%) translateX(-60%);
 }
 
 .grid-wrapper {

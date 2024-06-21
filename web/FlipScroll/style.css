@@ -1,0 +1,166 @@
+@charset "UTF-8";
+
+*,
+*::after,
+*::before {
+   box-sizing: border-box;
+}
+
+:root {
+   font-size: 18px;
+   --color-text: #fff;
+   --color-bg: #131417;
+   --color-link: #aaa;
+   --color-link-hover: #fff;
+   --color-label: #adadad;
+   --color-text-alt: #575757;
+   --color-caption: #fff;
+}
+
+body {
+   margin: 0;
+   color: var(--color-text);
+   background-color: var(--color-bg);
+   font-family: "tenon",-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+   font-weight: 400;    
+}
+
+a {
+   text-decoration: none;
+   color: var(--color-link);
+   outline: none;
+   cursor: pointer;
+}
+
+a:hover {
+   color: var(--color-link-hover);
+   outline: none;
+}
+.frame {
+    display: flex;
+    gap: 40px;
+    position: relative;
+    padding: 1rem;
+    /* pointer-events: none; */
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+.frame a:not(.frame__title-back) {
+   white-space: nowrap;
+   overflow: hidden;
+   position: relative;
+}
+
+.frame a:not(.frame__title-back)::before {
+   content: '';
+   height: 1px;
+   width: 100%;
+   background: currentColor;
+   position: absolute;
+   top: 90%;
+   transition: transform 0.3s;
+   transform-origin: 0% 50%;
+}
+
+.frame a:not(.frame__title-back):hover::before {
+   transform: scaleX(0);
+   transform-origin: 100% 50%;
+}
+
+.frame__title {
+   grid-area: title;
+   display: flex;
+}
+
+.frame__title-main {
+   font-size: inherit;
+   margin: 0;
+   font-weight: inherit;
+}
+.frame__title-back span {
+    display: none;
+}
+.frame__title-back svg {
+   fill: currentColor;
+}
+.project {
+   padding: 1rem;
+   max-width: 1000px;
+   margin: 20vh auto;
+   display: grid;
+   grid-column-gap: 7vw;
+   grid-row-gap: 0.5rem;
+}
+.project--intro {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+        'label-name name'
+        'label-date date'
+        'title title'
+        'label-mission mission';
+}
+
+.project p {
+   line-height: 1.4;
+   margin: 0;
+   color: var(--color-text-alt);
+}
+.project__label {
+   color: var(--color-label);
+}
+
+.project__label--name {
+   grid-area: label-name;
+}
+.project__label--mission {
+   grid-area: label-mission;
+}
+.project__name {
+   grid-area: name;
+}
+
+.project__date {
+   grid-area: date;
+}
+
+.project__mission {
+   grid-area: mission;
+   line-height: 1.4;
+}
+
+.project__mission p {
+   color: var(--color-text-alt);
+}
+
+.frame__title {
+   grid-area: title;
+   display: flex;
+}
+
+.frame__title-main {
+   font-size: inherit;
+   margin: 0;
+   font-weight: inherit;
+}
+
+.frame__title-back {
+   position: relative;
+   display: flex;
+   align-items: flex-end;
+}
+
+.frame__title-back span {
+   display: none;
+}
+
+.frame__title-back svg {
+   fill: currentColor;
+}
+
+.frame__prev {
+   grid-area: prev;
+}
+
+
+
+
