@@ -789,11 +789,11 @@ nav {
 /* section2 */
 .website-content2{
   position: relative;
-  height: 150vh;
+  height: 100vh;
   /* background-color: #000; */
 }
 .website-content2 .text_wrap{
-  bottom: -1vh;
+  margin-top: 20vh;
   z-index: 1;
   color: #fff;
 }
