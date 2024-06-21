@@ -18,7 +18,7 @@ gsap.ticker.lagSmoothing(0);
 let container = document.querySelector("#progress");
 
 let imgLoaded = 0;
-let imgTotal = 300;
+let imgTotal = 10;
 let current = 0;
 let progressTimer;
 let topValue;
@@ -605,11 +605,12 @@ const animate = () => {
 animate();
 
 ////////
-let conScales = document.querySelectorAll(".website-content5");
+let conScales = document.querySelectorAll(".con-scale");
 conScales.forEach(function (conScale) {
   gsap.fromTo(
     conScale, {
       x: 0,
+      y:0,
       scale: 1,
     }, {
       scrollTrigger: {
@@ -618,7 +619,8 @@ conScales.forEach(function (conScale) {
         end: "top 20%",
         scrub: 2,
       },
-      x: -1000,
+      x: -100,
+      y:0,
       duration: 1,
       rotation: 0,
       ease: "power3.out",
