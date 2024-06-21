@@ -15,5 +15,15 @@ $breakpoints-next:(xs: sm,
 
 
 @mixin mq-breakpoint-up($bp){
-    $min:map-get($map: $breakpoints,$bp )
+    $min-value:map-get($breakpoints,$bp);
+    @if ($bp == xs){
+        //모든구간
+        @content;
+    }
+    @else{
+        @media (min-width:$min-value){
+            @content;
+        }
+    }
+    
 }
