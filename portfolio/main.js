@@ -217,7 +217,7 @@ backColor.forEach(function(item,index){
         trigger:item,
         start:"top 0%",
         end:"top 0%",
-        duration:-1,
+        duration:0.2,
         markers: true,
         onEnter:function(){
             gsap.to(".sec",{
