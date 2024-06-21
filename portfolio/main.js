@@ -203,6 +203,38 @@ svgWraps2.forEach((svgWrap) => {
   });
 });
 
+let backColor=document.querySelectorAll("[data-bgcolor]")
+//console.log(backColor)
+// backColor.forEach(function(one,two,three){
+//     one  --> backColor배열안의 요소들이 차례로 들어옴
+//     two  --> one의 변수안에 할당된 아이템의 index번호
+//     three -->backColor 원배열 자체
+// })
+
+
+backColor.forEach(function(item,index){
+    let prevBg=index == 0 ?"":backColor[index - 1].dataset.bgcolor
+    ScrollTrigger.create({
+        trigger:item,
+        start:"top 50%",
+        end:"bottom 5%",
+        duration:1,
+        markers: true,
+        onEnter:function(){
+            gsap.to("#contents",{
+                backgroundColor:item.dataset.bgcolor
+            })
+        },
+        onLeaveBack:function(){
+            gsap.to("#contents",{
+                backgroundColor:prevBg
+            })
+        }
+    })
+})
+
+//////////////////
+
 
 LottieScrollTrigger({
   target: "#animationWindow",
