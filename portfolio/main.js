@@ -76,12 +76,10 @@ gsap.ticker.add(function(){
     let dt=1.0 - Math.pow((1.0 - cursorspeed),gsap.ticker.deltaRatio())
     pos.x +=(mouse.x - pos.x)* dt;
     pos.y +=(mouse.y - pos.y)* dt;
-    (pos.x)
+    xSet(pos.x)
     ySet(pos.y)
 })
-let window.while (xSet) {
-  
-}
+
 ///////////////////////////////////
 //돌아가는거
 gsap.to(".badge", {
