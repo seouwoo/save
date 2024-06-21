@@ -53,7 +53,33 @@ function updateProgress() {
   progressTimer = requestAnimationFrame(updateProgress);
 }
 updateProgress();
+//////
+ //Mouse cursor
+ gsap.set(".ball",{xPercent:-50, yPercent:-50})
+ let ball=document.querySelector(".ball");
+ let pos={x:window.innerWidth/2,
+        y:window.innerHeight/2}
+ let mouse={x:pos.x,y:pos.y};
+ let cursorspeed=0.08;
+ 
+ let xSet=gsap.quickSetter(ball,"x","px");
+ let ySet=gsap.quickSetter(ball,"y","px");
 
+ window.addEventListener("mousemove",function(e){
+    console.log(e)
+    mouse.x=e.x;
+    mouse.y=e.y;
+
+ })
+
+gsap.ticker.add(function(){
+    let dt=1.0 - Math.pow((1.0 - cursorspeed),gsap.ticker.deltaRatio())
+    pos.x +=(mouse.x - pos.x)* dt;
+    pos.y +=(mouse.y - pos.y)* dt;
+    xSet(pos.x)
+    ySet(pos.y)
+})
+console.log(e.x)
 ///////////////////////////////////
 //돌아가는거
 gsap.to(".badge", {
