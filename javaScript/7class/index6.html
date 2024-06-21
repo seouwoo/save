@@ -20,8 +20,31 @@
             return "춤을추다"
         }
     }
+    class maleIdolMedel extends IdolModel{
+        sing(){
+            return "노래하다"
+        }
+    }
     const YuJin=new FemaleIdolMedel("안유진",2003)
-    
     console.log(YuJin)
+    const jimin=new FemaleIdolMedel("지민",2003)
+    console.log(jimin)
+
+
+
+    class Person{
+        constructor (name,year){
+            this.name=name;
+            this.year=year;
+        } 
+        sayName(){
+            return `안녕하세요 ${this.name} 입니다.`
+        }
+    }
+    class FemalePerson extends Person{
+        constructor (){
+            
+        }
+    }
     </script>
 </body>
