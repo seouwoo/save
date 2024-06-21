@@ -208,7 +208,7 @@
   }
 }
 .cursor{
-  
+
 }
 .it-cursor-wrapper {
   z-index: 100;
@@ -1308,3 +1308,46 @@ padding: 1%; padding-top: 2%;
   background-color: #000;
 }
 
+.website-content{
+  position: relative;
+  padding: 20px;box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1c1c1c;
+}
+
+.section-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+.section-header h1 {
+  font-family: Humane Bold, sans-serif;
+  font-size: 10vw;
+  font-weight: 400;
+  color: #fff;
+  line-height: 100%;
+  text-transform: uppercase;
+
+
+}
+
+
+.section-header p {
+  color: #fff;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: right;
+  width: 25%;
+
+}
+
+
+.section-images{
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
