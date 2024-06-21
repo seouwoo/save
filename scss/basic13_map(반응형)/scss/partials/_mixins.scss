@@ -17,7 +17,7 @@ $breakpoints-next:(xs: sm,
 @mixin mq-breakpoint-up($bp){
     $min-value:map-get($breakpoints,$bp);
     @if ($bp == xs){
-        //모든구간
+        //^모든구간
         @content;
     }
     @else{
