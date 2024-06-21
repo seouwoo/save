@@ -68,18 +68,20 @@ let stickys = document.querySelectorAll(".container .sticky");
 
 stickys.forEach(function (sticky) {
   gsap.to(sticky, {
+    
+    
     scrollTrigger: {
       trigger: sticky,
       pin: true,
       duration: 2,
-      start: "top top",
+      start: "50% 50%",
       end: "+=30%",
       scrub: 1,
       opacity: 1,
-    },
-    // filter:" grayscale(1)",
-    ease: "power3.out",
+      markers: true,
+    },ease: "power3.out",
     duration: 2,
+    // filter:" grayscale(1)",
     opacity: 0,
 
   });
