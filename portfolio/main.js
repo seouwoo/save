@@ -221,12 +221,12 @@ backColor.forEach(function(item,index){
         duration:1,
         markers: true,
         onEnter:function(){
-            gsap.to("#contents",{
+            gsap.to(".sec",{
                 backgroundColor:item.dataset.bgcolor
             })
         },
         onLeaveBack:function(){
-            gsap.to("#contents",{
+            gsap.to(".sec",{
                 backgroundColor:prevBg
             })
         }

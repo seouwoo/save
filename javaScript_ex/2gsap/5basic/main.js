@@ -27,8 +27,8 @@ backColor.forEach(function(item,index){
     let prevBg=index == 0 ?"":backColor[index - 1].dataset.bgcolor
     ScrollTrigger.create({
         trigger:item,
-        start:"top 50%",
-        end:"bottom 5%",
+        start:"50% top",
+        end:"100% 5%",
         duration:1,
         onEnter:function(){
             gsap.to("#contents",{
