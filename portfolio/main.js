@@ -216,7 +216,7 @@ backColor.forEach(function(item,index){
     let prevBg=index == 0 ?"":backColor[index - 1].dataset.bgcolor
     ScrollTrigger.create({
         trigger:item,
-        start:"top 50%",
+        start:"top 0%",
         end:"bottom 5%",
         duration:1,
         markers: true,

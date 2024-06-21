@@ -28,7 +28,7 @@ backColor.forEach(function(item,index){
     ScrollTrigger.create({
         trigger:item,
         start:"50% top",
-        end:"100% 5%",
+        end:"100% 0%",
         duration:1,
         onEnter:function(){
             gsap.to("#contents",{
