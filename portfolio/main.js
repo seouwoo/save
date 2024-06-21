@@ -61,9 +61,7 @@ document.addEventListener("mousemove", logKey);
 //////
  //Mouse cursor
  function logKey(e) {
-  screenLog.innerText = `
-    (${e.clientX}, ${e.clientY})
-	`;
+  screenLog.innerText = `(${e.clientX},${e.clientY})`;
 }
 
 
