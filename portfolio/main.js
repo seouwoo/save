@@ -236,7 +236,7 @@ backColor.forEach(function(item,index){
 
 
 LottieScrollTrigger({
-  target: "#animationWindow",
+  target: ".website-content2",
   path:"./camera.json" ,
   speed: "medium",
   start: "top top",
