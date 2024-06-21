@@ -948,15 +948,6 @@ nav {
   transform: rotate(90deg) translateX(-10px);
 }
 
-.gsap-3-logo {
-  width: 20vw;
-  max-width: 150px;
-  position: fixed;
-  bottom: 15px;
-  right: 15px;
-}
-
-
 .collection {
   position: fixed;
   z-index: 1000;
@@ -1032,6 +1023,18 @@ nav {
 .flow-lg {
   margin-top: 6.5rem;
 }
+
+.clock{position: absolute;
+  width: 300px;
+  padding: 20px 0;
+  left: 100px;top: 100px;
+  text-align: center;}
+.clock .time_box{}
+.clock .time_box .txt_lg{font-size: 50px;width: 62px;display: inline-block;}
+.clock .time_box .txt_sm{font-size: 30px;width: 35px;display: inline-block;}
+.clock .date_box{font-size: 15px;}
+.clock .date_box span{}
+.clock .date_box .day{display: block;}
 /* section4 */
 .website-content4{
   position: relative;
