@@ -79,8 +79,8 @@ document.addEventListener("mousemove", logKey);
 
  window.addEventListener("mousemove",function(e){
     console.log(e)
-    mouse.x=e.x;
-    mouse.y=e.y;
+    mouse.x=e.x
+    mouse.y=e.y
 
  })
 

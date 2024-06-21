@@ -220,6 +220,7 @@
   pointer-events: none;
   backdrop-filter: invert(1) grayscale(1);
   z-index: 1001;
+  transform: translate(-50%,-50%);
 
 }
 .it-cursor-wrapper {
@@ -240,14 +241,15 @@
   opacity: .15;
   background-color: #fff;
   width: 1px;
-  height: 100vh;
+  height: 300vh;
   position: absolute;
+  transform: translateY(-50%);
 }
 .it-cursor-horizontal {
   z-index: 100;
   opacity: .15;
   background-color: #fff;
-  width: 100vw;
+  width: 300vw;
   height: 1px;
   position: absolute;
   transform: translateX(-50%);
