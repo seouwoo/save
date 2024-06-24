@@ -5,13 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_1.css">
+    <link rel="stylesheet" href="popup.css">
 </head>
 
-
-
 <body>
-    <!-- preload -->
     <div class="progress" id="progress">
         <div class="preloader">
             <div class="preloader__ring">
@@ -79,8 +77,8 @@
                 <div class="preloader__sector"></div>
             </div>
         </div>
-    </div>
-    <!-- preload end -->
+    </div><!-- progress -->
+
     <section class="cursor">
         <div class="ball">
             <div class="it-cursor-vertical"></div>
@@ -88,7 +86,7 @@
             <div id="screen-log" class="it-cursor-move"><br> (1217,246)<br> </div>
             <div id="screen-log" class="it-cursor-move"></div>
         </div><!-- 커서 -->
-    </section>
+    </section><!-- cursor -->
 
     <header>
         <nav>
@@ -96,13 +94,20 @@
                 <a href="#">portfolio</a>
             </div>
             <div class="links">
-                <a href="#">Intro</a>
-                <a href="#">portfolio</a>
-                <a href="#">Contact</a>
+                <a href="#">
+                    <div>Intro</div>
+                </a>
+                <a href="#">
+                    <div>portfolio</div>
+                </a>
+                <a href="#">
+                    <div>Contact</div>
+                </a>
             </div>
 
         </nav>
-    </header>
+    </header><!-- header -->
+
     <div class="container">
         <section class="sticky">
             <div class="video-parent">
@@ -129,7 +134,8 @@
             </div>
         </section>
 
-    </div>
+    </div><!-- container1 -->
+
     <div class="sec wave1" data-bgcolor="#fff">
         <div class="svg-container1">
 
@@ -143,11 +149,10 @@
 
         </div>
         <div class="header">
-            <h1 class="logo-large ">ABOUT ME</h1>
+            <h1 class="logo-large ">ABOUT ME!!</h1>
         </div>
 
-    </div>
-    </div>
+    </div><!-- wave1 -->
     <div class="wave2">
         <div class="svg-container2">
 
@@ -158,8 +163,7 @@
             </svg>
 
         </div>
-    </div>
-
+    </div><!-- wave2 -->
 
     <section class="website-content2">
 
@@ -184,22 +188,20 @@
                 </div>
             </div>
             <div id="animationWindow">
-
             </div>
-
-
         </div>
 
 
 
 
 
-    </section>
+    </section><!-- content2 -->
+
     <section class="website-content3">
         <div class="container1">
             <div class="hi">
-                <div class="hi__cuboid">
-                    <div class="face face--front">
+                <div class="hi__cuboid popupOpen_hobby">
+                    <div class="face face--front popupOpen_hobby">
                         <p class="hi__word">hobby</p>
                     </div>
                     <div class="face face--back">
@@ -212,7 +214,7 @@
                         <p class="hi__word">MY</p>
                     </div>
                 </div>
-                <div class="hi__cuboid">
+                <div class="hi__cuboid popupOpen_skill">
                     <div class="face face--front">
                         <p class="hi__word">skill</p>
                     </div>
@@ -226,7 +228,7 @@
                         <p class="hi__word">MY</p>
                     </div>
                 </div>
-                <div class="hi__cuboid">
+                <div class="hi__cuboid popupOpen_personality">
                     <div class="face face--front">
                         <p class="hi__word">personality</p>
                     </div>
@@ -248,6 +250,9 @@
                 <p class="hi__location hi__location--long">Gyeonggnam</p>
             </div>
         </div>
+        <div class="click">
+            <p>Click Box!!</p>
+        </div>
         <div class="clock">
             <div class="time_box">
                 <span class="txt_lg" id="hours">15</span>
@@ -265,110 +270,126 @@
                 <sapn id="day" class="day">monday</sapn>
             </div>
         </div>
-    </section>
-    <section class="website-content4">
+        <div class="photo">
+            <div class="pic">
+                <img src="./photo.png" alt="">
+                <img src="./star1.svg" alt="#" class="star1">
+                <img src="./star2.svg" alt="#" class="star2">
+            </div>
 
-        <div class="review_wrap">
-            <div class="review_title">hobby</div>
-            <div class="menu">
-                <!-- 취미 팝업제작! -->
-                <div class="menu--item">
-                    <div class="menu--word">
-                        <a href="#"> - 사진&nbsp;</a>
-                        <a href="#"> - 프라모델&nbsp;</a>
-                        <a href="#"> - 드라이브&nbsp;</a>
-                        <a href="#"> - 3D프린팅&nbsp;</a>
+        </div>
+    </section><!-- content3 -->
+    <div class="popup_hobby">
+        <div class="container">
+            <div class="center">
+                <div class="items">
+                    <div class="item">
+                        <div class="card">
+                            <img class="image" src="./img/이미지/_DSC0072 copy.png" />
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="review_desc">
-                <div class="rd1">
-                    <h4><span></span> 공란</h4>
-                    <img src="./assets/img1.jpg" alt="#">
-                </div>
-                <div class="rd2">
-                    <h4><span></span> 공란</h4>
-                    <img src="./assets/img1.jpg" alt="#">
-                </div>
-                <div class="rd3">
-                    <h4><span></span> 공란</h4>
-                    <img src="./assets/img1.jpg" alt="#">
-                </div>
-                <div class="rd4">
-                    <h4><span></span> 공란</h4>
-                    <img src="./assets/img1.jpg" alt="#">
-                </div>
-                <div class="rd5">
-                    <h4><span></span> 공란</h4>
-                    <img src="./assets/img1.jpg" alt="#">
-                </div>
-                <div class="rd6">
-                    <h4><span></span> 공란</h4>
-                    <img src="./assets/img1.jpg" alt="#">
-                </div>
-                <div class="rd7">
-                    <h4><span></span> 공란</h4>
-                    <img src="./assets/img1.jpg" alt="#">
-                </div>
-                <div class="rd8">
-                    <h4><span></span> 공란</h4>
-                    <img src="./assets/img1.jpg" alt="#">
-                </div>
-                <div class="rd9">
-                    <h4><span></span> 공란</h4>
-                    <img src="./assets/img1.jpg" alt="#">
-                </div>
-            </div>
-        </div>
-
-        </div>
-    </section>
-    <section class="website-content5 con-scale">
-        <div class="sticky">
-            <div class="section-header">
-                <h1>Events</h1>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores,
-                    error dolor. Corrupti, ab! Atque, nihil.
-                </p>
-                <div class="section-images">
-                    <div class="row">
-                        <img src="./assets/img1.jpg" alt="" />
-                        <img src="./assets/img2.jpg" alt="" />
-                        <img src="./assets/img3.jpg" alt="" />
-                        <img src="./assets/img4.jpg" alt="" />
+                    <div class="item">
+                        <div class="card">
+                            <img class="image" src="./img/이미지/_DSC0072 copy.png" />
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="card">
+                            <img class="image" src="./img/이미지/_DSC0072 copy.png" />
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="card">
+                            <img class="image" src="./img/이미지/_DSC0072 copy.png" />
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="card">
+                            <img class="image" src="./img/이미지/_DSC0072 copy.png" />
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="card">
+                            <img class="image" src="./img/이미지/_DSC0072 copy.png" />
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="card">
+                            <img class="image" src="./img/이미지/_DSC0072 copy.png" />
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="card">
+                            <img class="image" src="./img/이미지/_DSC0072 copy.png" />
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="card">
+                            <img class="image" src="./img/이미지/_DSC0072 copy.png" />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-    </section>
-    <section class="website-content5 con-scale">
-        <div class="section-header">
-            <h1>Events</h1>
-
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores,
-                error dolor. Corrupti, ab! Atque, nihil.
-            </p>
+        <div>
+            <a href="#" class="close">닫기</a>
         </div>
+    </div><!-- popup_hobby -->
+    <div class="popup_skill">
+        <div>
+            <h2>popup_skill</h2>
+            <p>Lorem ipsum dolor, <br>
+                sit amet consectetur adipisicing elit.<br>
+                Eligendi asperiores at atque sapiente <br>
+                consequuntur quos quae alias aliquam culpa <br>
+                voluptatibus.</p>
 
-    </section>
+            <a href="#" class="close">닫기</a>
+        </div>
+    </div><!-- popup_skill -->
+    <div class="popup_personality">
+        <div>
+            <h2>popup_personality</h2>
+            <p>Lorem ipsum dolor, <br>
+                sit amet consectetur adipisicing elit.<br>
+                Eligendi asperiores at atque sapiente <br>
+                consequuntur quos quae alias aliquam culpa <br>
+                voluptatibus.</p>
+
+            <a href="#" class="close">닫기</a>
+        </div>
+    </div><!-- popup_personality -->
 
 
-    </div>
+
+
+
+
+    <div style="height: 200vh;"></div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- gsap -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src='https://unpkg.com/gsap@3/dist/Draggable.min.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <!-- lenis -->
     <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
     <!-- split -->
     <script src="https://unpkg.com/split-type"></script>
+
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+    <script src='https://unpkg.com/gsap@3/dist/Draggable.min.js'></script>
     <!-- 로티 실행 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <!-- 플레이어 실행 -->
-    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-    <script src="main.js"></script>
+    <script src='https://natsci.manoa.hawaii.edu/rw_common/plugins/stacks/gsap/SplitText.min.js'></script>
+    <!-- jquery -->
+
+    <script src="main_1.js"></script>
+    <script src="popup.js"></script>
 </body>
 
 </html>

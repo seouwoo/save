@@ -37,6 +37,7 @@
   padding: 0;
 }
 
+
 .progress {
   display: flex;
   position: fixed;
@@ -918,7 +919,10 @@ nav {
   text-align: center;
   transform-style: preserve-3d;
 }
-
+.hi .popup{
+  color: #000;
+  text-decoration: none;
+}
 .hi__cuboid {
   position: relative;
   width: 500px;
