@@ -1369,23 +1369,6 @@ display: block;
 .popup_skill.fade{
   display: block;
   }
-.container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    width: 100%;
-}
-.row {
-  display: flex;
-  margin-right: -15px;
-  margin-left: -15px;
-}
-.card-body {
-  flex: 1 1 auto;
-  min-height: 1px;
-  padding: 1.5rem;
-}
 .popup_skill .close {
   position: absolute;
   right: 20px;
