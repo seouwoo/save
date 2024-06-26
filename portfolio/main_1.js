@@ -54,12 +54,13 @@ function logKey(e) {
     screenLog.innerText = `(${e.clientX},${e.clientY})`;
 }
 
+let ball = document.querySelector(".ball");
 
-gsap.set(".ball", {
+gsap.set(ball, {
     xPercent: -50,
     yPercent: -50
 })
-let ball = document.querySelector(".ball");
+
 let pos = {
     x: window.innerWidth / 2,
     y: window.innerHeight / 2
@@ -374,6 +375,7 @@ let pointer = {
 };
 
 function init() {
+  
   setWinDimensions();
 
   gsap.set(containers, {
@@ -525,20 +527,13 @@ const inits=()=>{
     const timeline=gsap.timeline();
     images.forEach((image,index)=>{
         const sign=Math.floor((index/2)%2)?1:-1; 
-                            // (0 / 2) % 2   ==>0
-                            // (1 / 2) % 2   ==>0.5
-                             // (2/ 2) % 2   ==>1
-                             // (3/ 2) % 2   ==>1.5
         const value=Math.floor((index+4)/4)*4
-                              //((0 + 4) / 4) * 4 ==>4
-                              //((1 + 4) / 4) * 4 ==>5
-                              //((2 + 4) / 4) * 4 ==>6
         const rotation=index> imageSize - 3? 0 : sign * value
 
         gsap.set(image,{
             rotation:rotation,
             scale:0.5,
-            markers: true,
+
         })
         timeline.to(image,{markers: true,autoAlpha:1},0)
         timeline.from(
@@ -606,14 +601,20 @@ Draggable.create(".items", {
   });
   
 
-ScrollTrigger.create({
-    trigger:".popup_hobby",
-    start:"top 30%",
-    
-    onEnter:()=>{
-        inits();
-        ScrollTrigger.getById("popup_hobby").kill();//scrollTrigger,제거
-    },
-    id:"popup_hobby",//scrollTrigger에 id부여
-    once:true//한번만 실행되도록 설정
-})
+
+//클릭하면 hobbyClose
+  let Openhobby=document.querySelector(".popupOpen_hobby");
+
+  Openhobby.addEventListener("click",function(e){
+    inits();
+
+    e.preventDefault();
+    document.querySelector('.popup_hobby').classList.add("fade")
+  })
+
+  let hobbyClose=document.querySelector('.popup_hobby .close')
+  hobbyClose.addEventListener("click",function(e){
+
+    e.preventDefault();
+    document.querySelector('.popup_hobby').classList.remove("fade")
+  })
