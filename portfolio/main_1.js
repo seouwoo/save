@@ -620,7 +620,7 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 let interval = null;
 
-document.querySelector("h1").onmouseover = event => {  
+document.querySelector(".popup_personality h1").onmouseover = event => {  
   let iteration = 0;
   
   clearInterval(interval);
