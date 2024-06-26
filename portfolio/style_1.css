@@ -1414,6 +1414,19 @@ h1 {
   z-index: 3;
 }
 
+@keyframes rotate {
+  from {
+    rotate: 0deg;
+  }
+  
+  50% {
+    scale: 1 1.5;
+  }
+  
+  to {
+    rotate: 360deg;
+  }
+}
 
 
 /* popup_personality */
@@ -1445,7 +1458,6 @@ h1 {
   width: 100%;
   top: 0;
   height: 100%;
-  z-index: 1000;
   background-color: rgba(168, 168, 168, 0.4);
 
 
