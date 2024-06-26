@@ -618,3 +618,35 @@ Draggable.create(".items", {
     e.preventDefault();
     document.querySelector('.popup_hobby').classList.remove("fade")
   })
+
+  //클릭하면 popupOpen_skill
+  let Openskill=document.querySelector(".popupOpen_skill");
+
+  Openskill.addEventListener("click",function(e){
+
+    e.preventDefault();
+    document.querySelector('.popup_skill').classList.add("fade")
+  })
+
+  let skillClose=document.querySelector('.popup_skill .close')
+  skillClose.addEventListener("click",function(e){
+
+    e.preventDefault();
+    document.querySelector('.popup_skill').classList.remove("fade")
+  })
+
+  //클릭하면 popupOpen_personality
+  let Openpersonality=document.querySelector(".popupOpen_personality");
+
+  Openpersonality.addEventListener("click",function(e){
+
+    e.preventDefault();
+    document.querySelector('.popup_personality').classList.add("fade")
+  })
+
+  let personalityClose=document.querySelector('.popup_personality .close')
+  personalityClose.addEventListener("click",function(e){
+
+    e.preventDefault();
+    document.querySelector('.popup_personality').classList.remove("fade")
+  })
