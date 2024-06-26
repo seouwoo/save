@@ -889,37 +889,82 @@ a:hover {
 
 .gallery--stack-glass .gallery__item {
     filter: opacity(1);
- }
- .gallery--switch.gallery--stack-glass .gallery__item {
+}
+
+.gallery--switch.gallery--stack-glass .gallery__item {
     opacity: 0.7;
- }
- 
- 
- 
- .gallery--switch.gallery--stack-scale .gallery__item:nth-child(2) {
+}
+
+
+
+.gallery--switch.gallery--stack-scale .gallery__item:nth-child(2) {
     transform: scale(0.98);
- }
- 
- .gallery--switch.gallery--stack-scale .gallery__item:nth-child(3) {
+}
+
+.gallery--switch.gallery--stack-scale .gallery__item:nth-child(3) {
     transform: scale(0.96);
- }
- 
- .gallery--switch.gallery--stack-scale .gallery__item:nth-child(4) {
+}
+
+.gallery--switch.gallery--stack-scale .gallery__item:nth-child(4) {
     transform: scale(0.94);
- }
- 
- .gallery--switch.gallery--stack-scale .gallery__item:nth-child(5) {
+}
+
+.gallery--switch.gallery--stack-scale .gallery__item:nth-child(5) {
     transform: scale(0.92);
- }
- 
- .gallery--switch.gallery--stack-scale .gallery__item:nth-child(6) {
+}
+
+.gallery--switch.gallery--stack-scale .gallery__item:nth-child(6) {
     transform: scale(0.9);
- }
- 
- 
- .gallery--switch.gallery--stack-scale .gallery__item:nth-child(2) {
+}
+
+
+.gallery--switch.gallery--stack-scale .gallery__item:nth-child(2) {
     transform: scale(0.98);
- }
- 
- /* //아홉번째영역 ,모이기 이미지2 */
- 
+}
+
+/* //아홉번째영역 ,모이기 이미지2 */
+/* 열두번째영역 */
+.gallery--gridtiny {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    width: 300%;
+    padding: 0 2vh;
+    height: min-content;
+    gap: 1vh;
+}
+
+.gallery--switch.gallery--gridtiny {
+    width: 100%;
+    gap: 2vh;
+}
+
+.gallery--gridtiny .gallery__item {
+    aspect-ratio: 1;
+    width: 100%;
+    height: auto;
+    filter: contrast(0.8) saturate(0) brightness(0.6) opacity(1);
+}
+
+.gallery--switch.gallery--gridtiny .gallery__item {
+    filter: contrast(1) saturate(1) brightness(0.8) opacity(0.8);
+}
+
+.gallery--gridtiny .caption {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 50%;
+    top: 50%;
+    margin: -50vh 0 0 -50vw;
+    display: grid;
+    place-items: center;
+    font-size: clamp(2rem, 8vw, 4rem);
+    opacity: 0;
+}
+
+.gallery--switch.gallery--gridtiny .caption {
+    opacity: 1;
+}
+
+
+/* //열두번째영역 */

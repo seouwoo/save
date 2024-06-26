@@ -92,6 +92,7 @@ let scroll=()=>{
         {id:"#gallery-4"},
         {id:"#gallery-5"},
         {id:"#gallery-6"},
+        {id:"#gallery-7"},
     ]
     galleries.forEach((gallery)=>{
         let galleryElement=document.querySelector(gallery.id);
