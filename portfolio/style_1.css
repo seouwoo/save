@@ -366,6 +366,8 @@ html {
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
   }
   
   .header h1 {
@@ -423,8 +425,8 @@ html {
     display: flex;
     position: absolute;
     top: auto;
-    bottom: -40%;
-    left: 90%;
+    bottom: 29%;
+    left: 87%;
     right: auto;
   }
   
@@ -994,7 +996,7 @@ html {
   position: relative;
   z-index: 1;
   font-size: 60px;
-  font-stretch: 100%;
+  font-stretch: 90%;
   font-weight: 800;
   line-height: 1;
   text-transform: uppercase;
@@ -1245,7 +1247,7 @@ html {
   height: 100%;
   z-index: 99;
   background-color: rgba(160, 160, 160, 0.5);
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(1vmax);
   margin: 0;
   color: black;
   /* background-color: white; */
@@ -1375,6 +1377,16 @@ display: block;
   z-index: 1000;
   right: 20px;
   bottom: 20px;
+  
+}
+  
+  /* popup_personality */
+.personality_close{
+  z-index: 10;
+  position: absolute;
+  left: 50%;
+  bottom: 8%;
+
 }
 
 #blob {
@@ -1392,6 +1404,8 @@ display: block;
 }
 
 #blur {
+  top: 0;
+  right: 0;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -1427,10 +1441,6 @@ h1 {
     rotate: 360deg;
   }
 }
-
-
-/* popup_personality */
-
 :root {
   --tagcloud-transition-user-duration: 1250ms;
   --tagcloud-transition-user-ease: ease-in-out;
@@ -1442,7 +1452,7 @@ h1 {
   --tagcloud-animation-play-state: running;
   --tagcloud-diameter: 32rem;
   --tagcloud-start-rotation: 54;
-  --tagcloud-controls-diameter: 256rem;
+  --tagcloud-controls-diameter: 200rem;
   --tagcloud-control-bg-color: transparent;
   --tagcloud-control-bg-hover-color: transparent;
   --tagcloud-control-bg-checked-color: transparent;
@@ -1471,7 +1481,7 @@ h1 {
 .popup_personality.fade{
   display: block;
   }
-  *, *::before, *::after {
+   *::before, *::after {
     margin: 0;
     padding: 0;
     border: 0;
@@ -1585,6 +1595,7 @@ tagcloud
 }
 
 .tagcloud-wrapper .tagcloud-controls {
+    
     width: var(--_control-diamater);
     aspect-ratio: 1 / 1;
     /* position: relative; */
@@ -1621,97 +1632,101 @@ tagcloud
     height: 100%;
 }
 
+.tagcloud-wrapper .tagcloud-controls .tagcloud-control-button input {
+  -webkit-appearance: none;
+  appearance: none;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .tagcloud-wrapper .tagcloud-controls .tagcloud-control-button:has(input:checked) {
-    background-color: var(--tagcloud-control-bg-checked-color);
+  background-color: var(--tagcloud-control-bg-checked-color);
 }
 .tagcloud-wrapper .tagcloud-controls .tagcloud-control-button:has(input:hover) {
-    background-color: var(--tagcloud-control-bg-hover-color);
+  background-color: var(--tagcloud-control-bg-hover-color);
 }
 
 .tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:nth-child(1) input:checked) {
-    --_current-rotation: 108;
+  --_current-rotation: 108;
 }
 .tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:nth-child(2) input:checked) {
-    --_current-rotation: 162;
+  --_current-rotation: 126;
 }
 .tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:nth-child(3) input:checked) {
-    --_current-rotation: 144;
+  --_current-rotation: 144;
 }
-
+.tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:nth-child(4) input:checked) {
+  --_current-rotation: 162;
+}
 .tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:nth-child(5) input:checked) {
-    --_current-rotation: 180;
+  --_current-rotation: 180;
 }
 .tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:nth-child(6) input:checked) {
-    --_current-rotation: 198;
+  --_current-rotation: 198;
 }
 .tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:nth-child(7) input:checked) {
-    --_current-rotation: 216;
+  --_current-rotation: 216;
 }
 .tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:nth-child(8) input:checked) {
-    --_current-rotation: 234;
+  --_current-rotation: 234;
 }
 .tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:nth-child(9) input:checked) {
-    --_current-rotation: 252;
+  --_current-rotation: 252;
 }
 .tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:nth-child(10) input:checked) {
-    --_current-rotation: 270;
+  --_current-rotation: 270;
 }
 .tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:nth-child(11) input:checked) {
-    --_current-rotation: 288;
+  --_current-rotation: 288;
 }
 .tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:nth-child(12) input:checked) {
-    --_current-rotation: 306;
+  --_current-rotation: 306;
 }
 .tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:nth-child(13) input:checked) {
-    --_current-rotation: 324;
+  --_current-rotation: 324;
 }
 .tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:nth-child(14) input:checked) {
-    --_current-rotation: 342;
+  --_current-rotation: 342;
 }
 .tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:nth-child(15) input:checked) {
-    --_current-rotation: 0;
+  --_current-rotation: 0;
 }
 .tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:nth-child(16) input:checked) {
-    --_current-rotation: 18;
+  --_current-rotation: 18;
 }
 .tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:nth-child(17) input:checked) {
-    --_current-rotation: 36;
+  --_current-rotation: 36;
 }
 .tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:nth-child(18) input:checked) {
-    --_current-rotation: 54;
+  --_current-rotation: 54;
 }
-.tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:last-child(2) input:checked) {
-    --_current-rotation: 72;
+.tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:nth-child(19) input:checked) {
+  --_current-rotation: 72;
 }
-.tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:last-child(1) input:checked) {
-    --_current-rotation: 90;
+.tagcloud-wrapper .tagcloud-controls:has(.tagcloud-control-button:nth-child(20) input:checked) {
+  --_current-rotation: 90;
 }
 
 .tagcloud-wrapper .tagcloud-controls .tagcloud-control-button:has(input:checked) ~ .tagcloud-rotation {
-    transform: translate(-50%, -50%) rotate(calc(var(--_current-rotation) * 1deg));
+  transform: translate(-50%, -50%) rotate(calc(var(--_current-rotation) * 1deg));
 }
 
 .tagcloud-wrapper .tagcloud-controls .tagcloud-control-button:has(input:checked) ~ .tagcloud-rotation .tagcloud-tags .tagcloud-tag div {
-    transform: rotateZ(calc(var(--_current-rotation) * -1deg));
+  transform: rotateZ(calc(var(--_current-rotation) * -1deg));
 }
 
 .tagcloud-wrapper .tagcloud-controls .tagcloud-rotation {
-    position: absolute;
-    width: var(--_diameter);
-    aspect-ratio: 1 / 1;
-    perspective: calc(var(--_diameter) * 2);
-    transform-style: preserve-3d;
-    left: 50%;
-    top: 50%;
-    background: radial-gradient(rgba(var(--tagcloud-bg-color-rgb), 0.75) 15% , rgba(var(--tagcloud-bg-color-rgb), 0) calc(75% - var(--tag-diameter)));
-    border-radius: 50%;
-    transform: translate(-50%, -50%) rotate(calc(var(--_current-rotation) * 1deg));
-    transition: transform var(--tagcloud-transition-user-duration) var(--tagcloud-transition-user-ease);
-}
-
-.personality_close{
+  z-index: 5;
   position: absolute;
+  width: var(--_diameter);
+  aspect-ratio: 1 / 1;
+  perspective: calc(var(--_diameter) * 2);
+  transform-style: preserve-3d;
   left: 50%;
-  bottom: 8%;
-  z-index: 99;
+  top: 50%;
+  background: radial-gradient(rgba(var(--tagcloud-bg-color-rgb), 0.75) 15% , rgba(var(--tagcloud-bg-color-rgb), 0) calc(75% - var(--tag-diameter)));
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(calc(var(--_current-rotation) * 1deg));
+  transition: transform var(--tagcloud-transition-user-duration) var(--tagcloud-transition-user-ease);
 }
