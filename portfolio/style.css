@@ -862,7 +862,7 @@ html {
     position: relative;
   }
   .wave1 {
-    height: 150vh;
+    height: 100vh;
     position: relative;
     background-color: #000;
   }
@@ -907,7 +907,8 @@ html {
     fill: #000;
   }
   svg {
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
   }
   
   /* section2 */

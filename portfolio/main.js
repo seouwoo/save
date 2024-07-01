@@ -297,7 +297,7 @@ gsap.fromTo(
             trigger: ".wave1",
             start: "top top",
             scrub: 1,
-            end: "+=100%",
+            end: "100% 0%",
             pin:true
         },
     }
