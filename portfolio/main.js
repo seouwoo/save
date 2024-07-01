@@ -252,7 +252,7 @@ svgWraps1.forEach((svgWrap) => {
       start: "10% top ",
       end: "=10%",
       ease: "linear",
-      scrub: 2,
+      scrub: 1,
       //   markers: true,
     },
   });
