@@ -805,6 +805,10 @@ document.addEventListener('DOMContentLoaded', function () {
   // .popupOpen_skill 요소를 클릭하면 animateSkillBars() 함수가 실행됩니다.
   openSkill.addEventListener("click", animateSkillBars);
 });
+
+
+
+
 //클릭하면 popupOpen_personality
 let Openpersonality = document.querySelector(".popupOpen_personality");
 
