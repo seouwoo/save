@@ -898,6 +898,7 @@ html {
   }
 
   .svg {
+    overflow: hidden;
     position: relative;
     height: 100vh;
     display: grid;
@@ -1824,9 +1825,24 @@ tagcloud
 
 /* main */
 main{
-
+  overflow-x: hidden;
+}
+.main{
+  
 }
 .mains{
+  height: 100vh;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.box{
+  background-color: #ccc;
+  height: 100%;
+  width: 100vw;
+  flex-shrink: 0;
 
+
+}
+.m_box1{
 
 }
