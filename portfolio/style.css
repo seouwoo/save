@@ -880,7 +880,8 @@ html {
     height: 18vh;
     position: relative;
     background-color: #000;
-  }.svg-container1 {
+  }
+  .svg-container1 {
     z-index: 1;
     position: absolute;
     top: -15vh;
@@ -894,6 +895,21 @@ html {
     right: 0;
     left: 0;
   }
+
+  .svg {
+    position: absolute;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+  .text-on-path {
+    font-size: 50px;
+    fill: #000;
+  }
+  svg {
+    width: 100%;
+  }
+  
   /* section2 */
 .website-content2{
     position: relative;
