@@ -249,10 +249,10 @@ svgWraps1.forEach((svgWrap) => {
     },
     scrollTrigger: {
       trigger: itemSvg,
-      start: "0% top ",
+      start: "10% top ",
       end: "=10%",
       ease: "linear",
-      scrub: 3,
+      scrub: 2,
       //   markers: true,
     },
   });
@@ -270,7 +270,7 @@ svgWraps2.forEach((svgWrap) => {
       start: "-=50%",
       end: "-=30%",
       ease: "linear",
-      scrub: 3,
+      scrub: 2,
       y: 50,
       //   markers: true,
     },

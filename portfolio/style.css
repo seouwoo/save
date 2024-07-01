@@ -363,7 +363,7 @@ html {
   /* container1 */
   .header {
     position: absolute;
-    top: 55%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 50%;
@@ -910,7 +910,7 @@ html {
     z-index: 1;
     position: absolute;
     width: 100vw;
-    top: 10%;
+    top: 20%;
   }
   
   /* section2 */
