@@ -1835,14 +1835,23 @@ main{
   position: sticky;
   top: 0;
   overflow: hidden;
+  
 }
 .mains{
   height: 100vh;
   display: flex;
   flex-wrap: nowrap;
   
+  
 }
 .boxs{
+  z-index: 1;
+  flex: none;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  
   background-color: #ccc;
   height: 100%;
   width: 100vw;
@@ -1853,8 +1862,24 @@ main{
 .m_box3{background-color: #333;}
 
 .m_b_card{
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: none;
+  height: 100%;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  display: flex;
+  position: relative;
+  top: 0;
+
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
 
 }
 .m_b_index{
-  
+  width: 100px;
+  height: 100px;
+  background-color: red;
 }
