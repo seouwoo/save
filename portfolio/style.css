@@ -1842,37 +1842,16 @@ main{
   display: flex;
   flex-wrap: nowrap;
   
-  
 }
 .boxs{
-  z-index: 1;
-  flex: none;
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  
-  background-color: #ccc;
   height: 100%;
   width: 100vw;
-  flex-shrink: 0;
 }
 .m_box1{background-color: #111;}
 .m_box2{background-color: #222;}
 .m_box3{background-color: #333;}
 
 .m_b_card{
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  max-width: none;
-  height: 100%;
-  padding-top: 5vh;
-  padding-bottom: 5vh;
-  display: flex;
-  position: relative;
-  top: 0;
-
   width: 100px;
   height: 100px;
   background-color: #fff;
