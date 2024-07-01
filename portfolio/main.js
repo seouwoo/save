@@ -839,3 +839,15 @@ let tl_1 = gsap.to(boxs, {
     end: () => "+=" + document.querySelector(".mains").offsetWidth,
   },
 });
+
+// gsap.to(".b", {
+//   x: 1000,
+//   ease: "none",
+//   scrollTrigger: {
+//     trigger: ".gg",
+//     markers: true,
+//     pin: true,
+//     containerAnimation: tl_1,
+//     scrub: 1,
+//   },
+// });
