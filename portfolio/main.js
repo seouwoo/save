@@ -311,9 +311,9 @@ backColor.forEach(function (item, index) {
   ScrollTrigger.create({
     trigger: item,
     start: "top 0%",
-    end: "top 0%",
+    end: "top 10%",
     scrub: 1,
-    duration: 0.2,
+    duration: 0.5,
     // markers: true,
     onEnter: function () {
       gsap.to(".sec", {
