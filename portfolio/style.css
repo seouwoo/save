@@ -1446,6 +1446,17 @@ display: block;
   /* width: 30px;height: 30px; */
 }
 
+.popup_skill i{ display: inline-block;
+  color: #fff;
+  font-size: 50px;
+  transition: 0.5s;
+}
+.popup_skill i:hover{
+  color: #333;
+  transform: scale(2);
+}
+
+
 .popup_skill #skill-bar-wrapper {
   width: 800px;
   margin-top: 40px;
