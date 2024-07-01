@@ -1441,11 +1441,9 @@ display: block;
 
 .popup_skill .close {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 30px;
-  color: #fff;
-  text-decoration: none;
+  left: 50%;
+  bottom: 8%;
+  /* width: 30px;height: 30px; */
 }
 
 .popup_skill #skill-bar-wrapper {

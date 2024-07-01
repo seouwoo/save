@@ -267,7 +267,7 @@ svgWraps2.forEach((svgWrap) => {
     },
     scrollTrigger: {
       trigger: itemSvg,
-      start: "-=50%",
+      start: "-=30%",
       end: "-=30%",
       ease: "linear",
       scrub: 2,
@@ -281,7 +281,7 @@ svgWraps2.forEach((svgWrap) => {
 
 const svgText = document.querySelector("#textOnPath1");
 const svgText2 = document.querySelector("#textOnPath2");
-console.log(svgText);
+// console.log(svgText);
 
 
 gsap.fromTo(
@@ -311,9 +311,9 @@ backColor.forEach(function (item, index) {
   ScrollTrigger.create({
     trigger: item,
     start: "top 0%",
-    end: "top 10%",
+    end: "top 0%",
     scrub: 1,
-    duration: 0.5,
+    duration: 0.1,
     // markers: true,
     onEnter: function () {
       gsap.to(".sec", {
