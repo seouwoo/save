@@ -1841,18 +1841,23 @@ main{
   height: 100%;
   width: 100vw;
   flex-shrink: 0;
+
+  position: relative;
 }
 .m_box1{background-color: #111;}
 .m_box2{background-color: #222;}
 .m_box3{background-color: #333;}
 
 .m_b_card{
+  z-index: 1;
+  position: absolute;
   height: 100px;
   width: 100px;
   background-color: #fff;
 }
 .m_b_index{
   width: 100%;
+  height: 100vh;
   padding-left: 5vw;
   padding-right: 5vw;
 
@@ -1862,7 +1867,6 @@ main{
   justify-content: space-between;
   align-items: flex-start;
   max-width: none;
-  height: 100%;
   padding-top: 5vh;
   padding-bottom: 5vh;
   position: relative;
@@ -1890,5 +1894,31 @@ main{
   grid-template-rows: auto auto;
   grid-template-columns: 1fr 1fr;
   grid-auto-columns: 1fr;
+  display: flex;
+}
+.it-h3.portfolio{
+  font-family: Pretendard, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 150%;
+}
+.it-portfolio-heading {
+  color: #fff;
+  font-family: Pretendard, sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 120%;
+}
+.it-text-body2.portfolio {
+  color: #fff;
+  width: 20rem;
+  font-size: 14px;
+  font-weight: 400;
+}
+.it-portfolio-btn {
+  grid-column-gap: 8px;
+  grid-row-gap: 8px;
+  align-items: center;
+  text-decoration: none;
   display: flex;
 }
