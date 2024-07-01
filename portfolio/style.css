@@ -1821,3 +1821,12 @@ tagcloud
   transform: translate(-50%, -50%) rotate(calc(var(--_current-rotation) * 1deg));
   transition: transform var(--tagcloud-transition-user-duration) var(--tagcloud-transition-user-ease);
 }
+
+/* main */
+main{
+
+}
+.mains{
+
+
+}
