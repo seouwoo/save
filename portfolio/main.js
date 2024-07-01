@@ -823,4 +823,31 @@ personalityClose.addEventListener("click", function (e) {
 
   e.preventDefault();
   document.querySelector('.popup_personality').classList.remove("fade")
-})
+});
+
+
+// main
+let boxs = gsap.utils.toArray(".boxs");
+
+let tl_1 = gsap.to(boxs, {
+  xPercent: -100 * (boxs.length - 1),
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".mains",
+    pin: true,
+    scrub: 1,
+    end: () => "+=" + document.querySelector(".mains").offsetWidth,
+  },
+});
+
+gsap.to(".b", {
+  x: 1000,
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".gg",
+    markers: true,
+    pin: true,
+    containerAnimation: tl_1,
+    scrub: 1,
+  },
+});

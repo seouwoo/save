@@ -1835,7 +1835,7 @@ main{
   display: flex;
   flex-wrap: nowrap;
 }
-.box{
+.boxs{
   background-color: #ccc;
   height: 100%;
   width: 100vw;
@@ -1843,6 +1843,6 @@ main{
 
 
 }
-.m_box1{
-
-}
+.m_box1{background-color: #111;}
+.m_box2{background-color: #222;}
+.m_box3{background-color: #333;}
