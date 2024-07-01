@@ -907,9 +907,10 @@ html {
     fill: #000;
   }
   .svg svg {
+    z-index: 1;
     position: absolute;
     width: 100vw;
-    top: 1%;
+    top: 10%;
   }
   
   /* section2 */
