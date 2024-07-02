@@ -328,7 +328,7 @@ backColor.forEach(function (item, index) {
   })
 })
 
-/////////////////content3
+/////////////////content2
 
 LottieScrollTrigger({
   target: ".website-content2",
@@ -413,157 +413,31 @@ gsap.to("[data-direct]", {
 
 
 
-///////content2 ber
+///////content3
+//////////////////////////도착하면 커서 사라지기
+// gsap.to(ball, {
+//   scrollTrigger: {
+//     trigger: '.website-content3',
+//     start: 'top 20%',
+//     end: '80% top',
+//     onUpdate: () => {
+//       ball.style.display = `none`
+//     },
+//     markers: true,
+//     scrub: 1,
+//     onLeaveBack: () => {
+//       console.log("onLeaveBack")
+//       ball.style.display = `block`
+//     },
+//     onLeave: () => {
+//       console.log("onLeave")
+//       ball.style.display = `block`
+//     },
+//   },
 
-gsap.to(ball, {
-  scrollTrigger: {
-    trigger: '.website-content3',
-    start: 'top 20%',
-    end: '80% top',
-    onUpdate: () => {
-      ball.style.display = `none`
-    },
-    markers: true,
-    scrub: 1,
-    onLeaveBack: () => {
-      console.log("onLeaveBack")
-      ball.style.display = `block`
-    },
-    onLeave: () => {
-      console.log("onLeave")
-      ball.style.display = `block`
-    },
-  },
-
-});
+// });
 
 
-
-select = (e) => document.querySelector(e);
-selectAll = (e) => document.querySelectorAll(e);
-
-const containers = select(".containers");
-const cuboid = selectAll(".hi__cuboid");
-const hiWords = selectAll(".hi__word");
-const base = select(".hi__base-plate");
-let winW = 0;
-let winH = 0;
-let pointer = {
-  x: window.innerWidth / 2,
-  y: window.innerHeight / 2
-};
-
-function init() {
-
-  setWinDimensions();
-
-  gsap.set(containers, {
-    autoAlpha: 1
-  })
-  gsap.timeline({
-      delay: 0.5,
-      scrollTrigger: {
-        trigger: ".website-content3",
-        start: 'top center',
-        end: '30% top',
-        scrub: 1,
-      },
-      delay: 2,
-    })
-    .from(".hi__location--lat", {
-      x: 100,
-      autoAlpha: 0,
-      ease: "power4",
-      duration: 1
-    })
-    .from(
-      ".hi__location--long", {
-        x: -100,
-        autoAlpha: 0,
-        ease: "power4",
-        duration: 1
-      },
-      0
-    )
-    .from(
-      cuboid, {
-        y: winH,
-        duration: 3,
-        stagger: 0.14,
-        ease: "elastic(0.4,0.3)"
-      },
-      0
-    );
-
-  gsap.to(
-    cuboid, {
-      rotateX: -360,
-      duration: 8,
-      repeat: -1,
-      ease: "none"
-    });
-
-  gsap.fromTo(
-    cuboid, {
-      rotateY: 8,
-      rotate: -10
-    }, {
-      rotateY: -8,
-      rotate: 10,
-      duration: 2.2,
-      yoyo: true,
-      repeat: -1,
-      ease: "sine.inOut"
-    }
-  );
-}
-init();
-
-function setWinDimensions() {
-  winW = window.innerWidth;
-  winH = window.innerHeight;
-}
-
-function calcOffset(xPos, yPos) {
-  let dX = (2 * (xPos - winW / 2)) / winW;
-  let dY = (-2 * (yPos - winH / 2)) / winH;
-  return [dX, dY];
-}
-
-function followPointer(pX, pY) {
-  let nPos = calcOffset(pX, pY); // get cursor position from center
-  let nX = nPos[0];
-  let nY = nPos[1];
-  let positiveX = Math.sqrt(nX * nX);
-  let positiveY = Math.sqrt(nY * nY);
-  let deltaS = 450 * positiveX;
-  let deltaW = 600 * positiveY;
-  gsap.to(hiWords, {
-    fontStretch: `${550 - deltaS}%`,
-    fontWeight: 800 - deltaW,
-    duration: 2
-  });
-}
-
-window.addEventListener("mousemove", function (event) {
-  pointer.x = event.clientX;
-  pointer.y = event.clientY;
-  followPointer(pointer.x, pointer.y);
-});
-
-window.addEventListener("touchmove", function (event) {
-  pointer.x = event.touches[0].clientX;
-  pointer.y = event.touches[0].clientY;
-  followPointer(pointer.x, pointer.y);
-});
-
-window.addEventListener("touchstart", function (event) {
-  pointer.x = event.touches[0].clientX;
-  pointer.y = event.touches[0].clientY;
-  followPointer(pointer.x, pointer.y);
-});
-
-window.onresize = setWinDimensions;
 
 //날짜
 setInterval(() => {
@@ -593,237 +467,109 @@ setInterval(() => {
   }
 }, 1000)
 
+/////////////////////////////content
+let conScales = document.querySelectorAll('.con-scale')
+conScales.forEach(function (conScale) {
+  gsap.fromTo(conScale, {
+    x: 100,
+    y: -100,
+    scale: 0.7,
+    rotation: 180,
 
-///////클릭하면 hobbyClose
-const images = document.querySelectorAll(".item");
-const imageSize = images.length;
-const degree = 360 / imageSize;
-
-
-const hobby = document.querySelector('.popup_hobby')
-
-const inits = () => {
-  const timeline = gsap.timeline();
-  images.forEach((image, index) => {
-    const sign = Math.floor((index / 2) % 2) ? 1 : -1;
-    const value = Math.floor((index + 4) / 4) * 4
-    const rotation = index > imageSize - 3 ? 0 : sign * value
-
-    gsap.set(image, {
-      rotation: rotation,
-      scale: 0.5,
-
-    })
-    timeline.to(image, {
-      markers: true,
-      autoAlpha: 1
-    }, 0)
-    timeline.from(
-      image, {
-        x: () => (index % 2 ? window.innerWidth + image.clientWidth * 4 : -window.innerWidth - image.clientWidth * 4),
-        y: () => window.innerHeight - image.clientHeight,
-        rotation: index % 2 ? 200 : -200,
-        scale: 4,
-        duration: 1,
-        opacity: 1,
-        delay: 0.15 * (index / 2),
-      }, 0
-    );
-    let rotationAngle = index * degree;
-    timeline.to(image, {
-      scale: 1,
-      duration: 0,
-    }, 0.17 * (imageSize / 2 - 1) + 1)
-
-    timeline.to(image, {
-      transformOrigin: "center 200vh",
-      rotation: index > imageSize / 2 ? -degree * (imageSize - index) : rotationAngle,
-      duration: 1,
-      autoAlpha: 1,
-      ease: "power1.out",
-    }, 0.15 * (imageSize / 2 - 1) + 1)
-  })
-}
-
-Draggable.create(".items", {
-  type: "rotation",
-  onDragStart: function () {
-    start = this.rotation;
-  },
-  onDragEnd: function () {
-    const rotation = this.rotation;
-    const offset = Math.abs(rotation - start);
-    if (rotation > start) {
-      if (rotation - start < degree / 2) {
-        gsap.to(".items", {
-          rotation: `-=${offset}`,
-        });
-      } else {
-        gsap.to(".items", {
-          rotation: `+=${2 * degree - offset}`,
-        });
-      }
-    } else {
-      if (Math.abs(rotation - start) < degree / 2) {
-        gsap.to(".items", {
-          rotation: `+=${offset}`,
-        });
-      } else {
-        gsap.to(".items", {
-          rotation: `-=${2 * degree - offset}`,
-        });
-      }
-    }
-  },
-
-});
-
-//클릭하면 popupOpen_personality
-/* -- Glow effect -- */
-
-const blob = document.getElementById("blob");
-
-window.onpointermove = event => {
-  const {
-    clientX,
-    clientY
-  } = event;
-
-  blob.animate({
-    left: `${clientX}px`,
-    top: `${clientY}px`
   }, {
-    duration: 1000,
-    fill: "forwards"
-  });
-}
+    scrollTrigger: {
+      trigger: conScale,
+      start: 'top 100%',
+      end: '100% 100%',
+      scrub: 2,
+      markers: true,
+    },
+    x: 0,
+    y: 0,
+    scale: 1,
+    duration: 1,
+    rotation: 0,
+    ease: 'power3.out',
+  })
 
-/* -- Text effect -- */
+})
+//두번째 영역의 각각 이미지 애니
+let secImgs = document.querySelectorAll('.section-images')
 
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-let interval = null;
+secImgs.forEach(function (secImg) {
+  let imgs = secImg.querySelectorAll('.section-images img')
+  let secImgParent = secImg.parentNode;
 
-document.querySelector(".popup_personality h1").onmouseover = event => {
-  let iteration = 0;
-
-  clearInterval(interval);
-
-  interval = setInterval(() => {
-    event.target.innerText = event.target.innerText
-      .split("")
-      .map((letter, index) => {
-        if (index < iteration) {
-          return event.target.dataset.value[index];
+  imgs.forEach(function (img, index) {
+    let imgDey = index * 0.8;
+    gsap.set(img, {
+      y: -400
+    })
+    gsap.timeline({
+        scrollTrigger: {
+          trigger: secImgParent,
+          stert: 'top 60%',
+          end: 'top top',
+          scrub: 2,
         }
-
-        return letters[Math.floor(Math.random() * 26)]
       })
-      .join("");
-
-    if (iteration >= event.target.dataset.value.length) {
-      clearInterval(interval);
-    }
-
-    iteration += 1 / 3;
-  }, 30);
+      .to(img, {
+        y: 0,
+        duration: 2,
+        delay: imgDey,
+        ease: 'power4.out'
+      })
+    })
+    
+    
+    gsap.to(imgs,{
+      xPercent: -97 * (imgs.length - 1),
+      scrollTrigger:{
+        trigger:".website-content4",
+        start:"0% 0%",
+        end:"+=5000",
+        scrub:1,
+        pin:true,
+        markers: true,
+      }
+    })
 }
+)
 
-//클릭하면 popupOpen_hobby
-let Openhobby = document.querySelector(".popupOpen_hobby");
+//////////////////
+pagephoto = document.querySelector(".website-content5")
+pagephoto.addEventListener('onLeave', function () {
 
-Openhobby.addEventListener("click", function (e) {
-  inits();
-
-  e.preventDefault();
-  document.querySelector('.popup_hobby').classList.add("fade")
-})
-
-let hobbyClose = document.querySelector('.popup_hobby .close')
-hobbyClose.addEventListener("click", function (e) {
-
-  e.preventDefault();
-  document.querySelector('.popup_hobby').classList.remove("fade")
-})
-
-//클릭하면 popupOpen_skill
-console.log("JavaScript file loaded");
-
-document.addEventListener('DOMContentLoaded', function () {
-  console.log('DOM fully loaded and parsed');
-
-  let openSkill = document.querySelector(".popupOpen_skill");
-  let popupSkill = document.querySelector('.popup_skill');
-  let skillClose = document.querySelector('.popup_skill .close');
-
-  openSkill.addEventListener("click", function (e) {
-    e.preventDefault();
-    console.log("Opening skill popup");
-    popupSkill.classList.add("fade");
-    document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
-    animateSkillBars(); // 스킬바 애니메이션 시작
-  });
-
-  skillClose.addEventListener("click", function (e) {
-    e.preventDefault();
-    console.log("Closing skill popup");
-    popupSkill.classList.remove("fade");
-    document.body.style.overflow = ''; // 배경 스크롤 다시 활성화
-  });
+    animateSkillBars();
 
   // 스킬바 애니메이션 함수
   function animateSkillBars() {
-    console.log('Animating skill bars');
-    var skillBarContainers = document.querySelectorAll('.popup_skill .skillbar-container');
+    console.log('스킬바 애니메이션 중');
+    var skillBarContainers = document.querySelectorAll('.main_skill .skillbar-container');
     skillBarContainers.forEach(function (container) {
       var skill = container.querySelector('.skills');
       if (skill) {
         var targetWidth = container.getAttribute('data-percent');
-        // console.log('Animating skill bar to:', targetWidth);
-
-
+        console.log(targetWidth)
         // 초기 width 값 설정
         gsap.set(skill, {
           width: "0%"
         });
-
         // GSAP를 사용한 애니메이션
         gsap.to(skill, {
           width: targetWidth,
           duration: 2,
-          ease: "power2.out",
-          onUpdate: function () {
-            // console.log('Current width:', skill.style.width);
-          }
+          ease: "power2.out"
         });
       } else {
-        console.log('No skill element found in container');
+        console.log('컨테이너에서 스킬 요소를 찾을 수 없습니다');
       }
     });
   }
-
-  // .popupOpen_skill 요소를 클릭하면 animateSkillBars() 함수가 실행됩니다.
-  openSkill.addEventListener("click", animateSkillBars);
 });
 
-
-
-
-//클릭하면 popupOpen_personality
-let Openpersonality = document.querySelector(".popupOpen_personality");
-
-Openpersonality.addEventListener("click", function (e) {
-
-  e.preventDefault();
-  document.querySelector('.popup_personality').classList.add("fade")
-})
-
-let personalityClose = document.querySelector('.popup_personality .close')
-personalityClose.addEventListener("click", function (e) {
-
-  e.preventDefault();
-  document.querySelector('.popup_personality').classList.remove("fade")
-});
+/////////////////////////////
 
 
 // main
@@ -851,3 +597,78 @@ let tl_1 = gsap.to(boxs, {
 //     scrub: 1,
 //   },
 // });
+
+/* 추가된 JavaScript */
+// Vars
+let speed = 0;
+let acc = 0;
+let hover = false;
+let width;
+let times;
+let cloned = [];
+
+const item = document.querySelector(".menu--item");
+const word = item.querySelector(".menu--word");
+
+// Calculate
+const calculate = () => {
+  cloned.forEach((i) => {
+    i.parentNode.removeChild(i);
+  });
+  cloned = [];
+
+  width = Math.ceil(word.clientWidth);
+  times = Math.ceil(window.innerWidth / width);
+
+  item.style.width = `${(times + 1) * width}px`;
+
+  for (let i = 0; i < times + 1; i++) {
+    const clone = word.cloneNode(true);
+    word.parentNode.appendChild(clone);
+    cloned.push(clone);
+  }
+};
+
+// Listeners
+const handleMouse = (bool) => (hover = bool);
+item.addEventListener("mouseenter", () => {
+  handleMouse(true);
+});
+item.addEventListener("touchstart", () => {
+  handleMouse(true);
+});
+item.addEventListener("mouseleave", () => {
+  handleMouse(false);
+});
+item.addEventListener("touchend", () => {
+  handleMouse(false);
+});
+window.addEventListener("resize", calculate);
+window.addEventListener("load", calculate);
+
+// Animate
+const animate = () => {
+  // Acceleration
+  acc += 0.1;
+  if (hover) {
+    acc -= 0.35;
+  }
+
+  // Min/Max Acceleration
+  acc = Math.min(13, Math.max(0, acc));
+
+  // Add acceleration to speed
+  speed += acc;
+
+  // Text Loop
+  if (speed >= width) {
+    speed = 0;
+  }
+
+  // CSS Text
+  item.style.transform = `translateX(${-speed}px) skewX(${-2 * acc}deg)`;
+
+  // RaF
+  requestAnimationFrame(animate);
+};
+animate();
