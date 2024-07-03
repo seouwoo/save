@@ -432,53 +432,6 @@ gsap.to("[data-direct]", {
 // });
 
 
-// Splitting();
-const fx21Titles = [...document.querySelectorAll('.content__title[data-splitting][data-effect21]')];
-
-// GSAP Scroll Triggers
-const scroll = () => {
-  fx21Titles.forEach(title => {
-        
-    const words = [...title.querySelectorAll('.word')];
-    
-    for (const word of words) {
-        
-        const chars = word.querySelectorAll('.char');
-    
-        chars.forEach(char => gsap.set(char.parentNode, { perspective: 2000 })); 
-
-        gsap.fromTo(chars, {
-            'will-change': 'opacity, transform', 
-            opacity: 0,
-            y: (position,_,arr) => -40*Math.abs(position-arr.length/2),
-            z: () => gsap.utils.random(-1500,-600),
-            rotationX: () => gsap.utils.random(-500,-200)
-        }, 
-        {
-            ease: 'power1.inOut',
-            opacity: 1,
-            y: 0,
-            z: 0,
-            rotationX: 0,
-            stagger: {
-                each: 0.06,
-                from: 'center'
-            },
-            scrollTrigger: {
-                trigger: word,
-                start: 'top bottom',
-                end: 'top top+=15%',
-                scrub: true,
-            }
-        });
-
-    }
-
-});
-}
-window.addEventListener("load",() => {
-  scroll();
-});
 //날짜
 setInterval(() => {
   let today = new Date();
