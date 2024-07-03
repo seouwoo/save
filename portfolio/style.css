@@ -985,16 +985,11 @@ nav {
 
 .website-content3 {
   position: relative;
+  display: flex;
   height: 100vh;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: black;
-  font-family: "Bandeins-Strange";
   color: white;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
   background-size: 50px 50px;
   background-position: center;
@@ -1010,15 +1005,12 @@ nav {
   position: relative;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  perspective: 900px;
 }
-
+.abut_text{
+  display: none;
+}
 .clock {
   font-family: "Silkscreen", sans-serif;
-  position: absolute;
   width: 300px;
   padding: 20px 0;
   top: 80vh;
@@ -1047,14 +1039,16 @@ nav {
 }
 
 .photo {
-  position: absolute;
-  width: 500px;
-  top: 60vh;
-  right: 1vw;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
 }
 
 .photo .pic {
   position: relative;
+  width: 500px;
+  height: 500px;
 }
 .photo .pic .star1 {
   position: absolute;
@@ -1073,11 +1067,6 @@ nav {
   animation: blink 4s linear infinite;
 }
 
-.spline1 {
-  position: absolute;
-  background-color: transparent;
-  z-index: -1;
-}
 
 @keyframes blink {
   0% {
@@ -1108,13 +1097,15 @@ nav {
   width: 100vw !important;overflow: hidden;
   height: 100vh;
   background-color: #1c1c1c;
+  box-sizing: border-box;
 }
 
 .section-header {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2em;
+  margin: 2em 0;
+  /* padding-bottom: 2em; */
   flex-direction: column;
 }
 .section-header h1 {
@@ -1152,27 +1143,97 @@ nav {
 .row {
   overflow: visible;
   display: flex;
-  margin: 2em 0;
+  /* margin-bottom: 2em; */
 }
 
 .row img {
   width: 33.333%;
-  height: 600px;
+  height: 480px;
   display: block;
 }
 
 /* main_skill */
 
+.website-content5{
+  position: relative;
+  background-color: #1c1c1c;
+  width: 100vw;
+  height: 100vh;
+}
+
+.uzi-6 {
+	--color-text: #fff;
+    --color-bg: #000;
+    --color-link: #f0f0f0;
+    --color-link-hover: #fff;
+    --img-maxwidth: none;
+}
+.skill_content {
+
+	height: 100vh;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	isolation: isolate;
+}
+.skill_content::after {
+    background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+  content: "";
+  position: absolute;
+  left: 0;top: 0;
+  width: 100%;height: 100%;
+  z-index: 200;
+}
+
+.content__title {
+	font-family: forma-djr-display, sans-serif;
+	font-weight: 700;
+	position: relative;
+	z-index: 999;
+	font-size: 10vw;
+	-webkit-text-stroke: 2px #ffffff1a;
+	-webkit-text-fill-color: transparent;
+	color: transparent;
+	pointer-events: none;
+}
+
+.content__img {
+	max-width: var(--img-maxwidth);
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	will-change: transform;
+	filter: var(--filter-img);
+}
+
+.content__img--full {
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+
+}
+
+@media screen and (min-width: 53em) {
+	:root {
+		font-size: 18px;
+	}
+	body {
+		overflow: hidden;
+	}
+}
+
+
+
 .main_skill {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
-  z-index: 1000;
+  position: relative;
   overflow-y: auto;
   color: #fff;
   font-size: 18px;
+  width: 100%;
+  height: 100%;
 }
 
 .main_skill.fade {
@@ -1182,25 +1243,33 @@ nav {
 }
 
 .main_skill .skill-content {
-  position: relative;
-  max-width: 800px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 900px;
   margin: 50px auto;
   padding: 20px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .main_skill h1 {
-  position: absolute;
+  /* position: absolute; */
   top: 20px;
   left: 50%;
-  transform: translateX(-50%);
+  /* transform: translateX(-50%); */
   font-size: 35px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .main_skill p {
-  margin: 0 0 25px;
+
   line-height: 1.5;
 }
 
@@ -1231,13 +1300,15 @@ nav {
   transform: scale(1.2);
 }
 
-.main_skill #skill-bar-wrapper {
+.main_skill #skill-bar-wrapper {display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
   width: 100%;
-  max-width: 800px;
-  margin-top: 40px;
+  max-width: 900px;
 }
 
 .main_skill .text-left {
+  height: 100%;
   text-align: left;
 }
 

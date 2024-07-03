@@ -202,8 +202,10 @@ gsap
       },
     }
   );
-//글자 자르기
 
+
+
+//글자 자르기
 let splitTypes1 = document.querySelectorAll(".wave1 .logo-large");
 splitTypes1.forEach(function (char, i) {
   const text = new SplitType(char, {
@@ -229,8 +231,6 @@ splitTypes1.forEach(function (char, i) {
 
 
 ////waves
-
-
 let initialPath =
   "M1.27707e-05 0.000728292L1000 0.000732422L1000 203.001C1000 203.001 881.309 117 498.5 117C115.691 117 3.05176e-05 203.001 3.05176e-05 203.001L1.27707e-05 0.000728292Z";
 let targetPath =
@@ -281,26 +281,25 @@ svgWraps2.forEach((svgWrap) => {
 
 const svgText = document.querySelector("#textOnPath1");
 const svgText2 = document.querySelector("#textOnPath2");
-// console.log(svgText);
 
 
 gsap.fromTo(
-    [svgText, svgText2], {//두개를 잡을땐 동시에잡기
-        attr: {
-            startOffset: "0%"
-        },
-    }, {
-        attr: {
-            startOffset: "100%"
-        },
-        scrollTrigger: {
-            trigger: ".wave1",
-            start: "top top",
-            scrub: 1,
-            end: "100% 0%",
-            pin:true
-        },
-    }
+  [svgText, svgText2], { //두개를 잡을땐 동시에잡기
+    attr: {
+      startOffset: "0%"
+    },
+  }, {
+    attr: {
+      startOffset: "100%"
+    },
+    scrollTrigger: {
+      trigger: ".wave1",
+      start: "top top",
+      scrub: 1,
+      end: "100% 0%",
+      pin: true
+    },
+  }
 );
 //data-bgcolor
 
@@ -329,7 +328,7 @@ backColor.forEach(function (item, index) {
 })
 
 /////////////////content2
-
+//거꾸로 재생됨
 LottieScrollTrigger({
   target: ".website-content2",
   path: "./camera.json",
@@ -339,8 +338,6 @@ LottieScrollTrigger({
   scrub: 1,
   // markers: true,
 });
-
-
 function LottieScrollTrigger(vars) {
   let playhead = {
       frame: 0
@@ -392,10 +389,7 @@ function LottieScrollTrigger(vars) {
 }
 
 
-
-
 //텍스트의 사라지는 방향 애니
-
 gsap.to("[data-direct]", {
   //속성중에 data-direct이 있는 것들을 모두 불러줌(호출)
   x: (i, el) => -el.getAttribute("data-direct") * 400,
@@ -438,7 +432,53 @@ gsap.to("[data-direct]", {
 // });
 
 
+// Splitting();
+const fx21Titles = [...document.querySelectorAll('.content__title[data-splitting][data-effect21]')];
 
+// GSAP Scroll Triggers
+const scroll = () => {
+  fx21Titles.forEach(title => {
+        
+    const words = [...title.querySelectorAll('.word')];
+    
+    for (const word of words) {
+        
+        const chars = word.querySelectorAll('.char');
+    
+        chars.forEach(char => gsap.set(char.parentNode, { perspective: 2000 })); 
+
+        gsap.fromTo(chars, {
+            'will-change': 'opacity, transform', 
+            opacity: 0,
+            y: (position,_,arr) => -40*Math.abs(position-arr.length/2),
+            z: () => gsap.utils.random(-1500,-600),
+            rotationX: () => gsap.utils.random(-500,-200)
+        }, 
+        {
+            ease: 'power1.inOut',
+            opacity: 1,
+            y: 0,
+            z: 0,
+            rotationX: 0,
+            stagger: {
+                each: 0.06,
+                from: 'center'
+            },
+            scrollTrigger: {
+                trigger: word,
+                start: 'top bottom',
+                end: 'top top+=15%',
+                scrub: true,
+            }
+        });
+
+    }
+
+});
+}
+window.addEventListener("load",() => {
+  scroll();
+});
 //날짜
 setInterval(() => {
   let today = new Date();
@@ -493,7 +533,7 @@ conScales.forEach(function (conScale) {
   })
 
 })
-//두번째 영역의 각각 이미지 애니
+///////각각 이미지 애니
 let secImgs = document.querySelectorAll('.section-images')
 
 
@@ -520,59 +560,221 @@ secImgs.forEach(function (secImg) {
         delay: imgDey,
         ease: 'power4.out'
       })
-    })
+  })
+
+
+  gsap.to(imgs, {
+    xPercent: -97 * (imgs.length - 1),
+    scrollTrigger: {
+      trigger: ".website-content4",
+      start: "0% 0%",
+      end: "+=5000",
+      scrub: 1,
+      pin: true,
+      // markers: true,
+    }
+  })
+})
+
+
+
+
+
+////////////////skill
+
+let pageskill = document.querySelectorAll('.skillbar-container');
+
+  pageskill.forEach(function(skillber) {
+    let skill = skillber.querySelectorAll('.skills');
+    let targetWidth = skillber.getAttribute('data-percent');
     
+    if (skill) {
+      // GSAP를 사용하여 초기 width 값 설정
+      gsap.set(skill, {
+        width: "0%"
+      });
+
+      // GSAP의 ScrollTrigger를 사용하여 스크롤 이벤트에 따른 애니메이션 설정
+      gsap.to(skill, {
+        scrollTrigger: {
+          trigger: ".website-content5",
+          start: "top 80%", // 요소가 뷰포트의 80% 지점에 도달할 때 트리거됨
+          end: "bottom 20%", // 요소가 뷰포트의 20% 지점에 있을 때 종료됨
+          onEnter: function() {
+            // 2초 뒤에 애니메이션 시작
+            setTimeout(function() {
+              gsap.to(skill, {
+                width: targetWidth,
+                duration: 2,
+                ease: "power2.out"
+              });
+            });
+          },
+          onLeave: function() {
+            gsap.set(skill, {
+              width: "0%"
+            });
+          },
+          onLeaveBack: () => {
+            gsap.set(skill, {
+              width: "0%"
+            });
+          },
+          // markers: true,
+        },
+      });
+    }
+  });
+
+
+  //뒷배경
+{
+    // body element
+    const body = document.body;
+
+    // helper functions
+    const MathUtils = {
+        // linear interpolation
+        lerp: (a, b, n) => (1 - n) * a + n * b,
+        // distance between two points
+        distance: (x1,y1,x2,y2) => Math.hypot(x2-x1, y2-y1)
+    }
+
+    // get the mouse position
+    const getMousePos = (ev) => {
+        let posx = 0;
+        let posy = 0;
+        if (!ev) ev = window.event;
+        if (ev.pageX || ev.pageY) {
+            posx = ev.pageX;
+            posy = ev.pageY;
+        }
+        else if (ev.clientX || ev.clientY) 	{
+            posx = ev.clientX + body.scrollLeft + docEl.scrollLeft;
+            posy = ev.clientY + body.scrollTop + docEl.scrollTop;
+        }
+        return {x: posx, y: posy};
+    }
+
+    // mousePos: current mouse position
+    // lastMousePos: last last recorded mouse position (at the time the last image was shown)
+    let mousePos = lastMousePos = {x: 0, y: 0};
     
-    gsap.to(imgs,{
-      xPercent: -97 * (imgs.length - 1),
-      scrollTrigger:{
-        trigger:".website-content4",
-        start:"0% 0%",
-        end:"+=5000",
-        scrub:1,
-        pin:true,
-        markers: true,
-      }
-    })
-}
-)
+    // update the mouse position
+    window.addEventListener('mousemove', ev => mousePos = getMousePos(ev));
+    
+    // gets the distance from the current mouse position to the last recorded mouse position
+    const getMouseDistance = () => MathUtils.distance(mousePos.x,mousePos.y,lastMousePos.x,lastMousePos.y);
 
-//////////////////
-pagephoto = document.querySelector(".website-content5")
-pagephoto.addEventListener('onLeave', function () {
+    class Image {
+        constructor(el) {
+            this.DOM = {el: el};
+            // image deafult styles
+            this.defaultStyle = {
+                x: 0,
+                y: 0,
+                opacity: 1
+            };
+            // get sizes/position
+            this.getRect();
+            // init/bind events
+            this.initEvents();
+        }
+        initEvents() {
+            // on resize get updated sizes/position
+            window.addEventListener('resize', () => this.resize());
+        }
+        resize() {
+            // reset styles
+            TweenMax.set(this.DOM.el, this.defaultStyle);
+            // get sizes/position
+            this.getRect();
+        }
+        getRect() {
+            this.rect = this.DOM.el.getBoundingClientRect();
+        }
+    }
 
-    animateSkillBars();
+    class ImageTrail {
+        constructor() {
+            // images container
+            this.DOM = {content: document.querySelector('.skill_content')};
+            // array of Image objs, one per image element
+            this.images = [];
+            [...this.DOM.content.querySelectorAll('div.content__img')].forEach(img => this.images.push(new Image(img)));
+            // total number of images
+            this.imagesTotal = this.images.length;
+            // upcoming image index
+            this.imgPosition = 0;
+            // zIndex value to apply to the upcoming image
+            this.zIndexVal = 1;
+            // mouse distance required to show the next image
+            this.threshold = 100;
+            this.showNextImage();
+            // render the images
+            requestAnimationFrame(() => this.render());
+        }
+        render() {
+            // get distance between the current mouse position and the position of the previous image
+            let distance = getMouseDistance();
 
-  // 스킬바 애니메이션 함수
-  function animateSkillBars() {
-    console.log('스킬바 애니메이션 중');
-    var skillBarContainers = document.querySelectorAll('.main_skill .skillbar-container');
-    skillBarContainers.forEach(function (container) {
-      var skill = container.querySelector('.skills');
-      if (skill) {
-        var targetWidth = container.getAttribute('data-percent');
-        console.log(targetWidth)
-        // 초기 width 값 설정
-        gsap.set(skill, {
-          width: "0%"
+            // if the mouse moved more than [this.threshold] then show the next image
+            if ( distance > this.threshold ) {
+                this.showNextImage();
+            }
+
+            // loop..
+            requestAnimationFrame(() => this.render());
+        }
+        showNextImage() {
+            // show image at position [this.imgPosition]
+            const img = this.images[this.imgPosition];
+            // kill any tween on the image
+            TweenMax.killTweensOf(img.DOM.el);
+
+            new TimelineMax()
+            // show the image
+            .set(img.DOM.el, {
+                opacity: 1,
+                x: mousePos.x > lastMousePos.x ? 100 : -100,
+                zIndex: this.zIndexVal
+            }, 0)
+            // animate position
+            .to(img.DOM.el, 1.2, {
+                ease: Expo.easeOut,
+                x: 0
+            }, 0);
+
+            ++this.zIndexVal;
+            this.imgPosition = this.imgPosition < this.imagesTotal-1 ? this.imgPosition+1 : 0;
+            
+            lastMousePos = mousePos;
+        }
+    }
+
+    /***********************************/
+    /********** Preload stuff **********/
+
+    // Preload images
+    const preloadImages = () => {
+        return new Promise((resolve, reject) => {
+            imagesLoaded(document.querySelectorAll('.content__img'), {background: true}, resolve);
         });
-        // GSAP를 사용한 애니메이션
-        gsap.to(skill, {
-          width: targetWidth,
-          duration: 2,
-          ease: "power2.out"
-        });
-      } else {
-        console.log('컨테이너에서 스킬 요소를 찾을 수 없습니다');
-      }
+    };
+    
+    // And then..
+    preloadImages().then(() => {
+        // Remove the loader
+        document.body.classList.remove('loading');
+        new ImageTrail();
     });
-  }
-});
-
-/////////////////////////////
+}
 
 
-// main
+
+
+
+//////////// main
 let boxs = gsap.utils.toArray(".boxs");
 
 let tl_1 = gsap.to(boxs, {
@@ -647,7 +849,7 @@ window.addEventListener("resize", calculate);
 window.addEventListener("load", calculate);
 
 // Animate
-const animate = () => {
+const abut_animate = () => {
   // Acceleration
   acc += 0.1;
   if (hover) {
@@ -669,6 +871,6 @@ const animate = () => {
   item.style.transform = `translateX(${-speed}px) skewX(${-2 * acc}deg)`;
 
   // RaF
-  requestAnimationFrame(animate);
+  requestAnimationFrame(abut_animate);
 };
-animate();
+abut_animate();
