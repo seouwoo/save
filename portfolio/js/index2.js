@@ -4,20 +4,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 Splitting();
 
-const fx16Titles = [...document.querySelectorAll('.content__title[data-splitting][data-effect16]')];
-const fx17Titles = [...document.querySelectorAll('.content__title[data-splitting][data-effect17]')];
-const fx18Titles = [...document.querySelectorAll('.content__title[data-splitting][data-effect18]')];
-const fx19Titles = [...document.querySelectorAll('.content__title[data-splitting][data-effect19]')];
-const fx20Titles = [...document.querySelectorAll('.content__title[data-splitting][data-effect20]')];
-const fx21Titles = [...document.querySelectorAll('.content__title[data-splitting][data-effect21]')];
-const fx22Titles = [...document.querySelectorAll('.content__title[data-splitting][data-effect22]')];
-const fx23Titles = [...document.querySelectorAll('.content__title[data-splitting][data-effect23]')];
-const fx24Titles = [...document.querySelectorAll('.content__title[data-splitting][data-effect24]')];
-const fx25Titles = [...document.querySelectorAll('.content__title[data-splitting][data-effect25]')];
-const fx26Titles = [...document.querySelectorAll('.content__title[data-splitting][data-effect26]')];
-const fx27Titles = [...document.querySelectorAll('.content__title[data-splitting][data-effect27]')];
-const fx28Titles = [...document.querySelectorAll('.content__title[data-splitting][data-effect28]')];
-const fx29Titles = [...document.querySelectorAll('.content__title[data-splitting][data-effect29]')];
+const fx16Titles = [...document.querySelectorAll('.content__title_base[data-splitting][data-effect16]')];
+const fx17Titles = [...document.querySelectorAll('.content__title_base[data-splitting][data-effect17]')];
+const fx18Titles = [...document.querySelectorAll('.content__title_base[data-splitting][data-effect18]')];
+const fx19Titles = [...document.querySelectorAll('.content__title_base[data-splitting][data-effect19]')];
+const fx20Titles = [...document.querySelectorAll('.content__title_base[data-splitting][data-effect20]')];
+const fx21Titles = [...document.querySelectorAll('.content__title_base[data-splitting][data-effect21]')];
+const fx22Titles = [...document.querySelectorAll('.content__title_base[data-splitting][data-effect22]')];
+const fx23Titles = [...document.querySelectorAll('.content__title_base[data-splitting][data-effect23]')];
+const fx24Titles = [...document.querySelectorAll('.content__title_base[data-splitting][data-effect24]')];
+const fx25Titles = [...document.querySelectorAll('.content__title_base[data-splitting][data-effect25]')];
+const fx26Titles = [...document.querySelectorAll('.content__title_base[data-splitting][data-effect26]')];
+const fx27Titles = [...document.querySelectorAll('.content__title_base[data-splitting][data-effect27]')];
+const fx28Titles = [...document.querySelectorAll('.content__title_base[data-splitting][data-effect28]')];
+const fx29Titles = [...document.querySelectorAll('.content__title_base[data-splitting][data-effect29]')];
 
 
 // GSAP Scroll Triggers
