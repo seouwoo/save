@@ -954,7 +954,7 @@ nav {
 .heading-large {
   text-transform: uppercase;
   font-family: InkLipquid, sans-serif;
-  font-size: 3rem;
+  font-size: 4rem;
   overflow: hidden;
   text-align: center;
 }
@@ -963,6 +963,7 @@ nav {
   position: relative;
   overflow: hidden;
   top: 20vh;
+  padding-top: 20px;
 }
 
 .div-hide.two {
