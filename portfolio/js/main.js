@@ -506,6 +506,7 @@ secImgs.forEach(function (secImg) {
           stert: 'top 60%',
           end: 'top top',
           scrub: 2,
+          delay: 2,
         }
       })
       .to(img, {
