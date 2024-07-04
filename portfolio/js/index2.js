@@ -200,8 +200,9 @@ const scroll = () => {
                 scrollTrigger: {
                     trigger: word,
                     start: 'top bottom',
-                    end: 'top top+=15%',
+                    end: 'top top+=25%',
                     scrub: true,
+                    markers: true,
                 }
             });
 
@@ -244,9 +245,10 @@ const scroll = () => {
                 scale: 1,
                 scrollTrigger: {
                     trigger: word,
-                    start: 'top bottom+=40%',
-                    end: 'top top+=15%',
+                    start: 'top bottom',
+                    end: 'top top+=25%',
                     scrub: true,
+                    markers: true,
                 }
             });
 
@@ -481,6 +483,7 @@ const scroll = () => {
         }
         
     });
+    
 };
 
 window.addEventListener("load",() => {

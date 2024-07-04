@@ -41,19 +41,13 @@ progressTimer = setInterval(updateProgress, 1000 / 60)
 
 function updateProgress() {
   imgLoaded++;
-  //console.log(imgLoaded)
   let target = (imgLoaded / imgTotal) * 100;
 
   current += (target - current) * 0.01;
-  //current = current + (target - current)*0.01;
-  // progressBar.style.width=current + "%";
-  // progressText.innerHTML=Math.floor(current) + "%";//Math.floor 버림
-  //console.log(current)
   let sp;
   if (current > 99.9) {
     clearInterval(progressTimer)
     container.classList.add("progress-complete")
-    // progressBar.style.width="100%";
     gsap.to(container, {
       duration: 0.5,
       top: "-100%",
@@ -68,7 +62,7 @@ function updateProgress() {
       },
 
     })
-  }
+}
 
 }
 
@@ -278,13 +272,12 @@ svgWraps2.forEach((svgWrap) => {
   });
 });
 
-
+///////////////////////////
 const svgText = document.querySelector("#textOnPath1");
-const svgText2 = document.querySelector("#textOnPath2");
 
 
 gsap.fromTo(
-  [svgText, svgText2], { //두개를 잡을땐 동시에잡기
+  [svgText], {
     attr: {
       startOffset: "0%"
     },
@@ -301,6 +294,8 @@ gsap.fromTo(
     },
   }
 );
+
+
 //data-bgcolor
 
 let backColor = document.querySelectorAll("[data-bgcolor]")
@@ -390,18 +385,19 @@ function LottieScrollTrigger(vars) {
 
 
 //텍스트의 사라지는 방향 애니
+
+
 gsap.to("[data-direct]", {
   //속성중에 data-direct이 있는 것들을 모두 불러줌(호출)
   x: (i, el) => -el.getAttribute("data-direct") * 400,
   //el 은 data-direct 속성을 가지고 있는 요소들을 하나씩 받아옴 i는 인덱스 번호
   ease: 'none',
   scrollTrigger: {
-    trigger: '.text_wrap',
-    start: 'top top',
-    end: 'center top',
-    duration: 2,
+    trigger: '#animationWindow',
+    start: '+=10%',
+    end: '+=100%',
+    duration: 5,
     scrub: 2,
-    //   markers: true,
   },
 });
 
@@ -460,6 +456,9 @@ setInterval(() => {
   }
 }, 1000)
 
+
+
+
 /////////////////////////////content
 let conScales = document.querySelectorAll('.con-scale')
 conScales.forEach(function (conScale) {
@@ -467,14 +466,14 @@ conScales.forEach(function (conScale) {
     x: 100,
     y: -100,
     scale: 0.7,
-    rotation: 180,
-
+    rotation: 90,
+    top: 0,
   }, {
     scrollTrigger: {
       trigger: conScale,
       start: 'top 100%',
       end: '100% 100%',
-      scrub: 2,
+      scrub: 1,
       markers: true,
     },
     x: 0,
@@ -486,6 +485,8 @@ conScales.forEach(function (conScale) {
   })
 
 })
+
+
 ///////각각 이미지 애니
 let secImgs = document.querySelectorAll('.section-images')
 
