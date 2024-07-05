@@ -472,9 +472,9 @@ conScales.forEach(function (conScale) {
     scrollTrigger: {
       trigger: conScale,
       start: '0% 100%',
-      end: '80% 100%',
+      end: '+=100%',
       scrub: 1,
-      // markers: true,
+      markers: true,
     },
     x: 0,
     y: 0,
@@ -519,7 +519,7 @@ secImgs.forEach(function (secImg) {
 
 
   gsap.to(imgs, {
-    xPercent: -97 * (imgs.length - 1),
+    xPercent: -97 * (imgs.length - 2),
     scrollTrigger: {
       trigger: ".website-content4",
       start: "0% 0%",
