@@ -202,7 +202,7 @@ const scroll = () => {
                     start: 'top bottom',
                     end: 'top top+=25%',
                     scrub: true,
-                    // markers: true,
+                    markers: true,
                 }
             });
 
@@ -231,6 +231,7 @@ const scroll = () => {
                     return factor*60;
                 },
                 rotationY: -270,
+                opacity:0,
                 rotationZ: position => {
                     const factor = position < Math.ceil(charsTotal/2) ? position : Math.ceil(charsTotal/2) - Math.abs(Math.floor(charsTotal/2) - position) - 1;
                     return position < charsTotal/2 ? Math.abs(factor-charsTotal/2)*8 : -1*Math.abs(factor-charsTotal/2)*8;
@@ -243,10 +244,11 @@ const scroll = () => {
                 rotationZ: 0,
                 rotationY: 0,
                 scale: 1,
+                opacity:1,
                 scrollTrigger: {
                     trigger: word,
-                    start: 'top bottom',
-                    end: 'top top+=25%',
+                    start: ' center center',
+                    end: '+=100',
                     scrub: true,
                     // markers: true,
                 }
@@ -309,7 +311,7 @@ const scroll = () => {
                 start: ' center center',
                 end: '+=300',
                 scrub: true,
-                markers: true,
+                // markers: true,
             }
         });
 
