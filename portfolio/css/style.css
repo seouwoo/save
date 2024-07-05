@@ -1055,9 +1055,11 @@ nav {
 }
 
 .inpo .pic {
-  position: relative;
+  position: absolute;
   width: 400px;
   height: 300px;
+  right: 0;
+  bottom: 40vh;
 }
 .inpo .pic .star1 {
   position: absolute;
