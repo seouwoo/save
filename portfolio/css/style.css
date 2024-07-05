@@ -1319,6 +1319,12 @@ nav {
 }
 
 .main_skill .text-left {
+  font-family: 'GmarketSansMedium';
+  height: 100%;
+  text-align: left;
+}
+.main_skill .text-right {
+  font-family: 'GmarketSansMedium';
   height: 100%;
   text-align: left;
 }
