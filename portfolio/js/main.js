@@ -31,7 +31,7 @@ showLoadingScreen();
 let container = document.querySelector("#progress");
 
 let imgLoaded = 0;
-let imgTotal = 5; //로딩값
+let imgTotal = 1; //로딩값
 let current = 0;
 let progressTimer;
 let topValue;
@@ -465,16 +465,16 @@ conScales.forEach(function (conScale) {
   gsap.fromTo(conScale, {
     x: 100,
     y: -100,
-    scale: 0.7,
+    scale: 0.3,
     rotation: 90,
     top: 0,
   }, {
     scrollTrigger: {
       trigger: conScale,
-      start: 'top 100%',
-      end: '100% 100%',
+      start: '0% 100%',
+      end: '80% 100%',
       scrub: 1,
-      markers: true,
+      // markers: true,
     },
     x: 0,
     y: 0,

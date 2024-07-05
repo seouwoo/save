@@ -202,7 +202,7 @@ const scroll = () => {
                     start: 'top bottom',
                     end: 'top top+=25%',
                     scrub: true,
-                    markers: true,
+                    // markers: true,
                 }
             });
 
@@ -248,7 +248,7 @@ const scroll = () => {
                     start: 'top bottom',
                     end: 'top top+=25%',
                     scrub: true,
-                    markers: true,
+                    // markers: true,
                 }
             });
 
@@ -306,9 +306,10 @@ const scroll = () => {
             },
             scrollTrigger: {
                 trigger: title,
-                start: 'top bottom',
-                end: 'bottom top-=50%',
+                start: ' center center',
+                end: '+=300',
                 scrub: true,
+                markers: true,
             }
         });
 
