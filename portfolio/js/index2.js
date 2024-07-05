@@ -199,8 +199,8 @@ const scroll = () => {
                 },
                 scrollTrigger: {
                     trigger: word,
-                    start: 'top bottom',
-                    end: 'top top+=25%',
+                    start: ' center center',
+                    end: '+=100',
                     scrub: true,
                     markers: true,
                 }
