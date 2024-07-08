@@ -691,7 +691,7 @@ let pageskill = document.querySelectorAll('.skillbar-container');
             // show the image
             .set(img.DOM.el, {
                 opacity: 1,
-                x: mousePos.x > lastMousePos.x ? 100 : -100,
+                x: mousePos.y > lastMousePos.y ? 100 : -100,
                 zIndex: this.zIndexVal
             }, 0)
             // animate position
@@ -724,36 +724,6 @@ let pageskill = document.querySelectorAll('.skillbar-container');
         new ImageTrail();
     });
 }
-
-
-
-
-
-//////////// main
-let boxs = gsap.utils.toArray(".boxs");
-
-let tl_1 = gsap.to(boxs, {
-  xPercent: -100 * (boxs.length - 1),
-  ease: "none",
-  scrollTrigger: {
-    trigger: ".mains",
-    pin: true,
-    scrub: 1,
-    end: () => "+=" + document.querySelector(".mains").offsetWidth,
-  },
-});
-
-// gsap.to(".b", {
-//   x: 1000,
-//   ease: "none",
-//   scrollTrigger: {
-//     trigger: ".gg",
-//     markers: true,
-//     pin: true,
-//     containerAnimation: tl_1,
-//     scrub: 1,
-//   },
-// });
 
 /* 추가된 JavaScript */
 // Vars
@@ -829,3 +799,35 @@ const abut_animate = () => {
   requestAnimationFrame(abut_animate);
 };
 abut_animate();
+
+
+
+
+//////////// main
+// let boxs = gsap.utils.toArray(".boxs");
+
+// let tl_1 = gsap.to(boxs, {
+//   xPercent: -100 * (boxs.length - 1),
+//   ease: "none",
+//   scrollTrigger: {
+//     trigger: ".mains",
+//     pin: true,
+//     scrub: 1,
+//     end: () => "+=" + document.querySelector(".mains").offsetWidth,
+//   },
+// });
+
+// let boxs = gsap.utils.toArray(".boxs");
+
+// gsap.to(boxs, {
+//   xPercent: -100,  // 각 boxs 요소를 옆으로 100% 이동
+//   duration: boxs.length - 1, // 애니메이션 지속 시간 설정
+//   stagger: 1, // 요소 간 애니메이션 시작 시간 간격 설정
+//   ease: "none",
+//   scrollTrigger: {
+//     trigger: ".mains",
+//     pin: true,
+//     scrub: 1,
+//     end: "+=300%" 
+//   },
+// });

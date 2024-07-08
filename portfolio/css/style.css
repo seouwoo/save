@@ -30,6 +30,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
 /* font-family: "Silkscreen", sans-serif; */
 
 :root {
@@ -46,6 +47,9 @@
   
 }
 
+ul,li{
+  list-style: none;
+}
 html {
   font-size: calc(0.8126951092611863rem + 0.20811654526534862vw);
 }
@@ -1035,7 +1039,7 @@ nav {
   display: inline-block;
 }
 .clock .time_box .txt_sm {
-  font-size: 30px;
+  font-size: 50px;
   width: 35px;
   display: inline-block;
 }
@@ -1077,7 +1081,13 @@ nav {
   right: 50px;
   animation: blink 4s linear infinite;
 }
+.inpo .name{
 
+
+}
+.inpo .e_m{
+
+}
 
 @keyframes blink {
   0% {
@@ -1121,12 +1131,12 @@ nav {
   flex-direction: column;
 }
 .section-header h1 {
-  font-family: Humane Bold, sans-serif;
+  font-family: "Freesentation";
   font-size: 10vw;
   font-weight: 400;
   color: #fff;
   line-height: 100%;
-  /* text-transform: uppercase; */
+  text-transform: uppercase;
   padding: 20px;
   padding-bottom: 50px;
 }
@@ -1247,6 +1257,7 @@ nav {
   font-size: 18px;
   width: 100%;
   height: 100%;
+  overflow: hidden; /* 스크롤바 숨기기 */
 }
 
 .main_skill.fade {
@@ -1339,63 +1350,45 @@ nav {
 
 /* main */
 main {
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   margin-bottom: 10lvh;
 }
 .main {
 }
 .mains {
-  height: 100vh;
-  display: flex;
-  flex-wrap: nowrap;
-}
-.boxs {
-  padding-left: 5vw;
-  padding-right: 5vw;
-
-  background-color: #ccc;
-  height: 100%;
-  width: 100vw;
-  flex-shrink: 0;
   display: flex;
   position: relative;
+  height: 100vh;
+  width: 300vw;
+}
+
+.boxs {
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  background-color: #ccc;
+  height: 100vh;
+  width: 100vw;
 }
 
 .m_b_card {
   position: absolute;
-  height: 70%;
-  width: 70%;
-  top: 50%;
-  left: 50%;
+  height: 60%;
+  width: 57%;
+  top: 20%;
+  left: 67%;
   transform: translateX(-50%);
   z-index: 1;
   background-color: #fff;
+  border-radius: 24px;
+  box-shadow: 0 40px 60px rgba(0, 0, 0, .2);
 }
-.m_b_index {
-  /* z-index: 10; */
-  /* pointer-events: none; */
-  flex-direction: column;
-  /* flex: none; */
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-  padding-left: 3vw;
-  /* padding-right: 5vw; */
-  display: flex;
-  position: relative;
-  /* width: 100vw; */
-  /* height: 100%; */
-  /* display: flex; */
-  flex-direction: column;
-  justify-content: space-between;
-  /* align-items: flex-start; */
-  padding-top: 14vh;
-  padding-bottom: 5vh;
-  top: 0;
-}
-
 .m_box1 {
   background-color: #111;
+  background:  url(../img/flip-bg.jpg);
+  background-size: cover;
 }
 .m_box2 {
   background-color: #222;
@@ -1403,6 +1396,29 @@ main {
 .m_box3 {
   background-color: #333;
 }
+.m_b_index {
+  /* z-index: 10; */
+  /* pointer-events: none; */
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  padding-left: 3vw;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 14vh;
+  padding-bottom: 8vh;
+  top: 0;
+  /* flex: none; */
+  /* padding-right: 5vw; */
+  /* width: 100vw; */
+  /* height: 100%; */
+  /* display: flex; */
+  /* align-items: flex-start; */
+}
+
 
 .it-container.portfolio {
   flex-direction: column;
@@ -1417,38 +1433,88 @@ main {
   top: 0;
 }
 .it-portfolio-index {
+  display: flex;
   grid-column-gap: 20px;
   grid-row-gap: 20px;
   flex-direction: column;
-  grid-template-rows: auto auto;
-  grid-template-columns: 1fr 1fr;
-  grid-auto-columns: 1fr;
-  display: flex;
 }
 .it-h3.portfolio {
   color: #fff;
-  font-family: Pretendard, sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 150%;
 }
 .it-portfolio-heading {
   color: #fff;
-  font-family: Pretendard, sans-serif;
   font-size: 48px;
   font-weight: 600;
   line-height: 120%;
 }
-.it-text-body2.portfolio {
-  color: #fff;
-  width: 20rem;
-  font-size: 14px;
-  font-weight: 400;
+
+.it-text-body{
+  width: 205px;
+  display: grid;
+	grid-template-columns: repeat(2, minmax(100px, auto));
+  gap: 5px;
 }
-.it-portfolio-btn {
-  grid-column-gap: 8px;
-  grid-row-gap: 8px;
-  align-items: center;
+.it-text-body>li:nth-child(3) { grid-column: auto / span 2; }
+.it-text-body>li{
+  text-align: center;
   text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.5em 1em;
+  font-size: 13px;
+  color: #fff;
+  border: 1px solid #fff;
+  background-color: #ffffff4a;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+.it-portfolio-box{}
+
+.it-box{
   display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+.it-box-m{
+background-color: #fff;
+width: 8vw;
+height: 20vh;
+border-radius: 10px;
+box-shadow: 0 40px 60px rgba(0, 0, 0, .2);
+}
+.it-box-t{
+background-color: #fff;
+width: 20vw;
+height: 25vh;
+border-radius: 15px;
+box-shadow: 0 40px 60px rgba(0, 0, 0, .2);
+}
+
+
+.it-portfolio-btn {
+  position: absolute;
+  bottom: 2vw;
+  left: 8vw;
+  
+}
+
+.m_box1 .moniter_wrap{
+  background: url(../img/hanacard-index.png) no-repeat ;
+  background-size: cover;
+  background-position: top;
+  transition: 0.8s;
+}
+.m_box2 .moniter_wrap{
+  background: url(../img/hanacard-index.png) no-repeat ;
+  background-size: cover;
+  background-position: top;
+  transition: 0.8s;
+}
+.m_box3 .moniter_wrap{
+  background: url(../img/sushi-bg.png) no-repeat ;
+  background-size: cover;
+  background-position: top;
+  transition: 0.8s;
 }

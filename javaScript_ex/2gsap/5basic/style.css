@@ -263,9 +263,9 @@ overflow: hidden; background-color: #7e572b;
 #section5 .interview_desc{
     position: sticky ; left: 0; top: 180px;
     height: 700px; margin-top: 20px;
-padding: 2%; display: flex; justify-content: space-between;
-background-color: #b7b7b7;
-border: 1px solid #000;  
+    padding: 2%; display: flex; justify-content: space-between;
+    background-color: #b7b7b7;
+    border: 1px solid #000;  
 }
 #section5 .interview_desc .left{
     width: 67%;

@@ -25,7 +25,7 @@ body {
 	/* background-color: var(--color-bg); */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	overflow-x: hidden;
+	/* overflow-x: hidden; */
 }
 
 .demo-1 {
@@ -325,7 +325,7 @@ main {
 }
 
 .content__title::before {
-	content: '.'counter(section);
+	/* content: '.'counter(section); */
 	font-weight: 400;
 	font-family: area-normal, sans-serif;
 	display: block;
