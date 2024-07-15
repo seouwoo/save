@@ -32,6 +32,7 @@
 }
 
 /* font-family: "Silkscreen", sans-serif; */
+/* font-family: "Oswald", sans-serif; */
 
 :root {
   --grey: #3f3f3f;
@@ -418,7 +419,7 @@ nav {
 
 .badge-parent {
   z-index: 3;
-  width: 5rem;
+  width: 10vw;
   color: black;
   justify-content: center;
   align-items: center;
@@ -439,7 +440,7 @@ nav {
   text-transform: uppercase;
   padding-top: 5px;
   font-family: "InkLipquid", sans-serif;
-  font-size: 1rem;
+  font-size: 2vw;
   font-weight: 700;
   line-height: 0.9;
 }
@@ -1117,7 +1118,7 @@ nav {
   /* padding: 20px; */
   width: 100vw !important;
   /* overflow: hidden; */
-  height: 100vh;
+  height: 150vh !important;
   background-color: #1c1c1c;
   box-sizing: border-box;
 }
@@ -1161,7 +1162,8 @@ nav {
   position: absolute;
   width: 100%;
   left: 50%;
-  bottom: 0;
+  top: 25%;
+  /* bottom: 0; */
   transform: translateX(-50%);
   overflow: visible;
 }
@@ -1182,7 +1184,7 @@ nav {
 .website-content5{
   position: relative;
   background-color: #1c1c1c;
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
 }
 
@@ -1252,7 +1254,7 @@ nav {
 
 .main_skill {
   position: relative;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   color: #fff;
   font-size: 18px;
   width: 100%;
@@ -1266,7 +1268,7 @@ nav {
   align-items: center;
 }
 
-.main_skill .skill-content {
+.skill-content {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1282,19 +1284,26 @@ nav {
 }
 
 .main_skill h1 {
-  /* position: absolute; */
-  top: 20px;
-  left: 50%;
-  /* transform: translateX(-50%); */
-  font-size: 35px;
+      position: absolute;
+    top: -45%;
+    left: 50%;
+    transform: translate(-50%);
+  font-size: 65px;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 900;
 }
+.text-sub{
+  position: absolute;
+  top: -16%;
+  left: 50%;
+  transform: translate(-50%);
+  text-transform: uppercase;
 
+}
 .main_skill p {
-
   line-height: 1.5;
+  padding-bottom: 30px;
 }
 
 .main_skill .skillbar-container {
@@ -1335,11 +1344,15 @@ nav {
   font-family: 'GmarketSansMedium';
   height: 100%;
   text-align: left;
+  font-size: 20px;
+  line-height: 20px;
 }
 .main_skill .text-right {
   font-family: 'GmarketSansMedium';
   height: 100%;
   text-align: left;
+  font-size: 20px;
+  line-height: 20px;
 }
 
 .main_skill .skillbar-container span {
@@ -1350,30 +1363,31 @@ nav {
 
 /* main */
 main {
-  /* overflow-x: hidden; */
-  margin-bottom: 10lvh;
+  width: 500vw;
+  height: 100vh;
 }
+
 .main {
+  height: 100vh;
 }
+
 .mains {
   display: flex;
-  position: relative;
   height: 100vh;
-  width: 300vw;
 }
 
 .boxs {
   position: sticky;
   top: 0;
-  left: 0;
+  width: 100vw;
+  height: 100vh;
   padding-left: 5vw;
   padding-right: 5vw;
-  background-color: #ccc;
-  height: 100vh;
-  width: 100vw;
+  transform: translate(0,0);
 }
 
 .m_b_card {
+  cursor: pointer;
   position: absolute;
   height: 60%;
   width: 57%;
@@ -1381,20 +1395,71 @@ main {
   left: 67%;
   transform: translateX(-50%);
   z-index: 1;
-  background-color: #fff;
   border-radius: 24px;
   box-shadow: 0 40px 60px rgba(0, 0, 0, .2);
 }
+.m_b_card.mov{
+  height: auto;
+}
+.myVideo{
+  display: block;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  border-radius: 15px;
+  box-shadow: 0 40px 60px rgba(0, 0, 0, .2);
+}
+.myVideo video{
+  width: auto;
+  height: 100%;
+}
+.m_b_blur{
+  position: absolute;
+  backdrop-filter: blur(2px);
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
 .m_box1 {
-  background-color: #111;
   background:  url(../img/flip-bg.jpg);
   background-size: cover;
 }
 .m_box2 {
-  background-color: #222;
+  background:  url(../img/magma-bg.png);
+  background-size: cover;
 }
 .m_box3 {
-  background-color: #333;
+  background:  url(../img/sushi-bg.png);
+  background-size: cover;
+}
+.m_box4 {
+  background:  url(../img/cy-bg.png);
+  background-size: cover;
+}
+.m_box5 {
+  background:  url(../img/mu-bg.jpg);
+  background-size: cover;
+}
+
+
+.m_box1 .m_b_card{
+
+}
+.m_box2 .m_b_card{
+  background-size: cover;
+  background-position: top;
+  transition: 0.8s;
+}
+
+.m_box3 .m_b_card{
+  background: url(../img/sus0hi-pc.png) no-repeat ;
+  background-size: cover;
+  background-position: top;
+  transition: 0.8s;
+}
+.m_b_card:hover{
+  background-position: bottom;
 }
 .m_b_index {
   /* z-index: 10; */
@@ -1439,12 +1504,14 @@ main {
   flex-direction: column;
 }
 .it-h3.portfolio {
+  text-transform: uppercase;
   color: #fff;
   font-size: 18px;
   font-weight: 500;
   line-height: 150%;
 }
 .it-portfolio-heading {
+  text-transform: uppercase;
   color: #fff;
   font-size: 48px;
   font-weight: 600;
@@ -1457,7 +1524,7 @@ main {
 	grid-template-columns: repeat(2, minmax(100px, auto));
   gap: 5px;
 }
-.it-text-body>li:nth-child(3) { grid-column: auto / span 2; }
+.it-text-body>li.log { grid-column: auto / span 2; }
 .it-text-body>li{
   text-align: center;
   text-decoration: none;
@@ -1477,22 +1544,37 @@ main {
   align-items: flex-end;
   gap: 10px;
 }
+
 .it-box-m{
-background-color: #fff;
-width: 8vw;
-height: 20vh;
-border-radius: 10px;
-box-shadow: 0 40px 60px rgba(0, 0, 0, .2);
+  cursor: pointer;
+  background-color: #fff;
+  height: 20vh;
+  border-radius: 10px;
+  box-shadow: 0 40px 60px rgba(0, 0, 0, .2);
+  transition: 3s;
 }
 .it-box-t{
-background-color: #fff;
-width: 20vw;
-height: 25vh;
-border-radius: 15px;
-box-shadow: 0 40px 60px rgba(0, 0, 0, .2);
+  cursor: pointer;
+  background-color: #fff;
+  height: 25vh;
+  border-radius: 15px;
+  box-shadow: 0 40px 60px rgba(0, 0, 0, .2);
+  transition: 2s;
+}
+.m_box3 .it-box-m{width: 8vw;}
+.m_box3 .it-box-t{width: 20vw;}
+.m_box3 .it-box-m{background-image: url(../img/sushi-m.png);
+  background-size: cover;
+  background-position: top;}
+.m_box3 .it-box-t{background-image: url(../img/sushi-t.png);
+  background-size: cover;
+  background-position: top;}
+.it-box-m:hover,.it-box-t:hover{
+  background-position: bottom;
 }
 
 
+  
 .it-portfolio-btn {
   position: absolute;
   bottom: 2vw;
@@ -1500,21 +1582,176 @@ box-shadow: 0 40px 60px rgba(0, 0, 0, .2);
   
 }
 
-.m_box1 .moniter_wrap{
-  background: url(../img/hanacard-index.png) no-repeat ;
-  background-size: cover;
-  background-position: top;
-  transition: 0.8s;
+.it-portfolio-btn p i{
+  animation: right 1s alternate infinite;
 }
-.m_box2 .moniter_wrap{
-  background: url(../img/hanacard-index.png) no-repeat ;
-  background-size: cover;
-  background-position: top;
-  transition: 0.8s;
+@keyframes right {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
 }
-.m_box3 .moniter_wrap{
-  background: url(../img/sushi-bg.png) no-repeat ;
+/* sub */
+
+.sub{
+
+}
+
+.sub .list{
+  display: grid;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-columns: 1fr;
+  padding: 10vh 5vw;
+}
+
+.sub .list .listitem{
+  position: relative;
+  background-color: #000;
+  height: 30vw;
+  transition: 0.5s;
+  
+}
+.sub .list .listitem:nth-child(2n+1) {
+  margin-top: 60px;
+  margin-bottom: 80px;
+}
+.sub .list .listitem:hover{
+  transform: scale(0.9);
+}
+.sub .list .listitem img{
+  position: absolute;
+  height: 100%;
+}
+.item-card-info{
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: uppercase;
+  padding: 24px;
+  height: 100%;
+  background-color: #00000033;
+  backdrop-filter: blur(2px);
+  transition: 0.3s;
+}
+.item-card-info:hover{
+  background-color: #00000067;
+  backdrop-filter: none;
+}
+.info-top{
+  text-align: center;
+  width: 100%;
+}
+.info-link h3{
+  text-align: center;
+  width: 150px;
+  height: 150px;
+  line-height: 150px;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.item-card-info .info-link h3:hover{
+  background-color: #fff;
+  color: #000;
+}
+.info-bottom{
+  text-align: center;
+  width: 100%;
+}
+
+
+footer {
+  height: 100vh;
+  margin: 0;
+  position: relative; /* 추가 */
+  z-index: 1; /* 추가 */
+}
+
+footer::before {
+  content: "";
+  position: absolute; /* 변경 */
+  height: 100%;
+  width: 100%;
+  background-image: url(https://img.freepik.com/free-vector/yellow-black-grunge-brush-wall_1409-2955.jpg?t=st=1720753708~exp=1720757308~hmac=3592f1a9141f683c9e4b7f28c2507be491f7d67aceff9f700d3d5dee64403ce9&w=1380);
   background-size: cover;
-  background-position: top;
-  transition: 0.8s;
+  background-position: center;
+  filter: brightness(0.25);
+  inset: 0;
+  z-index: -1; /* 추가 */
+}
+
+.marquees {
+  align-content: center;
+  height: 100%;
+  display: grid;
+  gap: 5vw;
+  overflow: hidden;
+}
+
+.marquee {
+  --marquee--colour: #f3bb0b;
+  --marquee--repeat-count: 6;
+  --marquee--base-duration: 1s;
+  --marquee--repeat-size: calc(100% / var(--marquee--repeat-count));
+  --marquee--double-size: calc(var(--marquee--repeat-size) * 2);
+  --marquee--duration: calc(
+    var(--marquee--base-duration) * var(--char-count, 20)
+  );
+  overflow: hidden;
+  width: 110%;
+  margin-left: -5%;
+  mix-blend-mode: screen;
+  transform: rotate(-5deg);
+  background: var(--marquee--colour);
+  color: #000;
+}
+
+.marquee:nth-child(even) {
+  --marquee--direction: -1;
+  transform: rotate(5deg);
+  background: #000;
+  color: var(--marquee--colour);
+}
+
+.marquee p {
+  transform: translateY(-0.05em);
+  font-weight: bold;
+  margin: 0;
+  display: flex;
+  gap: 0.5em;
+  line-height: 1.1;
+  font-size: clamp(2.5rem, 12vw, 6.2rem);
+  font-family: "Oswald",'GmarketSansMedium', sans-serif; 
+}
+
+.marquee p::after {
+  content: "*";
+  transform: translateY(0.175em);
+}
+
+.marquee p::before {
+  content: "";
+}
+
+.marquee--inner {
+  width: max-content;
+  display: flex;
+  text-transform: uppercase;
+  /* JS 애니메이션을 위해 추가된 속성 */
+  will-change: transform;
 }

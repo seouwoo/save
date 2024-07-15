@@ -54,15 +54,15 @@ function updateProgress() {
       ease: "none",
       onUpdate: function scrollPrevent() {
         showLoadingScreen();
-        sp = requestAnimationFrame(scrollPrevent) //2번줄
+        sp = requestAnimationFrame(scrollPrevent) 
         setTimeout(() => {
           cancelAnimationFrame(sp);
-          hideLoadingScreen(); //6번줄
+          hideLoadingScreen();
         }, 10);
       },
 
     })
-}
+  }
 
 }
 
@@ -323,7 +323,6 @@ backColor.forEach(function (item, index) {
 })
 
 /////////////////content2
-//거꾸로 재생됨
 LottieScrollTrigger({
   target: ".website-content2",
   path: "./camera.json",
@@ -333,6 +332,7 @@ LottieScrollTrigger({
   scrub: 1,
   // markers: true,
 });
+
 function LottieScrollTrigger(vars) {
   let playhead = {
       frame: 0
@@ -468,20 +468,26 @@ conScales.forEach(function (conScale) {
     scale: 0.3,
     rotation: 90,
     top: 0,
+    bottom:0,
   }, {
     scrollTrigger: {
       trigger: conScale,
-      start: '0% 100%',
+      start: 'top 100%',
       end: '+=100%',
       scrub: 1,
       markers: true,
+      top:0,
+      bottom:0,
     },
     x: 0,
     y: 0,
     scale: 1,
-    duration: 1,
+    top:0,
+    height: "110vh",
+    bottom:0,
     rotation: 0,
     ease: 'power3.out',
+    // duration: 1,
   })
 
 })
@@ -539,194 +545,201 @@ secImgs.forEach(function (secImg) {
 
 let pageskill = document.querySelectorAll('.skillbar-container');
 
-  pageskill.forEach(function(skillber) {
-    let skill = skillber.querySelectorAll('.skills');
-    let targetWidth = skillber.getAttribute('data-percent');
-    
-    if (skill) {
-      // GSAP를 사용하여 초기 width 값 설정
-      gsap.set(skill, {
-        width: "0%"
-      });
+pageskill.forEach(function (skillber) {
+  let skill = skillber.querySelectorAll('.skills');
+  let targetWidth = skillber.getAttribute('data-percent');
 
-      // GSAP의 ScrollTrigger를 사용하여 스크롤 이벤트에 따른 애니메이션 설정
-      gsap.to(skill, {
-        scrollTrigger: {
-          trigger: ".website-content5",
-          start: "top 80%", // 요소가 뷰포트의 80% 지점에 도달할 때 트리거됨
-          end: "bottom 20%", // 요소가 뷰포트의 20% 지점에 있을 때 종료됨
-          onEnter: function() {
-            // 2초 뒤에 애니메이션 시작
-            setTimeout(function() {
-              gsap.to(skill, {
-                width: targetWidth,
-                duration: 2,
-                ease: "power2.out"
-              });
-            });
-          },
-          onLeave: function() {
-            gsap.set(skill, {
-              width: "0%"
-            });
-          },
-          onLeaveBack: () => {
-            gsap.set(skill, {
-              width: "0%"
-            });
-          },
-          // markers: true,
-        },
-      });
-    }
-  });
-
-
-  //뒷배경
-{
-    // body element
-    const body = document.body;
-
-    // helper functions
-    const MathUtils = {
-        // linear interpolation
-        lerp: (a, b, n) => (1 - n) * a + n * b,
-        // distance between two points
-        distance: (x1,y1,x2,y2) => Math.hypot(x2-x1, y2-y1)
-    }
-
-    // get the mouse position
-    const getMousePos = (ev) => {
-        let posx = 0;
-        let posy = 0;
-        if (!ev) ev = window.event;
-        if (ev.pageX || ev.pageY) {
-            posx = ev.pageX;
-            posy = ev.pageY;
-        }
-        else if (ev.clientX || ev.clientY) 	{
-            posx = ev.clientX + body.scrollLeft + docEl.scrollLeft;
-            posy = ev.clientY + body.scrollTop + docEl.scrollTop;
-        }
-        return {x: posx, y: posy};
-    }
-
-    // mousePos: current mouse position
-    // lastMousePos: last last recorded mouse position (at the time the last image was shown)
-    let mousePos = lastMousePos = {x: 0, y: 0};
-    
-    // update the mouse position
-    window.addEventListener('mousemove', ev => mousePos = getMousePos(ev));
-    
-    // gets the distance from the current mouse position to the last recorded mouse position
-    const getMouseDistance = () => MathUtils.distance(mousePos.x,mousePos.y,lastMousePos.x,lastMousePos.y);
-
-    class Image {
-        constructor(el) {
-            this.DOM = {el: el};
-            // image deafult styles
-            this.defaultStyle = {
-                x: 0,
-                y: 0,
-                opacity: 1
-            };
-            // get sizes/position
-            this.getRect();
-            // init/bind events
-            this.initEvents();
-        }
-        initEvents() {
-            // on resize get updated sizes/position
-            window.addEventListener('resize', () => this.resize());
-        }
-        resize() {
-            // reset styles
-            TweenMax.set(this.DOM.el, this.defaultStyle);
-            // get sizes/position
-            this.getRect();
-        }
-        getRect() {
-            this.rect = this.DOM.el.getBoundingClientRect();
-        }
-    }
-
-    class ImageTrail {
-        constructor() {
-            // images container
-            this.DOM = {content: document.querySelector('.skill_content')};
-            // array of Image objs, one per image element
-            this.images = [];
-            [...this.DOM.content.querySelectorAll('div.content__img')].forEach(img => this.images.push(new Image(img)));
-            // total number of images
-            this.imagesTotal = this.images.length;
-            // upcoming image index
-            this.imgPosition = 0;
-            // zIndex value to apply to the upcoming image
-            this.zIndexVal = 1;
-            // mouse distance required to show the next image
-            this.threshold = 100;
-            this.showNextImage();
-            // render the images
-            requestAnimationFrame(() => this.render());
-        }
-        render() {
-            // get distance between the current mouse position and the position of the previous image
-            let distance = getMouseDistance();
-
-            // if the mouse moved more than [this.threshold] then show the next image
-            if ( distance > this.threshold ) {
-                this.showNextImage();
-            }
-
-            // loop..
-            requestAnimationFrame(() => this.render());
-        }
-        showNextImage() {
-            // show image at position [this.imgPosition]
-            const img = this.images[this.imgPosition];
-            // kill any tween on the image
-            TweenMax.killTweensOf(img.DOM.el);
-
-            new TimelineMax()
-            // show the image
-            .set(img.DOM.el, {
-                opacity: 1,
-                x: mousePos.y > lastMousePos.y ? 100 : -100,
-                zIndex: this.zIndexVal
-            }, 0)
-            // animate position
-            .to(img.DOM.el, 1.2, {
-                ease: Expo.easeOut,
-                x: 0
-            }, 0);
-
-            ++this.zIndexVal;
-            this.imgPosition = this.imgPosition < this.imagesTotal-1 ? this.imgPosition+1 : 0;
-            
-            lastMousePos = mousePos;
-        }
-    }
-
-    /***********************************/
-    /********** Preload stuff **********/
-
-    // Preload images
-    const preloadImages = () => {
-        return new Promise((resolve, reject) => {
-            imagesLoaded(document.querySelectorAll('.content__img'), {background: true}, resolve);
-        });
-    };
-    
-    // And then..
-    preloadImages().then(() => {
-        // Remove the loader
-        document.body.classList.remove('loading');
-        new ImageTrail();
+  if (skill) {
+    gsap.set(skill, {
+      width: "0%",
     });
+    gsap.to(skill, {
+      scrollTrigger: {
+        trigger: ".website-content5",
+        start: "top 80%", // 요소가 뷰포트의 80% 지점에 도달할 때 트리거됨
+        end: "bottom 20%", // 요소가 뷰포트의 20% 지점에 있을 때 종료됨
+        onEnter: function () {
+          // 2초 뒤에 애니메이션 시작
+          setTimeout(function () {
+            gsap.to(skill, {
+              width: targetWidth,
+              duration: 5,
+              ease: "power2.out"
+            });
+          });
+        },
+        onLeave: function () {
+          gsap.set(skill, {
+            width: "0%"
+          });
+        },
+        onLeaveBack: () => {
+          gsap.set(skill, {
+            width: "0%"
+          });
+        },
+        // markers: true,
+      },
+    });
+  }
+});
+
+
+//뒷배경
+{
+  // body element
+  const body = document.body;
+
+  // helper functions
+  const MathUtils = {
+    // linear interpolation
+    lerp: (a, b, n) => (1 - n) * a + n * b,
+    // distance between two points
+    distance: (x1, y1, x2, y2) => Math.hypot(x2 - x1, y2 - y1)
+  }
+
+  // get the mouse position
+  const getMousePos = (ev) => {
+    let posx = 0;
+    let posy = 0;
+    if (!ev) ev = window.event;
+    if (ev.pageX || ev.pageY) {
+      posx = ev.pageX;
+      posy = ev.pageY;
+    } else if (ev.clientX || ev.clientY) {
+      posx = ev.clientX + body.scrollLeft + docEl.scrollLeft;
+      posy = ev.clientY + body.scrollTop + docEl.scrollTop;
+    }
+    return {
+      x: posx,
+      y: posy
+    };
+  }
+
+  // mousePos: current mouse position
+  // lastMousePos: last last recorded mouse position (at the time the last image was shown)
+  let mousePos = lastMousePos = {
+    x: 0,
+    y: 0
+  };
+
+  // update the mouse position
+  window.addEventListener('mousemove', ev => mousePos = getMousePos(ev));
+
+  // gets the distance from the current mouse position to the last recorded mouse position
+  const getMouseDistance = () => MathUtils.distance(mousePos.x, mousePos.y, lastMousePos.x, lastMousePos.y);
+
+  class Image {
+    constructor(el) {
+      this.DOM = {
+        el: el
+      };
+      // image deafult styles
+      this.defaultStyle = {
+        x: 0,
+        y: 0,
+        opacity: 1
+      };
+      // get sizes/position
+      this.getRect();
+      // init/bind events
+      this.initEvents();
+    }
+    initEvents() {
+      // on resize get updated sizes/position
+      window.addEventListener('resize', () => this.resize());
+    }
+    resize() {
+      // reset styles
+      TweenMax.set(this.DOM.el, this.defaultStyle);
+      // get sizes/position
+      this.getRect();
+    }
+    getRect() {
+      this.rect = this.DOM.el.getBoundingClientRect();
+    }
+  }
+
+  class ImageTrail {
+    constructor() {
+      // images container
+      this.DOM = {
+        content: document.querySelector('.skill_content')
+      };
+      // array of Image objs, one per image element
+      this.images = [];
+      [...this.DOM.content.querySelectorAll('div.content__img')].forEach(img => this.images.push(new Image(img)));
+      // total number of images
+      this.imagesTotal = this.images.length;
+      // upcoming image index
+      this.imgPosition = 0;
+      // zIndex value to apply to the upcoming image
+      this.zIndexVal = 1;
+      // mouse distance required to show the next image
+      this.threshold = 100;
+      this.showNextImage();
+      // render the images
+      requestAnimationFrame(() => this.render());
+    }
+    render() {
+      // get distance between the current mouse position and the position of the previous image
+      let distance = getMouseDistance();
+
+      // if the mouse moved more than [this.threshold] then show the next image
+      if (distance > this.threshold) {
+        this.showNextImage();
+      }
+
+      // loop..
+      requestAnimationFrame(() => this.render());
+    }
+    showNextImage() {
+      // show image at position [this.imgPosition]
+      const img = this.images[this.imgPosition];
+      // kill any tween on the image
+      TweenMax.killTweensOf(img.DOM.el);
+
+      new TimelineMax()
+        // show the image
+        .set(img.DOM.el, {
+          opacity: 1,
+          x: mousePos.y > lastMousePos.y ? 100 : -100,
+          zIndex: this.zIndexVal
+        }, 0)
+        // animate position
+        .to(img.DOM.el, 1.2, {
+          ease: Expo.easeOut,
+          x: 0
+        }, 0);
+
+      ++this.zIndexVal;
+      this.imgPosition = this.imgPosition < this.imagesTotal - 1 ? this.imgPosition + 1 : 0;
+
+      lastMousePos = mousePos;
+    }
+  }
+
+  /***********************************/
+  /********** Preload stuff **********/
+
+  // Preload images
+  const preloadImages = () => {
+    return new Promise((resolve, reject) => {
+      imagesLoaded(document.querySelectorAll('.content__img'), {
+        background: true
+      }, resolve);
+    });
+  };
+
+  // And then..
+  preloadImages().then(() => {
+    // Remove the loader
+    document.body.classList.remove('loading');
+    new ImageTrail();
+  });
 }
 
-/* 추가된 JavaScript */
-// Vars
+
 let speed = 0;
 let acc = 0;
 let hover = false;
@@ -804,30 +817,103 @@ abut_animate();
 
 
 //////////// main
-// let boxs = gsap.utils.toArray(".boxs");
 
-// let tl_1 = gsap.to(boxs, {
-//   xPercent: -100 * (boxs.length - 1),
-//   ease: "none",
-//   scrollTrigger: {
-//     trigger: ".mains",
-//     pin: true,
-//     scrub: 1,
-//     end: () => "+=" + document.querySelector(".mains").offsetWidth,
-//   },
-// });
 
-// let boxs = gsap.utils.toArray(".boxs");
+//////Video
+document.addEventListener('DOMContentLoaded', (event) => {
+  const videos = document.querySelectorAll('.myVideo');
 
-// gsap.to(boxs, {
-//   xPercent: -100,  // 각 boxs 요소를 옆으로 100% 이동
-//   duration: boxs.length - 1, // 애니메이션 지속 시간 설정
-//   stagger: 1, // 요소 간 애니메이션 시작 시간 간격 설정
-//   ease: "none",
-//   scrollTrigger: {
-//     trigger: ".mains",
-//     pin: true,
-//     scrub: 1,
-//     end: "+=300%" 
-//   },
-// });
+  videos.forEach(video => {
+    video.addEventListener('mouseover', () => {
+      video.play();
+    });
+
+    video.addEventListener('mouseout', () => {
+      video.pause();
+    });
+  });
+});
+
+////sub
+let listitem = document.querySelectorAll('.listitem')
+listitem.forEach(function (listitem) {
+  gsap.fromTo(listitem, {
+    y: -100,
+    opacity: 0,
+  }, {
+    scrollTrigger: {
+      trigger: listitem,
+      start: '50% 100%',
+      end: '50% 100%',
+      scrub: 1,
+      duration: 2,
+      // markers: true,
+    },
+    y: 0,
+    opacity: 1,
+    ease: 'power3.out',
+  })
+
+})
+document.addEventListener('DOMContentLoaded', (event) => {
+  const listItems = document.querySelectorAll('.listitem');
+
+  listItems.forEach(item => {
+    item.addEventListener('mouseover', () => {
+      gsap.to(item, {
+        scale: 0.9,
+        duration: 0.2,
+        ease: "linear",
+      });
+    });
+
+    item.addEventListener('mouseout', () => {
+      gsap.to(item, {
+        scale: 1,
+        duration: 0.2,
+        ease: "linear",
+      });
+    });
+  });
+});
+
+
+/////footer
+let marqueeInners = document.querySelectorAll('.marquee--inner');
+
+let counts = [];
+
+marqueeInners.forEach((element, index) => {
+    initTexts(element);
+    counts.push(0);
+});
+
+function initTexts(element) {
+    let text = element.innerHTML.trim(); // 텍스트를 하나의 문자열로 합침
+    element.innerHTML = text + ' ' + text; // 텍스트를 두 번 반복하여 무한 스크롤 효과를 준비
+}
+
+function animate() {
+    marqueeInners.forEach((element, index) => {
+        counts[index]++;
+        counts[index] = marqueeText(counts[index], element, index % 2 === 0 ? -1 : 1);
+    });
+    requestAnimationFrame(animate);
+}
+
+function marqueeText(count, element, direction) {
+    let width = element.scrollWidth / 2; // 텍스트 너비의 절반
+    if (direction === -1) {
+        if (count > width) {
+            count = 0;
+        }
+    } else {
+        if (count > 0) {
+            count = -width;
+        }
+    }
+    element.style.transform = `translate(${count * direction}px, 0)`;
+    return count;
+}
+
+animate();
