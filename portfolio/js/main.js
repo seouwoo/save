@@ -529,7 +529,7 @@ secImgs.forEach(function (secImg) {
     scrollTrigger: {
       trigger: ".website-content4",
       start: "0% 0%",
-      end: "+=5000",
+      end: "+=3000",
       scrub: 1,
       pin: true,
       // markers: true,
@@ -568,16 +568,16 @@ pageskill.forEach(function (skillber) {
             });
           });
         },
-        onLeave: function () {
-          gsap.set(skill, {
-            width: "0%"
-          });
-        },
-        onLeaveBack: () => {
-          gsap.set(skill, {
-            width: "0%"
-          });
-        },
+        // onLeave: function () {
+        //   gsap.set(skill, {
+        //     width: "0%"
+        //   });
+        // },
+        // onLeaveBack: () => {
+        //   gsap.set(skill, {
+        //     width: "0%"
+        //   });
+        // },
         // markers: true,
       },
     });
@@ -738,7 +738,7 @@ pageskill.forEach(function (skillber) {
     new ImageTrail();
   });
 }
-
+/////////////////////////
 
 let speed = 0;
 let acc = 0;
@@ -878,6 +878,44 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 
+//////// main_hero
+gsap.to(".main_hero .hero", {
+  scrollTrigger: {
+    trigger: ".main_hero",
+    scrub: true,
+    pin: true,
+    start: "center center",
+    end: "+=100%",
+    toggleClass: "active",
+    ease: "power2",
+    // markers:true,
+    duration: 2,
+  ease: "power1.inOut"
+  }
+});
+
+
+gsap
+  .timeline({
+    scrollTrigger: {
+      trigger: ".main_hero",
+      scrub: 1,
+      duration: 2,
+  ease: "power1.inOut"
+    }
+  })
+  .to(".heros", {
+    scale: 1,
+    rotate: 270
+  })
+  .to(
+    ".heros img",
+    {
+      rotate: -270
+    },
+    0
+  );
+
 /////footer
 let marqueeInners = document.querySelectorAll('.marquee--inner');
 
@@ -917,3 +955,36 @@ function marqueeText(count, element, direction) {
 }
 
 animate();
+
+
+
+class TypeIt {
+  constructor(text, typing, speed) {
+    this.text = text;
+    this.typing = typing;
+    this.speed = speed;
+    this.current = 0;
+    this.cont = document.querySelector(this.typing);
+  }
+
+  run() {
+    gsap.to(this, {
+      current: this.text.length,
+      duration: this.text.length * this.speed / 1000,
+      ease: "none",
+      onUpdate: () => this.cont.innerHTML = this.text.slice(0, Math.floor(this.current)),
+      scrollTrigger: {
+        trigger: this.cont,
+        start: "top 80%",
+        end: "+=100%",
+        // scrub: true,
+        // markers: true
+      },
+      repeat: -1, // 무한 반복
+      repeatDelay: 3 // 3초 지연 후 반복
+    });
+  }
+}
+
+const demoText = new TypeIt('궁금하신 사항은 언제든지 편하게 연락 부탁드립니다!', '.text .typing', 100);
+demoText.run();

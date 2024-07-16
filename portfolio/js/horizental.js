@@ -10,9 +10,9 @@ gsap.to(panels, {
     end: "+=" + 100 * panels.length + "5",
     scrub: true,
     pin: true,
-    markers: {
-      startColor: "white",
-      endColor: "white"
-    }
+    // markers: {
+    //   startColor: "white",
+    //   endColor: "white"
+    // }
   }
 });
