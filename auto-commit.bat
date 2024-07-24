@@ -12,7 +12,7 @@
 
 :loop
 
-	cd D:\0GitHub\SYJ
+	cd D:\syj\SYJ
 
 	git add --all
 
