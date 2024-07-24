@@ -1,0 +1,334 @@
+@charset "UTF-8";
+*{margin: 0;padding: 0;top: 0;}
+@import "reset.css";
+
+/* font-family: "Noto Sans", sans-serif;
+ */
+
+.clearfix::after{content: ""; clear: both; display: block;}
+/* 
+단위
+vw =>(뷰윈도우)viewport의 넓이 100vw =>viewport의 넓이의 100%
+vh => viewport의 높이 100vw =>viewport의 높이의 100%
+rem => root의 단위에 따라가는 단위(root=html)
+em => 내가 가진 단위에 따라가는 단위
+*/
+
+
+/* ⭐index1⭐ */
+
+body{}
+
+.wrap{
+    padding: 15px 20px 10px 20px;
+    height: 50vh;
+    
+}
+
+/* header */
+
+#header{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    
+}
+
+#header .container{
+    width: 100%; margin: 0 auto;}
+
+.header{
+    line-height: 17px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 21px;
+}
+
+.header h4{font-weight: 400;}
+
+.header .bar{display: flex; gap: 4px;}
+
+#header.contents{}
+
+#header .contents .container{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    }
+#header .contents .container .icon>div{
+    cursor: pointer;
+    
+}
+
+#header .contents .container .con1{}
+#header .contents .container .con1 h1{
+    font-size: 20px;
+    font-weight: 900;
+    padding-bottom: 5px;
+}
+#header .contents .container .con1 h2{
+    color: #9C9C9C;
+}
+
+/* box1 */
+
+.box1{position: relative;
+    background: url(../img/Frame\ 30.png) no-repeat ;
+    width: 100%;height: 466px;
+    background-size: cover;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column-reverse;
+
+}
+
+
+.box1 .icon{position: absolute;
+    top: 20px;right: 20px;
+
+}
+
+.box1 .s_box{
+    
+    
+
+
+}
+
+.box1 .s_box .contents{
+
+   
+
+}
+.box1 .s_box .contents .container{
+
+    background-color: rgba(217, 217, 217, 0.5);
+    border-radius: 10px;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    
+    
+
+}
+.box1 .s_box .contents .container .con1{
+
+}
+.box1 .s_box .contents .container .con1 h1{
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 5px;
+
+}
+.box1 .s_box .contents .container .con1 h2{
+    font-size: 12px;
+    color: #fff;
+
+}
+.box1 .s_box .contents .container .best{
+    display: flex;
+    gap: 7.44px;
+    border: 1px solid #AAB247;
+    border-radius: 10px;
+    background-color: #fff;
+    height: 25px;
+    align-items: center;
+    padding: 3px 10px ;
+
+}
+
+
+.box1 .s_box .contents .container .best .text{
+    color: #AAB247;
+    font-weight: bold;
+    font-size: 15px;  
+}
+
+/* b_dots */
+
+.b_dots{display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+
+
+}
+.b_dots .dots{
+    background-color: #D9D9D9;
+    font-size: 0;
+    line-height: 0;
+    width: 8px;height: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+
+}
+.b_dots .dots:nth-child(3){
+    background-color: #000;
+
+}
+
+
+/* box2 */
+
+.box2{
+    
+}
+.box2 .container{
+    
+
+}
+.box2 .container .con2{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;
+
+}
+.box2 .container .con2 h1{
+    font-size: 20px;
+    font-weight: 900;
+
+}
+.box2 .container .con2 h2{
+    line-height: 17px;
+    color: #9C9C9C;
+
+}
+.box2 .container .con2 h2 i{
+    color: #767676;
+    cursor: pointer;}
+
+
+
+.sub{
+
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    overflow: hidden;
+    
+}
+.sub_box{}
+.sb_img{
+    background: url(../img/Rectangle\ 15.png) no-repeat ;
+    width: 130px; height: 100px;
+    background-size: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.sb_text{
+    background-color: #fff;
+    width: 130px; height: 40px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.sb_text h1{
+    padding: 2px 16px 0 5px;
+    line-height: 17px;
+}
+.sb_text h2{
+font-size: 7px;
+color: #9C9C9C;
+padding-left: 5px;
+line-height: 9.1px;
+}
+
+/* sub */
+
+
+.ber{
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+    
+}
+.ber .s_ber{
+    background-color: #000;
+    font-size: 0;
+    line-height: 0;
+    width: 150px;
+    height: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+
+/* ⭐index2⭐ */
+
+.sub_pe{
+
+}
+.sub_pe .pe_box{
+    width: 100%;
+    background-color: #AAB247;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 20px  0 30px 20px;
+    
+    height: 35px;
+    bottom: 0;
+    
+    
+    
+}
+.sub_pe .pe_box h1{
+    font-size: 20px;
+    font-weight: 900;
+   
+}
+.sub_pe .pe_box i{
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.list_box{
+    padding: 0 20px;
+    padding-top: 10px;
+    height: 100%;
+
+}
+.list_box .list{
+    height: 100%;
+    
+    
+    
+}
+
+.list_box .list .sub_list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;width: 100%;
+    border: 1px solid #CCCCCC;
+    border-radius: 20px;
+    padding: 7px 10px ;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    
+}
+.list_box .list .sub_list i{
+    font-size: 20px;
+}
+.list_box .list .sub_list .it{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+
+}
+.list_box .list .sub_list .it img{
+    border-radius: 50%;
+}
+.list_box .list .sub_list .it .text{}
+
+
+
+
+

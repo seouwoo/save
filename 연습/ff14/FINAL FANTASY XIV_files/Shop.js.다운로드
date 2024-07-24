@@ -1,0 +1,423 @@
+﻿function Charge(auto, p) {
+
+    var url = 'http://billing.ff14.co.kr/PGCharge/Provision';
+    if (auto == "1") {
+        url = 'http://billing.ff14.co.kr/PGCharge/Provision?Type=At&P=' + p;
+    }
+    var id = 'pgcharge';
+    var width = 500;
+    var height = 700;
+    var popwidth = width;
+    var popheight = height;
+    var x = (screen.availWidth - popwidth) / 2;
+    var y = (screen.availHeight - popheight) / 2;
+
+    var IEIndex = navigator.userAgent.indexOf("MSIE");
+    var IE8Over = navigator.userAgent.indexOf("Trident");
+    var trident = navigator.userAgent.match(/Trident\/(\d.\d)/i);
+
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+    var oldie = ua.substring(0, 11);
+
+    if (IEIndex > 0 && IE8Over > 0 && trident != null && trident.length > 1 && trident[1] == 4.0) {
+        var referLink = document.createElement("<a href='" + url + "' target='PGCharge'></a>");
+        document.body.appendChild(referLink);
+        referLink.click();
+    } else {
+        //var feather = "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=0,left=" + x + ",top=" + y + ",width=" + popwidth + ",height=" + popheight;
+	var feather = "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=1,left=" + x + ",top=" + y + ",width=" + popwidth + ",height=" + popheight;
+        var win = window.open("about:blank", id, feather);
+        if (win == null) {
+            alert("팝업 차단 설정을 풀어주신 뒤, 진행하여 주십시오.");
+            return;
+        }
+        win.location.href = url;
+        win.focus();
+    }
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+} 
+
+function GameGrade(Domain) {
+
+    var url = Domain + '/support/popupGameGrade';
+    var id = 'gameGrade';
+    var width = 510;
+    var height = 494;
+    var popwidth = width;
+    var popheight = height;
+    var x = (screen.availWidth - popwidth) / 2;
+    var y = (screen.availHeight - popheight) / 2;
+
+    var IEIndex = navigator.userAgent.indexOf("MSIE");
+    var IE8Over = navigator.userAgent.indexOf("Trident");
+    var trident = navigator.userAgent.match(/Trident\/(\d.\d)/i);
+
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+    var oldie = ua.substring(0, 11);
+
+    if (IEIndex > 0 && IE8Over > 0 && trident != null && trident.length > 1 && trident[1] == 4.0) {
+        var referLink = document.createElement("<a href='" + url + "' target='gameGrade'></a>");
+        document.body.appendChild(referLink);
+        referLink.click();
+    } else {
+        var feather = "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=0,left=" + x + ",top=" + y + ",width=" + popwidth + ",height=" + popheight;
+        var win = window.open("", id, feather);
+        if (win == null) {
+            alert("팝업 차단 설정을 풀어주신 뒤, 진행하여 주십시오.");
+            return;
+        }
+        win.location.href = url;
+        win.focus();
+    }
+}
+
+
+function Detail(_PakageNo, _PageName) {
+
+    document.getElementById("packageNo").value = _PakageNo;
+    document.getElementById('buyForm').method = "post";
+    document.getElementById('buyForm').action = "/shop/" + _PageName + "/Detail";
+    document.getElementById('buyForm').submit();
+
+}
+
+function btnBuy(_PakageNo, _IsLogin, _LoginResult, _HomeURL, _CsiteNo, _BuyType) {
+
+    var IsCheck = true;
+    //var Agree = document.getElementById("inputAgree2");
+
+    //if (Agree != null) {
+    //    if (Agree.checked == false) {
+    //        alert("이용 약관에 동의해 주세요.");
+    //        return false;
+    //    }
+    //}
+
+    var IsLogin = _IsLogin;
+    var LoginResult = _LoginResult;
+    if (IsLogin == "False") {
+
+        alert("로그인이 필요한 서비스 입니다. 로그인하여 주세요.");
+        Login(_CsiteNo);
+    }
+    else {
+
+
+        if (LoginResult == "N") {
+
+            alert("정상적인 계정상태가 아닌경우 크리스탈샵 이용이 제한됩니다.\n자세한 내용은 고객센터로 문의 바랍니다.");
+            location.href = _HomeURL;
+            return;
+
+
+        }
+        else {
+            
+            document.getElementById("packageNo").value = _PakageNo;
+            document.getElementById('buyForm').method = "post";
+
+            if (_BuyType == "buy")
+                document.getElementById('buyForm').action = "/shop/Buy/";
+            else
+                document.getElementById('buyForm').action = "/shop/Buy/GiftSelect";
+
+            document.getElementById('buyForm').submit();
+        }
+    }
+
+}
+
+function btnChangeNmBuy(_PakageNo, _IsLogin, _LoginResult, _HomeURL, _CsiteNo) {
+    var IsCheck = true;
+    //var Agree = document.getElementById("inputAgree2");
+
+    //if (Agree != null) {
+    //    if (Agree.checked == false) {
+    //        alert("이용 약관에 동의해 주세요.");
+    //        return false;
+    //    }
+    //}
+
+    var IsLogin = _IsLogin;
+    var LoginResult = _LoginResult;
+    if (IsLogin == "False") {
+
+        alert("로그인이 필요한 서비스 입니다. 로그인하여 주세요.");
+        Login(_CsiteNo);
+    }
+    else {
+
+
+        if (LoginResult == "N") {
+
+            alert("정상적인 계정상태가 아닌경우 크리스탈샵 이용이 제한됩니다.\n자세한 내용은 고객센터로 문의 바랍니다.");
+            location.href = _HomeURL;
+            return;
+
+
+        }
+        else {
+            document.getElementById("packageNo").value = _PakageNo;
+            document.getElementById('buyForm').method = "post";
+            document.getElementById('buyForm').action = "/shop/Buy/CharacterNmChange/";
+            document.getElementById('buyForm').submit();
+        }
+    }
+}
+
+function btnServerMoveBuy(_PakageNo, _IsLogin, _LoginResult, _HomeURL, _CsiteNo) {
+    var IsCheck = true;
+    //var Agree = document.getElementById("inputAgree2");
+
+    //if (Agree != null) {
+    //    if (Agree.checked == false) {
+    //        alert("이용 약관에 동의해 주세요.");
+    //        return false;
+    //    }
+    //}
+
+    var IsLogin = _IsLogin;
+    var LoginResult = _LoginResult;
+    if (IsLogin == "False") {
+
+        alert("로그인이 필요한 서비스 입니다. 로그인하여 주세요.");
+        Login(_CsiteNo);
+    }
+    else {
+
+
+        if (LoginResult == "N") {
+
+            alert("정상적인 계정상태가 아닌경우 크리스탈샵 이용이 제한됩니다.\n자세한 내용은 고객센터로 문의 바랍니다.");
+            location.href = _HomeURL;
+            return;
+
+
+        }
+        else {
+            document.getElementById("packageNo").value = _PakageNo;
+            document.getElementById('buyForm').method = "post";
+            document.getElementById('buyForm').action = "/shop/Buy/ServerMoveChar/";
+            document.getElementById('buyForm').submit();
+        }
+    }
+}
+
+
+function btnBoosterItemBuy(_PakageNo, _optionFlag, _IsLogin, _LoginResult, _HomeURL, _CsiteNo) {
+    var IsCheck = true;
+
+    var IsLogin = _IsLogin;
+    var LoginResult = _LoginResult;
+    if (IsLogin == "False") {
+
+        alert("로그인이 필요한 서비스 입니다. 로그인하여 주세요.");
+        Login(_CsiteNo);
+    }
+    else {
+
+
+        if (LoginResult == "N") {
+
+            alert("정상적인 계정상태가 아닌경우 크리스탈샵 이용이 제한됩니다.\n자세한 내용은 고객센터로 문의 바랍니다.");
+            location.href = _HomeURL;
+            return;
+
+
+        }
+        else {
+            document.getElementById("top_packageNo").value = _PakageNo;
+            document.getElementById("optionFlag").value = _optionFlag;
+            
+            document.getElementById('buyForm').method = "post";
+            document.getElementById('buyForm').action = "/shop/Buy/BoosterItemSetCharacter/";
+            document.getElementById('buyForm').submit();
+        }
+    }
+}
+
+
+function btnRetainerBuy(_PakageNo, _IsLogin, _LoginResult, _HomeURL, _CsiteNo) {
+    var IsCheck = true;
+
+    var IsLogin = _IsLogin;
+    var LoginResult = _LoginResult;
+    if (IsLogin == "False") {
+
+        alert("로그인이 필요한 서비스 입니다. 로그인하여 주세요.");
+        Login(_CsiteNo);
+    }
+    else {
+
+
+        if (LoginResult == "N") {
+
+            alert("정상적인 계정상태가 아닌경우 크리스탈샵 이용이 제한됩니다.\n자세한 내용은 고객센터로 문의 바랍니다.");
+            location.href = _HomeURL;
+            return;
+
+
+        }
+        else {
+            document.getElementById("top_packageNo").value = _PakageNo;
+            document.getElementById('buyForm').method = "post";
+            document.getElementById('buyForm').action = "/shop/Buy/RetainerSetOption/";
+            document.getElementById('buyForm').submit();
+        }
+    }
+}
+
+
+function Login(CsiteNo) { 
+
+    if (CsiteNo == "0") {
+        var retUrl = window.location.protocol == "http:" ? location.href.substring(7) : location.href.substring(8);
+        var idx = retUrl.indexOf("/");
+        retUrl = retUrl.substring(idx);
+        
+        location.href = "/shop/shared/Login?ReturnUrl=" + escape(retUrl);
+    }
+    else if (CsiteNo == "5") {
+        gdp.jslib.goLogin("http://ff14.game.naver.com/main/");
+
+    }
+    else if(CsiteNo == "9") {
+        NXMember.GoLogin({ "redirect": "http://ff14.nexon.com/main/" });
+    }
+
+
+}
+
+//네이버 이동링크 처리 
+//type : link, lo
+function NaverLink(Type, URL) {
+
+    if (Type == "Link") {
+        top.gdp.jslib.goLink(URL);
+    }
+    else if (Type == "Logout") {
+        gdp.jslib.goLogout();
+    }
+    else if (Type == "Charge") {
+     gdp.jslib.popupChargeWindow(); 
+    }
+
+}
+
+//넥슨 이동링크 처리
+function NexonLink(Type, accesscode) {
+    
+    switch (Type) {
+        case "Join" :{
+            NXMember.GoJoin({ "accesscode": accesscode });
+            break;
+        }
+        case "Login": {
+            NXMember.GoLogin({ "redirect": "http://ff14.nexon.com/main/" });
+            break;
+        }
+        case "Logout": {
+            NgbLogin.Logout();
+            break;
+        }
+        case "FindID" : {
+            NXMember.GoFindID(); 
+            break;
+        }
+        case "FindPW": {
+            NXMember.GoFindPwd();
+            break;
+        }
+        case "GoHome": {
+            NXMember.GoHome();
+            break;
+        }
+        case "GoMyInfo": {
+            NXMember.GoMyInfo();
+            break;
+        }
+
+    }
+
+    
+
+}
+
+function ValidEmail(srcData) {
+    if (srcData.length < 3) {
+        alert("올바른 메일 주소를 입력하여 주시기 바랍니다.");
+        return false;
+    }
+    var nick = /[-_.0-9a-zA-Z]$/i;
+    if (nick.test(srcData) == false) {
+        alert("올바른 메일 주소를 입력하여 주시기 바랍니다.");
+        return false;
+    }
+    return true;
+}
+
+function Paging(check, type, start, pagesize, totalpage) {
+    var curr = parseInt($(".page_num.on").text());
+    var last = parseInt(start) + parseInt(pagesize) - 1;
+
+    switch (check) {
+        case 'p_first':
+            if (curr > 10) {
+                List(1, type);
+            }
+            break;
+        case 'p_prev':
+            if (curr > 10 && start != 1) {
+                List((parseInt(start) - 1), type);
+            }
+            break;
+        case 'p_next':
+            if ((parseInt(start) + parseInt(pagesize)) < parseInt(totalpage)) {
+                List((parseInt(start) + 10), type);
+            }
+            break;
+        case 'p_last':
+            if ((parseInt(start) + parseInt(pagesize)) - 1 < parseInt(totalpage)) {
+                List(totalpage, type);
+            }
+            break;
+    }
+}
+
+// 23.07.31 gtag추가
+// 네이버페이 : 충천하기
+$(document).on("click", ".board_view_box a[href*='//billing.ff14.co.kr/PGCharge/Provision?cate=Npay']", function(e){
+    if(pwp.member.isLogin){
+        gtag('event', 'Click', {'event_category': 'NpayCharge', 'event_label': 'Landing'});
+        Charge();
+    }else{
+        pwp.member.check();
+        return false;
+    }
+    e.preventDefault();
+});
+// 네이버페이 : 크샵 이동
+$(document).on("click", ".board_view_box a[href='/shop?cate=NpayShop']", function(e){
+    gtag('event', 'Click', {'event_category': 'NpayShop', 'event_label': 'Landing'});
+});
+
+// 토스 : 충천하기
+$(document).on("click", ".board_view_box a[href*='//billing.ff14.co.kr/PGCharge/Provision?cate=toss']", function(e){
+    if(pwp.member.isLogin){
+        gtag('event', 'Click', {'event_category': 'tossCharge', 'event_label': 'Landing'});
+        Charge();
+    }else{
+        pwp.member.check();
+        return false;
+    }
+    e.preventDefault();
+});
+// 토스 : 크샵 이동
+$(document).on("click", ".board_view_box a[href='/shop?cate=tossShop']", function(e){
+    gtag('event', 'Click', {'event_category': 'tossShop', 'event_label': 'Landing'});
+});

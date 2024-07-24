@@ -1,0 +1,234 @@
+var _url1 = "/etc/TotalAgree";
+var _url2 = "/etc/Personal";
+var _url3 = "/support/policy";
+var _url4 = "/etc/Juvenile";
+var _url5 = "/YouthGame/";
+if ( location.hostname.indexOf("guide.ff14.co.kr") > -1 ) {
+	_url1 = "//www.ff14.co.kr/serviceInterFace?ac=totalagreement";
+	_url2 = "//www.ff14.co.kr/etc/Personal";
+	_url3 = "//www.ff14.co.kr/support/policy";
+	_url4 = "//www.ff14.co.kr/serviceInterFace?ac=youthprotection";
+	_url5 = "//www.ff14.co.kr/YouthGame/";
+}else if( location.hostname.indexOf("m.ff14.co.kr") > -1 ){
+	_url1 = "/serviceInterface/?ac=TotalAgreement";
+	_url2 = "//www.ff14.co.kr/etc/Personal";
+	//_url3 = "/services/policy.asp";
+	_url3 = "//www.ff14.co.kr/support/policy";
+	_url4 = "/serviceInterFace?ac=youthprotection";
+	_url5 = "//www.ff14.co.kr/YouthGame";
+}else if( location.hostname.indexOf("www.ff14.co.kr") > -1 && $("body").hasClass("footer_mo") ) {
+	//_url3 = "//m.ff14.co.kr/services/policy.asp"; 크리스탈샵
+	_url3 = "//www.ff14.co.kr/support/policy";
+}if ( location.hostname.indexOf("ff14.game.naver.com") > -1 ) {
+	_url5 = "//game.naver.com/shutdown/time.nhn";
+}if ( location.hostname.indexOf("ff14.nexon.com") > -1 ) {
+	_url5 = "//schoolzone.nexon.com/page/nx.aspx?url=timekeeper/intro";
+}if ( location.hostname.indexOf("game.daum.net") > -1 ) {
+	_url5 = "//game.daum.net/shutdown/info.daum";
+}
+
+var footer_2023 = {
+	type1 : `
+		<ul class="sns">
+			<li class="ico1"><a href="https://ko-kr.facebook.com/FINALFANTASYXIV.KOREA/" target="_blank">페이스북</a></li>
+			<li class="ico2"><a href="https://twitter.com/FFXIV_KOREA?s=20&t=1gieCkQ5LRI_llt0y-LrEQ" target="_blank">트위터</a></li>
+			<li class="ico3"><a href="https://www.youtube.com/c/FINALFANTASYXIVKR" target="_blank">유튜브</a></li>
+			<li class="ico4"><a href="https://www.instagram.com/ffxiv_kr/?hl=ko" target="_blank">인스타그램</a></li>
+		</ul>
+		<ul class="logo">
+			<li class="actoz">액토즈소프트</li>
+			<li class="square">SQUARE ENIX</li>
+		</ul>
+
+		<ul class="util">
+			<li><a href="http://www.actoz.com" target="_blank">회사소개</a></li>
+			<li><a href="` + _url1 + `" target="_blank">이용약관</a></li>
+			<li><a href="#none" class="ico_gamegrade">게임이용등급</a></li>
+			<li><a href="` + _url2 + `" target="_blank"><b>개인정보처리방침</b></a></li>
+			<li><a href="` + _url3 + `" target="_blank">운영정책</a></li>
+			<li><a href="` + _url4 + `" target="_blank">청소년보호정책</a></li>
+			<li><a href="` + _url5 + `" target="_blank">게임시간선택제</a></li>
+		</ul>
+
+		<address>
+			<span>(주)액토즈소프트</span> <span>대표이사 GUO HAIBIN</span><br />
+			<span>사업자등록번호: 201-81-55470</span>
+			<span>통신판매업신고: 제 2022-서울중구-0543</span> <span><a href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=2018155470" target="_blank" class="deco">사업자정보확인</a></span><br />
+			<span>주소: 서울특별시 중구 서애로 33 티앤에스빌딩</span>
+			<span>전화: 1800-9602</span> <span>팩스: 02-732-8621</span> <span>이메일: <a href="mailto:FFXIV@actoz.com">FFXIV@actoz.com</a></span>
+		</address>
+
+		<div class="lay"><a href="#none" class="ico_isms">isms</a></div>
+
+		<p></p>
+
+		<!-- 레이어팝업 -->
+		<!-- [레이어] 게임 이용 등급 -->
+		<div class="layer layer_gamegrade">
+			<ol>
+				<li>15세 이용가</li>
+				<li>선정성</li>
+				<li>폭력성</li>
+				<li>약물</li>
+				<li>사행성</li>
+			</ol>
+			<!-- PC -->
+			<div class="pc">
+				<table>
+					<tr>
+						<th>제품명</th>
+						<td>FINAL FANTASY XIV (파이널판타지 14)</td>
+						<th>상호</th>
+						<td>㈜액토즈소프트</td>
+					</tr>
+					<tr>
+						<th>등급분류번호</th>
+						<td>GC-CC-NP-190726-017</td>
+						<th>이용등급</th>
+						<td>15세 이용가</td>
+					</tr>
+					<tr>
+						<th>등급분류 일자</th>
+						<td>2017.07.26</td>
+						<th>신고(등록)번호</th>
+						<td>제 2015-57호</td>
+					</tr>
+				</table>
+			</div>
+			<!-- Mobile -->
+			<div class="mo">
+				<table>
+					<tr>
+						<th>제품명</th>
+						<td>FINAL FANTASY XIV (파이널판타지 14)</td>
+					</tr>
+					<tr>
+						<th>등급분류번호</th>
+						<td>GC-CC-NP-190726-017</td>
+					</tr>
+					<tr>
+						<th>등급분류 일자</th>
+						<td>2017.07.26</td>
+					</tr>
+					<tr>
+						<th>상호</th>
+						<td>㈜액토즈소프트</td>
+					</tr>
+					<tr>
+						<th>이용등급</th>
+						<td>15세 이용가</td>
+					</tr>
+					<tr>
+						<th>신고(등록)번호</th>
+						<td>제 2015-57호</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<!-- [레이어] ISMS -->
+		<div class="layer layer_isms">
+			<ol>
+				<li><span>정보보호 관리체계 인증 ISMS</span></li>
+				<li>
+					[인증범위] 온라인 게임 서비스(파이널판타지14, 라테일)<br />
+					[유효기간] 2022.08.18 ~ 2025.08.17
+				</li>
+			</ol>
+		</div>
+		<!-- //레이어팝업 -->
+	`,
+
+	type2 : `
+		<ul class="logo">
+			<li>ACTOZ SOFT</li>
+			<li>SQUARE ENIX</li>
+		</ul>
+		<p></p>
+	`,
+};
+
+if ( location.hostname === "localhost" || location.hostname === "qa-static.ff14.co.kr" || location.hostname === "dev.ff14.co.kr") {
+	$("head").append('<link rel="stylesheet" href="//qa-static.ff14.co.kr/Assets/common/css/footer_2023.css" />');
+}else{
+	$("head").append('<link rel="stylesheet" href="//image.ff14.co.kr/common/css/footer_2023.css" />');
+}
+
+function fn_footer(type, illu) {
+	if(type == "type1"){
+		$("footer").append(footer_2023.type1).addClass("footer_new");
+	}else{
+		$("footer").append(footer_2023.type2).addClass("footer_ev");
+	}
+
+	if(illu) {
+		$("footer > p").html("&copy; SQUARE ENIX Published in Korea by Actoz Soft CO., LTD.<br />LOGO ILLUSTRATION: © YOSHITAKA AMANO");
+	}else{
+		$("footer > p").html("&copy; SQUARE ENIX Published in Korea by Actoz Soft CO., LTD.");
+	}
+
+	if( $("footer").hasClass("footer_new") ){
+		if( location.hostname.indexOf("ff14.game.naver.com") > -1 ){
+			$("footer .logo").prepend('<li class="naver">네이버</li>');
+		}else if( location.hostname.indexOf("ff14.nexon.com") > -1 ){
+			$("footer .logo").prepend('<li class="nexon">넥슨</li>');
+		}else if( location.hostname.indexOf("game.daum.net") > -1 ){
+			$("footer .logo").prepend('<li class="daum">카카오게임즈</li>');
+		}
+	}
+}
+
+// mobile 분기
+function footer_isMobile() {
+	var mobileFlag = /Mobile|iP(hone|od)|Windows (CE|Phone)|Minimo|Opera M(obi|ini)|BlackBerry|Nokia/;
+
+	if(location.href.indexOf("?device=pc") > -1){
+		return "PC(Mobile, Tablet 외)";
+	}
+
+	if (navigator.userAgent.match(mobileFlag) && !navigator.userAgent.match(/iPad/)) {
+		return "Mobile";
+	} else if (navigator.userAgent.match(/iPad|Android/)) {
+		return "Tablet";
+	} else {
+		return "PC(Mobile, Tablet 외)";
+	}
+}
+
+function footer_device() {
+	if(footer_isMobile() == "Mobile" || footer_isMobile() == "Tablet"){
+		// alert("mobile");
+		//$("meta[name='viewport']").attr("content","width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0");
+		$("body").addClass("footer_mo").removeClass("footer_pc");
+	}else{
+		// alert("pc");
+		//$("meta[name='viewport']").attr("content","width=1280");
+		$("body").addClass("footer_pc").removeClass("footer_mo");
+	}
+}
+
+//게임이용등급 레이어
+$("footer").on("click", ".ico_gamegrade", function (e){
+	$(".layer_gamegrade").toggle();
+	$(".layer_isms").hide();
+	e.preventDefault();
+});
+
+//ISMS 레이어
+$("footer").on("click", ".ico_isms", function (e){
+	$(".layer_isms").toggle();
+	$(".layer_gamegrade").hide();
+	e.preventDefault();
+});
+
+//게임이용등급, ISMS 레이어 닫기
+$("footer").on("click", ".layer_gamegrade, .layer_isms", function(){
+	$(this).hide();
+});
+
+//footer_device();
+
+
+$(window).on("resize", function(){
+	//footer_device();
+});

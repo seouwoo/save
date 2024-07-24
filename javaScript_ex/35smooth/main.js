@@ -1,9 +1,10 @@
 gsap.registerPlugin(ScrollTrigger);
 
 
+{
 let innerSliderOne = document.querySelector('.slider-inner-one');
 let innerSliderTwo = document.querySelector('.slider-inner-two');
-let images = document.querySelectorAll('.img');
+let sub_images = document.querySelectorAll('.sub .img');
 let current = 0; //현재위치
 let target = 0; //스크롤탑값
 let ease = 0.075;
@@ -13,7 +14,7 @@ let stop;
 
 
 
-images.forEach((image) => {
+sub_images.forEach((image) => {
     imageItems.push(image)
 })
 
@@ -50,7 +51,7 @@ gsap.to(innerSliderOne, {
     ease: "none",
     delay: 1,
     scrollTrigger: {
-        trigger: "main",
+        trigger: ".sub",
         start: "top top",
         scrub: 1,
         end: "+=200%",
@@ -70,10 +71,11 @@ gsap.to(innerSliderTwo, {
     ease: "none",
     delay: 1,
     scrollTrigger: {
-        trigger: "main",
+        trigger: ".sub",
         start: "top top",
         scrub: 1,
         end: "+=200%",
         pin: true,
     }
 }, 0)
+}

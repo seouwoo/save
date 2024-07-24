@@ -1,0 +1,1585 @@
+var rollingTime = 4000;
+var rollingTimeSet;
+var gnb = $('.ff14_gnb');
+var snb = $(".ff14_snb");
+var sns = $(".ff14_sns");
+var aside = $(".aside");
+var footer = $("footer");
+var dbclick = $(".dbclick");
+var scrollEnd = $(document).height();
+var policyList = $(".policy_list li");
+var policyView = $(".policy_view li");
+var scrollTopObj = $('<a href="#top" class="to-scroll-top">Top</a>').on('click', function() {
+  $(window).scrollTop(0);
+  return false;
+}).appendTo(aside);
+var topPosition = 0;
+var recalTopPositionFn = [];
+setInterval(function() {
+  var newPosition = gnb.length > 0 ? gnb.offset().top : 0;
+  if (topPosition != newPosition) {
+    topPosition = newPosition;
+    recalTopPositionFn.map(function(recalTopPositionFnOne) {
+      recalTopPositionFnOne();
+    });
+    //$(window).trigger('scroll');
+  }
+}, 1);
+
+$(function() {
+  $('.ff14_faq_list + .ff14_contact_info').hide();
+  $('.ff14_pagination + .ff14_contact_info').hide();
+});
+
+WebFont.load({
+  custom: {
+    families: ['Nanum Gothic', 'Nanum Myeongjo', 'Nanum Square'],
+    urls: [
+      pwp.rootUrl + 'fonts/nanumgothic.css',
+      pwp.rootUrl + 'fonts/nanummyeongjo.css',
+      pwp.rootUrl + 'fonts/nanumsquare.css',
+    ]
+  }
+});
+
+$(document).ready(function() {
+  "use strict";
+
+  // SNB
+  var initialHeight = snb.css('height');
+  snb.find("ul.nav").on("mouseenter", function() {
+    var maxSnbHeight = Math.max.apply(null, snb.find('ul.sub').map(function ()
+    {
+      return $(this).outerHeight(true);
+    }).get()) + snb.find('.nav').outerHeight(true);
+    snb.addClass("over");
+    snb.css('height', maxSnbHeight);
+  });
+  snb.on("mouseleave", function() {
+    snb.removeClass("over");
+    snb.css('height', initialHeight);
+  });
+
+  // Main banner start
+  if($(".main_banner")[0]) {
+    mainBanner();
+  }
+
+  // dotdotdot
+  $(".dot").dotdotdot();
+
+  (function() {
+    var mainShopObj = $('[main-shop]');
+    var categoryObjs = mainShopObj.find('[main-shop-category]');
+    var itemObjs = mainShopObj.find('[main-shop-item]');
+    var defaultCategory = mainShopObj.attr('main-shop');
+    var itemWrapObj = mainShopObj.find('[main-shop-items]');
+    var itemWidth = itemObjs.outerWidth(true);
+    mainShopObj.addClass('first_load');
+    itemWrapObj.css('width', itemWidth * categoryObjs.length);
+    categoryObjs.each(function(index) {
+      var categoryObj = $(this);
+      categoryObj.on('click', function() {
+        var currentCategory = categoryObj.attr('main-shop-category');
+        categoryObjs.removeClass('on');
+        categoryObj.addClass('on');
+        itemWrapObj.css('transform', 'translateX(' + (itemWidth * index * -1) + 'px)');
+        //itemObjs.removeClass('show');
+        //itemObjs.filter('[main-shop-item=' + currentCategory +']').addClass('show');
+        return false;
+      });
+    });
+    categoryObjs.filter('[main-shop-category=' + defaultCategory + ']').trigger('click');
+    setTimeout(function() {
+      mainShopObj.removeClass('first_load');
+    }, 0);
+  })();
+
+  // touchslider
+  $(".img_slide").touchSlider({
+    initComplete : function (e) {
+      var _this = this;
+      var $this = $(this);
+      var paging = $this.next(".paging");
+      var len = Math.ceil(this._len / this._view);
+
+      paging.html("");
+      for(var i = 1; i <= len; i++) {
+        paging.append('<span class="btn_page"></span>');
+      }
+
+      paging.find(".btn_page").bind("click", function (e) {
+        _this.go_page($(this).index());
+      });
+    },
+    counter : function (e) {
+      $(this).next(".paging").find(".btn_page").removeClass("on").eq(e.current-1).addClass("on");
+    },
+    autoplay : {
+      enable : true,
+      pauseHover : false,
+      interval : rollingTime * 1.5
+    },
+    speed : 300
+  });
+
+  // Double click event
+  dbclick.on("dblclick", function() {
+    var body = $("body");
+    if(body.hasClass("end")) {
+      $(window).scrollTop(0);
+      body.removeClass("end");
+    } else {
+      $(window).scrollTop(scrollEnd);
+      body.addClass("end");
+    }
+  });
+
+  // fancybox
+  $("[data-fancybox]").fancybox({
+    touch : {
+      vertical : false,  // Allow to drag content vertically
+      momentum : true  // Continue movement after releasing mouse/touch when panning
+    },
+    hash: false,
+    youtube: {
+      showinfo: 0
+    },
+    buttons: [
+      'fullScreen',
+      'close'
+    ]
+  });
+  $(document).on("contextmenu", ".fancybox-image", function(e){
+    return false;
+  });
+
+  // FAQ list click event
+  $(".ff14_faq_list .question").click(function() {
+    var $this = $(this);
+    var question = $(".question");
+    var answer = $(".answer");
+    // question.removeClass("on");
+    // answer.hide();
+    // $this.addClass("on").next().show();
+    if ( $this.hasClass("on") === true ) {
+      question.removeClass("on");
+      answer.hide();
+    } else {
+      question.removeClass("on");
+      answer.hide();
+      $this.addClass("on").next().show();
+    }
+  });
+  $(".ff14_faq_list .close button").click(function() {
+    var $this = $(this);
+    $(this).closest('.answer').hide().prev().removeClass('on');
+  });
+
+  $(document).on("click", ".ff14_faq_list_bk .faq_tit", function() {
+    // var $this = $(this);
+    // var question = $(".faq_tit");
+    // var answer = $(".answer");
+    
+    if ( $(this).hasClass("on") === true ) {
+      $(".faq_tit").removeClass("on");
+      $(".answer").hide();
+    } else {
+      $(".answer").hide();
+      $(".faq_tit").removeClass("on");
+      $(this).addClass("on").next().show();
+    }
+  });
+
+
+  // Fullpage
+  // var gameNav = $(".ff14_game_nav");
+  var gameScroll = $(".ff14_game_scroll");
+  if (snb.length > 0) {
+    $('.game_title.fixed').css('top', snb.offset().top + snb.outerHeight());
+  }
+
+  /* 2019.12. 게임소개 개편 */
+  // fullsize page
+  function fullsize(){
+    var _height = $(window).height() - 41;
+    if (_height < 800) _height = 800;
+    $(".fullsize").css({
+      //width: $(window).width(),
+      height: _height
+    });
+  }
+  // fullsize();
+  // $(window).on("resize", function(){
+  //   fullsize();
+  //   //console.log("resize")
+  // })
+
+  // ie9 구분
+  var userA = window.navigator.userAgent;
+  if (userA.indexOf("Trident/") > -1 && userA.indexOf("9.0") > -1) {
+    $("body").addClass("exploer9");
+  }
+  
+  //game_story_sub 높이조절
+  function wresize() {
+    var cheight = $(window).height();
+    var ff14gnb = $(".ff14_gnb").height();
+    var ff14snb = $(".ff14_snb").height();
+    var contheight = cheight - ff14gnb - ff14snb;
+    // console.log(contheight)
+    // console.log(ff14snb)
+    $('#game_story_sub').css({'height':contheight+'px'});
+  }
+  window.onload = wresize;
+  window.onresize = wresize;
+
+  // page 구분
+  if ($("#game_main")[0]) {  //게임 메인
+    // Swiper  
+    var swiperGallery = new Swiper('.swiper-gallery', {
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      simulateTouch: false,
+    });
+    // Swiper popup
+    var callSwiper = $(".callSwiper");
+    callSwiper.children("span").on("click", function(e){
+      var idx = $(this).index();
+      swiperGallery.slideTo(idx, 10);
+      swiperGallery.update();
+    });
+    $("#modal-gallery").hide().css({"opacity": 1});
+    //slick
+    $('.slick').slick({
+        infinite: false,
+        dots: true,
+    });
+  }
+  if ($("#game_story")[0]) {  //스토리 메인
+    // swiper
+    if (!$("body").hasClass("exploer9")) {
+      // alert("sdf")
+    }
+    $( ".storys_menu li").hover(
+      function() {
+        var idx = $(this).index();
+        // console.log(idx);
+        // $( ".storys_menu li" ).eq(idx).trigger("click");
+        $( ".cp" + idx ).trigger("click");
+      }, function() {
+      }
+    );
+    $( ".storys_menu li .chapter, .story_menu .menu" ).on("click", function(e){/* 페이지 나오면 고치기 */ 
+      //console.log(e.originalEvent);
+      if (e.originalEvent) {
+        var idx = $(this).parent().index();
+        console.log(idx);
+        if ($(this).is(".menu")) {
+          idx = $(this).parent().index();
+        }
+        var goUrl = $("#game_story .link a").eq(idx).attr("href");
+        // console.log(goUrl)
+        window.location.href = goUrl;
+        //$("#game_story .link a").eq(idx).trigger("click")
+      }
+    });
+  }
+  if ($("#game_story_sub")[0]) {  //스토리 상세 
+    // swiper sub
+    
+    if (!$("body").hasClass("exploer9")) {
+      var swiperSub = new Swiper('.swiper-sub', {
+        //direction: 'horizontal',
+        effect: "fade",
+        // speed: 600,
+        autoplay : { // 자동 재생
+          delay : 20000, // 딜레이 0
+          disableOnInteraction: false
+        },
+        simulateTouch: false,
+        // mousewheel: true,
+        loop: false,
+        pagination: {
+          el: '.swiper-pagination-sub',
+          clickable: true,
+          // renderBullet: function (index, className) {
+          //   return '<div class="' + className + '"><div><span>' + (index + 1) + '</span></div></div>';
+          // }
+        },
+        mousewheel: {
+          releaseOnEdges: true,
+        },
+        // on: {
+        //   reachEnd: function(){
+        //     // swiperSub.mousewheel.disable();
+        //     // $(".btn_next").trigger("click");
+        //     console.log('next');
+        //   }
+        // }
+      });
+      // window.addEventListener('wheel', function (event) {
+      //   if (event.deltaY < 0) {
+      //     // swiperSub.mousewheel.enable(); 
+      //     // $(".btn_prev").trigger("click");
+      //     console.log('prev');
+      //   } else if (event.deltaY > 0) {
+      //   }
+      // });
+    }
+
+    $(".swiper-slide").children('.slide_bg').css({'animation':'', 'animationFillMode':''});
+    $(".swiper-slide-active").children('.slide_bg').css({'animation':'zoomin 20s ease', 'animationFillMode':'forwards'});
+
+    swiperSub.on("slideChangeTransitionStart", function (){
+      var num = $(".swiper-slide-active").index();
+      // console.log(num);
+
+      if ( num === 1 ) {
+        $(".swiper-slide").children('.slide_bg').css({'animation':'', 'animationFillMode':''});
+        $(".swiper-slide-active").children('.slide_bg').css({'animation':'zoomin 20s ease', 'animationFillMode':'forwards'});
+      } else if ( num === 2 ) {
+        $(".swiper-slide").children('.slide_bg').css({'animation':'', 'animationFillMode':''});
+        $(".swiper-slide-active").children('.slide_bg').css({'animation':'zoomin 20s ease', 'animationFillMode':'forwards'});
+      } else {
+        $(".swiper-slide").children('.slide_bg').css({'animation':'', 'animationFillMode':''});
+        $(".swiper-slide-active").children('.slide_bg').css({'animation':'zoomin 20s ease', 'animationFillMode':'forwards'});
+      }
+    });
+
+    swiperSub.on("slideChangeTransitionEnd", function (){
+    });
+
+    // 챕터 이동
+    if (location.href.indexOf("?chapter") > -1) {
+      var chapter = Number(location.href.split("?chapter")[1]);
+      var slider_length = 6;
+      // console.log(slider_length)
+      //console.log(chapter)
+      if (chapter > 0 && chapter <= slider_length) {
+        $(".sub_wrap").attr("data-chapter", chapter);        
+        if (!$("body").hasClass("exploer9")) {
+          swiperSub.slideTo(0);
+        }
+      }
+    }
+    var triggerBullet = function (){
+      if (!$("body").hasClass("exploer9")) {
+        swiperSub.slideTo(0);
+        //$(".swiper-pagination-sub .swiper-pagination-bullet").eq(0).trigger("click");
+        // swiperSub.autoplay.start();
+      } else {
+        $("html, body").animate({
+          scrollTop: 0
+        }, 300)
+      }
+    }
+    $(".btn_next").on("click", function(){
+      var sub = $(this).closest(".sub_wrap");
+      var idx = Number(sub.attr("data-chapter"));
+      sub.attr("data-chapter", idx + 1);
+      triggerBullet();
+    });
+    $(".btn_prev").on("click", function(){
+      var sub = $(this).closest(".sub_wrap");
+      var idx = Number(sub.attr("data-chapter"));
+      sub.attr("data-chapter", idx - 1);
+      triggerBullet();
+    });
+  }
+  //년도계산
+  var now = new Date();
+  var year = now.getFullYear();
+  $(".footer.game_sub i").text(year);
+
+  if ($("#game_tribe_sub")[0]) {  //종족 상세
+    // swiper sub
+    if (!$("body").hasClass("exploer9")) {
+      var swiperTribe = new Swiper('.swiper-tribe', {
+        //direction: 'vertical',
+        effect: "fade",
+        speed: 600,
+        simulateTouch: false,
+        //autoplay: true,
+        //delay: 1000,
+        pagination: {
+          el: '.swiper-pagination-tribe',
+          clickable: true,
+          renderBullet: function (index, className) {
+            return '<span class="' + className + '">' + (index + 1) + '</span>';
+          },
+          //type: 'progressbar',
+        },
+      });
+    }
+    // 페이지 이동
+    if (location.href.indexOf("?page") > -1) {
+      var page = Number(location.href.split("?page")[1]);
+      var slider_length = $(".swiper-tribe .swiper-slide").length;
+      if (page > 0 && page <= slider_length) {
+        if (!$("body").hasClass("exploer9")) {
+          //console.log(true)
+          swiperTribe.slideTo(page-1);
+        } else {
+          $("html, body").animate({
+            scrollTop: $(".slide_"+page).offset().top - 60
+          }, 300);
+        }
+      }
+    }
+  }
+  if ($("#game_job")[0]) {  //직업 메인
+    $('#game_job').fullpage({
+      // anchors: ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8', 'end'],
+      scrollingSpeed: 700,
+      scrollOverflow: true,
+      //scrollHorizontally: true,
+      //normalScrollElements: '.fp-auto-height',
+      scrollOverflowOptions : {
+        click: false,
+        preventDefaultException: {tagName: /.*/}
+      },
+      keyboardScrolling: true,
+      // events
+      afterLoad: function(anchorLink, index) {
+        // index -= 1;
+        // gameNav.find("li").removeClass("on").eq(index).addClass("on");
+        if(index >= 2) {
+          // gameNav.fadeOut();
+          gameScroll.fadeOut();
+        } else {
+          // gameNav.fadeIn();
+          gameScroll.fadeIn();
+        }
+      }
+    });
+
+    // slick
+    $('.slick-jobs').slick({
+      fade: true,
+      arrows: false,
+      autoplay: true,
+      autoplaySpeed: 1000,
+      draggable: false,
+      pauseOnHover: false,
+      pauseOnFocus: false,
+    });
+
+    //icon motion
+    var icons;
+    var iconsLength;
+    var count = 0;
+    var going = false;
+    var iconsAction;
+    //setTimeout(toastOpen, 2000);
+    var iconMove = function($target) { //toast open
+        icons = $target;
+        iconsLength = icons.length;
+        if (icons.eq(0).hasClass("done")) return;
+        count = 0;
+        going = true;
+        icons.css({
+            top: 200,
+            opacity: 0
+        });
+        iconsAction = setInterval(function(){ 
+          if (count > iconsLength - 1) {
+            going = false;
+            icons.addClass("done");
+            clearInterval(iconsAction);
+          }
+          icons.eq(count).animate({
+              top: 0,
+              opacity: 1
+          }, 180, "easeOutExpo");     
+          
+          count += 1;
+        }, 50)
+    };
+    var iconsRemove = function($target) { //toast remove
+      icons = $target;
+      clearInterval(iconsAction);
+      $target.css({
+        top: 0,
+        opacity: 1
+      })/*.addClass("done");*/
+      going = false;
+    };
+
+    $(".job_wrap .inner").on("mouseenter", function(e){
+      var $target = $(e.target).closest(".job_wrap").find("li");
+      setTimeout(iconMove($target), 1000);
+    });
+    $(".job_wrap .inner").on("mouseleave", function(e){
+      if (going == true) {
+        var $target = $(e.target).closest(".job_wrap").find("li");
+        iconsRemove($target);
+      }
+    });
+  }
+  if ($("#game_job_sub")[0]) {  //직업 상세
+    // swiper sub
+    if (!$("body").hasClass("exploer9")) {
+      var swiperBattle = new Swiper('.swiper-battle', {
+        //direction: 'vertical',
+        effect: "fade",
+        speed: 600,
+        simulateTouch: false,
+        //autoplay: true,
+        //delay: 1000,
+        pagination: {
+          el: '.swiper-pagination-battle',
+          clickable: true,
+          renderBullet: function (index, className) {
+            return '<span class="' + className + '">' + (index + 1) + '</span>';
+          },
+          //type: 'progressbar',
+        },
+      });
+      var swiperJob = new Swiper('.swiper-job', {
+        //direction: 'vertical',
+        effect: "fade",
+        speed: 600,
+        simulateTouch: false,
+        //autoplay: true,
+        //delay: 1000,
+        pagination: {
+          el: '.swiper-pagination-job',
+          clickable: true,
+          renderBullet: function (index, className) {
+            return '<span class="' + className + '">' + (index + 1) + '</span>';
+          },
+          //type: 'progressbar',
+        },
+      });
+    }
+    // 페이지 이동
+    if (location.href.indexOf("?job") > -1) {
+      var job = Number(location.href.split("?job")[1]);
+      var slider_length = $(".swiper-slide").length;
+      if (job > 0 && job <= slider_length) {
+        if ($(".swiper-battle").length > 0) {// 전투 상세
+          if (!$("body").hasClass("exploer9")) {
+            swiperBattle.slideTo(job-1);
+          } else {
+            $("html, body").animate({
+              scrollTop: $(".slide_"+job).offset().top - 60
+            }, 300);
+          }
+        } else if ($(".swiper-job").length > 0) {//생활 상세
+          if (!$("body").hasClass("exploer9")) {
+            swiperJob.slideTo(job-1);
+          } else {
+            $("html, body").animate({
+              scrollTop: $(".slide_"+job).offset().top - 60
+            }, 300);
+          }
+        }
+      }
+    }
+  }
+  if ($("#game_contents")[0]) {  //컨텐츠 메인
+    $(".cont_8 a").on("click", function(e){
+      e.preventDefault(e);
+      window.open("/events/pub/beginnerGuide");  //초심자 가이드
+    });
+    $(".cont_9 a").on("click", function(e){
+      e.preventDefault(e);
+      window.open("/events/pub/free");  //35레벨 무료 체험
+    });
+  }
+  if ($("#game_contents_sub")[0]) {  //컨텐츠 상세
+    if (!$("body").hasClass("exploer9")) {
+      // swiper sub
+      var swiperContents = new Swiper('.swiper-contents', {
+        //direction: 'vertical',
+        effect: "fade",
+        speed: 600,
+        simulateTouch: false,
+        //autoplay: true,
+        //delay: 1000,
+        pagination: {
+          el: '.swiper-pagination-contents',
+          clickable: true,
+          renderBullet: function (index, className) {
+            return '<span class="' + className + '" data-index="' + index + '">' + (index + 1) + '</span>';
+          },
+          //type: 'progressbar',
+        },
+      });
+      //swiper image
+      var swiperImage = new Swiper('.swiper-image', {
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+      var swiperImage2 = new Swiper('.swiper-image2', {
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    } else {
+      // slick
+      $('.slick_1').slick({
+        infinite: false,
+      });
+      $('.slick_2').slick({
+        infinite: false,
+      });
+      $('.slick_5').slick({
+        infinite: false,
+      });
+      $('.slick_6').slick({
+        infinite: false,
+      });
+      $('.slick_7').slick({
+        infinite: false,
+      });
+    }
+    
+    // youtube append
+    if (!$("body").hasClass("exploer9")) {
+      $(".player").append('<iframe frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="" id="widget2"></iframe>');
+    }
+    //swiper 이미지 교체 함수
+    var changeSilder = function (num){
+      $(".swiper-image, .swiper-image2").attr("data-image", num);
+    }
+    // 페이지 이동
+    if (location.href.indexOf("?page") > -1) {
+      var page = Number(location.href.split("?page")[1]);
+      var slider_length = $(".swiper-contents .swiper-slide").length;
+      if (!$("body").hasClass("exploer9")) {
+        swiperContents.slideTo(page-1);
+        // if (page === 3) {
+        //   $(".player iframe").attr("src", "https://www.youtube.com/embed/6B8mu6bu9Fg?width=0&amp;height=0&amp;controls=1&amp;showinfo=0&amp;rel=0&amp;wmode=opaque&amp;loop=0&amp;enablejsapi=1&amp;origin=http%3A%2F%2Flocalhost%3A5252&amp;widgetid=1");
+        //   $(".player").fadeIn();
+        //   $(".swiper-image").fadeOut();
+        // } else 
+        if (page === 3) {
+          $(".player").fadeOut();
+          $(".swiper-image").fadeOut();
+        } else if (page === 4) {
+          $(".player iframe").attr("src", "https://www.youtube.com/embed/1wbZ-GJ3wnM?width=0&amp;height=0&amp;controls=1&amp;showinfo=0&amp;rel=0&amp;wmode=opaque&amp;loop=0&amp;enablejsapi=1&amp;origin=http%3A%2F%2Flocalhost%3A5252&amp;widgetid=1");
+          $(".player").fadeIn();
+          $(".swiper-image").fadeOut();
+        } else {
+          $(".swiper-image").fadeIn();
+          changeSilder(page);
+          $(".player").fadeOut();
+        }
+      } else {
+        $("html, body").animate({
+          scrollTop: $(".slide_"+page).offset().top - 60
+        }, 300);
+      }
+    }
+    // bullet 클릭 시 swiper 이미지 교체
+    $(".swiper-pagination-bullet").on("click", function(){
+      $(".player iframe").attr("src", "");
+      var idx = Number($(this).attr("data-index"));
+      // if (idx === 2) {
+      //   $(".player iframe").attr("src", "https://www.youtube.com/embed/6B8mu6bu9Fg?width=0&amp;height=0&amp;controls=1&amp;showinfo=0&amp;rel=0&amp;wmode=opaque&amp;loop=0&amp;enablejsapi=1&amp;origin=http%3A%2F%2Flocalhost%3A5252&amp;widgetid=1");
+      //   $(".player").fadeIn();
+      //   $(".swiper-image").fadeOut();
+      // } else 
+      if (idx === 2) {
+        $(".player").fadeOut();
+        $(".swiper-image").fadeOut();
+        $(".swiper-image2").fadeOut();
+      } else if (idx === 3) {
+        $(".player iframe").attr("src", "https://www.youtube.com/embed/1wbZ-GJ3wnM?width=0&amp;height=0&amp;controls=1&amp;showinfo=0&amp;rel=0&amp;wmode=opaque&amp;loop=0&amp;enablejsapi=1&amp;origin=http%3A%2F%2Flocalhost%3A5252&amp;widgetid=1");
+        $(".player").fadeIn();
+        $(".swiper-image").fadeOut();
+        $(".swiper-image2").fadeOut();
+      } else if (idx === 4 ) {
+        $(".swiper-image2").fadeIn();
+        changeSilder(idx+1);
+        swiperImage2.slideTo(0);
+        $(".player").fadeOut();
+        $(".swiper-image").fadeOut();
+        swiperImage2.update();
+      } else {
+        $(".swiper-image").fadeIn();
+        changeSilder(idx+1);
+        swiperImage.slideTo(0);
+        $(".player").fadeOut();
+        $(".swiper-image2").fadeOut();
+      }
+    });
+  }
+
+  // modal popup
+  $(".modal .close").on("click", function(e) {
+    $(this).closest(".modal").fadeOut();
+    $(".dimmed").fadeOut();
+    if ($(this).siblings(".swiper-container").length > 0) {
+      //console.log("okok")
+      swiperGallery.update();
+    }
+    if ($(this).closest(".modal").attr("modal-type") === "video") {
+      $(this).closest(".modal").find("iframe").remove();
+    }
+  });
+  $("[modal-open]").on("click", function(e) {
+    var target = $(this).attr("modal-open");
+    $(target).fadeIn();
+    $(".dimmed").fadeIn(500);
+    if ($(this).attr("data-map") !== null) {
+      $("dd[data-call]").removeClass("active");
+      $("dd[data-call="+$(this).attr("data-map")+"]").trigger("click")/*.addClass("active")*/;
+    }
+    var $modal = $(target).find(".player");
+    if (target === "#modal-video") {
+      $modal.append('<iframe frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="1080" height="608" src="https://www.youtube.com/embed/8kUae8YWhY8?width=0&amp;height=0&amp;controls=1&amp;showinfo=0&amp;rel=0&amp;wmode=opaque&amp;loop=0&amp;enablejsapi=1&amp;origin=http%3A%2F%2Flocalhost%3A5252&amp;widgetid=1" id="widget2"></iframe>');
+    } else if (target === "#modal-video1") {
+      $modal.append('<iframe frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="1080" height="608" src="https://www.youtube.com/embed/8kUae8YWhY8?width=0&amp;height=0&amp;controls=1&amp;showinfo=0&amp;rel=0&amp;wmode=opaque&amp;loop=0&amp;enablejsapi=1&amp;origin=http%3A%2F%2Flocalhost%3A5252&amp;widgetid=1" id="widget2"></iframe>');
+    } else if (target === "#modal-video2") {
+      $modal.append('<iframe frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="1080" height="608" src="https://www.youtube.com/embed/zaVkKzP3HWE?width=0&amp;height=0&amp;controls=1&amp;showinfo=0&amp;rel=0&amp;wmode=opaque&amp;loop=0&amp;enablejsapi=1&amp;origin=http%3A%2F%2Flocalhost%3A5252&amp;widgetid=1" id="widget2"></iframe>');
+    } else if (target === "#modal-video3") {
+      $modal.append('<iframe frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="1080" height="608" src="https://www.youtube.com/embed/HpQzM--PjOQ?width=0&amp;height=0&amp;controls=1&amp;showinfo=0&amp;rel=0&amp;wmode=opaque&amp;loop=0&amp;enablejsapi=1&amp;origin=http%3A%2F%2Flocalhost%3A5252&amp;widgetid=1" id="widget2"></iframe>');
+    } else if (target === "#modal-video4") {
+      $modal.append('<iframe frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="1080" height="608" src="https://www.youtube.com/embed/eehfZI2C_w0?width=0&amp;height=0&amp;controls=1&amp;showinfo=0&amp;rel=0&amp;wmode=opaque&amp;loop=0&amp;enablejsapi=1&amp;origin=http%3A%2F%2Flocalhost%3A5252&amp;widgetid=1" id="widget2"></iframe>');
+    } else if (target === "#modal-video5") {
+      $modal.append('<iframe frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="1080" height="608" src="https://www.youtube.com/embed/-o05ZxbN2pM?width=0&amp;height=0&amp;controls=1&amp;showinfo=0&amp;rel=0&amp;wmode=opaque&amp;loop=0&amp;enablejsapi=1&amp;origin=http%3A%2F%2Flocalhost%3A5252&amp;widgetid=1" id="widget2"></iframe>');
+    }
+  });
+  $("[modal-call]").on("click", function(e) {
+    $("dd[data-call]").removeClass("active");
+    var target = $(this).attr("modal-call");
+    $(this).closest(".modal").hide();
+    $(target).show();
+    //$(".dimmed").fadeIn(500);
+  });
+  $("[data-call]").on("click", function(e) {
+    var target = $(this).attr("data-call");
+    $(this).closest(".tab").attr("data-map", target);
+    $("dd[data-call]").removeClass("active");
+    $("dd[data-call="+target+"]").addClass("active");
+    //$(".dimmed").fadeIn(500);
+  });
+  /* //2019.12. 게임소개 개편 */
+
+  /*************** 이하 구 게임소개 스크립트 ***************/
+  if($("#fullpage1")[0]) {
+    var player1Objs = $('[yt-player-1]');
+    var player2Objs = $('[yt-player-2]');
+    window.onYouTubeIframeAPIReady = function() {
+        //setTimeout(function() {
+          player1Objs.each(function(playerObjIndex, playerObj) {
+              playerObj = $(playerObj);
+              var playID = playerObj.attr('yt-player-1');
+              var iframeCSS = {
+                  'width': playerObj.width(),
+                  'height': playerObj.height(),
+              };
+              new YT.Player(playerObj.get(0), {
+                  'videoId': playID,
+                  'playerVars': $.extend(iframeCSS, {
+                      'controls': 0,
+                      'showinfo': 0,
+                      'rel': 0,
+                      'wmode': 'opaque',
+                      'loop': 1,
+                  }),
+                  'events': {
+                      'onReady': function(event) {
+                          event.target.getPlaybackQuality('default');
+                          event.target.mute();
+                          $(event.target.a).css(iframeCSS);
+                          playerObj.data('ytPlayer', event);
+                      },
+                  },
+              });
+          });
+          player2Objs.each(function(playerObjIndex, playerObj) {
+              playerObj = $(playerObj);
+              var playID = playerObj.attr('yt-player-2');
+              var iframeCSS = {
+                  'width': playerObj.width(),
+                  'height': playerObj.height(),
+              };
+              new YT.Player(playerObj.get(0), {
+                  'videoId': playID,
+                  'playerVars': $.extend(iframeCSS, {
+                      'controls': 1,
+                      'showinfo': 0,
+                      'rel': 0,
+                      'wmode': 'opaque',
+                      'loop': 0,
+                  }),
+                  'events': {
+                      'onReady': function(event) {
+                          event.target.getPlaybackQuality('default');
+                          event.target.mute();
+                          $(event.target.a).css(iframeCSS);
+                          playerObj.data('ytPlayer', event);
+                      },
+                  },
+              });
+          });
+        //}, 500);
+    };
+    var currentIndex = 1;
+    var playVideo = function(index) {
+      currentIndex = index ? index : currentIndex;
+      player1Objs.each(function(playerObjIndex, playerObj) {
+        playerObj = $(playerObj);
+        var event = playerObj.data('ytPlayer');
+        if (event && event.target) {
+            event.target.playVideo();
+          if (currentIndex === 1) {
+          } else {
+              //event.target.pauseVideo();
+          }
+        }
+      });
+      player2Objs.each(function(playerObjIndex, playerObj) {
+        playerObj = $(playerObj);
+        var event = playerObj.data('ytPlayer');
+        if (event && event.target) {
+          if (currentIndex === 2) {
+              event.target.playVideo();
+          } else {
+              event.target.pauseVideo();
+          }
+        }
+      });
+    };
+    setInterval(function() {
+      playVideo();
+    }, 100);
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+    if (false) {
+      $('#fullpage1').fullpage({
+        //anchors: ['p1', 'p2', 'p3', 'p4'],
+        scrollingSpeed: 700,
+        scrollOverflow: true,
+        scrollOverflowOptions : {
+          click: false,
+          preventDefaultException: {tagName: /.*/}
+        },
+        keyboardScrolling: false,
+        // events
+        // onLeave: function(index, nextIndex, direction) {
+        //   if(index === 1 && direction === 'down') {
+        //     gameNav.fadeIn();
+        //   }
+        //   if(index === 2 && direction === 'up') {
+        //     gameNav.fadeOut();
+        //   }
+        // },
+        afterLoad: function(anchorLink, index) {
+          // gameNav.find("li").removeClass("on");
+          // if(index === 2) {
+          //   gameNav.find("li").eq(0).addClass("on");
+          // }
+          // if(index > 2 && index < 7) {
+          //   gameNav.find("li").eq(1).addClass("on");
+          // }
+          // if(index === 7) {
+          //   gameNav.find("li").eq(2).addClass("on");
+          // }
+
+          playVideo(index);
+
+          if(index >= 3) {
+            // gameNav.fadeOut();
+            gameScroll.fadeOut();
+          } else {
+            // gameNav.fadeIn();
+            gameScroll.fadeIn();
+          }
+        }
+      });
+    } else {
+      var windowObj = $(window);
+      var windowHeight = windowObj.height();
+      var videoTop = player2Objs.offset().top;
+      var videoHeight = player2Objs.height();
+      windowObj.on('scroll', function() {
+        var scrollTop = windowObj.scrollTop();
+        if (scrollTop + 40 < videoTop && videoTop + videoHeight < scrollTop + windowHeight) {
+          playVideo(2);
+        } else {
+          playVideo(3)
+        }
+      });
+    }
+  }
+  if($("#fullpage2")[0]) {
+    $('#fullpage2').fullpage({
+      // anchors: ['p1', 'p2', 'p3', 'p4', 'end'],
+      scrollingSpeed: 700,
+      scrollOverflow: true,
+      keyboardScrolling: false,
+      // events
+      afterLoad: function(anchorLink, index) {
+        // index -= 1;
+        // gameNav.find("li").removeClass("on").eq(index).addClass("on");
+        if(index === 5) {
+          // gameNav.fadeOut();
+          gameScroll.fadeOut();
+        } else {
+          // gameNav.fadeIn();
+          gameScroll.fadeIn();
+        }
+      }
+    });
+  }  
+  if($("#fullpage3")[0]) {
+    $('#fullpage3').fullpage({
+      // anchors: ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8', 'end'],
+      scrollingSpeed: 700,
+      scrollOverflow: true,
+      scrollOverflowOptions : {
+        click: false,
+        preventDefaultException: {tagName: /.*/}
+      },
+      keyboardScrolling: false,
+      // events
+      afterLoad: function(anchorLink, index) {
+        // index -= 1;
+        // gameNav.find("li").removeClass("on").eq(index).addClass("on");
+        if(index === 9) {
+          // gameNav.fadeOut();
+          gameScroll.fadeOut();
+        } else {
+          // gameNav.fadeIn();
+          gameScroll.fadeIn();
+        }
+      }
+    });
+  }
+  if($("#fullpage4")[0]) {
+    $('#fullpage4').fullpage({
+      // anchors: ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'end'],
+      scrollingSpeed: 700,
+      scrollOverflow: true,
+      scrollOverflowOptions : {
+        click: false,
+        preventDefaultException: {tagName: /.*/}
+      },
+      keyboardScrolling: false,
+      // events
+      afterLoad: function(anchorLink, index) {
+        // index -= 1;
+        // gameNav.find("li").removeClass("on").eq(index).addClass("on");
+        if(index === 7) {
+          // gameNav.fadeOut();
+          gameScroll.fadeOut();
+        } else {
+          // gameNav.fadeIn();
+          gameScroll.fadeIn();
+        }
+      }
+    });
+    $(".char_list li span").click(function() {
+      var $this = $(this);
+      var idx = $this.parent("li").index();
+      var num = idx + 1;
+      var sNum = $this.closest(".section").data("bgNumber");
+      if(sNum === 1) {
+        sNum = 0;
+      }
+      var bgNum = num + sNum;
+      var cbox = $this.closest(".char_list").next(".cbox");
+      var sbox = $this.closest(".sbox");
+      $this.closest(".char_list").find("li").removeClass("on");
+      $this.parent("li").addClass("on");
+      cbox.find(".tab").hide();
+      cbox.find(".tab" + num).show();
+      sbox.attr("class", "sbox bg" + bgNum);
+    });
+  }
+  if($("#fullpage5")[0]) {
+    $('#fullpage5').fullpage({
+      // anchors: ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8', 'end'],
+      scrollingSpeed: 700,
+      scrollOverflow: true,
+      keyboardScrolling: false,
+      // events
+      afterLoad: function(anchorLink, index) {
+        // index -= 1;
+        // gameNav.find("li").removeClass("on").eq(index).addClass("on");
+        if(index === 9) {
+          // gameNav.fadeOut();
+          gameScroll.fadeOut();
+        } else {
+          // gameNav.fadeIn();
+          gameScroll.fadeIn();
+        }
+      }
+    });
+  }
+  if($("#fullpage6")[0]) {
+    $('#fullpage6').fullpage({
+      // anchors: ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8', 'end'],
+      scrollingSpeed: 700,
+      scrollOverflow: false,
+      keyboardScrolling: false,
+      // events
+      afterLoad: function(anchorLink, index) {
+        // index -= 1;
+        // gameNav.find("li").removeClass("on").eq(index).addClass("on");
+        if(index === 9) {
+          // gameNav.fadeOut();
+          gameScroll.fadeOut();
+        } else {
+          // gameNav.fadeIn();
+          gameScroll.fadeIn();
+        }
+      }
+    });
+  }
+  if($("#fullpage7")[0]) {
+    $('#fullpage7').fullpage({
+      // anchors: ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8', 'p9', 'end'],
+      scrollingSpeed: 700,
+      scrollOverflow: true,
+      keyboardScrolling: false,
+      // events
+      afterLoad: function(anchorLink, index) {
+        // index -= 1;
+        // gameNav.find("li").removeClass("on").eq(index).addClass("on");
+        if(index === 10) {
+          // gameNav.fadeOut();
+          gameScroll.fadeOut();
+        } else {
+          // gameNav.fadeIn();
+          gameScroll.fadeIn();
+        }
+      }
+    });
+  }
+  if($("#fullpage8")[0]) {
+    $('#fullpage8').fullpage({
+      // anchors: ['p1', 'p2', 'p3', 'p4', 'end'],
+      scrollingSpeed: 700,
+      scrollOverflow: true,
+      scrollOverflowOptions : {
+        click: false,
+        preventDefaultException: {tagName: /.*/}
+      },
+      keyboardScrolling: false,
+      // events
+      afterLoad: function(anchorLink, index) {
+        // index -= 1;
+        // gameNav.find("li").removeClass("on").eq(index).addClass("on");
+        if(index === 5) {
+          // gameNav.fadeOut();
+          gameScroll.fadeOut();
+        } else {
+          // gameNav.fadeIn();
+          gameScroll.fadeIn();
+        }
+      }
+    });
+  }
+  if($("#fullpage9")[0]) {
+    $('#fullpage9').fullpage({
+      // anchors: ['p1', 'p2', 'p3', 'end'],
+      scrollingSpeed: 700,
+      scrollOverflow: true,
+      keyboardScrolling: false,
+      // events
+      afterLoad: function(anchorLink, index) {
+        // index -= 1;
+        // gameNav.find("li").removeClass("on").eq(index).addClass("on");
+        if(index === 4) {
+          // gameNav.fadeOut();
+          gameScroll.fadeOut();
+        } else {
+          // gameNav.fadeIn();
+          gameScroll.fadeIn();
+        }
+      }
+    });
+  }
+  $(".ff14_game .gallery .gallery_nav").click(function() {
+    var $this = $(this);
+    var gallery = $this.parent().find(".gbox > ul");
+    var gNum = gallery.data("galleryFocus");
+    var gWidth = gallery.find("> li").width();
+    var gLength = gallery.find("> li").length - 1;
+    if($this.hasClass("nav_prev")) {
+      if(gNum === 0) {
+        gNum = gLength;
+      } else {
+        gNum--;
+      }
+    } else if($this.hasClass("nav_next")) {
+      if(gNum < gLength) {
+        gNum++;
+      } else {
+        gNum = 0;
+      }
+    }
+    gallery.data("galleryFocus", gNum);
+    gallery.animate({
+      marginLeft: gWidth * gNum * -1
+    }, 500);
+    // console.log("index:"+ gNum +", length:"+ gLength +", width:"+ gWidth);
+  });
+  if($("#particles-js")[0]) {
+    var particlesJson = {
+      "particles": {
+        "number": {
+          "value": 40,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ffffff"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": true,
+          "anim": {
+            "enable": true,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": {
+            "enable": false
+          }
+        },
+        "line_linked": {
+          "enable": false
+        },
+        "move": {
+          "enable": true,
+          "speed": 5,
+          "direction": "top-right",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": false,
+            "mode": "repulse"
+          },
+          "onclick": {
+            "enable": false,
+            "mode": "push"
+          },
+          "resize": true
+        }
+      },
+      "retina_detect": true
+    };
+    particlesJS('particles-js', particlesJson);
+  }
+
+  // 운영정책 클릭 이벤트
+  policyList.find("a").click(function(e) {
+    e.preventDefault();
+    var $this = $(this).parent("li");
+    var listNum = $(this).closest("ul").index();
+    var idx = $this.index();
+    if(listNum === 1) {
+      var viewNum = $(this).closest("ul").prev().find("li").length;
+      idx += 5;
+    }
+    policyList.removeClass();
+    $this.addClass("on");
+    policyView.removeClass().eq(idx).addClass("on");
+  });
+
+  (function() {
+    var replyObjs = $('.comment_wrap .reply_box');
+    var changeEvent = function(replyObj, maxCount) {
+        var textareaObj = replyObj.find('textarea');
+        var countObj = replyObj.find('.comment_count .count');
+        var countMaxObj = replyObj.find('.comment_count .count_max');
+        var commentText = textareaObj.val();
+        var commentLength = textareaObj.is('[disabled]') ? 0 : commentText.length;
+        countMaxObj.text(maxCount);
+        countObj.text(commentLength > maxCount ? maxCount : commentLength);
+        if (commentLength > maxCount) {
+          textareaObj.val(commentText.slice(0, maxCount));
+        }
+    };
+    replyObjs.each(function(replyObjIndex, replyObj) {
+      replyObj = $(replyObj);
+      var textareaObj = replyObj.find('textarea');
+      var maxCount = parseInt(textareaObj.attr('maxlength'), 10);
+      textareaObj.on('change keyup', function() {
+        changeEvent(replyObj, maxCount);
+      });
+      /* setInterval(function() {
+        changeEvent(replyObj, maxCount);
+      }, 500); */
+    });
+  })();
+
+  try {
+    //top.document.body.style.minWidth = '1500px';
+  } catch(e) {}
+
+  //main> pop_welcome, 메인 팝업 수정 2019.10.21.
+  var $pop = $(".pop_welcome");
+  var $win = $(window);
+  //console.log($pop, $win)
+  $pop.css({
+    //left: ($win.width() - $pop.width()) / 2,
+    //top: ($win.height() - $pop.height()) / 2
+    marginLeft: $pop.width() / 2 * -1,
+    marginTop: $pop.height() / 2 * -1
+  })
+
+  $("#js_scoll_box").hasClass("js_scoll_box") === true ? iscrollEvt() : '';
+  function iscrollEvt() {
+    var js_scroll = document.getElementById('js_scoll_box');
+    var iscroll = new IScroll(js_scroll,{
+      scrollbars: true,
+      mouseWheel: true
+    });
+  };
+});
+
+// Window scroll Event
+$(window).on("scroll", function(event) {
+  var w = $(window);
+  var gnbTop = gnb.length > 0 ? gnb.offset().top + gnb.outerHeight(true) : 0;
+  var scroll = w.scrollTop();
+  var topObjStyle = function() {
+    scrollTopObj.css({
+      'top': w.height() - (snb.outerHeight() + footer.outerHeight() + scrollTopObj.outerHeight() + 20),
+    });
+  };
+  if (scroll > gnbTop) {
+    snb.addClass("fixed");
+    topObjStyle();
+  } else {
+    snb.removeClass("fixed");
+  }
+  if(w.height() > aside.height() + footer.outerHeight() + 70) {
+    if (scroll > gnbTop) {
+      aside.addClass("fixed");
+      topObjStyle();
+    } else {
+      aside.removeClass("fixed");
+    }
+  }
+  var loginWrapTop = snb.height() + snb.height() + 150 + 32;
+  if ($('.ff14_login_wrap').length > 0) {
+    loginWrapTop = $('.ff14_login_wrap').offset().top;
+  }
+  if (scroll > loginWrapTop - snb.height() - 32) {
+    sns.addClass("fixed");
+    sns.removeAttr('style');
+  } else {
+    sns.removeClass("fixed");
+    sns.css('top', loginWrapTop - 32);
+  }
+});
+$(window).trigger('scroll');
+recalTopPositionFn.push(function() {
+  $(window).trigger('scroll');
+});
+function throttle(fn, threshhold, scope) {
+  if(!threshhold) {
+    threshhold = 250;
+  }
+  var last,
+      deferTimer;
+  return function () {
+    var context = scope || this;
+
+    var now = +new Date(),
+        args = arguments;
+    if (last && now < last + threshhold) {
+      // hold on to it
+      clearTimeout(deferTimer);
+      deferTimer = setTimeout(function () {
+        last = now;
+        fn.apply(context, args);
+      }, threshhold);
+    } else {
+      last = now;
+      fn.apply(context, args);
+    }
+  };
+}
+
+// Main Banner
+function mainBanner() {
+  var rollingBanner;
+  var navBox = $(".main_banner .mbanner_nav");
+  var totalNum = navBox.find("li").length;
+  var currentNum = 0;
+
+  navBox.find(".mbanner_num span").html(totalNum);
+
+  // Nav button box click
+  navBox.find("li").on("click", function() {
+    var $this = $(this);
+    var movNum = $this.data("movNum");
+    var movId = $this.data("movId");
+    currentNum = $this.data("bannerNum");
+    navBox.find(".mbanner_num strong").html(currentNum);
+    if($this.hasClass("on") === false) {
+      navBox.find("li").removeClass("on");
+      $this.addClass("on");
+      $(".mbanner_box").fadeOut().eq(currentNum - 1).fadeIn().find(".mbanner_char").css({marginLeft: -238}).stop().animate({marginLeft: -338}, 1000, "easeInOutCubic");
+    }
+    // Youtube control
+    var movBox = $(".mbanner_wrap [data-mov-num]");
+    if(movBox.length > 0) {
+      // console.log("clear iframe");
+      movBox.find("iframe").attr("src", "");
+    }
+    if($this.find(".btn_mbanner_box.mov").length !== 0) {
+      $(".mbanner_wrap").find("[data-mov-num='"+ movNum +"'] iframe").attr("src", "https://www.youtube.com/embed/"+ movId +"?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;loop=1&amp;playlist="+ movId);
+      rollingTimeSet = rollingTime * 3;
+    } else {
+      rollingTimeSet = rollingTime;
+    }
+
+    // Auto rolling control
+    clearInterval(rollingBanner);
+    if(navBox.hasClass("stop") === false) {
+      // console.log("loop time " + (rollingTimeSet / 1000) + "s");
+      loopInterval();
+      pregerssBar();
+    } else {
+      progressBarFull();
+    }
+  });
+
+  // Nav button arrow click
+  navBox.find(".btn_mbanner_nav").on("click", function() {
+    var currentIdx = navBox.find("li.on").index();
+    var prevIdx = currentIdx - 1;
+    var nextIdx = currentIdx + 1;
+    if($(this).hasClass("prev")) {
+      if(currentIdx === 0) {
+        prevIdx = 4;
+        for(var i = 0; i < 5; i++) {
+          navBox.find("li").last().prependTo(".main_banner .mbanner_nav ul");
+        }
+      }
+      navBox.find("li").eq(prevIdx).trigger("click");
+    }
+    if($(this).hasClass("next")) {
+      if(currentIdx === 4) {
+        nextIdx = 0;
+        for(var j = 0; j < 5; j++) {
+          navBox.find("li").eq(0).appendTo(".main_banner .mbanner_nav ul");
+        }
+      }
+      navBox.find("li").eq(nextIdx).trigger("click");
+    }
+  });
+
+  // Auto rolling
+  function pregerssBar() {
+    navBox.find("li .progress_bar").hide();
+    navBox.find("li.on .progress_bar").css({width: 0}).show().stop().animate({
+      width: 232
+    }, rollingTimeSet);
+  }
+
+  function progressBarFull() {
+    navBox.find("li .progress_bar").hide();
+    navBox.find("li.on .progress_bar").css({width: 232}).show().stop();
+  }
+
+  function loopInterval() {
+    rollingBanner = setInterval(function() {
+      navBox.find(".btn_mbanner_nav.next").trigger("click");
+    }, rollingTimeSet);
+  }
+
+  // Navigation click event
+  navBox.find("li .btn_mbanner_box").on("click", function() {
+    var $this = $(this);
+    if($this.hasClass("mov")) {
+      navBox.addClass("stop");
+    }
+    if($this.hasClass("img")) {
+      navBox.removeClass("stop");
+    }
+  });
+
+  // first load trigger click
+  navBox.find("li").eq(0).trigger("click");
+}
+
+// IE background fixed scroll bug fix
+if(navigator.userAgent.match(/Trident\/7\./)) {
+  document.body.addEventListener("mousewheel", function(event) {
+    event.preventDefault();
+    var wd = event.wheelDelta;
+    var csp = window.pageYOffset;
+    window.scrollTo(0, csp - wd);
+  });
+}
+
+// image preview
+// function readURL(input) {
+// 	if (input.files && input.files[0]) {
+// 			var reader = new FileReader();
+// 			reader.onload = function (e) {
+// 					$('#lookitem').attr('src', e.target.result);
+// 			};
+// 			reader.readAsDataURL(input.files[0]);
+// 	}
+// }
+// $("#itemfile").change(function(){
+// 	readURL(this);
+// });
+
+// image preview ie9일 때 addClass
+// var us = navigator.userAgent;
+// if (us.indexOf("Trident/") > -1 && us.indexOf("9.0") > -1) {
+// 	$('.ff14_write_box').find('.item_look_box').addClass('ie9');
+// }
+
+// 장비 투영 이벤트 _ 장비 입력 시 글자수 제한, 염색은 제한 X
+$(".item_view li").find("input[type='text']:first-child").keyup(function(){
+	if ($(this).val().length > $(this).attr('maxlength')) {
+		alert("최대 20자까지 입력할 수 있습니다."); 
+		$(this).val($(this).val().substr(0, $(this).attr('maxlength'))); 
+	}
+});
+
+//게시판 추천 on off (최상단)
+// $(".txt_recommend").click(function(){
+// 	$(this).toggleClass("on");
+// });
+// //게시판 추천 on off (중간)
+// $(".comment_write_op .red").click(function(){
+// 	$(this).toggleClass("on");
+// });
+
+//22.10.21 고객센터 개편
+//답변 알림 받기 팝업 닫기 // 22.11.30 수정
+$(".lay_close").on('load click', function (){
+    $(this).parent().parent().fadeOut('fast');
+    $(".dimmed").fadeOut('fast');
+});
+$(".dimmed").on('load click', function (){
+    $(this).fadeOut('fast');
+    $(".layer").fadeOut('fast');
+});
+//고객 동의 - 관리자
+$(".btn_layadmin").on('click',function(e){
+  target = $(e.target);
+  var p = $(target).offset(),
+      pheight =$(target).height();
+
+  var divTop = p.top + pheight - 30;
+
+  $(".lay_privacy, .lay_email, .lay_phone").hide();
+  $(".lay_admin").css({"top":divTop, "position":"absolute"}).toggle();
+});
+//답변 알림 받기 팝업 - 이메일주소
+$(".btn_layemail").on('click',function(e){
+  target = $(e.target);
+  var p = $(target).offset(),
+      pheight =$(target).height();
+
+  var divTop = p.top + pheight + 10;
+
+  $(".lay_privacy, .lay_admin, .lay_phone").hide();
+  $(".lay_email").css({"top":divTop, "position":"absolute"}).toggle();
+});
+//답변 알림 받기 팝업 - 휴대폰번호
+$(".btn_layphone").on('click',function(e){
+  var target = $(e.target);
+  var p = $(target).offset(),
+      pheight =$(target).height();
+
+  var divTop = p.top + pheight + 10;
+
+  $(".lay_privacy, .lay_admin, .lay_email").hide();
+  $(".lay_phone").css({"top":divTop, "position":"absolute"}).toggle();
+});
+//고객 동의 - 개인정보
+$(".btn_layprivacy").on('click',function(e){
+  target = $(e.target);
+  var p = $(target).offset(),
+      pheight =$(target).height();
+
+  var divTop = p.top + pheight + 10;
+
+  $(".lay_email, .lay_admin, .lay_phone").hide();
+  $(".lay_privacy").css({"top":divTop, "position":"absolute"}).toggle();
+});
+
+//문의 항목 선택 (개발팀 요청으로 주석처리 됨. 22.11.15)
+// $(".support_query_sub .btn_support").click(function(){
+//   $(".btn_support").removeClass("on");
+//   $(this).addClass("on");
+// });
+
+
+$("#content").on("paste", function(e){
+  setTimeout(function(_this){
+    if($(_this).find("img").length > 0){
+      $(_this).find("img").remove();
+    }
+  },10, this);
+});
+
+/* footer 2023 */
+$(".footer .ico_gamegrade").click(function (){
+  $(".footer .layer_gamegrade").toggle();
+  $(".footer .layer_isms").hide();
+});
+
+$(".footer .ico_isms").click(function (){
+  $(".footer .layer_isms").toggle();
+  $(".footer .layer_gamegrade").hide();
+});
+
+$(".footer .layer_gamegrade, .footer .layer_isms").click(function(){
+  $(this).hide();
+});
+
+// DX9 지원 종료
+$(".download_box2 > .info button").on("click", function(){
+  if( $(this).parent().hasClass("on") ){
+    $(this).text("상세내용 보기").parent().removeClass("on");
+  }else{
+    $(this).text("상세내용 감추기").parent().addClass("on");
+  }
+});

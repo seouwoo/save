@@ -1,0 +1,708 @@
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+.icon-battle_1 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1613px -985px;
+  width: 49px;
+  height: 48px;
+}
+.icon-battle_10 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1682px -985px;
+  width: 49px;
+  height: 48px;
+}
+.icon-battle_11 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1751px -985px;
+  width: 49px;
+  height: 48px;
+}
+.icon-battle_12 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -504px -1101px;
+  width: 49px;
+  height: 48px;
+}
+.icon-battle_13 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -573px -1101px;
+  width: 49px;
+  height: 48px;
+}
+.icon-battle_14 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -642px -1101px;
+  width: 49px;
+  height: 48px;
+}
+.icon-battle_15 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -711px -1101px;
+  width: 49px;
+  height: 48px;
+}
+.icon-battle_16 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -780px -1101px;
+  width: 49px;
+  height: 48px;
+}
+.icon-battle_17 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -849px -1101px;
+  width: 49px;
+  height: 48px;
+}
+.icon-battle_18 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -918px -1101px;
+  width: 49px;
+  height: 48px;
+}
+.icon-battle_19 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -987px -1101px;
+  width: 49px;
+  height: 48px;
+}
+.icon-battle_2 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1056px -1101px;
+  width: 49px;
+  height: 48px;
+}
+.icon-battle_3 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1125px -1101px;
+  width: 49px;
+  height: 48px;
+}
+.icon-battle_4 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1194px -1101px;
+  width: 49px;
+  height: 48px;
+}
+.icon-battle_5 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1263px -1101px;
+  width: 49px;
+  height: 48px;
+}
+.icon-battle_6 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1332px -1101px;
+  width: 49px;
+  height: 48px;
+}
+.icon-battle_7 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1401px -1101px;
+  width: 49px;
+  height: 48px;
+}
+.icon-battle_8 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1608px -1101px;
+  width: 48px;
+  height: 48px;
+}
+.icon-battle_9 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1470px -1101px;
+  width: 49px;
+  height: 48px;
+}
+.icon-battle_hover_1 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1428px -781px;
+  width: 89px;
+  height: 95px;
+}
+.icon-battle_hover_10 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1210px -781px;
+  width: 89px;
+  height: 96px;
+}
+.icon-battle_hover_11 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -675px -985px;
+  width: 64px;
+  height: 95px;
+}
+.icon-battle_hover_12 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1417px -373px;
+  width: 116px;
+  height: 95px;
+}
+.icon-battle_hover_13 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -843px -985px;
+  width: 61px;
+  height: 95px;
+}
+.icon-battle_hover_14 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1369px -577px;
+  width: 113px;
+  height: 95px;
+}
+.icon-battle_hover_15 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1319px -781px;
+  width: 89px;
+  height: 96px;
+}
+.icon-battle_hover_16 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1502px -577px;
+  width: 91px;
+  height: 95px;
+}
+.icon-battle_hover_17 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1280px -373px;
+  width: 117px;
+  height: 95px;
+}
+.icon-battle_hover_18 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1613px -577px;
+  width: 91px;
+  height: 95px;
+}
+.icon-battle_hover_19 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1100px -577px;
+  width: 115px;
+  height: 95px;
+}
+.icon-battle_hover_2 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -505px -985px;
+  width: 65px;
+  height: 95px;
+}
+.icon-battle_hover_3 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1235px -577px;
+  width: 114px;
+  height: 95px;
+}
+.icon-battle_hover_4 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1126px -373px;
+  width: 134px;
+  height: 95px;
+}
+.icon-battle_hover_5 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1553px -373px;
+  width: 116px;
+  height: 95px;
+}
+.icon-battle_hover_6 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1646px -781px;
+  width: 66px;
+  height: 95px;
+}
+.icon-battle_hover_7 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -966px -577px;
+  width: 114px;
+  height: 96px;
+}
+.icon-battle_hover_8 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -590px -985px;
+  width: 65px;
+  height: 95px;
+}
+.icon-battle_hover_9 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -420px -1101px;
+  width: 64px;
+  height: 96px;
+}
+.icon-bg_main_title_1 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1237px -204px;
+  width: 574px;
+  height: 11px;
+}
+.icon-bg_main_title_2 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1237px -235px;
+  width: 574px;
+  height: 11px;
+}
+.icon-btn_close {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1810px -897px;
+  width: 46px;
+  height: 46px;
+}
+.icon-btn_go_guide {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1344px -488px;
+  width: 189px;
+  height: 39px;
+}
+.icon-btn_location {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1686px -320px;
+  width: 17px;
+  height: 18px;
+}
+.icon-btn_m_back {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1130px -693px;
+  width: 40px;
+  height: 40px;
+}
+.icon-btn_m_top {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1142px -897px;
+  width: 62px;
+  height: 60px;
+}
+.icon-btn_m_village {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -966px -693px;
+  width: 144px;
+  height: 41px;
+}
+.icon-btn_map_close {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1647px -320px;
+  width: 19px;
+  height: 19px;
+}
+.icon-btn_minus {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1237px -266px;
+  width: 32px;
+  height: 32px;
+}
+.icon-btn_minus2 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -966px -488px;
+  width: 169px;
+  height: 52px;
+}
+.icon-btn_next {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -966px -897px;
+  width: 68px;
+  height: 68px;
+}
+.icon-btn_play {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: 0px -985px;
+  width: 400px;
+  height: 225px;
+}
+.icon-btn_plus {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1289px -266px;
+  width: 32px;
+  height: 32px;
+}
+.icon-btn_plus2 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1155px -488px;
+  width: 169px;
+  height: 52px;
+}
+.icon-btn_prev {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1054px -897px;
+  width: 68px;
+  height: 68px;
+}
+.icon-btn_quest {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1723px -320px;
+  width: 17px;
+  height: 17px;
+}
+.icon-btn_scroll {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1539px -1101px;
+  width: 49px;
+  height: 48px;
+}
+.icon-btn_yt_1 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -924px -985px;
+  width: 74px;
+  height: 74px;
+}
+.icon-btn_yt_2 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1018px -985px;
+  width: 74px;
+  height: 74px;
+}
+.icon-btn_yt_3 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1112px -985px;
+  width: 74px;
+  height: 74px;
+}
+.icon-btn_yt_4 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1206px -985px;
+  width: 74px;
+  height: 74px;
+}
+.icon-btn_yt_5 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1300px -985px;
+  width: 74px;
+  height: 74px;
+}
+.icon-guild_1 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1341px -266px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_10 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1387px -266px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_11 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1433px -266px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_12 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1479px -266px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_13 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1525px -266px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_14 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1571px -266px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_15 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1617px -266px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_16 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1663px -266px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_17 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1709px -266px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_18 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1755px -266px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_19 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1801px -266px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_2 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -911px -320px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_20 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -957px -320px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_21 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1003px -320px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_22 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1049px -320px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_23 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1095px -320px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_24 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1141px -320px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_25 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1187px -320px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_26 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1233px -320px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_27 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1279px -320px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_3 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1325px -320px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_4 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1371px -320px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_5 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1417px -320px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_6 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1463px -320px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_7 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1509px -320px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_8 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1555px -320px;
+  width: 26px;
+  height: 26px;
+}
+.icon-guild_9 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1601px -320px;
+  width: 26px;
+  height: 26px;
+}
+.icon-job_1 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1372px -897px;
+  width: 53px;
+  height: 53px;
+}
+.icon-job_10 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1224px -897px;
+  width: 54px;
+  height: 53px;
+}
+.icon-job_11 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1445px -897px;
+  width: 53px;
+  height: 53px;
+}
+.icon-job_2 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1518px -897px;
+  width: 53px;
+  height: 53px;
+}
+.icon-job_3 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1591px -897px;
+  width: 53px;
+  height: 53px;
+}
+.icon-job_4 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1664px -897px;
+  width: 53px;
+  height: 53px;
+}
+.icon-job_5 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1737px -897px;
+  width: 53px;
+  height: 53px;
+}
+.icon-job_6 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1394px -985px;
+  width: 53px;
+  height: 53px;
+}
+.icon-job_7 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1467px -985px;
+  width: 53px;
+  height: 53px;
+}
+.icon-job_8 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1540px -985px;
+  width: 53px;
+  height: 53px;
+}
+.icon-job_9 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1298px -897px;
+  width: 54px;
+  height: 53px;
+}
+.icon-job_hover_1 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -420px -985px;
+  width: 65px;
+  height: 96px;
+}
+.icon-job_hover_10 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1689px -373px;
+  width: 116px;
+  height: 95px;
+}
+.icon-job_hover_11 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1537px -781px;
+  width: 89px;
+  height: 95px;
+}
+.icon-job_hover_2 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1724px -577px;
+  width: 90px;
+  height: 95px;
+}
+.icon-job_hover_3 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -759px -985px;
+  width: 64px;
+  height: 95px;
+}
+.icon-job_hover_4 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1732px -781px;
+  width: 66px;
+  height: 95px;
+}
+.icon-job_hover_5 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -966px -781px;
+  width: 113px;
+  height: 96px;
+}
+.icon-job_hover_6 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -966px -373px;
+  width: 140px;
+  height: 95px;
+}
+.icon-job_hover_7 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1076px -204px;
+  width: 141px;
+  height: 96px;
+}
+.icon-job_hover_8 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -911px -204px;
+  width: 145px;
+  height: 96px;
+}
+.icon-job_hover_9 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -1099px -781px;
+  width: 91px;
+  height: 96px;
+}
+.icon-logo_main {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: 0px 0px;
+  width: 891px;
+  height: 353px;
+}
+.icon-maptxt_1 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: -911px 0px;
+  width: 946px;
+  height: 184px;
+}
+.icon-maptxt_2 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: 0px -373px;
+  width: 946px;
+  height: 184px;
+}
+.icon-maptxt_3 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: 0px -577px;
+  width: 946px;
+  height: 184px;
+}
+.icon-maptxt_4 {
+  background-image: url(../img/sprite/spritesheet.png);
+  background-position: 0px -781px;
+  width: 946px;
+  height: 184px;
+}

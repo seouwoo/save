@@ -1,0 +1,103 @@
+*{margin: 0;padding: 0;
+    
+}
+/* font-family: "Nanum Gothic", sans-serif; */
+
+
+body{
+    font-family: "Nanum Gothic";
+    font-size: 16px;
+    color: #000;
+}
+
+.clearfix::after{
+    content: "";
+    clear: both;
+    display: block;}
+
+a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: 0 0;
+    color: #000;
+    text-decoration: underline;
+    list-style: none;
+    text-decoration-line: none;
+}
+
+
+/* ff14_gnb */
+.ff14_gnb{background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 41px;
+    min-width: 1200px;
+    
+}
+.ff14_gnb .logo{
+    width: 110px;
+    height: 22px;
+}
+
+.ff14_gnb ul{position: absolute;
+    right: 0;
+    margin: auto;}
+.ff14_gnb ul li{position: relative;
+    float: left;
+    padding: 0 7px 0 8px;
+    }
+
+.ff14_gnb ul li::after{content: "";
+    position: absolute;
+    display: block;
+    left: 0px;
+    top: 5px;
+    width: 1px;
+    height: 10px;
+    background: #ccc;
+}
+.ff14_gnb ul li:first-child::after{display: none;}
+.ff14_gnb ul li a{}
+
+
+
+
+/* ff14_snb */
+.ff14_snb{}
+.ff14_snb .wrap{}
+.ff14_snb .wrap ul{
+    
+    background-color: #000;
+    display: flex;
+    justify-content: space-between;
+}
+.ff14_snb .wrap ul li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ff14_snb .wrap ul li{}
+.ff14_snb .wrap ul li{}
+
+
+
+
+.ff14_snb .wrap ul li span{}
+.ff14_snb .wrap ul li span a{color: #dbdbdb;}
+
+.ff14_snb .wrap ul li .sub{
+    display: flex;
+    flex-direction: column;
+}
+.ff14_snb .wrap ul li .sub li{}
+.ff14_snb .wrap ul li .sub li span{}
+.ff14_snb .wrap ul li .sub li span a{}
+
+
+.ff14_snb .wrap ul li.shop{}
+.ff14_snb .wrap ul li.gamestart{}

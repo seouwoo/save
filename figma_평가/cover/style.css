@@ -1,0 +1,32 @@
+*{margin: 0;padding: 0;}
+
+.reponsive{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+.reponsive iframe{
+    width: 100%;height: 100%;
+    
+}
+
+.reponsive img{ position: absolute;
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%;height: 100%;
+    pointer-events: none;
+
+}
+
+.reponsive .mobile{position: relative;
+    width: 411px; height: 836px;
+    padding: 129px 8px 142px 28px;}
+
+.reponsive .tablet{
+    position: relative;
+    width: 859px; height: 1280px;
+    padding: 147px 52px 0px 55px;
+    border-radius: 10px;
+}

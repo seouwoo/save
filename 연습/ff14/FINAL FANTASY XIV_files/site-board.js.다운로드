@@ -1,0 +1,194 @@
+﻿function doWrite() {
+    pwp.member.check({
+        act: '글쓰기가',
+        fn: function () {
+        }
+    });
+}
+function viewInfo(args) {
+    location.href = "/me/" + args;
+    //var form = $("<form />", { action: "/userinfo", method: "post" });
+    //$(form).appendTo("body");
+    //var input = $("<input />", { type: "hidden", name: "userInfo", value: args })
+    //$(form).append(input);
+    //$(form).submit();
+}
+function isIE() {
+    var agent = navigator.userAgent.toLowerCase();
+
+    return (navigator.appName == "Netscape" && navigator.userAgent.search("Trident") != -1) || (agent.indexOf("msie") != -1);
+}
+function getIEVersion() {
+    var rv = -1;
+
+    if (isIE()) {
+        var ua = navigator.userAgent;
+
+        if (navigator.appName == 'Netscape' && ua.search('Trident') != -1) {
+            rv = 11;
+            return rv;
+        }
+
+        var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+        if (re.exec(ua) != null)
+            rv = parseFloat(RegExp.$1);
+    }
+
+    return rv;
+}
+/*Video*/
+function getVideoCp(asrc) {
+    if (asrc == '') {
+        return '';
+    };
+    var cp = '';
+    // check cp
+    var matches = asrc.match(new RegExp('(?:http(s)?:\/\/)?([a-z0-9-_\.]*)[\/\?]', 'gi'));
+    var domain = matches[0];// "www."도 필요없는 경우.
+
+    if (domain.indexOf('youtube') >= 0) { //유투브 URL
+        cp = 'youtube';
+    } else if (domain.indexOf('youtu') >= 0) { //유투브 공유 URL
+        cp = 'youtube';
+    };
+    if (domain.indexOf('daum.net') >= 0) {
+        cp = 'daum';
+    };
+    if (domain.indexOf('kakao.com') >= 0) {
+        cp = 'kakao';
+    };
+    if (domain.indexOf('twitch.tv') >= 0) {
+        cp = 'twitch';
+    };
+    if (domain.indexOf('naver.com') >= 0) {
+        cp = 'naver';
+    };
+    return cp;
+};
+function getVideoSrcFromLink(asrc, w, h, params) {
+    var cp = getVideoCp(asrc),
+        src = '';
+
+    w = w || 640;
+    h = h || 480; //init;
+
+    switch (cp) {
+        case 'youtube':
+            var reg = /(?:http(s)?:\/\/)?(?:www\.)?(youtube\.com|youtu\.be)+\/+(watch\?v\=|embed\/|v\/)?([a-zA-Z0-9\-\_]{1,})/gi;
+            asrc.replace(reg, function (asrc, ssl, domain, watch, id) {
+                var url = 'https://youtube.com/v/' + id;
+                src = '<embed src="' + url + '" width="' + w + '" height="' + h + '" autostart="false" allowFullScreen="true" type="application/x-shockwave-flash" enableContextMenu="false"></embed>';
+            });
+            // https://www.youtube.com/v/8kUae8YWhY8?feature=player_embedded
+            // https://www.youtube.com/watch?v=8kUae8YWhY8#t=218
+            //(domain == 'youtube.com') /*긴 URL*/
+            //(domain == 'youtu.be') /*짧은 URL*/
+            break;
+        case 'daum':
+            var reg = /(?:http(s)?:\/\/)?([^\"\']*\.daum\.net)+\/+(watch\?v\=|embed\/|v\/)?([a-zA-Z0-9\-\_]{1,})?(?:[^\"\']+\?+([^\"\']+))?/gi;
+            asrc.replace(reg, function (asrc, ssl, domain, watch, id, vars, i) {
+                if (!params) {
+                    params = 'vid=' + id;
+                };
+                if (vars) {
+                    params = vars;
+                };
+                src = '<embed src="http://videofarm.daum.net/controller/player/VodPlayer.swf?' + params + '" width="' + w + '" height="' + h + '" autostart="false" allowFullScreen="true" type="application/x-shockwave-flash"></embed>';
+            });
+            //http://tvpot.daum.net/v/v78d1GHyGGbHhADibbVifig
+            break;
+        case 'kakao':
+            var reg = /(?:http(s)?:\/\/)?([^\"\']*\.kakao\.com)+\/+(watch\?v\=|embed\/|v\/)?([a-zA-Z0-9\-\_]{1,})?(?:[^\"\']+\?+([^\"\']+))?/gi;
+            asrc.replace(reg, function (asrc, ssl, domain, watch, id, vars, i) {
+                if (!params) {
+                    params = 'vid=' + id;
+                };
+                if (vars) {
+                    params = vars;
+                };
+                src = '<embed src="http://videofarm.daum.net/controller/player/VodPlayer.swf?' + params + '" width="' + w + '" height="' + h + '" autostart="false" allowFullScreen="true" type="application/x-shockwave-flash"></embed>';
+            });
+            //http://tvpot.daum.net/v/v78d1GHyGGbHhADibbVifig
+            break;
+        case 'twitch':
+            var reg = /(?:http(s)?:\/\/)?([^\"\']*\.twitch\.tv)+\/+([a-zA-Z0-9\-\_]*)?(?:\/)*([a-zA-Z0-9\-\_]*)?(?:\/)*([a-zA-Z0-9\-\_]*)?/gi;
+            asrc.replace(reg, function (asrc, ssl, domain, channel, watch, id, i) {
+                if (!params) {
+                    params = 'channel=' + channel + '&auto_play=false&videoId=' + watch + id;
+                };
+                src = '<embed src="http://www.twitch.tv/swflibs/TwitchPlayer.swf?' + params + '" width="' + w + '" height="' + h + '" autostart="false" allowFullScreen="true" type="application/x-shockwave-flash"></embed>';
+            });
+            //http://www.twitch.tv/naguri/c/6792863
+            break;
+        case 'naver':
+            var reg = /(?:http(s)?:\/\/)?([^\"\']*\.naver\.com)+\/+([a-zA-Z0-9\-\_]*)?(?:\/)*([a-zA-Z0-9\-\_]*)?(?:\/)*([a-zA-Z0-9\-\_]*)?/gi;
+            asrc.replace(reg, function (asrc, ssl, domain, channel, watch, id, i) {
+                if (!params) {
+                    return asrc; // 네이버게임은 파라메터가 암호화 되어 있다.
+                };
+
+                var str = '';
+                params.replace(/(vid|outKey)+\=+([a-zA-Z0-9]*)+/gi, function (g) {
+                    str += g + '&';
+                });
+
+                src = '<embed src="http://serviceapi.rmcnmv.naver.com/flash/getCommonPlayer.nhn?' + str + '" width="' + w + '" height="' + h + '" autostart="false" allowFullScreen="true" type="application/x-shockwave-flash"></embed>';
+            });
+            //http://tvcast.naver.com/v/410396/list/37611
+            break;
+        default:
+            src = '<embed src="' + asrc + '" width="' + w + '" height="' + h + '" autostart="false" allowFullScreen="true" type="application/x-shockwave-flash"></embed>';
+            break;
+    };
+
+    return src || '';
+};
+function getVideoSrcFromCode(asrc) {
+    // 허용된 cp이면 그냥 적용
+    // 아이프레임만 아니면 그냥 허용
+    var url = '', w, h, f;
+
+    asrc.replace(/(src|width|height|flashvars|data)\=[\"\']([^\"\']*)[\"\']/gim, function (g, key, value) {
+        switch (key.toLowerCase()) {
+            case 'src': url = value; break;
+            case 'width': w = value; break;
+            case 'height': h = value; break;
+            case 'flashvars': f = value; break;
+        };
+    });
+
+    if (url === '') {
+        f = '';
+        var re = /name\=[\"\']([^\"\']*)[\"\']\svalue\=[\"\']([^\"\']*)[\"\']/gim;
+        var m;
+        while ((m = re.exec(asrc)) !== null) {
+            if (m.index === re.lastIndex) {
+                re.lastIndex++;
+            };
+            if (m[1] === 'movie' || m[1] === 'Movie') {
+                url = m[2];
+            };
+            if (m[1] === 'flashvars') {
+                f = m[2];
+            };
+        };
+    };
+
+    var src = getVideoSrcFromLink(url, w, h, f);
+
+    return (src == '' ? asrc : src);
+};
+
+$(function () {
+    var keyword = $("form[name='frm_search'] input[name='keyword']");
+    $(keyword).keyup(function (e) {
+        if (e.keyCode != 32 && !(e.keyCode >= 37 && e.keyCode <= 40)) {
+            var maxLength = $(this).data("max-value");
+            var ptn1 = /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣a-zA-Z0-9|\s]/gi;
+            var inputValue = $(this).val();
+            if (ptn1.test(inputValue)) {
+                $(this).val(inputValue.replace(ptn1, ""));
+            }
+        }
+    });
+});

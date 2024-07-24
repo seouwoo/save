@@ -1,0 +1,1002 @@
+﻿/*********************************************************
+PI Web Platform - JS Libraries
+*********************************************************/
+
+(function ($) {
+    // Cross Browsing
+    $.browser = {
+        ua: navigator.userAgent.toLowerCase(),
+        mozilla: /mozilla/.test(navigator.userAgent.toLowerCase()) && !/webkit/.test(navigator.userAgent.toLowerCase()),
+        webkit: /webkit/.test(navigator.userAgent.toLowerCase()),
+        opera: /opera/.test(navigator.userAgent.toLowerCase()),
+        msie: /msie/.test(navigator.userAgent.toLowerCase()),
+        chrome: /chrome/.test(navigator.userAgent.toLowerCase()),
+        isMobile: /mobi|iphone|ipad|android|windows ce|blackberry|symbian|windows phone|webos|opera mini|opera mobi|polaris|iemobile|lgtelecom|nokia|sonyericsson/i.test(navigator.userAgent.toLowerCase()) || /LG|SAMSUNG|Samsung/i.test(navigator.userAgent.toLowerCase())
+    };
+
+    $.fn.setBoardGallery = function (options) {
+        return this.each(function () {
+            var settings = $.extend({}, $.fn.setBoardGallery.defaults, options || {});
+            settings.setTimer($(this));
+        });
+    };
+
+    $.fn.setBoardGallery.defaults = {
+        panelWidth: 0,
+        speed: '500',
+        timer: null,
+        setTimer: function ($shortcut) {
+            var settings = this;
+            settings.panelWidth = $shortcut.width();
+            if (!settings.timer) {
+                settings.timer = setInterval(function () {
+                    $.fn.setBoardGallery.run($shortcut, settings);
+                }, settings.speed);
+            };
+        }
+    };
+
+    $.fn.setBoardGallery.run = function ($shortcut, settings) {
+        var cnt = 0;
+        $('img', $shortcut).each(function (i) {
+            var $img = $(this);
+            if ($img.parent().attr('rel') !== 'gallery_group') {
+                $img.wrap($('<a/>', { 'href': this.src, 'rel': 'gallery_group' }).fancybox());
+            };
+            if ($img.width() > settings.panelWidth) {
+                $img.width(settings.panelWidth);
+                cnt++;
+            } else {
+                cnt--;
+            };
+        });
+        if (cnt < 1) {
+            clearInterval(settings.timer);
+            settings.timer = null;
+        };
+    };
+
+    $.fn.setPaging = function (options) {
+        var _defaults = {
+            totalCount: 0,
+            pageNo: 1,
+            pageSize: 20,
+            blockSize: 10,
+            funcName: 'goPage',
+            href: 'page',
+            btns: {
+                prev: '이전',
+                next: '다음',
+                bar: '\n'
+            }
+        };
+        var settings = $.extend({}, _defaults, options || {});
+
+        return this.each(function () {
+            var blocks = '', pageNo;
+
+            if ((settings.totalCount <= settings.pageSize)) {
+                blocks += '<li class="on"><a href="#' + settings.href + '">1</a></li>';
+            } else {
+                var totalPageCount = Math.ceil(settings.totalCount / settings.pageSize); // 전체 페이지수
+                var beginPage = Math.floor((settings.pageNo - 1) / settings.blockSize); // 블럭의 시작페이지
+                beginPage = (beginPage * settings.blockSize + 1);
+
+                if (beginPage != 1) {
+                    pageNo = (beginPage - settings.blockSize);
+                    blocks += '<li><input type="button" class="btn_page btn_prev" onclick="return ' + settings.funcName + '(' + pageNo + ');"></li>';
+                };
+
+                for (var i = 1; i <= settings.blockSize; i++, beginPage++) {
+                    if (beginPage == totalPageCount) {
+                        i = settings.blockSize + 1;
+                    };
+                    blocks += (blocks != '' ? settings.btns.bar : '');
+                    if (beginPage == settings.pageNo) {
+                        blocks += '<li class="on"><a href="#' + settings.href + pageNo + '">' + beginPage + '</a></li>';
+                    } else {
+                        pageNo = (beginPage);
+                        blocks += '<li><a href="#' + settings.href + pageNo + '" onclick="return ' + settings.funcName + '(' + pageNo + ');">' + pageNo + '</a></li>';
+                    };
+                };
+
+                pageNo = (beginPage); // for문 후 완료 값
+                if ((beginPage - 1) < totalPageCount) {
+                    blocks += (blocks != '' ? settings.btns.bar : '');
+                    blocks += '<li><input type="button" class="btn_page btn_next" onclick="return ' + settings.funcName + '(' + pageNo + ');"></li>';
+                };
+            };
+
+            $(this).html(blocks);
+        });
+    };
+})(jQuery);
+
+var pwp = {
+    rootUrl: '',
+    loginUrl: '',
+    logoutUrl: '',
+    returnUrl: '',
+    imgUrl: '',
+    staticUrl: '',
+    svcUrl: ''
+};
+
+pwp.util = (function ($) {
+    var $shortcut = {};
+
+    $shortcut.getCookie = function (name) {
+        var nameOfCookie = name + '=';
+        var x = 0;
+        while (x <= document.cookie.length) {
+            var y = (x + nameOfCookie.length);
+            if (document.cookie.substring(x, y) == nameOfCookie) {
+                if ((endOfCookie = document.cookie.indexOf(';', y)) == -1)
+                    endOfCookie = document.cookie.length;
+                return unescape(document.cookie.substring(y, endOfCookie));
+            }
+            x = document.cookie.indexOf(' ', x) + 1;
+            if (x == 0) break;
+        };
+        return '';
+    };
+
+    $shortcut.setCookie = function (name, value, expiredays) {
+        var todayDate = new Date();
+        todayDate.setDate(todayDate.getDate() + expiredays);
+        document.cookie = name + '=' + escape(value) + '; path=/; expires=' + todayDate.toGMTString() + ';';
+    };
+
+    $shortcut.createForm = function (n, m, a, t) {
+        var f = document.createElement('form');
+        f.setAttribute('name', n);
+        f.setAttribute('method', m);
+        f.setAttribute('action', a);
+        if (t) f.setAttribute('target', t);
+        document.body.appendChild(f);
+        return f;
+    };
+
+    $shortcut.addHiddenField = function (f, n, v) {
+        var i = document.createElement('input');
+        i.setAttribute('type', 'hidden');
+        i.setAttribute('name', n);
+        i.setAttribute('value', v);
+        f.appendChild(i);
+        return f;
+    };
+
+    $shortcut.addZero = function (no, size) {
+        if (!size) {
+            size = 2;
+        };
+        no = no.toString();
+        if (no.length >= size) {
+            return no;
+        };
+        var zeros = '';
+        for (var i = 1; i < size; i++) {
+            zeros += '0'
+        };
+        zeros += no;
+        var len = zeros.length;
+        return zeros.substring(len - size, len);
+    };
+
+    $shortcut.getRandomIndex = function (max) {
+        return (Math.floor(Math.random() * max))
+    };
+
+    $shortcut.checkAndCutString = function (obj, label) {
+        var $obj = $(obj);
+        var maxlen = $obj.attr('maxlength');
+        var len = $obj.val().byte();
+
+        if (maxlen < len) {
+            alert(maxlen + ' byte 이하로 입력가능합니다.');
+            $obj.val($obj.val().cut(maxlen));
+            pwp.util.checkAndCutString(obj, label);
+            return false;
+        };
+
+        if (label) {
+            $(label).html(len + '/ ' + maxlen);
+        };
+
+        return true;
+    };
+
+    $shortcut.cutString = function (str, maxlen, isNew) {
+        if (!isNew) {
+            isNew = false;
+        };
+        var cutSize = maxlen - (isNew ? 8 : 6);
+        if (str.byte() > cutSize) {
+            str = str.cut(cutSize) + '…';
+        };
+        return str;
+    };
+
+    /* Asynchronous Callback */
+    $shortcut.ajaxDataHelper = {
+        call: function (options) {
+            var beginTime = new Date();
+            beginTime = beginTime.getTime();
+
+            var _defaults = {
+                method: 'get',
+                dataType: 'json',
+                charsetType: 'utf-8',
+                url: '',
+                data: null,
+                error: function (status) { },
+                success: function (data) { },
+                beforeSend: function () { },
+                complete: function () { },
+                debugging: true
+            };
+
+            options = $.extend({}, _defaults, options);
+
+            // extend 후 실행돼야 한다.
+            options.method = options.method.toLowerCase();
+            options.dataType = options.dataType.toLowerCase();
+            options.charsetType = options.charsetType.toLowerCase();
+
+            $.ajax({
+                type: options.method,
+                url: options.url,
+                contentType: 'application/x-www-form-urlencoded;charset=' + options.charsetType,
+                data: options.data,
+                dataType: options.dataType,
+                error: function (xhr, status, errorThrown) {
+                    if (options.debugging) {
+                        //console.log('[error]', options.url +'?'+ $.param( options.data ), status+'\n'+errorThrown.toString());
+                    };
+                    options.error(status);
+                },
+                success: function (data) {
+                    if (options.debugging) {
+                        var endTime = new Date();
+                        endTime = endTime.getTime();
+                        var runningTime = ((endTime - beginTime) / 1000);
+                        if (runningTime > 3 || options.debugging) {
+                            //console.log('[success]', options.url +'?'+ $.param( options.data ), 'Timed out: ' + runningTime, data);
+                        };
+                    };
+                    options.success(data);
+                },
+                beforeSend: options.beforeSend,
+                complete: options.complete
+            });
+        }
+    };
+
+    $shortcut.callJsonP = function (url) {
+        var f = document.createElement('script');
+        f.type = 'text/javascript';
+        f.charset = 'euc-kr';
+        f.src = url;
+        document.getElementsByTagName('head')[0].appendChild(f);
+        return f;
+    };
+
+    $shortcut.copyClipboard = function (clipboard, msg) {
+        var IE = (document.all) ? true : false;
+        if (IE) {
+            window.clipboardData.setData('Text', clipboard);
+            if (window.clipboardData.getData('Text') == clipboard) {
+                return true;
+            };
+        };
+        var tmp = prompt((msg ? msg + '\n' : '') + 'Ctrl+C를 눌러 복사 후 Ctrl+V로 붙여넣기해 주세요.\n\n', clipboard);
+        return false;
+        if (window.clipboardData) {
+            window.clipboardData.setData('Text', clipboard);
+            return true;
+        } else if (window.netscape) {
+            try {
+                netscape.security.PrivilegeManager.enablePrivilege('UniversalXPConnect');
+                var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);
+                if (!clip) return;
+                var trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);
+                if (!trans) return;
+                trans.addDataFlavor('text/unicode');
+                var str = new Object();
+                var len = new Object();
+                var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+                var copytext = clipboard;
+                str.data = copytext;
+                trans.setTransferData("text/unicode", str, copytext.length * 2);
+                var clipid = Components.interfaces.nsIClipboard;
+                if (!clip) return false;
+                clip.setData(trans, null, clipid.kGlobalClipboard);
+                return true;
+            }
+            catch (e) {
+                alert('복사 기능을 허용하지 않은 상태입니다.\n\n주소창에 \"about:config\" 입력 후\n\"signed.applets.codebase_principal_support\" 설정을 \n\"true\" 값으로 변경하여 주세요.');
+                return false;
+            };
+        };
+        alert('복사 기능을 지원하지 않는 브라우저 입니다.');
+        return false;
+    };
+
+    $shortcut.Singletonify = function (cons) {
+
+        // 유일 객체 변수
+        var INSTANCE;
+
+        // 클로저 생성
+        var c = function () {
+            // 유일 객체가 정의되지 않았다면 객체를 생성.
+            if (INSTANCE === undefined) {
+
+                // 여기서부터 new 연산자의 내용을 흉내냅니다.
+
+                // 새 함수를 선언하고 인자로 전달받은 함수의 프로토타입으로 연결합니다.
+                var F = function () { };
+                F.prototype = cons.prototype;
+
+                // 객체를 생성하고 생성된 객체를 컨텍스트로 호출합니다.            
+                var t = new F();
+                var ret = cons.apply(t, Array.prototype.slice.call(arguments));
+
+                // 이때, 반환값이 객체이면 객체를, 아니라면 위의 객체를
+                // 생성 객체로 지정합니다.
+                INSTANCE = (typeof ret === 'object') ? ret : t;
+            }
+
+            // 객체를 리턴합니다.
+            return INSTANCE;
+        }
+
+        // 팩토리 메서드로도 접근할 수 있게 합니다
+        c.getInstance = function () {
+            return c.apply(null, Array.prototype.slice.call(arguments));
+        }
+
+        // 생성자를 대체한 클로저를 리턴
+        return c;
+    };
+
+    return $shortcut;
+})(jQuery);
+
+pwp.lib = (function ($) {
+    var $shortcut = {};
+
+    $shortcut.init = function (options) {
+        pwp = $.extend({}, pwp, options);
+
+        pwp.nav.pathId = options.pathId;
+        pwp.member.isLogin = options.isLogin;
+        pwp.member.memberType = options.memberType;
+        pwp.member.isMember = options.isMember;
+		pwp.member.CSiteNo = options.CSiteNo;
+
+        if (console) {
+        	console.log(pwp.nav.pathId);
+        	console.log(pwp.loginUrl);
+        	console.log(pwp.logoutUrl);
+        	console.log(pwp.returnUrl);
+        };
+    };
+
+    $shortcut.goLogin = function (returnUrl) {
+        var loginUrl = pwp.loginUrl;
+        returnUrl = returnUrl || pwp.returnUrl;
+
+        if (typeof (returnUrl) != 'undefined' && returnUrl != '') {
+            //encReturnUrl = '&returnUrl='+ decodeURIComponent(returnUrl);
+            loginUrl += (loginUrl.indexOf('?') >= 0 ? '&' : '?') + 'returnUrl=' + returnUrl; // returnUrl: 인코딩 되어 있음
+        };
+
+        location.href = loginUrl;
+    };
+
+    $shortcut.goDownload = function () {
+        location.href = pwp.rootUrl + '/download';
+    };
+
+    $shortcut.goUseGame = function () {
+        /* 게임회원 추가가입 */
+        if (pwp.member.isMember) {
+            var url = '/serviceInterface/?ac=AgreeService';
+            location.href = url;
+        } else {
+            var url = '/serviceInterface/?ac=AddMember';
+			/*
+            var win = window.open(url, 'chWin', 'width=100,height=100,scrollbars=yes');
+            win.focus();
+			*/
+			window.open(url);
+        };
+    };
+
+	//회원가입 유형별 페이지 링크 이동
+    $shortcut.goStatusLogin = function () {
+		
+		if( pwp.member.isLogin ){
+
+			if( pwp.member.memberType === "O" ){
+
+				alert("이미 회원입니다.");
+//				return false;
+
+			} else if ( pwp.member.memberType === "C" ){
+
+				pwp.lib.goUseGame();
+
+			}
+
+		} else {
+
+			//회원가입
+			if( pwp.member.CSiteNo == "0" ){
+				location.href = "/serviceInterface/?ac=RegisterMember";
+			} else {
+				location.href = "/serviceInterface/?ac=login";
+			}
+
+		}
+
+    };
+    //--회원가입 유형별 페이지 링크 이동--
+
+    return $shortcut;
+})(jQuery);
+
+pwp.nav = (function ($) {
+    var $shortcut = {};
+    return $shortcut;
+})(jQuery);
+
+pwp.member = (function ($) {
+    var $shortcut = {
+        isLogin: false,
+        memberType: '',
+        isMember: false
+    };
+
+    $shortcut.check = function (options) {
+
+        var settings = $.extend({}, {
+            act: '이용이',
+            //url: '',
+            url: (typeof(options) == "string") ? pwp.returnUrl + options : '',
+            fn: null,
+            cancelLogin: null,
+            useConfirm : true
+        }, options || {});
+
+        if (!pwp.member.isLogin) {
+            if(!settings.useConfirm){
+                pwp.lib.goLogin(settings.url);
+            }else{
+                if (confirm('로그인하신 후 ' + settings.act + ' 가능합니다.\n로그인 하시겠습니까?')) {
+                    pwp.lib.goLogin(settings.url);
+                } else {
+                    if (settings.cancelLogin) {
+                        settings.cancelLogin();
+                    };
+                };
+            };            
+            return false;
+        } else {
+            var msg = pwp.member.getTypeError(settings);
+            switch (msg) {
+                case '':
+                    if (settings.fn) {
+                        settings.fn();
+                    };
+                    if (settings.url && settings.url != '') {
+                        location.href = settings.url;
+                    };
+                    return true; break;
+                default:
+                    if (pwp.member.memberType === 'C' && !settings.ex) {
+                        pwp.lib.goUseGame();
+                    } else {
+                        alert(msg);
+                    };
+                    return false; break;
+            };
+        };
+    };
+
+    $shortcut.getTypeError = function (options) {
+        var msg,
+			settings = $.extend({}, {
+			    act: '이용이'
+			}, options || {});
+
+        if (!pwp.member.isLogin) {
+            msg = '로그인하신 후 ' + settings.act + ' 가능합니다.\n로그인 하시겠습니까?';
+        } else {
+            switch (pwp.member.memberType) {
+                case 'O':
+                    msg = ''; break;
+                case 'N':
+                    msg = '회원님께서는 블럭상태로 ' + settings.act + ' 불가능합니다.'; break;
+                case 'E':
+                    msg = '회원님께서는 탈퇴상태로 ' + settings.act + ' 불가능합니다.'; break;
+                case 'A':
+                    msg = '회원님께서는 보호자 동의가 완료되지 않으셨습니다.\n우선 보호자 동의를 완료해 주세요.'; break;
+                case 'C':
+                    if (settings.ex) {
+                        msg = '';
+                    } else {
+                        msg = '게임회원인 경우에만 ' + settings.act + ' 가능합니다.';
+                    };
+                    break;
+                default:
+                    msg = '오류가 발생하였습니다.'; break;
+            };
+        };
+        return msg;
+    };
+
+    return $shortcut;
+})(jQuery);
+
+pwp.board = (function ($) {
+    var $shortcut = {
+        data: null
+    };
+
+    $shortcut.searchKeyword = function (form) {
+        if (pwp.board.checkKeyword(form.keyword)) {
+            var url = form.action;
+            if (url.indexOf('?') >= 0) {
+                url += '&' + $(form).serialize();
+            } else {
+                url += '?' + $(form).serialize()
+            };
+            location.href = url;
+        };
+        return false;
+    };
+
+    $shortcut.checkKeyword = function (obj) {
+        var keyword = obj.value;
+        var len = keyword.length;
+        if (len < 2) {
+            alert('2자 이상의 검색어를 입력하세요.');
+            obj.focus();
+            return false;
+        };
+        var disabledKeywords = 'about;after;all;also;an;and;another;any;are;as;at;be;because;been;before;being;between;both;but;by;came;can;come;could;did;do;each;for;from;get;got;has;had;he;have;her;here;him;himself;his;how;if;in;into;is;it;like;make;many;me;might;more;most;much;must;my;never;now;of;on;only;or;other;our;out;over;said;same;see;should;since;some;still;such;take;than;that;the;their;them;then;there;these;they;this;those;through;to;too;under;up;very;was;way;we;well;were;what;where;which;while;who;with;would;you;your;';
+        if (disabledKeywords.indexOf(keyword + ';') >= 0) {
+            alert('검색 가능한 단어가 아닙니다.\n다른 문자열로 검색해 주세요.');
+            obj.focus();
+            return false;
+        };
+        var reg = /[^0-9a-zA-Z가-힣ㄱ-ㅎ\s]/;
+        for (var i = 0; i < len; i++) {
+            var chr = keyword.charAt(i);
+            if (chr.search(reg) != -1) {
+                alert('특수문자를 입력할 수 없습니다.\n다른 문자열로 검색해 주세요.');
+                obj.focus();
+                return false;
+                break;
+            };
+        };
+        return true;
+    };
+
+    $shortcut.copy = function () {
+        //var q = pwp.board.data.fetchedUrl;
+        var q = pwp.board.data.url;
+        if (pwp.util.copyClipboard(q)) {
+            var msg = msg || '주소를';
+            alert(msg + ' 복사하였습니다.\nCtrl+V로 붙여넣기 해주세요.');
+        };
+    };
+
+    $shortcut.like = function () {
+        if (pwp.member.check({ act: '추천하기가' })) {
+            if (pwp.board.data.key) {
+                var options = {
+                    url: 'j_recommendok.asp',
+                    data: { key: pwp.board.data.key || '' },
+                    method: 'post',
+                    success: function (data) {
+                        if (data != null) {
+                            if (parseInt(data.DBRTN, 10) > 0) {
+                                $('.ui-board-like-count-' + data.BID).html(parseInt(data.DBRTN, 10)); /* succeed */
+                            } else {
+                            };
+                            alert(data.DBMSG); /* failed */
+                        };
+                    },
+                    error: function (status) {
+                        alert('An error has occurred.\n\nstatus: ' + status);
+                    },
+                    beforeSend: function () { },
+                    complete: function () { }
+                };
+                pwp.util.ajaxDataHelper.call(options);
+            } else {
+                alert('오류가 발생하였습니다.\n잠시 후 다시 시도해 주세요.');
+            };
+        };
+        return false;
+    };
+
+    $shortcut.modify = function () {
+        if (pwp.member.check({ act: '수정하기가' })) {
+            if (pwp.board.data.key) {
+                var frm = pwp.util.createForm('form1', 'post', 'modify.asp');
+                pwp.util.addHiddenField(frm, 'key', pwp.board.data.key);
+                frm.submit();
+            } else {
+                alert('오류가 발생하였습니다.\n잠시 후 다시 시도해 주세요.');
+            };
+        };
+        return false;
+    };
+
+    $shortcut.remove = function () {
+        if (pwp.member.check({ act: '삭제하기가' })) {
+            if (confirm('정말 삭제하시겠습니까?')) {
+                if (pwp.board.data.key) {
+                    var frm = pwp.util.createForm('form1', 'post', 'removeok.asp');
+                    pwp.util.addHiddenField(frm, 'key', pwp.board.data.key);
+                    frm.submit();
+                } else {
+                    alert('오류가 발생하였습니다.\n잠시 후 다시 시도해 주세요.');
+                };
+            };
+        };
+        return false;
+    };
+
+    $shortcut.write = function () {
+        if (pwp.member.check({ act: '글쓰기가' })) {
+            location.href = 'write.asp';
+        };
+        return false;
+    };
+
+    $shortcut.init = function (options) {
+        var _defaults = {
+            key: '',
+            text: '',
+            url: '',
+            tag: ['FINAL FANTASY XIV', '파이널판타지14'],
+            via: 'FFXIV_KOREA',
+            callTwitter: false,//'pwp.board.sns.twitter.receive',
+            callFacebook: false//'pwp.board.sns.facebook.receive'
+        };
+        delete _defaults;
+        pwp.board.data = $.extend({}, _defaults, options || {});
+        pwp.board.sns.init();
+    };
+
+    $shortcut.sns = {
+        init: function () {
+            SnsManager.init(pwp.board.data);
+        },
+        twitter: {
+            share: function () {
+                SnsManager.twitter.share(pwp.board.data);
+                return false;
+            },
+            receive: function (data) {
+                SnsManager.twitter.receive(data);
+            }
+        },
+        facebook: {
+            share: function () {
+                SnsManager.facebook.share(pwp.board.data);
+                return false;
+            },
+            receive: function (data) {
+                data = $.extend({}, pwp.board.data, data || {});
+                SnsManager.facebook.receive(data);
+            }
+        },
+        kakaotalk: {
+            share: function (container) {
+                SnsManager.kakaotalk.share($.extend({}, pwp.board.data, { container: container }));
+                return false;
+            }
+        },
+        kakaostory: {
+            share: function () {
+                SnsManager.kakaostory.share(pwp.board.data);
+                return false;
+            }
+        },
+        band: {
+            share: function () {
+                SnsManager.band.share(pwp.board.data);
+                return false;
+            }
+        }
+    };
+
+    return $shortcut;
+})(jQuery);
+
+pwp.file = (function ($) {
+    var $shortcut = {};
+
+    $shortcut.openFileUploader = function (arg) {
+        var params = arg ? '?' + $.param(arg) : '';
+        var url = '/Editor/PopupImageUploader' + params;
+        var $popup = $('#ff14ImageUploadPopup');
+        if ($popup.length < 1) {
+            $popup = $('<div id="ff14ImageUploadPopup" class="ff14_pop_insert_wrap" style="display:none;"><div class="pop_ibox"><iframe src="' + url + '" frameborder="0"></iframe></div></div>').appendTo('body');
+        } else {
+            $popup.attr('src', url);
+        }
+        $popup.fadeIn('fast');
+    };
+
+    $shortcut.closeFileUploader = function () {
+        var $popup = $('#ff14ImageUploadPopup');
+        $popup.fadeOut('fast');
+    };
+
+    $shortcut.openFileRemover = function (arg) {
+        if (arg.files.length > 0) {
+            var params = arg ? '?' + $.param(arg) : '';
+            var url = '/Editor/PopupImageRemover' + params;
+            var $popup = $('#ff14ImageUploadPopup');
+            if ($popup.length < 1) {
+                $popup = $('<div id="ff14ImageUploadPopup" class="ff14_pop_insert_wrap" style="display:none;"><div class="pop_ibox"><iframe src="' + url + '" frameborder="0"></iframe></div></div>').appendTo('body');
+            } else {
+                $popup.attr('src', url);
+            }
+            $popup.fadeIn('fast');
+        } else {
+            alert('삭제할 파일을 선택하세요.');
+        };
+    };
+
+    $shortcut.onCompleteUpload = function (arg) {
+        if (oEditors) {
+            oEditors.getById["content"].exec('ATTACH_IMAGE', [arg.fileName, arg.orgFileName]);
+        } else {
+            if (arg.msg) {
+                alert(arg.msg);
+            };
+        };
+    };
+
+    $shortcut.onCompleteRemove = function (arg) {
+        if (oEditors) {
+            if (arg.files.length > 0) {
+                for (var i = 0; i < arg.files.length; i++) {
+                    var src = arg.files[i];
+                    oEditors.getById["content"].exec('REMOVE_IMAGE', [src]);
+                };
+            };
+        } else {
+            if (arg.msg) {
+                alert(arg.msg);
+            };
+        };
+    };
+
+    // 파일명 체크
+    $shortcut.checkFileName = function () {
+        alert('파일명에 특수문자 또는 허용하지 않는 문자열이 포함되어 있습니다.\n영문 또는 숫자로 이루어진 40자 이하의 파일명으로 변경 후\n올리실 수 있습니다.');
+        return;
+    };
+
+    // 파일종류 체크
+    $shortcut.checkMimeType = function () {
+        alert('이미지 파일만 첨부 가능합니다.\n파일종류를 확인해 주세요.');
+        return;
+    };
+
+    // 업로드파일 용량 체크
+    $shortcut.checkFileSize = function (fileSize) {
+        alert('최대 ' + fileSize + ' 첨부 가능합니다.\n파일 크기를 확인해 주세요.');
+        return;
+    };
+
+    // 이미지 크기 체크
+    $shortcut.checkImageScale = function (maxW, maxH) {
+        alert('이미지 크기가 ' + maxW + ' * ' + maxH + ' 보다 큽니다.\n이미지 크기를 확인해 주세요.');
+        return;
+    };
+
+    // 오류
+    $shortcut.onError = function () {
+        alert('이미지 첨부 중 오류가 발생하였습니다.\n잠시 후 다시 시도해 주세요.');
+        return;
+    };
+
+    return $shortcut;
+})(jQuery);
+
+var SnsManager = {
+    _defaults: {
+        text: '',
+        url: '',
+        tag: ['FINAL FANTASY XIV', '파이널판타지14'],
+        via: 'FFXIV_KOREA',
+        callTwitter: false,//'SnsManager.twitter.receive',
+        callFacebook: false//'SnsManager.facebook.receive'
+    },
+    init: function (data) {
+        if (data.callTwitter) {
+            var data = {
+                url: data.url,
+                callback: data.callTwitter
+            };
+            pwp.util.callJsonP('http://urls.api.twitter.com/1/urls/count.json?' + $.param(data));
+        };
+        if (data.callFacebook) {
+            var data = {
+                ids: data.url,
+                callback: data.callFacebook
+            };
+            pwp.util.callJsonP('https://graph.facebook.com/?' + $.param(data));
+        };
+    },
+    share: function (url, data) {
+        var params = $.param(data);
+        var win = window.open(url + '?' + params, '', 'width=550,height=450');
+        win.focus();
+        return false;
+    },
+    twitter: {
+        share: function (options) {
+            var data = $.extend({}, SnsManager._defaults, options || {});
+            if (data) {
+                var str = '';
+                for (var i in data.tag) {
+                    str += (i > 0 ? ',' : '') + data.tag[i].replace(/\s/gi, '');
+                };
+                var data = {
+                    lang: 'ko',
+                    //url: data.fetchedUrl, // 내용에 포함되는 url은 shortcut으로,
+                    url: data.url,
+                    hashtags: str,
+                    text: data.text,
+                    via: data.via
+                };
+                SnsManager.share('https://twitter.com/share', data);
+            };
+            return false;
+        },
+        receive: function (data) {
+            if (data.count) {
+            } else {
+            };
+        }
+    },
+    facebook: {
+        share: function (options) {
+            var data = $.extend({}, SnsManager._defaults, options || {});
+            if (data) {
+                var data = {
+                    u: data.url
+                };
+                SnsManager.share('http://www.facebook.com/sharer.php', data);
+            };
+            return false;
+        },
+        receive: function (data) {
+            if (!data.error && data[data.url].shares) {
+            } else {
+            };
+        }
+    },
+    kakao: {
+        init: function (options) {
+
+            // kakao sdk 초기화
+            Kakao.init('847b3d5fe22031018d3a78535594fc3e');
+            var data = $.extend({}, SnsManager._defaults, options || {});
+
+            // 카카오톡 링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+            Kakao.Link.createTalkLinkButton({
+                container: data.container,
+                label: data.text,
+                /*image: {
+					src: 'http://dn.api1.kage.kakao.co.kr/14/dn/btqaWmFftyx/tBbQPH764Maw2R6IBhXd6K/o.jpg',
+					width: '300',
+					height: '200'
+				},*/
+                webLink: {
+                    text: data.text,
+                    url: data.url // 앱 설정의 웹 플랫폼에 등록한 도메인의 URL이어야 합니다.
+                }
+            });
+
+
+            // 스토리 공유 버튼을 생성합니다.
+            Kakao.Story.createShareButton({
+                container: '#btn-kakaostory-share',
+                url: data.url,
+                text: data.text
+            });
+        }
+    },
+    kakaotalk: {
+        share: function (options) {
+
+            // kakao sdk 초기화
+            Kakao.init('847b3d5fe22031018d3a78535594fc3e');
+
+            var data = $.extend({}, SnsManager._defaults, options || {});
+
+            // 카카오톡 링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+            Kakao.Link.createTalkLinkButton({
+                container: data.container,
+                label: data.text,
+                /*image: {
+					src: 'http://dn.api1.kage.kakao.co.kr/14/dn/btqaWmFftyx/tBbQPH764Maw2R6IBhXd6K/o.jpg',
+					width: '300',
+					height: '200'
+				},*/
+                webLink: {
+                    text: data.text,
+                    url: data.url // 앱 설정의 웹 플랫폼에 등록한 도메인의 URL이어야 합니다.
+                }
+            });
+        }
+    },
+    kakaostory: {
+        share: function (options) {
+            var data = $.extend({}, SnsManager._defaults, options || {});
+            if (data) {
+                var str = '';
+                for (var i in data.tag) {
+                    str += ' #' + data.tag[i].replace(/\s/gi, '');
+                };
+                Kakao.Story.share({
+                    url: data.url,
+                    text: data.text + str
+                });
+            };
+            return false;
+        }
+    },
+    band: {
+        share: function (options) {
+            var data = $.extend({}, SnsManager._defaults, options || {});
+            if (data) {
+                var data = {
+                    body: data.text + ' ' + data.url,
+                    route: ''
+                };
+                SnsManager.share('http://www.band.us/plugin/share', data);
+            };
+            return false;
+        }
+    }
+};
+
+var _video_defaults = {
+    'width': 960,
+    'height': 540,
+    'autoScale': false,
+    'transitionIn': 'none',
+    'transitionOut': 'none',
+    'type': 'iframe',
+    onComplete: function () {
+        if (!!BgmRemoteControl) {
+            BgmRemoteControl.forcePause();
+        };
+    },
+    onClosed: function () {
+        if (!!BgmRemoteControl) {
+            BgmRemoteControl.forcePlay();
+        };
+    }
+},
+_gallery_defaults = {
+    'width': 960,
+    'height': 543,
+    'autoScale': false,
+    'transitionIn': 'none',
+    'transitionOut': 'none',
+    'type': 'iframe'
+};
